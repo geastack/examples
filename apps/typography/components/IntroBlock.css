@@ -1,0 +1,25 @@
+.typography-intro {
+  margin-bottom: 6px;
+}
+
+.typography-title {
+  font-family: 'Bebas Neue';
+  font-size: 54px;
+  color: #ffffff;
+}
+
+.typography-intro-copy {
+  margin-bottom: 0px;
+}
+
+.typography-token-div {
+  color: #64d2ff;
+}
+
+.typography-token-span {
+  color: #fbbf24;
+}
+
+.typography-token-p {
+  color: #a7f3d0;
+}

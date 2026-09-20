@@ -1,0 +1,372 @@
+.reader-screen {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #171713;
+}
+
+.reader-paper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* Page turns must repaint an opaque sheet, not rely on the app root or the
+     monochrome media query behind it. This also matches the solid-white
+     backdrop used by the packed antialiased-text cache. */
+  background-color: #ffffff;
+}
+
+.reader-screen.margin-0 .reader-paper { padding: 46px 42px 72px; }
+.reader-screen.margin-1 .reader-paper { padding: 54px 68px 78px; }
+
+/* Fixed-height header at the top of a chapter's first page. Its height must
+   match CHAPTER_TITLE_BLOCK_PX in lib/pagination.ts — the paginator reserves
+   exactly this much vertical space (converted to body lines) so the text
+   below never collides with the title. The title sits at the block's bottom,
+   close to the body it introduces. */
+.chapter-title-block {
+  flex-shrink: 0;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.chapter-title {
+  display: block;
+  color: #171713;
+  font-family: 'Cossette Texte';
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 52px;
+}
+
+.reader-screen.font-0 .chapter-title { font-family: 'Cossette Texte'; }
+.reader-screen.font-1 .chapter-title { font-family: 'Inter'; }
+.reader-screen.font-2 .chapter-title { font-family: 'Oswald'; }
+.reader-screen.font-3 .chapter-title { font-family: 'Literata'; }
+
+/* The page's paragraph pieces, one element per piece. Body metrics per type
+   setting mirror lib/pagination.ts exactly; the margin-bottom IS the
+   paginator's inter-piece gap (one body line), so accounting and rendering
+   agree. Styled-heading rows scale by the HEADING_* ratios: size-1 lines are
+   1.5x the body leading (3 half-line units), size-2 are 2x (4 units). */
+.page-body {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.page-par {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+}
+
+.reader-screen.font-0 .page-par { font-family: 'Cossette Texte'; }
+.reader-screen.font-1 .page-par { font-family: 'Inter'; }
+.reader-screen.font-2 .page-par { font-family: 'Oswald'; }
+.reader-screen.font-3 .page-par { font-family: 'Literata'; }
+.reader-screen.size-0 .page-par { font-size: 22px; }
+.reader-screen.size-1 .page-par { font-size: 26px; }
+.reader-screen.size-2 .page-par { font-size: 30px; }
+.reader-screen.spacing-0.size-0 .page-par { line-height: 29px; margin-bottom: 29px; }
+.reader-screen.spacing-0.size-1 .page-par { line-height: 35px; margin-bottom: 35px; }
+.reader-screen.spacing-0.size-2 .page-par { line-height: 40px; margin-bottom: 40px; }
+.reader-screen.spacing-1.size-0 .page-par { line-height: 33px; margin-bottom: 33px; }
+.reader-screen.spacing-1.size-1 .page-par { line-height: 40px; margin-bottom: 40px; }
+.reader-screen.spacing-1.size-2 .page-par { line-height: 46px; margin-bottom: 46px; }
+
+/* Styled blocks from the book's own CSS. */
+.page-par.page-c { text-align: center; }
+.page-par.page-r { text-align: right; }
+.page-par.page-b { font-weight: 700; }
+.page-par.page-i { font-style: italic; }
+.reader-screen.size-0 .page-par.page-s1 { font-size: 29px; }
+.reader-screen.size-1 .page-par.page-s1 { font-size: 34px; }
+.reader-screen.size-2 .page-par.page-s1 { font-size: 39px; }
+.reader-screen.size-0 .page-par.page-s2 { font-size: 35px; }
+.reader-screen.size-1 .page-par.page-s2 { font-size: 42px; }
+.reader-screen.size-2 .page-par.page-s2 { font-size: 48px; }
+.reader-screen.spacing-0.size-0 .page-par.page-s1 { line-height: 43px; }
+.reader-screen.spacing-0.size-1 .page-par.page-s1 { line-height: 52px; }
+.reader-screen.spacing-0.size-2 .page-par.page-s1 { line-height: 60px; }
+.reader-screen.spacing-1.size-0 .page-par.page-s1 { line-height: 49px; }
+.reader-screen.spacing-1.size-1 .page-par.page-s1 { line-height: 60px; }
+.reader-screen.spacing-1.size-2 .page-par.page-s1 { line-height: 69px; }
+.reader-screen.spacing-0.size-0 .page-par.page-s2 { line-height: 58px; }
+.reader-screen.spacing-0.size-1 .page-par.page-s2 { line-height: 70px; }
+.reader-screen.spacing-0.size-2 .page-par.page-s2 { line-height: 80px; }
+.reader-screen.spacing-1.size-0 .page-par.page-s2 { line-height: 66px; }
+.reader-screen.spacing-1.size-1 .page-par.page-s2 { line-height: 80px; }
+.reader-screen.spacing-1.size-2 .page-par.page-s2 { line-height: 92px; }
+
+/* Consecutive same-style heading lines (an <h1> split by <br/>) stack tight —
+   the paginator charges no gap between them. This engine's CSS cascade uses
+   real specificity (class-count based, no !important support: an earlier
+   attempt at `margin-bottom: 0 !important` silently DROPPED the whole
+   declaration — the value parser doesn't recognize the `!important` token as
+   part of a length, so the rule is rejected outright, not just deprioritized).
+   The per-setting `.reader-screen.spacing-N.size-N .page-par` rule above has
+   4 class selectors and legitimately outranks a plain `.page-par.page-tight`
+   (2 classes), so the override never applied — every "tight" gap rendered at
+   the full one-body-line margin instead of 0, 40px the paginator never
+   budgeted for. Confirmed by measuring page 110's real layout: two tight
+   heading-line gaps at 40px instead of 0 accounted for the entire overflow
+   that clipped the page's last line. Fix: match the setting-specific
+   selector's specificity exactly (5 classes) so the tight override wins
+   legitimately, once per spacing/size combination. */
+.reader-screen.spacing-0.size-0 .page-par.page-tight,
+.reader-screen.spacing-0.size-1 .page-par.page-tight,
+.reader-screen.spacing-0.size-2 .page-par.page-tight,
+.reader-screen.spacing-1.size-0 .page-par.page-tight,
+.reader-screen.spacing-1.size-1 .page-par.page-tight,
+.reader-screen.spacing-1.size-2 .page-par.page-tight { margin-bottom: 0; }
+
+/* The illustration canvas; its box matches IMAGE_BLOCK_PX (height) in
+   lib/pagination.ts, and the trailing margin is the same one-body-line gap
+   paragraphs carry. */
+.page-image {
+  flex-shrink: 0;
+  align-self: center;
+}
+.reader-screen.spacing-0.size-0 .page-image { margin-bottom: 29px; }
+.reader-screen.spacing-0.size-1 .page-image { margin-bottom: 35px; }
+.reader-screen.spacing-0.size-2 .page-image { margin-bottom: 40px; }
+.reader-screen.spacing-1.size-0 .page-image { margin-bottom: 33px; }
+.reader-screen.spacing-1.size-1 .page-image { margin-bottom: 40px; }
+.reader-screen.spacing-1.size-2 .page-image { margin-bottom: 46px; }
+
+/* Full-screen cover for the landing page. Fills the panel edge to edge and sits
+   above the paper content (declared later in the template) and under the tap
+   zones / menu (declared later still). The <img fit="contain"> letterboxes the
+   cover; the paper background behind fills any letterbox bars. A book with no
+   cover art shows the centered title card instead. */
+.cover-fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Aspect-preserving letterbox. The CoverArt <img> also sets fit="contain"
+     via the element API, but that's a bare style write the engine resets on
+     any class-style recompute (reader-class / toc-covering changes fire one
+     on this subtree) and never restores — so the cover was stretching to fill
+     540x960. object-fit is class-derived, re-applied on every recompute, so it
+     survives. Paper background fills the letterbox bars. */
+  object-fit: contain;
+  background-color: #fffdf6;
+}
+.cover-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64px;
+  background-color: #fffdf6;
+}
+.cover-card-title {
+  font-family: 'Literata';
+  font-size: 56px;
+  line-height: 64px;
+  text-align: center;
+  color: #1a1a1a;
+}
+.cover-card-author {
+  margin-top: 28px;
+  font-family: 'Inter';
+  font-size: 28px;
+  text-align: center;
+  color: #555555;
+}
+
+/* Physical-bookmark ribbon hanging over the page's top-left corner while the
+   current page is bookmarked. The notch is a rotated square sticking out of
+   the ribbon's clipped bottom edge, leaving a V cut. */
+.page-bookmark {
+  position: absolute;
+  top: 0;
+  left: 42px;
+  z-index: 8;
+  width: 26px;
+  height: 46px;
+  overflow: hidden;
+  background-color: #171713;
+  pointer-events: none;
+}
+
+.page-bookmark-notch {
+  position: absolute;
+  left: 4px;
+  bottom: -13px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: #fffdf6;
+  transform: rotate(45deg);
+}
+
+.page-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 50%;
+}
+
+.page-zone-left { left: 0; }
+.page-zone-right { right: 0; }
+
+/* Transparent, larger tap target. The 48x48 icon's visual center sits 38px in
+   from the top-right corner (14 + 48/2); this 76x76 hit box is centered on the
+   same point (38 - 76/2 = 0), so the visible button doesn't move or resize —
+   the reachable area just grows ~14px on every side. onClick lives here. */
+.reader-menu-hit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.reader-menu-trigger {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+  background-color: #fffdf6;
+}
+
+.reader-menu-trigger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #171713;
+}
+
+.reader-page-number {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  z-index: 9;
+  display: block;
+  padding: 4px 6px;
+  background-color: #fffdf6;
+  color: #68635a;
+  font-family: 'Inter';
+  font-size: 16px;
+  line-height: 18px;
+  pointer-events: none;
+}
+
+.reader-applying {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 18px;
+  background-color: #fffdf6;
+  color: #171713;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.reader-applying-label {
+  font-family: 'Oswald';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.reader-applying-note {
+  font-family: 'Inter';
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #68635a;
+}
+
+@media (monochrome) {
+  .reader-screen,
+  .reader-paper,
+  .page-body,
+  .page-par,
+  .chapter-title,
+  .reader-menu-trigger,
+  .reader-page-number {
+    color: #000000;
+  }
+
+  /* ONE opaque background erases the previous page — the screen itself.
+     Painting the paper/body/paragraph containers white as well stacked four
+     more full-page PSRAM fills under the text on every page turn (~60 ms).
+     Only the small plates that sit ON TOP of text keep their own fill. */
+  .reader-screen,
+  .reader-menu-trigger,
+  .reader-page-number {
+    background-color: #ffffff;
+  }
+
+  .page-bookmark { background-color: #000000; }
+  .page-bookmark-notch { background-color: #ffffff; }
+
+  .reader-applying {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+  }
+}
+
+/* While the full-screen opaque Contents panel is open, everything under it is
+   hidden — see ReaderStore.readerClass: visible-but-covered content makes the
+   engine's scroll fast path reject every Contents drag (overlay guard), falling
+   back to a full relayout+replay per finger move. */
+.toc-covering .reader-paper,
+.toc-covering .cover-fullscreen,
+.toc-covering .page-zone,
+.toc-covering .reader-menu-hit,
+.toc-covering .reader-page-number,
+.toc-covering .page-bookmark,
+.toc-covering .reader-applying {
+  display: none;
+}

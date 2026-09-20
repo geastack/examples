@@ -1,0 +1,131 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
+.probe-app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #05070b;
+  color: #f9fafb;
+  font-family: 'Oswald';
+  overflow: hidden;
+}
+
+.probe-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 96px;
+  background-color: #0a111b;
+  border-bottom-width: 2px;
+  border-color: #f59e0b;
+  padding-top: 8px;
+  padding-right: 12px;
+  padding-bottom: 0;
+  padding-left: 12px;
+}
+
+.probe-hud-row {
+  display: flex;
+  width: 94vw;
+  height: 27px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.probe-hud-row-small {
+  font-family: 'Oswald';
+  height: 26px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.probe-hud-label {
+  font-family: 'Oswald';
+  font-size: 12px;
+  color: #fbbf24;
+}
+
+.probe-hud-value {
+  font-family: 'Oswald';
+  font-size: 32px;
+  color: #f9fafb;
+}
+
+.probe-scale {
+  position: absolute;
+  top: 96px;
+  left: 0;
+  z-index: 90;
+  width: 100vw;
+  height: 22px;
+  background-color: #151923;
+  padding-top: 2px;
+  padding-right: 12px;
+  padding-bottom: 0;
+  padding-left: 12px;
+}
+
+.probe-scale-text {
+  font-family: 'Oswald';
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+.probe-list {
+  position: absolute;
+  top: 118px;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: #05070b;
+  color: #f9fafb;
+  font-family: 'Oswald';
+  overflow: scroll;
+}
+
+.probe-row {
+  overflow: hidden;
+}
+
+.probe-row-content {
+  width: 100vw;
+  /* No explicit height: the row is sized purely by its content (label +
+   * pixel-value + padding) on every panel. The <virtual-list> measures this
+   * rendered height and the store windows its slots from it, so the JS row
+   * height and the CSS are one source of truth and the content never clips. */
+  border-bottom-width: 2px;
+  border-color: #1f2937;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 0;
+  padding-left: 16px;
+}
+
+.probe-row-even {
+  background-color: #111827;
+}
+
+.probe-row-odd {
+  background-color: #172033;
+}
+
+.probe-row-index {
+  display: block;
+  font-family: 'Oswald';
+  font-size: 44px;
+  color: #f9fafb;
+}
+
+.probe-row-pixels {
+  display: block;
+  font-family: 'Oswald';
+  margin-top: 4px;
+  font-size: 18px;
+  color: #fbbf24;
+}

@@ -1,0 +1,15 @@
+export const width = 393;
+export const height = 852;
+export const inset = 20;
+export const contentWidth = width - inset * 2;
+export const cardRadius = 22;
+export const heroTop = 150;
+export const heroHeight = 184;
+export const panelTop = 356;
+export const panelHeight = 226;
+export const tileTop = 596;
+export const tileWidth = 170;
+export const tileHeight = 90;
+export const tileGap = 10;
+export const actionHeight = 44;
+export const actionBottom = 8;

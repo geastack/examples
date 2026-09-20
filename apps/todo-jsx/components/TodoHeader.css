@@ -1,0 +1,11 @@
+.todo-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-title {
+  font-family: 'Bebas Neue';
+  font-size: 24px;
+  color: #f8fafc;
+}

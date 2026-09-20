@@ -1,0 +1,32 @@
+.oswald-specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.oswald-specimen-title {
+  font-family: 'Bebas Neue';
+  font-size: 32px;
+  color: #fb7185;
+}
+
+.oswald-specimen-copy-large {
+  font-family: 'Oswald';
+  font-size: 19px;
+}
+
+.oswald-specimen-copy-small {
+  font-family: 'Oswald';
+  font-size: 17px;
+}
+
+.oswald-specimen-sample {
+  font-family: 'Oswald';
+  font-size: 32px;
+  color: #f8fafc;
+}
+
+.oswald-specimen-pangram {
+  font-family: 'Oswald';
+  font-size: 18px;
+  color: #cbd5e1;
+}

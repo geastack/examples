@@ -1,0 +1,14 @@
+/* The canvas owns every pixel; just make it a full-screen black surface. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}

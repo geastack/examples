@@ -1,0 +1,59 @@
+.vn-tag-browser {
+  align-items: center;
+  gap: 3px;
+}
+
+.vn-tag-hero {
+  width: 141px;
+  height: 34px;
+  border: 1px solid #000000;
+  border-radius: 0;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.vn-tag-count {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-mini-tags {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+}
+
+.vn-mini-tags div {
+  min-height: 32px;
+  min-width: 84px;
+  flex-shrink: 0;
+  border: 1px solid #000000;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.vn-mini-tags div.is-active {
+  background-color: #000000;
+  color: #ffffff;
+}

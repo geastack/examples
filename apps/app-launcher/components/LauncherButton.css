@@ -1,0 +1,32 @@
+.launcher-card {
+  display: flex;
+  width: 76px;
+  height: 92px;
+  border-width: 0;
+  background-color: transparent;
+  padding: 0;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.launcher-card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.launcher-card-copy {
+  display: flex;
+  width: 76px;
+  min-width: 0;
+  align-items: center;
+}
+
+.launcher-card-title {
+  width: 76px;
+  font-family: 'Oswald';
+  font-size: 14px;
+  color: #f8fafc;
+  text-align: center;
+}

@@ -1,0 +1,93 @@
+.note-list {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+}
+.note-list-header {
+  display: flex;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  flex-direction: column;
+}
+.note-list-title {
+  font-size: 22px;
+  color: #f5f5f7;
+  font-family: -apple-system;
+}
+
+.note-list-count-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-top: 2px;
+}
+.note-list-count {
+  font-size: 11px;
+  color: #8a8a8e;
+  font-family: -apple-system;
+}
+
+.note-list-scroll {
+  display: flex;
+  flex: 1;
+  overflow: scroll;
+  flex-direction: column;
+}
+.note-list-hidden-action {
+  display: none;
+}
+
+.note-row {
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 7px;
+  flex-direction: column;
+  gap: 3px;
+}
+.note-row-selected {
+  background-color: #d6a015;
+}
+
+.note-row-title {
+  font-size: 13px;
+  color: #f5f5f7;
+  font-family: -apple-system;
+}
+
+.note-row-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+.note-row-date {
+  font-size: 11px;
+  color: #c7c7cc;
+  font-family: -apple-system;
+}
+
+.note-row-preview {
+  font-size: 11px;
+  color: #8a8a8e;
+  font-family: -apple-system;
+}
+
+/* Selected (yellow) row: secondary text reads as white-at-opacity. The style
+   pipeline stores colors as RGB565 (no alpha), so these are the solid blends of
+   white over the #d6a015 accent (~85% and ~70%) rather than rgba(). */
+.note-row-date-sel {
+  color: #f9f1dc;
+}
+
+.note-row-preview-sel {
+  color: #f2e2b8;
+}

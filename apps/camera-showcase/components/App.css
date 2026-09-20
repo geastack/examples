@@ -1,0 +1,76 @@
+.camera-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  position: relative;
+}
+
+.camera-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.status-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 12px 18px;
+  background-color: #00000080;
+  border-radius: 16px;
+}
+
+.status-text {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px 36px 12px;
+}
+
+.ctrl-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 22px;
+  border-width: 2px;
+  border-color: #ffffff80;
+}
+
+.shutter {
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  background-color: #ffffff;
+  color: #ff3030;
+  font-size: 32px;
+  border-width: 4px;
+  border-color: #ffffff;
+}

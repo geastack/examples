@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../../assets/fonts/Oswald-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+
+:root {
+  color-scheme: dark;
+  --ink: #f7fbff;
+  --muted: rgba(247, 251, 255, 0.68);
+  --line: rgba(255, 255, 255, 0.16);
+  --shadow: rgba(5, 16, 34, 0.36);
+  --base-1: #113047;
+  --base-2: #27647b;
+  --base-3: #ef9f68;
+  --accent: #ffd37b;
+  --accent-2: #7ce6c8;
+  --screen-radius: 53px;
+  --safe-top: 4px;
+  --safe-x: 17px;
+  --safe-bottom: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(135deg, rgba(17, 48, 71, 0.96), rgba(19, 31, 48, 0.98));
+  color: var(--ink);
+  font-family: 'Oswald', 'Avenir Next', sans-serif;
+  letter-spacing: 0;
+  overflow: hidden;
+}
+
+.app-stage,
+.weather-shell,
+.screen,
+button,
+input {
+  font-family: 'Oswald', 'Avenir Next', sans-serif;
+}
+
+.brand-title,
+.topbar-button-label,
+.unit-pill,
+.manage-button,
+.done-button,
+.icon-button,
+.city-chip-name,
+.city-chip-temp,
+.place-name,
+.location-detail,
+.temp,
+.degree,
+.condition,
+.range,
+.metric,
+.metric-label,
+.metric-value,
+.section-title,
+.forecast-tab,
+.forecast-label,
+.forecast-temp,
+.manager-title,
+.add-button,
+.search-message,
+.search-name,
+.search-detail,
+.city-name,
+.city-detail,
+.city-row-temp,
+.delete-city-label,
+.delete-city,
+.empty-title,
+.empty-copy,
+.toast {
+  font-family: 'Oswald', 'Avenir Next', sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.app-stage {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.weather-shell {
+  /* The visible backdrop is now a pixel-identical pre-rendered image drawn by the
+     WeatherBackground layer (see WeatherBackground.tsx) — swapping a decoded-image
+     blit for the old per-pixel 3-layer gradient recompute on every content change.
+     This solid stays behind it only as the pre-decode fill. */
+  background: #113047;
+  /* border: 1px solid rgba(255, 255, 255, 0.24); */
+  /* border-radius: var(--screen-radius); */
+  box-shadow:
+    0 17px 53px var(--shadow);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.screen {
+  height: 100%;
+  isolation: isolate;
+  padding: var(--safe-top) var(--safe-x) var(--safe-bottom);
+  position: relative;
+  z-index: 1;
+}
+
+.unit-pill,
+.icon-button,
+.manage-button,
+.done-button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.11);
+  border: 0;
+  border-radius: 666px;
+  color: var(--ink);
+  display: flex;
+  flex: 0 0 auto;
+  height: 17px;
+  justify-content: center;
+  min-width: 17px;
+}
+
+.unit-pill {
+  font-size: 7px;
+  font-weight: 600;
+  padding: 0;
+  width: 20px;
+}
+
+.manage-button,
+.done-button {
+  font-size: 7px;
+  font-weight: 600;
+  padding: 0;
+  width: 36px;
+}
+
+.icon-button {
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 1;
+  width: 17px;
+}
+
+.toast {
+  background: rgba(9, 22, 35, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  bottom: 9px;
+  box-shadow: 0 9px 23px rgba(0, 0, 0, 0.22);
+  color: var(--ink);
+  font-size: 12px;
+  left: 12px;
+  opacity: 0;
+  padding: 7px 9px;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  transform: translateY(8px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  z-index: 4;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-hidden-row {
+  display: none;
+}
+
+/* Device screens fill edge-to-edge (the 100vw/100vh default above). On large
+   viewports — the desktop web demo — keep the phone-mockup framing instead of
+   stretching the layout across a monitor. */
+@media (min-width: 700px) and (min-height: 700px) {
+  .weather-shell {
+    /* border-radius: var(--screen-radius); */
+    height: 335px;
+    width: 273px;
+  }
+}

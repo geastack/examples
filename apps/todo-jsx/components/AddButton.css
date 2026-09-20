@@ -1,0 +1,14 @@
+.todo-add-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #0f766e;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px 4px 12px;
+}
+.todo-add-label {
+  font-family: 'Inter';
+  font-size: 17px;
+  color: #ecfeff;
+}

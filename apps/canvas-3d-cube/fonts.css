@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../assets/fonts/CossetteTexte-Regular.ttf');
+}
+
+.canvas-cube-fonts {
+  font-family: 'Cossette Texte';
+  font-size: 13px;
+}
+
+.canvas-cube-kicker {
+  font-family: 'Cossette Texte';
+  font-size: 13px;
+}
+
+.canvas-cube-heading {
+  font-family: 'Bebas Neue';
+  font-size: 86px;
+}
+
+.canvas-cube-face-label {
+  font-family: 'Bebas Neue';
+  font-size: 31px;
+}
+
+.canvas-cube-fps {
+  font-family: 'Bebas Neue';
+  font-size: 18px;
+}

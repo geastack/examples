@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gea Dialer — Browser Peer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d14;
+      --panel: #161922;
+      --accent: #1a8a39;
+      --danger: #b03030;
+      --text: #ffffff;
+      --muted: #7d8597;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 28px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    h1 { margin: 0 0 4px; font-size: 22px; }
+    .sub { color: var(--muted); margin-bottom: 20px; font-size: 14px; }
+    label { display: block; margin: 12px 0 4px; color: var(--muted); font-size: 13px; }
+    input[type="text"] {
+      width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #2a2f3d;
+      background: #0f1219; color: var(--text); font-size: 16px;
+    }
+    button {
+      padding: 12px 20px; border-radius: 24px; border: 0; font-size: 16px;
+      color: var(--text); cursor: pointer; font-weight: 600; min-width: 120px;
+    }
+    button.primary { background: var(--accent); }
+    button.danger { background: var(--danger); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .row { display: flex; gap: 8px; margin-top: 20px; }
+    .status { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: #0f1219; font-size: 14px; color: var(--muted); min-height: 1.4em; }
+    .status.connected { color: #6fdc6f; }
+    .status.failed { color: #ffae42; }
+    .log { margin-top: 14px; padding: 10px; border-radius: 8px; background: #0a0c12; font-family: ui-monospace, monospace; font-size: 11px; color: var(--muted); max-height: 200px; overflow: auto; white-space: pre-wrap; }
+    audio { margin-top: 10px; width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Gea Dialer — Browser Peer</h1>
+    <p class="sub">Join the same room as the watch to receive its call.</p>
+
+    <label for="room">Room</label>
+    <input id="room" type="text" value="42" />
+
+    <div class="row">
+      <button id="join" class="primary">Join</button>
+      <button id="hangup" class="danger" disabled>Hang up</button>
+    </div>
+
+    <div id="status" class="status">idle</div>
+    <audio id="remote" autoplay playsinline controls></audio>
+    <div id="log" class="log"></div>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id)
+    const setStatus = (text, cls) => {
+      const el = $('status')
+      el.textContent = text
+      el.className = 'status ' + (cls || '')
+    }
+    const log = (msg) => {
+      const el = $('log')
+      el.textContent += new Date().toLocaleTimeString() + '  ' + msg + '\n'
+      el.scrollTop = el.scrollHeight
+    }
+
+    let ws = null
+    let pc = null
+    let localStream = null
+
+    async function join() {
+      const room = $('room').value.trim() || 'default'
+      $('join').disabled = true
+      $('hangup').disabled = false
+      setStatus('connecting…')
+
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        log('got local mic')
+
+        pc = new RTCPeerConnection({
+          iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        })
+
+        pc.onicecandidate = (e) => {
+          if (e.candidate && ws && ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({ type: 'ice', candidate: e.candidate.candidate, sdpMid: e.candidate.sdpMid, sdpMLineIndex: e.candidate.sdpMLineIndex }))
+            log('ice → watch')
+          }
+        }
+
+        pc.ontrack = (e) => {
+          log('got remote track ' + e.track.kind)
+          $('remote').srcObject = e.streams[0] || new MediaStream([e.track])
+        }
+
+        pc.onconnectionstatechange = () => {
+          log('pc.connectionState=' + pc.connectionState)
+          if (pc.connectionState === 'connected') setStatus('connected', 'connected')
+          else if (pc.connectionState === 'failed') setStatus('failed (try TURN)', 'failed')
+          else if (pc.connectionState === 'disconnected') setStatus('disconnected', 'failed')
+        }
+
+        for (const track of localStream.getAudioTracks()) pc.addTrack(track, localStream)
+
+        const wsUrl = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/?room=' + encodeURIComponent(room)
+        ws = new WebSocket(wsUrl)
+
+        ws.onopen = () => {
+          log('ws open ' + wsUrl)
+          setStatus('waiting for watch…')
+        }
+
+        ws.onmessage = async (e) => {
+          let msg
+          try { msg = JSON.parse(e.data) } catch { return }
+          log('ws ← ' + msg.type)
+
+          if (msg.type === 'offer') {
+            // Watch is the initiator — apply its offer, generate our answer.
+            await pc.setRemoteDescription({ type: msg.sdpType || 'offer', sdp: msg.sdp })
+            const answer = await pc.createAnswer()
+            await pc.setLocalDescription(answer)
+            ws.send(JSON.stringify({ type: 'answer', sdp: answer.sdp, sdpType: answer.type }))
+            log('sent answer')
+          } else if (msg.type === 'answer') {
+            // We might be the initiator instead (browser-to-browser test).
+            await pc.setRemoteDescription({ type: msg.sdpType || 'answer', sdp: msg.sdp })
+            log('applied remote answer')
+          } else if (msg.type === 'ice') {
+            try {
+              await pc.addIceCandidate({ candidate: msg.candidate, sdpMid: msg.sdpMid, sdpMLineIndex: msg.sdpMLineIndex })
+            } catch (err) {
+              log('addIceCandidate failed: ' + err.message)
+            }
+          }
+        }
+
+        ws.onclose = () => log('ws closed')
+        ws.onerror = (err) => log('ws error: ' + (err.message || 'unknown'))
+      } catch (err) {
+        setStatus('error: ' + err.message, 'failed')
+        log('join failed: ' + err.message)
+        $('join').disabled = false
+        $('hangup').disabled = true
+      }
+    }
+
+    function hangup() {
+      if (ws) { try { ws.close() } catch {} ws = null }
+      if (pc) { try { pc.close() } catch {} pc = null }
+      if (localStream) { for (const t of localStream.getTracks()) t.stop(); localStream = null }
+      $('remote').srcObject = null
+      $('join').disabled = false
+      $('hangup').disabled = true
+      setStatus('idle')
+      log('hung up')
+    }
+
+    $('join').addEventListener('click', join)
+    $('hangup').addEventListener('click', hangup)
+  </script>
+</body>
+</html>

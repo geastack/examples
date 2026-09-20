@@ -1,0 +1,18 @@
+.todo-input-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 6px;
+  background-color: #111827;
+  border-width: 0.5px;
+  border-color: #334155;
+  padding: 4px 8px 4px 8px;
+  justify-content: center;
+}
+.todo-input {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #f8fafc;
+}

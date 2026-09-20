@@ -1,0 +1,46 @@
+{
+  "name": "@geastack/example-three-angle-metal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit:bridge": "node scripts/audit-bridge-cpp.mjs",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/apple": "^0.2.8",
+    "@geastack/native-webgl-angle": "^0.1.6",
+    "three": "^0.185.0"
+  },
+  "devDependencies": {
+    "@babel/generator": "^7.29.7",
+    "@babel/parser": "^7.29.7",
+    "@babel/traverse": "^7.29.7",
+    "@babel/types": "^7.29.7",
+    "@geastack/vite-plugin-apple-native": "^0.1.3",
+    "@types/three": "^0.185.0",
+    "typescript": "latest"
+  },
+  "gea": {
+    "id": "three-angle-metal",
+    "name": "Three ANGLE Metal",
+    "entry": "index.tsx",
+    "runtime": "apple-native",
+    "targets": {
+      "macos": true,
+      "web": false,
+      "esp32": false,
+      "ios": false
+    },
+    "nativeSources": [
+      "native/angle_webgl_host.mm"
+    ],
+    "launcher": {
+      "description": "Canonical real Three.js through typed native WebGL backed by ANGLE/Metal",
+      "order": 0,
+      "accent": "#5eead4",
+      "hidden": true
+    }
+  },
+  "license": "MIT"
+}

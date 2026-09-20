@@ -1,0 +1,11 @@
+.notes-root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+  background-color: #1d1d1f;
+}
+.notes-divider {
+  width: 1px;
+  background-color: #2c2c2e;
+}

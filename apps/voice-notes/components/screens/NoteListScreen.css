@@ -1,0 +1,62 @@
+.vn-list {
+  gap: 3px;
+}
+
+.vn-list-head {
+  height: 30px;
+  border-bottom: 1px solid #000000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vn-list-head span,
+.vn-filter-label {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-filter-label {
+  display: block;
+  color: #000000;
+  height: 28px;
+  overflow: hidden;
+}
+
+.vn-note-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.vn-note-back {
+  width: 100%;
+  height: 32px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-note-back.is-active {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.vn-empty {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 400;
+}

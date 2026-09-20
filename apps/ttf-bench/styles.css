@@ -1,0 +1,87 @@
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #0f172a;
+}
+
+.ttf-app {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 8px 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-family: sans-serif;
+}
+
+.ttf-title {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.ttf-status {
+  display: block;
+  color: #a7f3d0;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.ttf-row {
+  display: flex;
+  align-items: center;
+  min-height: 26px;
+  border-bottom: 1px solid #334155;
+}
+
+.ttf-head {
+  min-height: 22px;
+  color: #94a3b8;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.ttf-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.ttf-time {
+  width: 138px;
+  text-align: right;
+  font-size: 13px;
+  color: #f8fafc;
+}
+
+.ttf-specimen {
+  padding: 14px 0 20px;
+}
+
+.ttf-specimen-title {
+  display: block;
+  margin-bottom: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.ttf-specimen-canvas {
+  display: block;
+  width: 360px;
+  height: 56px;
+  max-width: 100%;
+  background: #020617;
+}

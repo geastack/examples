@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../../assets/fonts/CossetteTexte-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../../assets/fonts/Oswald-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Literata';
+  src: url('../../../assets/fonts/Literata-Regular.ttf');
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #dedbd1;
+}
+
+.app-root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f5f2e9;
+  color: #171713;
+  font-family: 'Inter';
+  font-size: 16px;
+  outline: none;
+}
+
+@media (monochrome) {
+  html,
+  body,
+  .app-root {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}

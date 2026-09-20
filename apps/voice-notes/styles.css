@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../assets/fonts/CossetteTexte-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter-Regular.ttf');
+}
+
+/* Inter at 22px (primary) / 12px (secondary). The board renders 1-bit with no
+   anti-aliasing, so an outline font shows minor stem unevenness — negligible at
+   22px (stems are ~3-4px) but visible on the 12px secondary text. DPR is 1.0 so
+   logical px == physical px (200x200); sizes/heights below are tuned for that. */
+.voice-notes-app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Inter';
+  overflow: hidden;
+}
+
+.vn-device-shell {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.vn-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 6px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  overflow: hidden;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.vn-screen-title {
+  display: block;
+  height: 30px;
+  flex-shrink: 0;
+  font-family: 'Inter';
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  border-bottom: 1px solid #000000;
+}
+
+.vn-status-copy {
+  display: block;
+  font-family: 'Inter';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  text-align: center;
+}
+
+.vn-single-action {
+  width: 180px;
+  height: 34px;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-single-action.is-active {
+  display: flex;
+  background-color: #000000;
+  color: #ffffff;
+}

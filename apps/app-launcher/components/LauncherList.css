@@ -1,0 +1,12 @@
+.launcher-list {
+  display: flex;
+  width: 100vw;
+  height: 0;
+  flex: 1;
+  margin: 10px 0 0 0;
+  overflow: scroll;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 12px 0 12px;
+}

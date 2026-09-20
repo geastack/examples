@@ -1,0 +1,12 @@
+{
+  "window": {
+    "title": "geaNotes",
+    "width": 1040,
+    "height": 660,
+    "minWidth": 720,
+    "minHeight": 420,
+    "titleBarTransparent": true,
+    "appearance": "dark",
+    "backgroundColor": "#1d1d1f"
+  }
+}

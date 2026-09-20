@@ -1,0 +1,182 @@
+.book-cover {
+  position: relative;
+  width: 150px;
+  height: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #171713;
+}
+
+/* Real cover art fills the frame edge-to-edge (no inset padding). */
+.book-cover.has-art {
+  padding: 0;
+  background-color: #ffffff;
+  /* Real art needs no frame; the typographic placeholder keeps its border. */
+  border: none;
+}
+
+/* With real cover art in the tile, the typographic placeholder disappears. */
+.book-cover.has-art .cover-rule,
+.book-cover.has-art .cover-monogram,
+.book-cover.has-art .cover-title,
+.book-cover.has-art .cover-author {
+  display: none;
+}
+
+.cover-art {
+  /* Overlay the tile without joining the flex column (the typographic spans
+     stay laid out underneath and are hidden by has-art when art exists). */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cover-tone-0 { background-color: #d9e0ef; }
+.cover-tone-1 { background-color: #d8d2c2; }
+.cover-tone-2 { background-color: #c5c8c9; }
+.cover-tone-3 { background-color: #e3d9c3; }
+.cover-tone-4 { background-color: #d5d5cc; }
+
+.cover-rule {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 9px;
+  height: 64px;
+  background-color: #2f50a4;
+}
+
+.is-compact .cover-rule {
+  left: 7px;
+  width: 5px;
+  height: 42px;
+}
+
+.cover-monogram {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  display: block;
+  font-family: 'Oswald';
+  font-size: 28px;
+  line-height: 30px;
+  color: #2f50a4;
+}
+
+.is-compact .cover-monogram {
+  top: 7px;
+  right: 5px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.cover-title {
+  display: none;
+  font-family: 'Cossette Texte';
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.is-compact .cover-title {
+  font-size: 16px;
+  line-height: 17px;
+}
+
+.cover-author {
+  display: none;
+  margin-top: 5px;
+  font-family: 'Inter';
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.is-compact .cover-author {
+  display: none;
+}
+
+.library-book-row {
+  width: 150px;
+  /* Fixed cell height keeps every grid row the same pitch: 310 + 14 grid gap
+     = 324, the list's snap-step. Variable heights would break row snapping. */
+  height: 310px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.library-book-row.is-selected .book-cover {
+  border: 3px solid #2f50a4;
+}
+
+.book-row-copy {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-row-title {
+  display: block;
+  font-family: 'Cossette Texte';
+  font-size: 18px;
+  line-height: 22px;
+  /* Two-line clamp: the engine ellipsizes the last line that fits max-height
+     when text-overflow: ellipsis is set on WRAPPED text. */
+  max-height: 44px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-row-author {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  color: #68635a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-row-progress {
+  display: block;
+  margin-top: 4px;
+  font-family: 'Inter';
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #777166;
+}
+
+
+@media (monochrome) {
+  .book-cover {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .library-book-row.is-selected .book-cover {
+    border-color: #000000;
+  }
+
+
+  .cover-rule {
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  .cover-monogram {
+    color: #000000;
+  }
+}

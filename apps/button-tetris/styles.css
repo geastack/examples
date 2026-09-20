@@ -1,0 +1,347 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../assets/fonts/SpaceGrotesk-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
+/* Header row: the title and the live score sit side by side, centered above
+   the board. */
+.tetris-header {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 6vh;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+}
+
+/* Responsive header: on squarish/short viewports (e.g. the 410x502 macOS
+   window / ESP32 panel, aspect ~0.82) pull the header up so it doesn't crowd
+   the board; tall panels (e.g. geaos 720x1440, aspect 0.5) keep the roomier
+   default. Re-evaluated live on window resize. */
+@media (min-aspect-ratio: 3/4) {
+  .tetris-header {
+    top: 3vh;
+  }
+}
+
+.tetris-score-label {
+  font-family: 'Cossette Texte';
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.tetris-overlay-title {
+  font-family: 'Cossette Texte';
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.tetris-overlay-score {
+  font-family: 'Cossette Texte';
+  font-size: 14px;
+  margin-top: 1.2vh;
+  color: #cbd5e1;
+}
+
+.tetris-button-label {
+  font-family: 'Bebas Neue';
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.tetris-restart-label {
+  font-family: 'Bebas Neue';
+  font-size: 18px;
+  color: #111827;
+}
+
+.tetris-app {
+  width: 100vw;
+  height: 100vh;
+  background-color: #020617;
+}
+
+/* Small FPS readout pinned to the bottom-right, inset from the corner so it
+   clears the rounded corners on device panels. */
+.fps-badge {
+  display: flex;
+  position: absolute;
+  right: 3vw;
+  bottom: 2vh;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.fps-badge-text {
+  font-family: 'Bebas Neue';
+  font-size: 12px;
+  color: #475569;
+}
+
+.tetris-board-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.tetris-board-playfield {
+  position: absolute;
+  /* The inline box extends PLAYFIELD_BORDER_WIDTH beyond the grid on every
+     edge. Gea's compact layout uses border-box geometry, so this keeps the
+     inward-painted border outside the cell coordinates instead of underneath
+     the retained empty-cell layer. */
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.tetris-stack-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.tetris-stack-color-layer,
+.tetris-stack-monochrome-layer,
+.tetris-active-color-layer,
+.tetris-active-monochrome-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.tetris-stack-monochrome-layer,
+.tetris-active-monochrome-layer {
+  display: none;
+}
+
+.tetris-stack-block {
+  position: absolute;
+  opacity: 1;
+}
+
+.tetris-block {
+  position: absolute;
+  /* width/height come from constants.BLOCK_SIZE (inline in TetrisBoard.tsx)
+     so every cell is identical and inter-block gaps are pixel-uniform. */
+  opacity: 1;
+}
+
+.tetris-block-hidden {
+  /* Fixed board cells stay in the retained display list. Empty cells paint
+     the playfield color instead of crossing the 0/255 opacity boundary,
+     which would rebuild alpha scopes and turn a four-cell lock into a full frame. */
+  background-color: #0f172a;
+  opacity: 1;
+}
+
+.tetris-piece-i {
+  background-color: #22d3ee;
+}
+.tetris-piece-o {
+  background-color: #facc15;
+}
+.tetris-piece-t {
+  background-color: #a855f7;
+}
+.tetris-piece-s {
+  background-color: #22c55e;
+}
+.tetris-piece-z {
+  background-color: #ef4444;
+}
+.tetris-piece-j {
+  background-color: #3b82f6;
+}
+.tetris-piece-l {
+  background-color: #f97316;
+}
+
+/* Full-screen positioning layer for the controls (mirrors .tetris-board-root),
+   so the two control columns and the drop bar can be placed at absolute pixel
+   offsets that line up with the board grid. */
+.tetris-controls-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+/* A control column fills the gutter beside the board; its buttons are centered
+   vertically within the board's height. left/top/width/height come inline from
+   constants. */
+.tetris-control-column {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+.tetris-control-button {
+  display: flex;
+  flex-direction: column;
+  /* width comes inline from constants.BUTTON_WIDTH */
+  height: 14vh;
+  border-radius: 1vw;
+  background-color: #1f2937;
+  justify-content: center;
+  align-items: center;
+}
+/* The Drop button spans the board's full width along its bottom edge.
+   left/top/width/height come inline from constants. */
+.tetris-drop-button {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  border-radius: 1vw;
+  background-color: #1f2937;
+  justify-content: center;
+  align-items: center;
+}
+.tetris-game-over-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.tetris-game-over-overlay-hidden {
+  left: 101vw;
+}
+
+.tetris-overlay-card {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 18vw;
+  top: 25vh;
+  width: 64vw;
+  height: 28vh;
+  background-color: #111827;
+  border-width: 1px;
+  border-color: #f97316;
+  border-radius: 1vw;
+  align-items: center;
+  justify-content: center;
+}
+.tetris-restart-button {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.4vh;
+  width: 28vw;
+  height: 7vh;
+  background-color: #f97316;
+  border-radius: 1vw;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Match the counter example's pure black-on-white treatment on 1-bit panels.
+   Empty retained cells must turn white too; otherwise their normal dark fill
+   would cover the white playfield even though the playfield rule matched. */
+@media (monochrome) {
+  /* The FPS store changes every 500 ms. On an IT8951 panel that otherwise
+     turns one falling-piece update into a second complete waveform, halving
+     visible game throughput. Keep the diagnostic on normal displays only. */
+  .fps-badge {
+    display: none;
+  }
+
+  .tetris-stack-color-layer {
+    display: none;
+  }
+
+  .tetris-active-color-layer {
+    display: none;
+  }
+
+  .tetris-stack-monochrome-layer,
+  .tetris-active-monochrome-layer {
+    display: block;
+  }
+
+  .tetris-stack-monochrome-block,
+  .tetris-active-monochrome-block {
+    background-color: #000000;
+  }
+
+  /* Updating the live score together with a newly locked block makes the
+     e-paper driver refresh the entire union between the header and board.
+     Keep gameplay waveforms inside the playfield; the final score remains in
+     the game-over card. */
+  .tetris-score-label {
+    display: none;
+  }
+
+  .tetris-app,
+  .tetris-board-playfield,
+  .tetris-block-hidden,
+  .tetris-control-button,
+  .tetris-drop-button,
+  .tetris-overlay-card,
+  .tetris-restart-button {
+    background-color: #ffffff;
+  }
+
+  .tetris-control-button,
+  .tetris-drop-button,
+  .tetris-overlay-card,
+  .tetris-restart-button {
+    border-width: 1px;
+    border-color: #000000;
+  }
+
+  .tetris-board-playfield {
+    border-color: #000000;
+  }
+
+  /* The app's normal palette contains colors on both sides of the driver's
+     luminance threshold. Make the semantic states explicit: every occupied
+     cell is black and every empty cell is white. */
+  .tetris-piece-i,
+  .tetris-piece-o,
+  .tetris-piece-t,
+  .tetris-piece-s,
+  .tetris-piece-z,
+  .tetris-piece-j,
+  .tetris-piece-l {
+    background-color: #000000;
+  }
+
+  .tetris-block-hidden {
+    background-color: #ffffff;
+  }
+
+  .tetris-score-label,
+  .tetris-overlay-title,
+  .tetris-overlay-score,
+  .tetris-button-label,
+  .tetris-restart-label,
+  .fps-badge-text {
+    color: #000000;
+  }
+}

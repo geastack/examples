@@ -1,0 +1,4 @@
+{
+  "extends": "../three-angle-metal/tsconfig.json",
+  "include": ["index.tsx"]
+}

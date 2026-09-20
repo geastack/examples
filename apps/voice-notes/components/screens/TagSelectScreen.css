@@ -1,0 +1,44 @@
+.vn-tag-select {
+  gap: 3px;
+}
+
+.vn-saved-note {
+  align-self: center;
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-tag-stack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+}
+
+.vn-tag-stack div {
+  min-height: 32px;
+  min-width: 84px;
+  flex-shrink: 0;
+  border: 1px solid #000000;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+  padding-right: 3px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  white-space: nowrap;
+}
+
+.vn-tag-stack div.is-active {
+  background-color: #000000;
+  color: #ffffff;
+}

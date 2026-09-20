@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Regular.ttf');
+}
+
+.bench-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b0f17;
+  color: #e5e7eb;
+  font-family: 'Inter';
+  font-size: 16px;
+  padding: 18px 18px 60px 18px;
+  gap: 6px;
+  overflow: scroll;
+}
+
+.bench-title {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.bench-status {
+  font-size: 13px;
+  color: #f59e0b;
+  margin-bottom: 6px;
+}
+
+.bench-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 0;
+  border-width: 0;
+}
+
+.bench-head {
+  color: #6b7280;
+}
+
+.bench-name {
+  flex: 1.4;
+  font-size: 15px;
+  color: #93c5fd;
+}
+
+.bench-gea {
+  flex: 1;
+  font-size: 15px;
+  color: #fca5a5;
+  text-align: right;
+}
+
+.bench-native {
+  flex: 1;
+  font-size: 15px;
+  color: #86efac;
+  text-align: right;
+}

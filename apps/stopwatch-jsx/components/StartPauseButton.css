@@ -1,0 +1,36 @@
+.stopwatch-start-button {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10vw;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #12301f;
+  border-color: #30d158;
+}
+
+.stopwatch-pause-button {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10vw;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a1f20;
+  border-color: #ff453a;
+}
+
+.stopwatch-start-pause-label {
+  font-family: 'Inter';
+  font-size: 17px;
+}
+
+.stopwatch-start-label {
+  color: #30d158;
+}
+
+.stopwatch-pause-label {
+  color: #ff453a;
+}

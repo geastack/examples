@@ -1,0 +1,18 @@
+.stopwatch-lap-rows {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 20vh;
+  margin-top: 4vh;
+  gap: 0;
+}
+
+/* Short, near-square panels (the ESP32-S3 AMOLED is 410x502). The base layout's
+   vh rhythm is tuned for a tall phone, so here the list is too short and leaves a
+   large empty band below it. Grow it to fill the lower half. Tall/large displays
+   (phones, desktop) skip this and keep the base layout. */
+@media (max-width: 480px) and (max-height: 540px) {
+  .stopwatch-lap-rows {
+    height: 46vh;
+  }
+}

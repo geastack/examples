@@ -1,0 +1,12 @@
+export const VIEW_IDLE = 0
+export const VIEW_RECORDING = 1
+export const VIEW_TAG_SELECT = 2
+export const VIEW_MENU = 3
+export const VIEW_TAG_BROWSER = 4
+export const VIEW_NOTE_LIST = 5
+export const VIEW_NOTE_DETAIL = 6
+export const VIEW_SYNC = 7
+export const VIEW_SETTINGS = 8
+export const VIEW_TRANSFER = 9
+export const VIEW_DELETE_CONFIRM = 10
+export const VIEW_DEVICE = 11

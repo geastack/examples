@@ -1,0 +1,79 @@
+.dialer-root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #0b0d14;
+  color: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.dialer-header {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.dialer-status {
+  font-size: 18px;
+  color: #7d8597;
+  margin-bottom: 12px;
+}
+
+.dialer-remote-id {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.dialer-pad-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.dialer-pad-key {
+  display: flex;
+  width: 100px;
+  height: 70px;
+  margin: 4px;
+  background: #1c1f2b;
+  border-radius: 16px;
+  font-size: 28px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialer-call-button {
+  display: flex;
+  margin-top: 16px;
+  width: 320px;
+  height: 70px;
+  background: #1a8a39;
+  border-radius: 36px;
+  font-size: 22px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialer-hangup-button {
+  display: flex;
+  margin-top: 24px;
+  width: 320px;
+  height: 70px;
+  background: #b03030;
+  border-radius: 36px;
+  font-size: 22px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialer-error {
+  color: #ffae42;
+  font-size: 16px;
+  margin-top: 8px;
+}

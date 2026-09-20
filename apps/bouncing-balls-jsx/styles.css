@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter-Regular.ttf');
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.ball-field {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ball {
+  position: absolute;
+  width: 16;
+  height: 16;
+  border-radius: 8;
+}
+
+.fps-badge {
+  position: absolute;
+  font-family: 'Inter';
+  top: 3vmin;
+  left: 3vmin;
+  z-index: 10;
+  color: #ffffff;
+  /* 26vmin = the original 96px on the 368px amoled, scaled to any viewport */
+  font-size: 26vmin;
+}
+
+.tap-counter {
+  position: absolute;
+  font-family: 'Inter';
+  top: 32vmin;
+  left: 3vmin;
+  z-index: 10;
+  color: #7ee7ff;
+  font-size: 9vmin;
+}
+
+/* 1-bit panels (e-paper): white background, black HUD text — the colored
+   balls dither to gray dots. Color boards keep the dark theme. */
+@media (monochrome) {
+  .app {
+    background-color: #ffffff;
+  }
+
+  .fps-badge {
+    color: #000000;
+  }
+
+  .tap-counter {
+    color: #000000;
+  }
+}

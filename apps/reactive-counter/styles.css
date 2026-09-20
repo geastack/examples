@@ -1,0 +1,142 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
+.counter-app {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Oswald';
+  background-color: #07111f;
+  padding: clamp(10px, 3.5vh, 54px);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3vh, 42px);
+}
+
+.counter-title {
+  font-size: clamp(24px, 7vh, 92px);
+  color: #f8fafc;
+}
+
+.counter-card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(156px, 78vw, 620px);
+  height: clamp(76px, 24vh, 360px);
+  border-radius: clamp(14px, 4vh, 42px);
+  background-color: #0f172a;
+  border-width: 2px;
+  border-color: #1e293b;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-count {
+  font-size: clamp(46px, 17vh, 220px);
+  color: #67e8f9;
+}
+
+.counter-controls {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(14px, 4vw, 46px);
+}
+
+.counter-button {
+  display: flex;
+  flex-direction: column;
+  width: clamp(68px, 34vw, 240px);
+  height: clamp(42px, 12vh, 154px);
+  border-radius: clamp(12px, 3vh, 36px);
+  border-width: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-button--minus {
+  background-color: #1f2937;
+  border-color: #334155;
+}
+
+.counter-button--plus {
+  background-color: #0f766e;
+  border-color: #14b8a6;
+}
+
+.counter-minus-label {
+  font-size: clamp(24px, 9vh, 120px);
+  color: #e2e8f0;
+}
+
+.counter-plus-label {
+  font-size: clamp(24px, 9vh, 120px);
+  color: #f0fdfa;
+}
+
+.counter-reset {
+  display: flex;
+  flex-direction: column;
+  width: clamp(96px, 48vw, 360px);
+  height: clamp(30px, 8vh, 116px);
+  border-radius: clamp(10px, 2.4vh, 28px);
+  background-color: #111827;
+  border-width: 2px;
+  border-color: #475569;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-reset-label {
+  font-size: clamp(12px, 4.2vh, 52px);
+  color: #94a3b8;
+}
+
+/* 1-bit panels (e-paper): pure black-on-white reads crisply with no dither
+   speckle, so flip the dark theme to light. Color boards keep the dark theme
+   (their (monochrome) evaluates false — on web the browser does the same). */
+@media (monochrome) {
+  .counter-app {
+    background-color: #ffffff;
+  }
+
+  .counter-title {
+    color: #000000;
+  }
+
+  .counter-card {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-count {
+    color: #000000;
+  }
+
+  .counter-button--minus {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-button--plus {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-minus-label {
+    color: #000000;
+  }
+
+  .counter-plus-label {
+    color: #000000;
+  }
+
+  .counter-reset {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-reset-label {
+    color: #000000;
+  }
+}

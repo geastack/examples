@@ -1,0 +1,26 @@
+.inter-specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.inter-specimen-title {
+  font-family: 'Bebas Neue';
+  font-size: 32px;
+  color: #fbbf24;
+}
+
+.inter-specimen-emphasis {
+  color: #93c5fd;
+}
+
+.inter-specimen-sample {
+  font-family: 'Inter';
+  font-size: 28px;
+  color: #e5e7eb;
+}
+
+.inter-specimen-caps {
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #9ca3af;
+}

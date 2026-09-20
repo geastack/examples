@@ -1,0 +1,14 @@
+.todo-delete-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #291415;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px 5px 10px;
+}
+.todo-delete-label {
+  font-family: 'Inter';
+  font-size: 14px;
+  color: #fca5a5;
+}

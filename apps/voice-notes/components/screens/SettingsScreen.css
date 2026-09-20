@@ -1,0 +1,40 @@
+.vn-settings {
+  gap: 3px;
+}
+
+.vn-settings .vn-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vn-settings .vn-menu-list div {
+  width: 100%;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid #000000;
+  border-radius: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #000000;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.vn-settings .vn-menu-list div span {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.vn-settings .vn-menu-list div.is-active {
+  background-color: #000000;
+  color: #ffffff;
+}

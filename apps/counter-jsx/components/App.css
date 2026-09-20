@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+/* Sized to fit the smallest target panel (esp32-s3-touch-amoled-1.8 = 368×448
+   physical → ~245×299 logical px) and center on larger panels. Fills the
+   viewport and centers its column so the whole counter is always on screen. */
+.counter-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #07111f;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Inter';
+}
+.counter-title {
+  font-family: 'Bebas Neue';
+  font-size: 30px;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.counter-display {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 84px;
+  border-radius: 8px;
+  background-color: #0f172a;
+  border-width: 2px;
+  border-color: #1e293b;
+  align-items: center;
+  justify-content: center;
+}
+.counter-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.counter-status {
+  font-family: 'Inter';
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+}

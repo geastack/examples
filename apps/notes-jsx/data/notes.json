@@ -1,0 +1,508 @@
+{
+  "selectedNoteId": "n1",
+  "selectedTitle": "Q3 planning kickoff",
+  "selectedDate": "Today",
+  "selectedBody": "Themes: reliability, onboarding, billing.\nStaff two new hires to the platform pod.\nDraft OKRs by Friday and circulate for feedback.",
+  "notes": [
+    {
+      "id": "n1",
+      "folderId": "work",
+      "title": "Q3 planning kickoff",
+      "date": "Today",
+      "preview": "Themes: reliability, onboarding, billing",
+      "body": "Themes: reliability, onboarding, billing.\nStaff two new hires to the platform pod.\nDraft OKRs by Friday and circulate for feedback.",
+      "selected": 1,
+      "visible": 1
+    },
+    {
+      "id": "n2",
+      "folderId": "work",
+      "title": "Standup — Tuesday",
+      "date": "Today",
+      "preview": "Shipped the search reindex",
+      "body": "Shipped the search reindex.\nBlocked on the staging cert renewal.\nPairing with Dana on the export bug this afternoon.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n3",
+      "folderId": "personal",
+      "title": "Grocery list",
+      "date": "Yesterday",
+      "preview": "Oat milk, spinach, lemons",
+      "body": "Oat milk\nSpinach\nLemons\nChickpeas\nSourdough\nGreek yogurt\nDark chocolate",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n4",
+      "folderId": "ideas",
+      "title": "Side project: habit tracker",
+      "date": "Yesterday",
+      "preview": "Tiny daily check-ins, no streaks",
+      "body": "Tiny daily check-ins, no streaks pressure.\nLocal-first, syncs over the cloud.\nWidget that shows the last 7 days.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n5",
+      "folderId": "travel",
+      "title": "Lisbon trip checklist",
+      "date": "Yesterday",
+      "preview": "Book Alfama walking tour",
+      "body": "Book Alfama walking tour\nPasteis de Belem early to skip the line\nDay trip to Sintra\nReserve the rooftop dinner for Saturday",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n6",
+      "folderId": "work",
+      "title": "Postmortem: payment timeouts",
+      "date": "Mon",
+      "preview": "Root cause: connection pool exhaustion",
+      "body": "Root cause: connection pool exhaustion under retry storm.\nFix: cap retries, add jittered backoff.\nFollow-up: dashboard alert on pool saturation.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n7",
+      "folderId": "personal",
+      "title": "Marathon training — week 6",
+      "date": "Mon",
+      "preview": "Tempo, intervals, long run",
+      "body": "Mon rest\nTue 8km tempo\nWed 5km easy\nThu intervals 6x800\nSat long run 24km",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n8",
+      "folderId": "ideas",
+      "title": "Blog post outline",
+      "date": "Mon",
+      "preview": "Boring tech wins",
+      "body": "Title: Boring tech wins\n- Pick tools you can debug at 3am\n- Optimize for deletion\n- The cost of cleverness",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n9",
+      "folderId": "work",
+      "title": "Hiring loop feedback",
+      "date": "Sun",
+      "preview": "Strong systems design",
+      "body": "Strong systems design, clear communication.\nWould pair well with the infra team.\nRecommend moving to offer.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n10",
+      "folderId": "personal",
+      "title": "Books to read",
+      "date": "Sun",
+      "preview": "The Left Hand of Darkness",
+      "body": "The Left Hand of Darkness\nThinking in Systems\nThe Goal\nProject Hail Mary (reread)",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n11",
+      "folderId": "travel",
+      "title": "Packing list — carry-on",
+      "date": "Sun",
+      "preview": "Merino tee x3, packing cubes",
+      "body": "Merino tee x3\nPacking cubes\nUniversal adapter\nKindle\nReusable bottle",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n12",
+      "folderId": "ideas",
+      "title": "App: split the bill",
+      "date": "Fri",
+      "preview": "Scan receipt, tap items",
+      "body": "Scan receipt, tap items, assign to people.\nSettle up via a shareable link.\nNo account required.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n13",
+      "folderId": "work",
+      "title": "Architecture review notes",
+      "date": "Fri",
+      "preview": "Move the queue consumer off the API box",
+      "body": "Move the queue consumer off the API box.\nIntroduce an outbox table for events.\nMeasure tail latency before/after.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n14",
+      "folderId": "personal",
+      "title": "Apartment hunting",
+      "date": "Fri",
+      "preview": "Budget ceiling set",
+      "body": "Budget ceiling set.\nMust-haves: light, laundry, 30min commute.\nViewings booked for Saturday morning.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n15",
+      "folderId": "ideas",
+      "title": "Garden plan for spring",
+      "date": "Thu",
+      "preview": "Tomatoes, basil, chili",
+      "body": "Tomatoes, basil, chili on the balcony.\nStart seeds indoors mid-March.\nSelf-watering pots this year.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n16",
+      "folderId": "work",
+      "title": "Customer call — Northwind",
+      "date": "Thu",
+      "preview": "They want SSO and audit logs",
+      "body": "They want SSO and audit logs.\nConcerned about export performance.\nSend the roadmap one-pager.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n17",
+      "folderId": "personal",
+      "title": "Weekend plans",
+      "date": "Thu",
+      "preview": "Farmers market Saturday",
+      "body": "Farmers market Saturday\nFix the squeaky door\nMovie night: a noir pick",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n18",
+      "folderId": "ideas",
+      "title": "Talk proposal",
+      "date": "Wed",
+      "preview": "Designing for the offline path",
+      "body": "Designing for the offline path.\nReal failures from the field.\n25 min + Q&A.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n19",
+      "folderId": "travel",
+      "title": "Kyoto itinerary",
+      "date": "Wed",
+      "preview": "Fushimi Inari at sunrise",
+      "body": "Fushimi Inari at sunrise\nArashiyama bamboo grove\nNishiki market lunch\nGion stroll at dusk",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n20",
+      "folderId": "work",
+      "title": "Sprint retro actions",
+      "date": "Wed",
+      "preview": "Smaller PRs, faster reviews",
+      "body": "Smaller PRs, faster reviews.\nRotate the on-call handoff doc.\nAdd flaky-test quarantine.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n21",
+      "folderId": "personal",
+      "title": "Recipe: lemon pasta",
+      "date": "Tue",
+      "preview": "Spaghetti, lemon, parmesan",
+      "body": "Spaghetti, lemon zest + juice, parmesan, butter, black pepper.\nReserve pasta water.\nFinish with basil.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n22",
+      "folderId": "ideas",
+      "title": "Newsletter topics",
+      "date": "Tue",
+      "preview": "Caching pitfalls",
+      "body": "Caching pitfalls\nWriting runbooks people read\nThe underrated SELECT\nWhen to delete a service",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n23",
+      "folderId": "work",
+      "title": "Roadmap themes",
+      "date": "Tue",
+      "preview": "Trust, time-to-value, scale",
+      "body": "Trust (security, reliability)\nTime-to-value (onboarding)\nScale (multi-region)",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n24",
+      "folderId": "personal",
+      "title": "Gift ideas",
+      "date": "Mon",
+      "preview": "Ceramics class, headphones",
+      "body": "Ceramics class\nNoise-cancelling headphones\nA good olive oil set",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n25",
+      "folderId": "ideas",
+      "title": "Logo sketches",
+      "date": "5/20/26",
+      "preview": "Monogram with a soft notch",
+      "body": "Monogram with a soft notch.\nTry a single-weight geometric sans.\nWarm paper background.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n26",
+      "folderId": "work",
+      "title": "Incident runbook draft",
+      "date": "5/19/26",
+      "preview": "Acknowledge, assign IC, mitigate",
+      "body": "1. Acknowledge + open channel\n2. Assign IC\n3. Mitigate before diagnosing\n4. Comms every 30 min",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n27",
+      "folderId": "travel",
+      "title": "Road trip stops",
+      "date": "5/18/26",
+      "preview": "Big Sur overlook",
+      "body": "Big Sur overlook\nMcWay Falls\nElephant seal beach\nPie stop in Cambria",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n28",
+      "folderId": "personal",
+      "title": "Errands + admin",
+      "date": "5/18/26",
+      "preview": "Book cleaning, renew passport",
+      "body": "Book a cleaning\nRenew passport\nReturn the library books\nCancel the unused subscription",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n29",
+      "folderId": "ideas",
+      "title": "Feature: smart folders",
+      "date": "5/17/26",
+      "preview": "Rules: tag, date, attachment",
+      "body": "Rules: tag, date, has-attachment.\nLive-updating counts.\nPin favorites to the top.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n30",
+      "folderId": "work",
+      "title": "Vendor comparison",
+      "date": "5/17/26",
+      "preview": "Two finalists",
+      "body": "Two finalists.\nA: cheaper, weaker SLA.\nB: pricier, better support + audit.\nLean B for compliance.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n31",
+      "folderId": "personal",
+      "title": "Workout split",
+      "date": "5/16/26",
+      "preview": "Push / Pull / Legs",
+      "body": "Push / Pull / Legs\nThree rounds a week.\nDeload every fourth week.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n32",
+      "folderId": "ideas",
+      "title": "Podcast episode list",
+      "date": "5/16/26",
+      "preview": "On-call culture",
+      "body": "On-call culture\nThe boring-tech manifesto\nWriting for engineers",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n33",
+      "folderId": "travel",
+      "title": "Visa + docs",
+      "date": "5/15/26",
+      "preview": "Passport valid 6+ months",
+      "body": "Passport valid 6+ months\nTravel insurance printout\nHotel confirmations\nOffline maps downloaded",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n34",
+      "folderId": "work",
+      "title": "Migration plan",
+      "date": "5/15/26",
+      "preview": "Dual-write phase",
+      "body": "Dual-write phase\nBackfill in batches\nShadow reads to verify\nCutover on a quiet weekend",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n35",
+      "folderId": "personal",
+      "title": "Movie watchlist",
+      "date": "5/14/26",
+      "preview": "Past Lives, The Conversation",
+      "body": "Past Lives\nThe Conversation\nDrive My Car\nPerfect Days",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n36",
+      "folderId": "ideas",
+      "title": "Pricing experiment",
+      "date": "5/14/26",
+      "preview": "Add an annual plan",
+      "body": "Add an annual plan.\nHighlight the savings, not the discount.\nMeasure trial-to-paid lift.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n37",
+      "folderId": "work",
+      "title": "1:1 prep — manager",
+      "date": "5/13/26",
+      "preview": "Career, scope, feedback",
+      "body": "Career: more systems work.\nScope: own the export pipeline.\nFeedback: faster decisions.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n38",
+      "folderId": "personal",
+      "title": "Home maintenance",
+      "date": "5/13/26",
+      "preview": "Replace the HVAC filter",
+      "body": "Replace the HVAC filter\nDescale the kettle\nTighten the cabinet hinge\nTest smoke detectors",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n39",
+      "folderId": "ideas",
+      "title": "Onboarding redesign",
+      "date": "5/12/26",
+      "preview": "First win in under five minutes",
+      "body": "First win in under five minutes.\nSample data preloaded.\nProgress checklist that celebrates.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n40",
+      "folderId": "travel",
+      "title": "Hiking gear",
+      "date": "5/12/26",
+      "preview": "Trail runners, rain shell",
+      "body": "Trail runners\nLight rain shell\n2L water\nSnacks + electrolytes\nHeadlamp",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n41",
+      "folderId": "work",
+      "title": "API deprecation notice",
+      "date": "5/11/26",
+      "preview": "v1 sunset in 90 days",
+      "body": "v1 sunset in 90 days.\nMigration guide + codemod.\nEmail the top 20 integrators.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n42",
+      "folderId": "personal",
+      "title": "Plant watering schedule",
+      "date": "5/11/26",
+      "preview": "Monstera weekly",
+      "body": "Monstera: weekly\nSnake plant: every 2-3 weeks\nFern: keep moist\nRotate toward the light.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n43",
+      "folderId": "ideas",
+      "title": "Talk title ideas",
+      "date": "5/10/26",
+      "preview": "The cost of cleverness",
+      "body": "The cost of cleverness\nOperating the boring stack\nDelete more code",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n44",
+      "folderId": "work",
+      "title": "Security checklist",
+      "date": "5/10/26",
+      "preview": "Rotate keys quarterly",
+      "body": "Rotate keys quarterly\nLeast-privilege IAM\nMFA everywhere\nReview third-party scopes",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n45",
+      "folderId": "personal",
+      "title": "Birthday plan",
+      "date": "5/9/26",
+      "preview": "Dinner reservation for 8",
+      "body": "Dinner reservation for 8.\nOrder the almond cake.\nPlaylist + candles.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n46",
+      "folderId": "ideas",
+      "title": "Shortcuts to add",
+      "date": "5/9/26",
+      "preview": "Quick switcher",
+      "body": "Quick switcher\nNew note from anywhere\nPin/unpin\nJump to folder",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n47",
+      "folderId": "travel",
+      "title": "Restaurants to try",
+      "date": "5/8/26",
+      "preview": "The corner trattoria",
+      "body": "The corner trattoria\nRamen near the station\nNatural wine bar\nBakery with cardamom buns",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n48",
+      "folderId": "work",
+      "title": "Load test results",
+      "date": "5/8/26",
+      "preview": "p50 stable to 5k rps",
+      "body": "p50 stable to 5k rps.\np99 climbs past 8k rps.\nNext: profile the serializer.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n49",
+      "folderId": "personal",
+      "title": "Journaling prompts",
+      "date": "5/7/26",
+      "preview": "What went well this week?",
+      "body": "What went well this week?\nWhat drained me?\nOne thing to try next week.",
+      "selected": 0,
+      "visible": 1
+    },
+    {
+      "id": "n50",
+      "folderId": "archive",
+      "title": "Receipts 2025",
+      "date": "3/28/26",
+      "preview": "Scanned receipts for taxes",
+      "body": "Archived: scanned receipts for taxes.\n12 attachments.",
+      "selected": 0,
+      "visible": 1
+    }
+  ]
+}

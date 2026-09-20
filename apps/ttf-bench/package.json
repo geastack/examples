@@ -1,0 +1,40 @@
+{
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.3.0",
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "@geajs/vite-plugin": "^1.4.1",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "gea": {
+    "id": "ttf-bench",
+    "name": "TTF Bench",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "rp2350": true,
+      "geaos": true
+    },
+    "nativeSources": [
+      "native/native_bench.cpp"
+    ],
+    "launcher": {
+      "description": "native TTF raster probe",
+      "order": 1000,
+      "accent": "#22c55e",
+      "hidden": true
+    }
+  },
+  "name": "@geastack/example-ttf-bench",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

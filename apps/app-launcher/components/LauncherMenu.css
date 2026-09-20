@@ -1,0 +1,16 @@
+.launcher-root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #05070b;
+  flex-direction: column;
+}
+.launcher-heading {
+  width: 100vw;
+  height: 58px;
+  margin: 8px 0 0 0;
+  font-family: 'Bebas Neue';
+  font-size: 48px;
+  color: #f8fafc;
+  text-align: center;
+}

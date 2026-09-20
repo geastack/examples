@@ -1,0 +1,32 @@
+.todo-check {
+  display: flex;
+  flex-direction: column;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border-width: 1px;
+  align-items: center;
+  justify-content: center;
+}
+.todo-check-open {
+  background-color: #020617;
+  border-color: #475569;
+}
+
+.todo-check-done {
+  background-color: #22c55e;
+  border-color: #86efac;
+}
+
+.todo-check-label {
+  font-family: 'Inter';
+  font-size: 18px;
+}
+
+.todo-check-label-open {
+  color: #475569;
+}
+
+.todo-check-label-done {
+  color: #052e16;
+}

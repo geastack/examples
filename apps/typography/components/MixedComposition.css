@@ -1,0 +1,42 @@
+.mixed-composition {
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+  border-color: #374151;
+  border-radius: 12px;
+  padding: 14px;
+  background-color: #111827;
+  gap: 8px;
+}
+.mixed-composition-title {
+  font-family: 'Bebas Neue';
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.mixed-composition-copy {
+  font-family: 'Cossette Texte';
+  font-size: 17px;
+}
+
+.mixed-composition-label {
+  font-family: 'Inter';
+  color: #64d2ff;
+}
+
+.mixed-composition-score {
+  font-family: 'Oswald';
+  color: #fbbf24;
+}
+
+.mixed-composition-loud {
+  font-family: 'Bebas Neue';
+  font-size: 22px;
+  color: #fb7185;
+}
+
+.mixed-composition-note {
+  font-family: 'Inter';
+  font-size: 15px;
+  margin-bottom: 0px;
+}

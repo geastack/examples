@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #07111f;
+  padding: 10px;
+  gap: 8px;
+  font-family: 'Inter';
+}
+.todo-status {
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+.todo-compose-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}

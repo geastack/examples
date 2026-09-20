@@ -1,0 +1,2 @@
+declare const __GEA_THREE_USE_UPSTREAM__: boolean
+declare const __GEA_THREE_REFERENCE_DEMO__: string

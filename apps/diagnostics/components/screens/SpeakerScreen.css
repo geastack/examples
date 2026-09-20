@@ -1,0 +1,20 @@
+.speaker-hint {
+  display: block;
+  margin: 16px 0;
+  font-family: 'Inter';
+  font-size: 12px;
+  color: var(--diag-dim);
+  text-align: center;
+}
+
+.tone-grid { display: flex; gap: 12px; }
+
+.tone-btn {
+  flex: 1;
+  text-align: center;
+  padding: 22px 0;
+  background: var(--diag-accent);
+  color: #041016;
+  font-family: 'Oswald';
+  font-size: 16px;
+}

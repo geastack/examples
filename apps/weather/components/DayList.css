@@ -1,0 +1,41 @@
+.day-row {
+  display: flex;
+  gap: 0;
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 15px), transparent 100%);
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 6px;
+  padding-top: 0;
+  padding-right: 8px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.day-row::-webkit-scrollbar {
+  display: none;
+}
+
+.day-card {
+  align-content: center;
+  display: grid;
+  flex: 0 0 44px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 2px;
+  justify-items: center;
+  min-width: 0;
+  padding: 3px 1px;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.day-card:first-child {
+  border-left: 0;
+}
+
+@media (min-resolution: 1.75dppx) {
+  .day-row {
+    padding-top: 5px;
+  }
+}

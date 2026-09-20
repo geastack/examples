@@ -1,0 +1,50 @@
+/* vmin-based sizing so one layout fits every board viewport. */
+
+.probe-app {
+  display: flex;
+  flex-direction: column;
+  background-color: #10182b;
+  padding: 6vmin;
+  align-items: center;
+  justify-content: center;
+  gap: 5vmin;
+}
+
+.probe-title {
+  font-size: 8vmin;
+  color: #f8fafc;
+}
+
+.tick-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f59e0b;
+  border-radius: 3vmin;
+  padding: 2vmin 5vmin;
+}
+
+.tick-badge-text {
+  font-size: 7vmin;
+  color: #10182b;
+}
+
+.probe-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46vmin;
+  height: 26vmin;
+  background-color: #1e293b;
+  border-radius: 4vmin;
+}
+
+.probe-count {
+  font-size: 16vmin;
+  color: #f8fafc;
+}
+
+.probe-hint {
+  font-size: 5vmin;
+  color: #94a3b8;
+}

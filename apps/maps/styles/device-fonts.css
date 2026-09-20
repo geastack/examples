@@ -1,0 +1,17 @@
+/* Font-bake driver for the canvas-drawn UI: the font generator scans built CSS
+   for @font-face sources + (family, size) pairs; these rules make it bake
+   Inter atlases at every size the in-canvas sidebar/keyboard/pins use (no
+   tree nodes reference these classes — the rules exist for the baker). */
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+.gea-canvas-font-10 { font-family: Inter; font-size: 10px; }
+.gea-canvas-font-12 { font-family: Inter; font-size: 12px; }
+.gea-canvas-font-13 { font-family: Inter; font-size: 13px; }
+.gea-canvas-font-14 { font-family: Inter; font-size: 14px; }
+.gea-canvas-font-16 { font-family: Inter; font-size: 16px; }
+.gea-canvas-font-18 { font-family: Inter; font-size: 18px; }
+.gea-canvas-font-22 { font-family: Inter; font-size: 22px; }
+.gea-canvas-font-26 { font-family: Inter; font-size: 26px; }

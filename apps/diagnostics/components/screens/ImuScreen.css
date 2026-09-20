@@ -1,0 +1,16 @@
+.level-pad {
+  position: relative;
+  margin-top: 18px;
+  height: 220px;
+  border: 1px solid var(--diag-line);
+  border-radius: 50%;
+}
+
+.level-bubble {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: var(--diag-accent);
+}

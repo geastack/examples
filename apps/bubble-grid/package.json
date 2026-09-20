@@ -1,0 +1,43 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit",
+    "flash": "gea flash",
+    "flash:monitor": "gea flash --monitor",
+    "ota": "gea ota",
+    "ota:monitor": "gea ota --monitor",
+    "monitor": "gea monitor"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.3.0",
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "@geajs/vite-plugin": "^1.4.1",
+    "@geastack/cli": "^0.1.78",
+    "typescript": "6.0.2",
+    "vite": "8.0.8"
+  },
+  "gea": {
+    "id": "bubble-grid",
+    "name": "Bubble Grid",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": true,
+      "geaos": true
+    },
+    "launcher": {
+      "description": "watchOS-style pannable circle grid with edge fisheye",
+      "order": 21,
+      "accent": "#0a84ff",
+      "hidden": false
+    }
+  },
+  "name": "@geastack/example-bubble-grid",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

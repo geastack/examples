@@ -1,0 +1,37 @@
+.vn-transfer {
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.vn-portal-card {
+  width: 141px;
+  height: 34px;
+  border: 1px solid #000000;
+  border-radius: 0;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vn-portal-title,
+.vn-portal-state,
+.vn-transfer-ip {
+  display: block;
+  font-weight: 400;
+}
+
+.vn-portal-title {
+  font-family: 'Inter';
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.vn-portal-state,
+.vn-transfer-ip {
+  font-size: 22px;
+  line-height: 26px;
+}

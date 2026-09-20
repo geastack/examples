@@ -1,0 +1,12 @@
+.camera-preview {
+  margin-top: 16px;
+  aspect-ratio: 3 / 4;
+  max-height: 60vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,118 @@
+.screen {
+  position: absolute;
+  inset: 0;
+}
+
+/* The header is absolutely pinned to the top and OPAQUE, and comes after the
+   scroll region in the DOM so it paints on top — content scrolled up by the
+   transform slides cleanly underneath it. */
+.screen-head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  box-sizing: border-box;
+  background: var(--diag-bg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 2px solid var(--diag-line);
+}
+
+.screen-back {
+  font-family: 'Oswald';
+  font-size: 18px;
+  padding: 4px 10px;
+  border: 1px solid var(--diag-line);
+  border-radius: 4px;
+}
+
+.screen-title {
+  font-family: 'Oswald';
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* Scroll region fills the whole screen (under the pinned header). On touch
+   boards it scrolls with a finger; on the narrow non-touch board the store pages
+   it with a CSS transform on .screen-scroll-inner. */
+.screen-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+}
+
+.screen-scroll-inner {
+  padding-top: 46px; /* clear the pinned header */
+}
+
+.screen-body {
+  padding: 18px;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--diag-line);
+}
+
+.kv-k { font-family: 'Inter'; font-size: 12px; color: var(--diag-dim); letter-spacing: 1px; }
+.kv-v { font-family: 'Oswald'; font-size: 15px; }
+
+.value-big {
+  font-family: 'Oswald';
+  font-size: 40px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.screen-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 20px;
+  padding: 14px;
+  background: var(--diag-accent);
+  color: #041016;
+  font-family: 'Oswald';
+  letter-spacing: 1px;
+}
+
+.screen-action-sub { font-family: 'Inter'; font-size: 11px; opacity: 0.85; }
+
+.result-pass { color: var(--badge-live); }
+.result-fail { color: #f85149; }
+
+/* Button-navigation highlight. The action buttons are already accent-filled, so
+   the focus cursor inverts them to a light fill; BACK (normally outlined) fills
+   with the accent. */
+.screen-back.is-focused {
+  background: var(--diag-accent);
+  color: #05141f;
+  border-color: var(--diag-accent);
+}
+
+.screen-action.is-focused,
+.wifi-btn.is-focused,
+.tone-btn.is-focused {
+  background: var(--diag-fg);
+  color: var(--diag-accent);
+}
+
+@media (monochrome) {
+  .screen-back.is-focused {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+  }
+  .screen-action.is-focused,
+  .wifi-btn.is-focused,
+  .tone-btn.is-focused {
+    background: #000000;
+    color: #ffffff;
+  }
+}

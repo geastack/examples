@@ -1,0 +1,81 @@
+/* vmin-based sizing so one layout fits every board viewport. */
+
+.probe-app {
+  display: flex;
+  flex-direction: column;
+  background-color: #0b1424;
+  padding: 5vmin;
+  align-items: center;
+  justify-content: center;
+  gap: 4vmin;
+}
+
+.probe-title {
+  font-size: 7vmin;
+  color: #f8fafc;
+}
+
+.rail {
+  display: flex;
+  flex-direction: row;
+  gap: 3vmin;
+}
+
+.rail-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e293b;
+  border-radius: 3vmin;
+  padding: 2vmin 4vmin;
+}
+
+.rail-chip.is-active {
+  background-color: #22d3ee;
+}
+
+.rail-chip-label {
+  font-size: 5vmin;
+  color: #f8fafc;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3vmin;
+  background-color: #312e81;
+  border-radius: 3vmin;
+  padding: 2vmin 5vmin;
+}
+
+.panel-label {
+  font-size: 5vmin;
+  color: #c7d2fe;
+}
+
+.panel-count {
+  font-size: 8vmin;
+  color: #f8fafc;
+}
+
+.probe-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40vmin;
+  height: 20vmin;
+  background-color: #1e293b;
+  border-radius: 4vmin;
+}
+
+.probe-count {
+  font-size: 13vmin;
+  color: #f8fafc;
+}
+
+.probe-hint {
+  font-size: 4vmin;
+  color: #94a3b8;
+}

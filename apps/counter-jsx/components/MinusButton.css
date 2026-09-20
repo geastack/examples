@@ -1,0 +1,21 @@
+.counter-minus-button {
+  display: flex;
+  flex-direction: column;
+  width: 66px;
+  height: 52px;
+  border-radius: 8px;
+  border-width: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f2937;
+  border-color: #334155;
+}
+/* line-height:1 tightens the glyph box so flex centering puts the symbol in the
+   geometric center of the button rather than offset by the font's line metrics. */
+.counter-minus-symbol {
+  font-family: 'Bebas Neue';
+  font-size: 34px;
+  color: #fca5a5;
+  text-align: center;
+  line-height: 1;
+}

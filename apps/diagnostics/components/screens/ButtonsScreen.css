@@ -1,0 +1,20 @@
+.buttons-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 40px;
+}
+
+.buttons-hint { font-family: 'Oswald'; letter-spacing: 1px; color: var(--diag-dim); }
+
+.buttons-last {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.buttons-key { font-family: 'Oswald'; font-size: 56px; }
+.buttons-code { font-family: 'Inter'; font-size: 13px; color: var(--diag-dim); }
+.buttons-note { font-family: 'Inter'; font-size: 12px; color: var(--diag-accent); }

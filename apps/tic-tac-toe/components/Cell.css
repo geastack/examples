@@ -1,0 +1,20 @@
+.tic-cell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #1A1A3E;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #333366;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Oswald';
+  font-size: 48px;
+}
+.tic-cell-x {
+  color: #E94560;
+}
+
+.tic-cell-o {
+  color: #4CC9F0;
+}

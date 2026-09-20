@@ -1,0 +1,36 @@
+.stopwatch-lap-row {
+  display: flex;
+  height: 4vh;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-width: 1px;
+  border-color: #1c1c1e;
+  padding: 0 0 0 0;
+}
+
+.stopwatch-lap-text {
+  font-family: 'Inter';
+  font-size: 15px;
+}
+
+.stopwatch-lap-text-active {
+  color: #f5f5f7;
+}
+
+.stopwatch-lap-text-muted {
+  color: #636366;
+}
+
+/* Match the taller lap list on short, near-square panels (ESP32-S3 AMOLED,
+   410x502) — see LapRows.css. Larger rows + slightly larger text fill the
+   space the way iOS lap rows do; taller/larger displays keep the base. */
+@media (max-width: 480px) and (max-height: 540px) {
+  .stopwatch-lap-row {
+    height: 9vh;
+  }
+
+  .stopwatch-lap-text {
+    font-size: 17px;
+  }
+}

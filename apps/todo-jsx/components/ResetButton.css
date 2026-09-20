@@ -1,0 +1,16 @@
+.todo-reset-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #111827;
+  border-width: 0.5px;
+  border-color: #475569;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px 4px 10px;
+}
+.todo-reset-label {
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #cbd5e1;
+}

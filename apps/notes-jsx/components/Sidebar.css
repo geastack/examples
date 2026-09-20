@@ -1,0 +1,70 @@
+.sidebar {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  padding-left: 0;
+  padding-right: 0;
+  flex-direction: column;
+}
+.sidebar-section-title {
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 4px;
+  padding-bottom: 6px;
+  font-size: 11px;
+  color: #8a8a8e;
+  font-family: -apple-system;
+}
+
+.sidebar-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: 7px;
+  gap: 8px;
+
+
+/* The style pipeline stores colors as RGB565 (no alpha), so a translucent
+   highlight would render opaque white and bury the near-white row text. Use the
+   solid gray macOS itself uses for an unemphasized sidebar selection — it reads
+   correctly against the Liquid Glass and keeps the label legible. */
+}
+.sidebar-row-selected {
+  background-color: #48484a;
+}
+
+.sidebar-icon {
+  width: 17px;
+  height: 15px;
+  color: #e0a72c;
+}
+
+.sidebar-row-name {
+  flex: 1;
+  font-size: 13px;
+  color: #f5f5f7;
+  font-family: -apple-system;
+}
+
+.sidebar-row-count {
+  font-size: 12px;
+  color: #8a8a8e;
+  font-family: -apple-system;
+}
+
+.sidebar-user {
+  margin-top: 14px;
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 11px;
+  color: #8a8a8e;
+  font-family: -apple-system;
+}

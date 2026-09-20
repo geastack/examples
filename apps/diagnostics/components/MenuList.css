@@ -1,0 +1,60 @@
+/* Wraps the menu rows. On narrow boards this is the flex region that fills the
+   space under the header; on roomy boards it just flows with the scroll page.
+   The store renders only the rows that fit (diag.visibleRows), so no overflow
+   clipping is relied on here. */
+.menu-viewport {
+  position: relative;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.diag-menu-row {
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* Highlight for the button-navigation cursor. */
+.diag-menu-row.is-focused {
+  background: var(--diag-accent);
+  color: #05141f;
+}
+
+.diag-menu-row.is-focused .menu-row-detail {
+  color: #05141f;
+}
+
+@media (monochrome) {
+  .diag-menu-row.is-focused {
+    background: #000000;
+    color: #ffffff;
+  }
+  .diag-menu-row.is-focused .menu-row-title,
+  .diag-menu-row.is-focused .menu-row-detail {
+    color: #ffffff;
+  }
+}
+
+.menu-row-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.menu-row-title {
+  font-family: 'Oswald';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.menu-row-detail {
+  font-family: 'Inter';
+  font-size: 12px;
+  color: var(--diag-dim);
+}
+
+.diag-menu-row.state-absent {
+  opacity: 0.45;
+}

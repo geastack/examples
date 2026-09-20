@@ -1,0 +1,586 @@
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../../assets/fonts/Oswald-Regular.ttf');
+}
+
+.settings-panel-host {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 410;
+  height: 502;
+  z-index: 30000;
+}
+
+.settings-panel-host-hidden {
+  display: none;
+}
+
+.settings-panel {
+  font-family: 'Oswald';
+  width: 410;
+  height: 502;
+}
+
+.settings-content {
+  width: 410;
+  height: 502;
+}
+
+.settings-panel-blocker {
+  width: 410;
+  height: 502;
+}
+
+.settings-hidden {
+  display: none;
+}
+
+.settings-screen {
+  display: flex;
+  width: 410;
+  height: 502;
+  background-color: #07080b;
+  flex-direction: column;
+}
+
+.settings-overview-screen {
+  display: flex;
+  padding: 16px 0 14px 0;
+  gap: 8;
+}
+
+.settings-editor-screen {
+  display: flex;
+  padding: 16px 12px 8px 12px;
+  gap: 6;
+}
+
+.settings-header {
+  display: flex;
+  width: 410;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+}
+
+.settings-heading {
+  display: flex;
+  width: 180;
+  flex-direction: column;
+  gap: 2;
+}
+
+.settings-title {
+  font-family: 'Oswald';
+  font-size: 36;
+  color: #f5f5f7;
+}
+
+.settings-status-text {
+  width: 180;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-button-text-muted {
+  font-family: 'Oswald';
+  font-size: 24;
+  color: #d1d1d6;
+}
+
+.settings-button-text-primary {
+  font-family: 'Oswald';
+  font-size: 24;
+  color: #ffffff;
+}
+
+.settings-overview-scroll {
+  display: flex;
+  width: 410;
+  height: 408;
+  overflow: scroll;
+  flex-direction: column;
+  gap: 10;
+  padding: 0 22px;
+}
+
+.settings-wifi-card {
+  display: flex;
+  width: 366;
+  height: 60;
+  border-radius: 8;
+  background-color: #15161b;
+  border-width: 1;
+  border-color: #2c2d35;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 9px 14px;
+}
+
+.settings-wifi-card-copy {
+  display: flex;
+  width: 230;
+  flex-direction: column;
+  gap: 2;
+}
+
+.settings-wifi-card-label {
+  width: 230;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-wifi-card-network {
+  width: 230;
+  font-family: 'Oswald';
+  font-size: 20;
+  color: #f5f5f7;
+}
+
+.settings-wifi-status-badge {
+  display: flex;
+  width: 92;
+  height: 26;
+  border-radius: 8;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-wifi-status-text {
+  font-family: 'Oswald';
+  font-size: 18;
+}
+
+.settings-inline-actions {
+  display: flex;
+  width: 366;
+  height: 38;
+  flex-direction: row;
+  gap: 10;
+}
+
+.settings-inline-action-button {
+  display: flex;
+  width: 178;
+  height: 38;
+  border-radius: 8;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-inline-action-label {
+  font-family: 'Oswald';
+  font-size: 22;
+}
+
+.settings-row-list {
+  display: flex;
+  width: 366;
+  flex-direction: column;
+  gap: 2;
+}
+
+.settings-row {
+  display: flex;
+  width: 366;
+  height: 64;
+  border-width: 1;
+  border-color: #24242a;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.settings-row-label {
+  width: 130;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-row-value {
+  width: 210;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #f5f5f7;
+  text-align: right;
+}
+
+.settings-volume-row {
+  display: flex;
+  width: 366;
+  height: 64;
+  border-width: 1;
+  border-color: #24242a;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.settings-volume-controls {
+  display: flex;
+  width: 210;
+  height: 36;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8;
+}
+
+.settings-volume-button {
+  display: flex;
+  width: 38;
+  height: 34;
+  border-radius: 8;
+  background-color: #24242c;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-volume-button-text {
+  width: 38;
+  font-family: 'Oswald';
+  font-size: 24;
+  color: #f5f5f7;
+  text-align: center;
+}
+
+.settings-volume-value {
+  width: 78;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #f5f5f7;
+  text-align: center;
+}
+
+.settings-editor-header {
+  display: flex;
+  width: 386;
+  height: 34;
+  flex-direction: row;
+  align-items: center;
+  gap: 20;
+}
+
+.settings-editor-back-button {
+  display: flex;
+  width: 74;
+  height: 34;
+  margin: 0 8px 0 36px;
+  border-radius: 8;
+  background-color: #24242c;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-editor-title {
+  width: 210;
+  font-family: 'Oswald';
+  font-size: 36;
+  color: #f5f5f7;
+}
+
+.settings-editor-status-text {
+  width: 360;
+  align-self: center;
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-editor-fields {
+  display: flex;
+  width: 360;
+  align-self: center;
+  flex-direction: column;
+  gap: 4;
+}
+
+.settings-editor-field {
+  display: flex;
+  width: 360;
+  flex-direction: column;
+  gap: 1;
+}
+
+.settings-editor-label {
+  width: 360;
+  font-family: 'Oswald';
+  font-size: 18;
+}
+
+.settings-editor-input {
+  width: 360;
+  height: 46;
+  border-radius: 8;
+  font-family: 'Oswald';
+  font-size: 18;
+}
+
+.settings-editor-actions {
+  display: flex;
+  position: absolute;
+  left: 42px;
+  bottom: 28px;
+  width: 326;
+  height: 30;
+  flex-direction: row;
+  gap: 46px;
+}
+
+.settings-editor-nav-button {
+  display: flex;
+  width: 132;
+  height: 30;
+  margin: 0 4px;
+  border-radius: 8;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-editor-cancel-button {
+  background-color: #24242c;
+}
+
+.settings-editor-connect-button {
+  background-color: #0a84ff;
+}
+
+.settings-network-screen {
+  display: flex;
+  padding: 16px 0 14px 0;
+  gap: 6;
+}
+
+.settings-network-header {
+  display: flex;
+  width: 410;
+  height: 38;
+  flex-direction: row;
+  align-items: center;
+  gap: 14;
+  padding: 0 22px;
+}
+
+.settings-network-back-button {
+  display: flex;
+  width: 74;
+  height: 34;
+  border-radius: 8;
+  background-color: #24242c;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-network-title {
+  width: 240;
+  font-family: 'Oswald';
+  font-size: 36;
+  color: #f5f5f7;
+}
+
+.settings-network-status {
+  width: 366;
+  align-self: center;
+  font-family: 'Oswald';
+  font-size: 16;
+  color: #8e8e93;
+  padding: 0 4px;
+}
+
+.settings-network-empty {
+  display: flex;
+  width: 366;
+  height: 60;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #15161b;
+  border-radius: 8;
+  border-width: 1;
+  border-color: #2c2d35;
+}
+
+.settings-network-empty-text {
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-network-list {
+  display: flex;
+  width: 410;
+  height: 380;
+  overflow: scroll;
+  flex-direction: column;
+  gap: 6;
+  padding: 0 22px;
+}
+
+.settings-network-row {
+  display: flex;
+  width: 366;
+  height: 56;
+  border-radius: 8;
+  background-color: #15161b;
+  border-width: 1;
+  border-color: #2c2d35;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+}
+
+.settings-network-row-main {
+  display: flex;
+  width: 260;
+  flex-direction: column;
+  gap: 2;
+}
+
+.settings-network-ssid {
+  width: 260;
+  font-family: 'Oswald';
+  font-size: 20;
+  color: #f5f5f7;
+}
+
+.settings-network-rssi-text {
+  width: 260;
+  font-family: 'Oswald';
+  font-size: 16;
+  color: #8e8e93;
+}
+
+.settings-network-lock {
+  width: 70;
+  font-family: 'Oswald';
+  font-size: 16;
+  text-align: right;
+}
+
+.settings-password-screen {
+  display: flex;
+  padding: 16px 22px 14px 22px;
+  gap: 8;
+}
+
+.settings-password-header {
+  display: flex;
+  width: 366;
+  height: 34;
+  flex-direction: row;
+  align-items: center;
+  gap: 16;
+}
+
+.settings-password-back-button {
+  display: flex;
+  width: 74;
+  height: 34;
+  border-radius: 8;
+  background-color: #24242c;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-password-title {
+  width: 240;
+  font-family: 'Oswald';
+  font-size: 36;
+  color: #f5f5f7;
+}
+
+.settings-password-network-card {
+  display: flex;
+  width: 366;
+  height: 64;
+  margin-top: 6;
+  border-radius: 8;
+  background-color: #15161b;
+  border-width: 1;
+  border-color: #2c2d35;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 14px;
+  gap: 2;
+}
+
+.settings-password-network-name {
+  font-family: 'Oswald';
+  font-size: 22;
+  color: #f5f5f7;
+}
+
+.settings-password-network-meta {
+  font-family: 'Oswald';
+  font-size: 16;
+  color: #8e8e93;
+}
+
+.settings-password-status {
+  width: 366;
+  font-family: 'Oswald';
+  font-size: 16;
+  color: #8e8e93;
+}
+
+.settings-password-field {
+  display: flex;
+  width: 366;
+  flex-direction: column;
+  gap: 4;
+  margin-top: 8;
+}
+
+.settings-password-label {
+  font-family: 'Oswald';
+  font-size: 18;
+  color: #8e8e93;
+}
+
+.settings-password-input {
+  width: 366;
+  height: 46;
+  border-radius: 8;
+  font-family: 'Oswald';
+  font-size: 18;
+}
+
+.settings-password-actions {
+  display: flex;
+  position: absolute;
+  left: 42px;
+  bottom: 28px;
+  width: 326;
+  height: 36;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.settings-password-cancel-button {
+  display: flex;
+  width: 154;
+  height: 36;
+  border-radius: 8;
+  background-color: #24242c;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-password-connect-button {
+  display: flex;
+  width: 154;
+  height: 36;
+  border-radius: 8;
+  background-color: #0a84ff;
+  align-items: center;
+  justify-content: center;
+}

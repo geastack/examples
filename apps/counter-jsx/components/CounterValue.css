@@ -1,0 +1,9 @@
+/* Single class (color merged in) so the typed reactive renderer applies it via
+   classList without a dynamic class binding. Compact for the small panel. */
+.counter-value {
+  font-family: 'Bebas Neue';
+  font-size: 56px;
+  color: #67e8f9;
+  text-align: center;
+  line-height: 1;
+}

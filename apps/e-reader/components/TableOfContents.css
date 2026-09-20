@@ -1,0 +1,172 @@
+.toc-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f5f2e9;
+  color: #171713;
+}
+
+.toc-header {
+  height: 104px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 22px;
+  border-bottom: 2px solid #171713;
+  box-sizing: border-box;
+}
+
+.toc-heading {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-kicker,
+.toc-number,
+.toc-page,
+.toc-close {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.toc-close span {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.toc-kicker {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #68635a;
+}
+
+.toc-heading-title {
+  display: block;
+  margin-top: 5px;
+  font-family: 'Oswald';
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.toc-close {
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+}
+
+/* Paged, not scrolled: continuous scrolling costs a full-region A2 partial
+   (~200 ms transfer + waveform) per visual update on this panel, so it tops
+   out around 5 updates/s and smears. Each pager flip is ONE clean partial —
+   the same cadence as turning a reading page. 8 fixed-height rows per page. */
+.toc-list {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.toc-row {
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 22px;
+  border-bottom: 1px solid #aaa498;
+  box-sizing: border-box;
+}
+
+.toc-row.is-current {
+  background-color: #171713;
+  color: #fffdf6;
+}
+
+.toc-number {
+  width: 56px;
+  flex-shrink: 0;
+  color: #2f50a4;
+}
+
+.toc-row.is-current .toc-number { color: #9db4ee; }
+
+.toc-title {
+  min-width: 0;
+  flex: 1;
+  font-family: 'Cossette Texte';
+  font-size: 20px;
+  line-height: 24px;
+  /* One line per row keeps every page exactly 8 rows tall. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toc-page {
+  width: 74px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.toc-pager {
+  height: 96px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border-top: 2px solid #171713;
+  box-sizing: border-box;
+}
+
+.toc-pager-zone {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toc-pager-zone span {
+  font-family: 'Oswald';
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.toc-pager-label {
+  width: 120px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #68635a;
+  border-left: 1px solid #aaa498;
+  border-right: 1px solid #aaa498;
+  box-sizing: border-box;
+}
+
+@media (monochrome) {
+  .toc-panel { background-color: #ffffff; color: #000000; }
+  .toc-row.is-current { background-color: #000000; color: #ffffff; }
+}

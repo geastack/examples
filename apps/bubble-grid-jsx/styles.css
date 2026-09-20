@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.bubble-grid-jsx {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.bubble-field,
+.bubble-label-chip,
+.bubble-label-text,
+.bubble-grid-fps {
+  position: absolute;
+}
+
+.bubble-field {
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.bubble-label-chip {
+  background-color: #0a0c10;
+}
+
+.bubble-label-text {
+  color: #ffffff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble-grid-fps {
+  font-family: 'Bebas Neue';
+  color: #ffffff;
+  text-align: center;
+}

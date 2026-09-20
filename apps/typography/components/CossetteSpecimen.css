@@ -1,0 +1,32 @@
+.cossette-specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cossette-specimen-title {
+  font-family: 'Bebas Neue';
+  font-size: 32px;
+  color: #a7f3d0;
+}
+
+.cossette-specimen-copy-large {
+  font-family: 'Cossette Texte';
+  font-size: 18px;
+}
+
+.cossette-specimen-copy-small {
+  font-family: 'Cossette Texte';
+  font-size: 16px;
+}
+
+.cossette-specimen-sample {
+  font-family: 'Cossette Texte';
+  font-size: 30px;
+  color: #f8fafc;
+}
+
+.cossette-specimen-pangram {
+  font-family: 'Cossette Texte';
+  font-size: 17px;
+  color: #d1fae5;
+}

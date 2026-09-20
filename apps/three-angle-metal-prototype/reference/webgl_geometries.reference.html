@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>three.js webgl_geometries parity reference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+
+      canvas {
+        display: block;
+        width: 760px;
+        height: 520px;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import * as THREE from 'three'
+      import { backgroundColor, camera as cameraData, colors, indices, positions } from './generated-webgl-geometries-data.mjs'
+
+      const width = 760
+      const height = 520
+      const scene = new THREE.Scene()
+      const camera = new THREE.PerspectiveCamera(cameraData.fov, cameraData.aspect, cameraData.near, cameraData.far)
+      camera.position.set(cameraData.x, cameraData.y, cameraData.z)
+      camera.lookAt(cameraData.lookAtX, cameraData.lookAtY, cameraData.lookAtZ)
+
+      const geometry = new THREE.BufferGeometry()
+      geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
+      geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
+      geometry.setIndex(new THREE.Uint16BufferAttribute(indices, 1))
+      geometry.computeBoundingSphere()
+
+      const material = new THREE.RawShaderMaterial({
+        side: THREE.DoubleSide,
+        vertexShader: `
+          precision highp float;
+          attribute vec3 position;
+          attribute vec3 color;
+          uniform mat4 modelViewMatrix;
+          uniform mat4 projectionMatrix;
+          varying vec4 vColor;
+
+          void main() {
+            vColor = vec4(color, 1.0);
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          precision mediump float;
+          varying vec4 vColor;
+
+          void main() {
+            gl_FragColor = vColor;
+          }
+        `,
+      })
+
+      const mesh = new THREE.Mesh(geometry, material)
+      mesh.frustumCulled = false
+      scene.add(mesh)
+
+      const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, preserveDrawingBuffer: true })
+      renderer.setPixelRatio(2)
+      renderer.setSize(width, height, false)
+      renderer.setClearColor(backgroundColor, 1)
+      document.body.appendChild(renderer.domElement)
+      let fpsFrameCount = 0
+      let fpsWindowStartMs = 0
+      try {
+        function frame(now) {
+          if (fpsWindowStartMs <= 0) fpsWindowStartMs = now
+          renderer.render(scene, camera)
+          fpsFrameCount += 1
+          window.__GEA_REFERENCE_READY__ = true
+          document.body.dataset.geaReferenceReady = '1'
+          const elapsedMs = now - fpsWindowStartMs
+          if (elapsedMs >= 3000) {
+            const fps = fpsFrameCount * 1000 / elapsedMs
+            window.__GEA_REFERENCE_FPS__ = fps
+            window.__GEA_REFERENCE_FRAME_COUNT__ = fpsFrameCount
+            window.__GEA_REFERENCE_ELAPSED_MS__ = elapsedMs
+            document.body.dataset.geaReferenceFps = String(fps)
+            document.body.dataset.geaReferenceFrameCount = String(fpsFrameCount)
+            document.body.dataset.geaReferenceElapsedMs = String(elapsedMs)
+            console.log('official Three webgl_geometries reference fps=' + fps)
+            fpsFrameCount = 0
+            fpsWindowStartMs = now
+          }
+          window.requestAnimationFrame(frame)
+        }
+        window.requestAnimationFrame(frame)
+      } catch (error) {
+        window.__GEA_REFERENCE_ERROR__ = error instanceof Error ? error.stack : String(error)
+        console.error(error)
+      }
+    </script>
+  </body>
+</html>

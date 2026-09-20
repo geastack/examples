@@ -1,0 +1,336 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../assets/fonts/SpaceGrotesk-Regular.ttf');
+}
+
+:root {
+  background-color: #12130f;
+  color: #f8f0df;
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background-color: #12130f;
+}
+
+.cube-app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: #f8f0df;
+  background-color: #12130f;
+  background-image: linear-gradient(135deg, #12130f 0%, #171b14 45%, #251a15 100%);
+  font-family: 'Cossette Texte', serif;
+}
+
+/* ── Stage: a backwall + a perspective floor the cube sits inside. The grid is
+   split across two planes — vertical on the wall, tilted into depth on the
+   floor so cells expand toward the camera. Static (no animation), so it can be
+   folded into the cached backdrop later. ── */
+.stage-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  /* Perspective must scale with the viewport or the rotateX floor collapses on
+     tall screens. `px` here is LOGICAL (×DPR); the wall/floor boxes are % of the
+     PHYSICAL viewport — so a fixed px keeps a constant physical size while the
+     stage grows, over-foreshortening the floor into a sliver at the horizon on a
+     720x1280 panel. `vh` resolves against physical pixels, so 155vh holds the
+     amoled's ratio (1.55*502≈778px, was 520px*1.5dpr=780px) on every aspect. */
+  perspective: 155vh;
+  perspective-origin: 50% 30%;
+  pointer-events: none;
+}
+
+.stage-wall {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 54%;
+  background-image:
+    linear-gradient(90deg, rgba(140, 232, 196, 0.11) 1px, transparent 1px),
+    linear-gradient(to top, rgba(140, 232, 196, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, #090a07 0%, #161c14 100%);
+  background-size: 38px 38px, 38px 38px, 100% 100%;
+  /* Horizontal lines bottom-anchored (line at each tile's bottom + position 100%)
+     so one lands exactly on the seam, matching the floor's first line — no gap.
+     Vertical lines stay left-anchored to line up with the floor's verticals. The
+     opaque tonal surface gradient (last layer) shades the wall for depth and
+     renders clean on-device (unlike a low-alpha colored wash). */
+  background-position: 0 0, 0 100%, 0 0;
+}
+
+.stage-floor {
+  position: absolute;
+  /* Same horizontal extent + cell size as the wall, and rotated about its top
+     edge (z=0, undistorted at the seam), so the vertical grid lines line up
+     exactly with the wall's at the horizon. Perspective then spreads them toward
+     the camera. The near edge magnifies wider than the screen, so left/right:0
+     still fills the bottom. */
+  left: 0;
+  right: 0;
+  top: 54%;
+  bottom: -45%;
+  transform-origin: 50% 0%;
+  transform: rotateX(73deg);
+  background-image:
+    linear-gradient(90deg, rgba(255, 241, 118, 0.16) 1px, transparent 1px),
+    linear-gradient(rgba(255, 241, 118, 0.13) 1px, transparent 1px),
+    linear-gradient(180deg, #241a12 0%, #090a07 100%);
+  background-size: 38px 38px, 38px 38px, 100% 100%;
+}
+
+.stage-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54%;
+  height: 2px;
+  transform: translateY(-1px);
+  background: linear-gradient(90deg, rgba(140, 232, 196, 0) 0%, rgba(140, 232, 196, 0.5) 50%, rgba(140, 232, 196, 0) 100%);
+}
+
+.cube-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: clamp(18px, 7vh, 64px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.fps-badge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(14px, 5vh, 44px);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.fps-badge-text {
+  color: #8ce8c4;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+.cube-kicker {
+  color: #8ce8c4;
+  font-size: clamp(12px, 2.3vw, 15px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cube-heading {
+  color: #fff6e8;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 15vw, 118px);
+  line-height: 0.86;
+  letter-spacing: 0;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+}
+
+.cube-stage {
+  position: relative;
+  z-index: 1;
+  width: min(78vw, 520px);
+  height: min(78vw, 520px);
+  min-width: 240px;
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  transform: translateY(24px);
+}
+
+.cube-wrap {
+  --cube-size: clamp(154px, 34vw, 260px);
+  position: relative;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  perspective: 900px;
+  perspective-origin: 48% 42%;
+  animation: stage-float 5.8s ease-in-out infinite alternate;
+}
+
+.cube {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: cube-spin 10s cubic-bezier(0.62, 0, 0.28, 1) infinite;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #fff6e86b;
+  /*
+  box-shadow:
+    inset 0 0 38px rgba(255, 255, 255, 0.18),
+    0 18px 48px rgba(0, 0, 0, 0.3);
+  */
+  backface-visibility: visible;
+}
+
+.cube-face-label {
+  color: #12130fbd;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 6vw, 48px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cube-face--front {
+  background: linear-gradient(145deg, rgba(255, 241, 118, 0.5), rgba(255, 128, 97, 0.5));
+  transform: rotateY(0deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube-face--back {
+  background: linear-gradient(145deg, rgba(49, 211, 196, 0.5), rgba(93, 196, 110, 0.5));
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube-face--right {
+  background: linear-gradient(145deg, rgba(255, 128, 97, 0.5), rgba(231, 86, 128, 0.5));
+  transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube-face--left {
+  background: linear-gradient(145deg, rgba(140, 232, 196, 0.5), rgba(255, 241, 118, 0.5));
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube-face--top {
+  background: linear-gradient(145deg, rgba(255, 246, 232, 0.5), rgba(140, 232, 196, 0.5));
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+.cube-face--bottom {
+  background: linear-gradient(145deg, rgba(36, 35, 28, 0.5), rgba(255, 128, 97, 0.5));
+  transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
+}
+
+/* Tap-to-toggle look: `cube--opaque` switches the glassy 0.5-alpha faces back to
+   the original opaque gradients + hidden backfaces, so the fps cost of the
+   glassy look can be compared live on-device (tap anywhere). */
+.cube--opaque .cube-face {
+  backface-visibility: hidden;
+}
+
+.cube--opaque .cube-face--front {
+  background: linear-gradient(145deg, #fff176, #ff8061);
+}
+
+.cube--opaque .cube-face--back {
+  background: linear-gradient(145deg, #31d3c4, #5dc46e);
+}
+
+.cube--opaque .cube-face--right {
+  background: linear-gradient(145deg, #ff8061, #e75680);
+}
+
+.cube--opaque .cube-face--left {
+  background: linear-gradient(145deg, #8ce8c4, #fff176);
+}
+
+.cube--opaque .cube-face--top {
+  background: linear-gradient(145deg, #fff6e8, #8ce8c4);
+}
+
+.cube--opaque .cube-face--bottom {
+  background: linear-gradient(145deg, #24231c, #ff8061);
+}
+
+.cube-shadow {
+  display: none;
+}
+
+/*
+.cube-shadow {
+  position: absolute;
+  bottom: 20%;
+  width: min(68vw, 390px);
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.94);
+  filter: blur(22px);
+  transform: rotateX(72deg);
+  animation: shadow-breathe 5.8s ease-in-out infinite alternate;
+}
+*/
+
+@keyframes cube-spin {
+  0% {
+    transform: rotateX(-18deg) rotateY(24deg) rotateZ(0deg);
+  }
+
+  45% {
+    transform: rotateX(44deg) rotateY(188deg) rotateZ(5deg);
+  }
+
+  100% {
+    transform: rotateX(342deg) rotateY(384deg) rotateZ(0deg);
+  }
+}
+
+@keyframes stage-float {
+  from {
+    transform: translateY(-48px) scale(0.49);
+  }
+
+  to {
+    transform: translateY(-28px) scale(0.51);
+  }
+}
+
+/*
+@keyframes shadow-breathe {
+  from {
+    opacity: 0.76;
+    transform: rotateX(72deg) scaleX(0.92);
+  }
+
+  to {
+    opacity: 0.98;
+    transform: rotateX(72deg) scaleX(1.14);
+  }
+}
+*/
+
+@media (max-width: 640px) {
+  .cube-title {
+    top: 18px;
+  }
+
+  .cube-stage {
+    transform: translateY(48px);
+  }
+}

@@ -1,0 +1,20 @@
+.tic-board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: clamp(1px, min(90vw, calc(100vh - 72px)), 90vw);
+  height: clamp(1px, min(90vw, calc(100vh - 72px)), 90vw);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.tic-board-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}

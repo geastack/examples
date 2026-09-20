@@ -1,0 +1,44 @@
+{
+  "name": "@geastack/example-notes-windows",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "gea build --target windows",
+    "start": "gea run --target windows"
+  },
+  "dependencies": {
+    "@geastack/windows": "^0.1.0"
+  },
+  "devDependencies": {
+    "@geastack/vite-plugin-windows-native": "^0.1.1",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "gea": {
+    "id": "notes-windows",
+    "name": "geaNotes",
+    "entry": "index.ts",
+    "runtime": "windows-native",
+    "targets": {
+      "windows": true,
+      "web": false,
+      "esp32": false
+    },
+    "launcher": {
+      "description": "",
+      "order": 0,
+      "accent": "",
+      "hidden": false
+    },
+    "icons": {
+      "32": "icons/icon-32.png",
+      "64": "icons/icon-64.png",
+      "128": "icons/icon-128.png",
+      "256": "icons/icon-256.png",
+      "512": "icons/icon-512.png"
+    }
+  },
+  "license": "MIT"
+}

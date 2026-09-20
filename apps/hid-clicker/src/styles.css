@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+.app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter';
+  font-size: 16px;
+}
+.statusBar {
+  display: flex;
+  width: 100vw;
+  height: 30px;
+  background-color: #000000;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.statusText {
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #888888;
+}
+
+.screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100vw;
+}
+.buttonLabel {
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.prevButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #1a1a2e;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+}
+.prevButton:active {
+  background-color: #16213e;
+}
+
+.nextButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #0f3460;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+}
+.nextButton:active {
+  background-color: #1a508b;
+}
+
+.mouseToggleButton {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  width: 100vw;
+  background-color: #333333;
+  justify-content: center;
+  align-items: center;
+}
+.mouseToggleButton:active {
+  background-color: #555555;
+}
+
+.navButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #333333;
+  justify-content: center;
+  align-items: center;
+}
+.navButton:active {
+  background-color: #555555;
+}
+
+.leftClickButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #1a1a2e;
+  justify-content: center;
+  align-items: center;
+}
+.leftClickButton:active {
+  background-color: #16213e;
+}
+
+.rightClickButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #3d0000;
+  justify-content: center;
+  align-items: center;
+}
+.rightClickButton:active {
+  background-color: #550000;
+}
+
+.scrollZone {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  background-color: #1a2e1a;
+  justify-content: center;
+  align-items: center;
+}
+.biasButton {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #1f5134;
+  justify-content: center;
+  align-items: center;
+}
+.biasButton:active {
+  background-color: #2d734b;
+}
+
+.trackpadArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #1a1a2e;
+  justify-content: center;
+  align-items: center;
+}
+.trackpadRightClick {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  width: 100vw;
+  background-color: #3d0000;
+  justify-content: center;
+  align-items: center;
+}
+.trackpadRightClick:active {
+  background-color: #550000;
+}
+
+.bottomRow {
+  display: flex;
+  height: 40px;
+  width: 100vw;
+  flex-direction: row;
+}
+.mouseButtonRow {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  width: 100vw;
+}

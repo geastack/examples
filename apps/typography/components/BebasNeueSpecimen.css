@@ -1,0 +1,32 @@
+.bebas-neue-specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bebas-neue-specimen-title {
+  font-family: 'Bebas Neue';
+  font-size: 32px;
+  color: #38bdf8;
+}
+
+.bebas-neue-specimen-copy-large {
+  font-family: 'Bebas Neue';
+  font-size: 24px;
+}
+
+.bebas-neue-specimen-copy-small {
+  font-family: 'Bebas Neue';
+  font-size: 21px;
+}
+
+.bebas-neue-specimen-sample {
+  font-family: 'Bebas Neue';
+  font-size: 44px;
+  color: #f8fafc;
+}
+
+.bebas-neue-specimen-pangram {
+  font-family: 'Bebas Neue';
+  font-size: 22px;
+  color: #bae6fd;
+}

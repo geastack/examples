@@ -1,0 +1,34 @@
+{
+  "name": "@geastack/example-ios-device-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "gea": {
+    "id": "ios-device-showcase",
+    "name": "Ios Device Showcase",
+    "entry": "index.ts",
+    "runtime": "gea",
+    "targets": {
+      "ios": true,
+      "web": false,
+      "esp32": false
+    },
+    "launcher": {
+      "description": "",
+      "order": 0,
+      "accent": "",
+      "hidden": false
+    },
+    "icons": {
+      "32": "icons/icon-32.png",
+      "64": "icons/icon-64.png",
+      "128": "icons/icon-128.png",
+      "256": "icons/icon-256.png",
+      "512": "icons/icon-512.png"
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@geastack/vite-plugin-apple-native": "^0.1.3"
+  }
+}

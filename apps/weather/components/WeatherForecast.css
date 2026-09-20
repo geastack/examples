@@ -1,0 +1,174 @@
+.forecast {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 68px;
+  min-height: 0;
+  padding: 4px 0 0;
+}
+
+.section-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-title {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.forecast-tabs {
+  align-items: center;
+  display: flex;
+  gap: 2px;
+}
+
+.forecast-tab {
+  background: transparent;
+  border: 0;
+  border-radius: 666px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  height: 13px;
+  padding: 0 5px;
+}
+
+.forecast-tab.is-active {
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--ink);
+}
+
+/* Forecast hours/days toggle: driven by a class on the .forecast container so the
+   hour/day lists keep static roots and mount as reactive keyed lists. */
+.forecast .day-row {
+  display: none;
+}
+
+.forecast.show-days .hour-row {
+  display: none;
+}
+
+.forecast.show-days .day-row {
+  display: flex;
+}
+
+.forecast-label {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.1;
+  width: 100%;
+  text-align: center;
+}
+
+.forecast-temp {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.1;
+  width: 100%;
+  text-align: center;
+}
+
+.forecast-icon-slot {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 20px;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+  width: 24px;
+}
+
+.forecast-icon-img {
+  display: block;
+  height: 20px;
+  object-fit: contain;
+  pointer-events: none;
+  position: relative;
+  width: 24px;
+}
+
+.tiny-icon {
+  height: 8px;
+  position: relative;
+  width: 12px;
+}
+
+.tiny-icon::before,
+.tiny-icon::after {
+  content: '';
+  position: absolute;
+}
+
+.tiny-clear::before {
+  background: var(--accent);
+  border-radius: 50%;
+  height: 8px;
+  left: 2px;
+  top: 0;
+  width: 8px;
+}
+
+.tiny-cloud::before {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 666px;
+  height: 6px;
+  left: 1px;
+  top: 2px;
+  width: 11px;
+}
+
+.tiny-cloud::after {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 50%;
+  height: 10px;
+  left: 4px;
+  top: 0;
+  width: 10px;
+}
+
+.tiny-rain::before {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 666px;
+  height: 5px;
+  left: 1px;
+  top: 0;
+  width: 11px;
+}
+
+.tiny-rain::after {
+  background: var(--accent-2);
+  border-radius: 666px;
+  box-shadow: 4px 0 0 var(--accent-2);
+  height: 4px;
+  left: 3px;
+  top: 5px;
+  transform: rotate(16deg);
+  width: 2px;
+}
+
+.tiny-snow::before {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 666px;
+  height: 5px;
+  left: 1px;
+  top: 0;
+  width: 11px;
+}
+
+.tiny-snow::after {
+  background: var(--ink);
+  border-radius: 50%;
+  box-shadow: 4px 0 0 var(--ink);
+  height: 2px;
+  left: 3px;
+  top: 6px;
+  width: 2px;
+}

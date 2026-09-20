@@ -1,0 +1,24 @@
+.touch-pad {
+  position: relative;
+  margin-top: 16px;
+  height: 220px;
+  border: 1px dashed var(--diag-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-hint {
+  font-family: 'Oswald';
+  color: var(--diag-dim);
+  letter-spacing: 1px;
+}
+
+.touch-dot {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  background: var(--diag-accent);
+}

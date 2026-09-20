@@ -1,0 +1,63 @@
+/* Roomy touch boards: the whole overview + menu scrolls under a finger. The
+   narrow non-touch layout is a flex column defined in theme.css (@media). */
+.home-overview {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+}
+
+.overview-card {
+  padding: 12px 18px;
+  border-bottom: 2px solid var(--diag-line);
+}
+
+/* One-line system summary; only shown when the dense grid is hidden (narrow). */
+.overview-summary {
+  display: none;
+  font-family: 'Oswald';
+  font-size: 8px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  color: var(--diag-dim);
+}
+
+.overview-head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.overview-name {
+  font-family: 'Oswald';
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.overview-chip {
+  font-family: 'Inter';
+  font-size: 13px;
+  color: var(--diag-accent);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.ov-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.ov-k {
+  font-family: 'Inter';
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--diag-dim);
+}
+
+.ov-v {
+  font-family: 'Oswald';
+  font-size: 15px;
+}

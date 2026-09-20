@@ -1,0 +1,28 @@
+/* Bebas Neue for the centered FPS readout. The @font-face makes the family
+   available and the rule below makes the font baker emit a Bebas Neue atlas at
+   this size (× the board DPR), which the canvas `ctx.font = '..px Bebas Neue'`
+   then renders from. The class isn't attached to any element — declaring it is
+   what triggers the bake (the baker scans CSS, not canvas calls). */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+.bubble-grid-fps {
+  font-family: 'Bebas Neue';
+  font-size: 27px;
+}
+
+/* Oswald for the tapped-app name. Same mechanism as above: the @font-face makes
+   the family known and the sized rule is what makes the baker emit an Oswald
+   atlas at that size (x DPR), which ctx.font = '..px Oswald' then draws from.
+   The class is never attached to an element -- declaring it triggers the bake. */
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf');
+}
+
+.bubble-grid-label {
+  font-family: 'Oswald';
+  font-size: 18px;
+}

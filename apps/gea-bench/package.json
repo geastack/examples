@@ -1,0 +1,46 @@
+{
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.3.0",
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "@babel/parser": "latest",
+    "@babel/traverse": "latest",
+    "@babel/types": "latest",
+    "@geajs/vite-plugin": "^1.4.1",
+    "opentype.js": "^1.3.4",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "gea": {
+    "id": "gea-bench",
+    "name": "Gea Bench",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": true,
+      "rp2350": true,
+      "geaos": true
+    },
+    "nativeSources": [
+      "native/native_bench.cpp",
+      "native/vendor/yyjson/yyjson.c"
+    ],
+    "launcher": {
+      "description": "on-device perf benchmark (scroll view)",
+      "order": 999,
+      "accent": "#38bdf8",
+      "hidden": true
+    }
+  },
+  "name": "@geastack/example-gea-bench",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

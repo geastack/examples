@@ -1,0 +1,32 @@
+.literata-specimen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.literata-specimen-title {
+  font-family: 'Bebas Neue';
+  font-size: 32px;
+  color: #fcd34d;
+}
+
+.literata-specimen-copy-large {
+  font-family: 'Literata';
+  font-size: 18px;
+}
+
+.literata-specimen-copy-small {
+  font-family: 'Literata';
+  font-size: 16px;
+}
+
+.literata-specimen-sample {
+  font-family: 'Literata';
+  font-size: 30px;
+  color: #f8fafc;
+}
+
+.literata-specimen-pangram {
+  font-family: 'Literata';
+  font-size: 17px;
+  color: #fef3c7;
+}

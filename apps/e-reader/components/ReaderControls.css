@@ -1,0 +1,107 @@
+.reader-controls-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f2e9;
+  border-bottom: 3px solid #171713;
+  box-sizing: border-box;
+}
+
+.reader-controls-bar {
+  min-height: 86px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px 12px 22px;
+  border-bottom: 1px solid #aaa498;
+  box-sizing: border-box;
+}
+
+.reader-controls-summary {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.controls-title {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: 'Cossette Texte';
+  font-size: 20px;
+}
+
+.controls-position,
+.controls-close,
+.reader-control-action {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* The label text lives in child spans, which do not pick up the container's
+   font sizing at runtime — style them directly (standalone rules; grouped
+   lists with descendant selectors do not apply). */
+.controls-close span {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.reader-control-action span {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.controls-position { color: #68635a; }
+
+.controls-close {
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+}
+
+.reader-control-actions {
+  height: 76px;
+  display: flex;
+  flex-direction: row;
+}
+
+.reader-control-action {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #aaa498;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.reader-control-action:last-child {
+  border-right: none;
+}
+
+.reader-control-action.is-active {
+  background-color: #171713;
+  color: #fffdf6;
+}
+
+@media (monochrome) {
+  .reader-controls-overlay { background-color: #ffffff; }
+  .reader-control-action.is-active { background-color: #000000; color: #ffffff; }
+}

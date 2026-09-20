@@ -1,0 +1,208 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter-Regular.ttf');
+}
+
+.clock-root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #06111f;
+  overflow: hidden;
+}
+
+.clock-stage {
+  position: relative;
+  width: 82vw;
+  height: 82vw;
+}
+
+.clock-shadow {
+  position: absolute;
+  left: 0vw;
+  top: 0vw;
+  width: 82vw;
+  height: 82vw;
+  border-radius: 41vw;
+  background-color: #111827;
+}
+
+.clock-face {
+  position: absolute;
+  left: 3.396vw;
+  top: 3.396vw;
+  width: 75.207vw;
+  height: 75.207vw;
+  border-radius: 37.604vw;
+  border-width: 3px;
+  border-color: #d4af37;
+  background-color: #e7e0ce;
+}
+
+.clock-marker {
+  position: absolute;
+  width: 1.456vw;
+  height: 1.456vw;
+  border-radius: 0.728vw;
+  background-color: #53606f;
+}
+
+.clock-marker-major {
+  width: 2.426vw;
+  height: 2.426vw;
+  border-radius: 1.213vw;
+  background-color: #d4af37;
+}
+
+.clock-marker-12 {
+  left: 39.787vw;
+  top: 6.065vw;
+}
+
+.clock-marker-1 {
+  left: 57.254vw;
+  top: 11.16vw;
+}
+
+.clock-marker-2 {
+  left: 69.385vw;
+  top: 23.533vw;
+}
+
+.clock-marker-3 {
+  left: 73.509vw;
+  top: 39.787vw;
+}
+
+.clock-marker-4 {
+  left: 69.385vw;
+  top: 57.254vw;
+}
+
+.clock-marker-5 {
+  left: 57.254vw;
+  top: 69.385vw;
+}
+
+.clock-marker-6 {
+  left: 39.787vw;
+  top: 73.509vw;
+}
+
+.clock-marker-7 {
+  left: 23.29vw;
+  top: 69.385vw;
+}
+
+.clock-marker-8 {
+  left: 11.16vw;
+  top: 57.254vw;
+}
+
+.clock-marker-9 {
+  left: 6.065vw;
+  top: 39.787vw;
+}
+
+.clock-marker-10 {
+  left: 11.16vw;
+  top: 23.533vw;
+}
+
+.clock-marker-11 {
+  left: 23.29vw;
+  top: 11.16vw;
+}
+
+.clock-number {
+  position: absolute;
+  font-family: 'Inter';
+  color: #1f2937;
+  font-size: 22px;
+  text-align: center;
+}
+
+.clock-number-12 {
+  left: 37.361vw;
+  top: 11.16vw;
+  width: 9.704vw;
+}
+
+.clock-number-3 {
+  left: 68.414vw;
+  top: 38.331vw;
+  width: 7.278vw;
+}
+
+.clock-number-6 {
+  left: 37.361vw;
+  top: 64.047vw;
+  width: 9.704vw;
+}
+
+.clock-number-9 {
+  left: 8.249vw;
+  top: 38.331vw;
+  width: 7.278vw;
+}
+
+.clock-hand {
+  position: absolute;
+  transform-origin: 50% 100%;
+  overflow: visible;
+  transform: rotate(0deg);
+}
+
+.clock-hour-hand {
+  left: 39.787vw;
+  top: 17.225vw;
+  width: 2.426vw;
+  height: 24.26vw;
+  background-color: #1f2937;
+}
+
+.clock-minute-hand {
+  left: 40.03vw;
+  top: 8.734vw;
+  width: 1.941vw;
+  height: 32.751vw;
+  background-color: #b45309;
+}
+
+.clock-second-hand {
+  left: 40.515vw;
+  top: 5.822vw;
+  width: 0.97vw;
+  height: 35.663vw;
+  background-color: #e11d48;
+}
+
+.clock-center-cap {
+  position: absolute;
+  left: 39.544vw;
+  top: 40.03vw;
+  width: 2.911vw;
+  height: 2.911vw;
+  border-radius: 1.456vw;
+  background-color: #1f2937;
+}
+
+.clock-time {
+  margin-top: 4vw;
+  font-family: 'Inter';
+  color: #d4af37;
+  font-size: 20px;
+  text-align: center;
+}
+
+.clock-label {
+  margin-top: 1.6vw;
+  font-family: 'Inter';
+  color: #94a3b8;
+  font-size: 14px;
+  text-align: center;
+}

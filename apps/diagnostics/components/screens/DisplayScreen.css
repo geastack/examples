@@ -1,0 +1,14 @@
+.gray-ramp { display: flex; height: 40px; margin: 16px 0; }
+.gray-ramp .g { flex: 1; }
+.g0 { background: #000; } .g1 { background: #333; } .g2 { background: #666; }
+.g3 { background: #999; } .g4 { background: #ccc; } .g5 { background: #fff; }
+
+.rainbow-ramp { display: flex; height: 40px; margin: 16px 0; }
+.rainbow-ramp .r { flex: 1; }
+.r0 { background: #ff2d2d; } /* red */
+.r1 { background: #ff9500; } /* orange */
+.r2 { background: #ffe600; } /* yellow */
+.r3 { background: #33d15b; } /* green */
+.r4 { background: #17c3d6; } /* cyan */
+.r5 { background: #2d6cff; } /* blue */
+.r6 { background: #a24bff; } /* violet */

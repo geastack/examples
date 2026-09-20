@@ -1,0 +1,329 @@
+/* Camera studio. Two STATES (toggled by tapping the viewfinder -> `studio-shell.fullscreen`):
+   - Fullscreen: the camera owns the whole panel, controls hidden (`.studio-shell.fullscreen`).
+   - Framed: a 4:3 viewfinder + a controls strip beside it (the default `.studio-shell` rules).
+   Plus a media query that sizes the framed state for whichever panel it runs on:
+   - Large landscape (e.g. the 7" 1280x720): big viewfinder left, controls panel right.
+   - Small landscape (e.g. the 3.5" 480x320): 320x240 viewfinder left, narrow strip right.
+   The app launches fullscreen; a tap drops to framed, another tap restores fullscreen. */
+
+/* Oswald is rasterized into the app at the sizes used below (the font generator
+   scans this @font-face + every font-family/font-size pair in this stylesheet). */
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../../assets/fonts/Oswald-Regular.ttf');
+}
+
+.studio-root {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b0d12;
+  overflow: hidden;
+}
+
+.studio-shell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b0d12;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 100vh;
+}
+
+/* The viewfinder is sized entirely by CSS — the live preview scales to fit it. */
+.viewfinder-frame {
+  width: 740px;
+  height: 558px;
+  border-width: 3px;
+  border-color: #2a3346;
+  background-color: #05070b;
+  padding: 6px;
+}
+
+.viewfinder {
+  width: 728px;
+  height: 546px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 440px;
+  height: 100vh;
+}
+
+/* Full-screen mode (default at launch; toggled by tapping the viewfinder). The
+   viewfinder fills the whole panel and the controls are hidden — the camera owns
+   the entire screen. Tapping it removes `.fullscreen` to reveal the framed layout
+   above. Uses compound + descendant selectors (gea supports both). */
+.studio-shell.fullscreen .stage {
+  width: 100vw;
+  height: 100vh;
+}
+
+.studio-shell.fullscreen .viewfinder-frame {
+  width: 100vw;
+  height: 100vh;
+  border-width: 0;
+  padding: 0;
+}
+
+.studio-shell.fullscreen .viewfinder {
+  width: 100vw;
+  height: 100vh;
+}
+
+.studio-shell.fullscreen .panel {
+  display: none;
+}
+
+.title {
+  font-family: 'Oswald';
+  color: #e7ecff;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.status {
+  font-family: 'Oswald';
+  color: #8aa0c8;
+  font-size: 19px;
+  margin-bottom: 28px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.chip {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 116px;
+  height: 58px;
+  margin: 0 8px;
+  border-radius: 16px;
+  background-color: #171c28;
+  color: #cdd9f5;
+  font-family: 'Oswald';
+  font-size: 22px;
+  border-width: 2px;
+  border-color: #2a3346;
+}
+
+.shutter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 16px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  color: #0b0d12;
+  font-family: 'Oswald';
+  font-size: 24px;
+  border-width: 4px;
+  border-color: #cdd9f5;
+}
+
+.rec {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 16px;
+  border-radius: 50px;
+  background-color: #f43f5e;
+  color: #ffffff;
+  font-family: 'Oswald';
+  font-size: 24px;
+  border-width: 4px;
+  border-color: #ff8fa3;
+}
+
+/* Active states — make a tapped control's value visibly stick. */
+.chip-on {
+  background-color: #0e3a44;
+  border-color: #22d3ee;
+  color: #e7ffff;
+}
+
+.rec-on {
+  background-color: #ff1f45;
+  border-color: #ffffff;
+}
+
+/* Small landscape screens (3.5" 480x320): FRAMED layout — a 4:3 viewfinder on the
+   left, a narrow controls strip on the right. This is the non-fullscreen state; the
+   `.studio-shell.fullscreen` rules above (higher specificity, no media query) still win when
+   the class is present, so a tap toggles cleanly between this and fullscreen. Crucially
+   this block must NOT force the viewfinder to 100vw/100vh — doing that kept the camera
+   fullscreen even after the toggle, so it repainted over the just-revealed controls. */
+@media (max-width: 480px) {
+  .stage {
+    width: 336px;
+    height: 100vh;
+  }
+
+  .viewfinder-frame {
+    width: 320px;
+    height: 240px;
+    border-width: 2px;
+    padding: 0;
+  }
+
+  .viewfinder {
+    width: 316px;
+    height: 236px;
+  }
+
+  .panel {
+    width: 144px;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .status {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .row {
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+  .chip {
+    width: 60px;
+    height: 30px;
+    margin: 0 4px;
+    border-radius: 9px;
+    font-size: 14px;
+  }
+
+  .shutter {
+    width: 46px;
+    height: 46px;
+    margin: 0 6px;
+    border-radius: 23px;
+    font-size: 13px;
+    border-width: 3px;
+  }
+
+  .rec {
+    width: 46px;
+    height: 46px;
+    margin: 0 6px;
+    border-radius: 23px;
+    font-size: 13px;
+    border-width: 3px;
+  }
+}
+
+/* Native portrait panels (Tab5): keep the UI in portrait. With DPR 2 the
+   logical viewport is 360x640 CSS px, so these px values land at 2x physical
+   size on the 720x1280 panel. */
+@media (orientation: portrait) {
+  .studio-shell {
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    transform-origin: 0 0;
+    transform: none;
+  }
+
+  .studio-shell.fullscreen {
+    width: 100vw;
+    height: 100vh;
+    transform: none;
+  }
+
+  .stage {
+    width: 360px;
+    height: 445px;
+  }
+
+  .viewfinder-frame {
+    width: 320px;
+    height: 425px;
+    border-width: 2px;
+    padding: 0;
+  }
+
+  .viewfinder {
+    width: 316px;
+    height: 421px;
+  }
+
+  .panel {
+    width: 360px;
+    height: 170px;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .status {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .row {
+    flex-direction: row;
+    margin-bottom: 8px;
+  }
+
+  .chip {
+    width: 60px;
+    height: 30px;
+    margin: 0 4px;
+    border-radius: 9px;
+    font-size: 14px;
+  }
+
+  .shutter {
+    width: 46px;
+    height: 46px;
+    margin: 0 6px;
+    border-radius: 23px;
+    font-size: 13px;
+    border-width: 3px;
+  }
+
+  .rec {
+    width: 46px;
+    height: 46px;
+    margin: 0 6px;
+    border-radius: 23px;
+    font-size: 13px;
+    border-width: 3px;
+  }
+}

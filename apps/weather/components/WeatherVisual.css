@@ -1,0 +1,31 @@
+.weather-visual {
+  height: 220px;
+  margin-right: 0;
+  right: -41px;
+  top: -21px;
+  pointer-events: none;
+  position: absolute;
+  width: 220px;
+  z-index: 1;
+}
+
+.weather-visual img,
+.weather-img {
+  display: block;
+  filter: drop-shadow(0 12px 15px rgba(5, 17, 29, 0.24));
+  height: 100%;
+  left: 0;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.weather-img.is-hidden {
+  opacity: 0;
+}
+
+.weather-visual span {
+  display: none;
+}

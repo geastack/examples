@@ -1,0 +1,67 @@
+.city-rail {
+  align-items: stretch;
+  display: flex;
+  flex: 0 0 35px;
+  gap: 4px;
+  margin-bottom: -10px;
+  margin-top: -5px;
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 15px), transparent 100%);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 8px 0 0;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.city-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.city-chip {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  border-radius: 6px;
+  color: var(--ink);
+  display: flex;
+  flex: 0 0 auto;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 4px;
+  justify-content: flex-start;
+  min-width: 0;
+  padding: 5px 6px 10px;
+  scroll-snap-align: start;
+}
+
+.city-chip.is-active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.city-chip.is-hidden {
+  display: none;
+}
+
+.city-chip-name {
+  display: block;
+  flex: 0 1 auto;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.city-chip-temp {
+  flex: 0 0 auto;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}

@@ -1,0 +1,16 @@
+.todo-empty-row {
+  display: flex;
+  flex-direction: column;
+  height: 36px;
+  border-radius: 6px;
+  border-width: 0.5px;
+  border-color: #1f2937;
+  background-color: #0b1120;
+  align-items: center;
+  justify-content: center;
+}
+.todo-empty-label {
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #475569;
+}

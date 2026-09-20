@@ -1,0 +1,53 @@
+.hour-row {
+  display: flex;
+  gap: 0;
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 15px), transparent 100%);
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 6px;
+  padding-top: 0;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  padding-right: 8px;
+}
+
+.hour-row::-webkit-scrollbar {
+  display: none;
+}
+
+.hour {
+  align-content: center;
+  display: grid;
+  flex: 0 0 26px;
+  /* flex-basis: 43px; */
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 2px;
+  justify-items: center;
+  min-width: 0;
+  padding: 3px 1px;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.hour-divider {
+  background: rgba(255, 255, 255, 0.14);
+  bottom: 0;
+  display: block;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.hour:first-child {
+  border-left: 0;
+}
+
+@media (min-resolution: 1.75dppx) {
+  .hour-row {
+    padding-top: 5px;
+  }
+}

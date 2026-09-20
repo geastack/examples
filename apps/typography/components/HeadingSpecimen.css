@@ -1,0 +1,45 @@
+.typography-heading-card {
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+  border-color: #273244;
+  border-radius: 12px;
+  padding: 14px;
+  background-color: #101722;
+  gap: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter';
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}

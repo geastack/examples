@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../../assets/fonts/Oswald-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Cossette Texte';
+  src: url('../../../assets/fonts/CossetteTexte-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Literata';
+  src: url('../../../assets/fonts/Literata-Regular.ttf');
+}
+
+.typography-app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #080c14;
+  color: #f8fafc;
+  font-family: 'Inter';
+  font-size: 16px;
+  padding: 22px 22px 34px 22px;
+  overflow: scroll;
+  gap: 18px;
+}

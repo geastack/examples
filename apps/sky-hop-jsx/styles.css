@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+.sky-hop-hud {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.sky-hop-title {
+  font-family: 'Bebas Neue';
+  position: absolute;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.sky-hop-hud-text {
+  position: absolute;
+  font-family: 'Inter';
+  font-size: 12px;
+  color: #ffffff;
+  text-align: right;
+}
+
+.sky-hop-hud-score {
+  position: absolute;
+  font-family: 'Inter';
+  font-size: 12px;
+  color: #f8c44d;
+  text-align: center;
+}
+
+.sky-hop-button-glyph {
+  font-family: 'Bebas Neue';
+  font-size: 36px;
+}
+
+.sky-hop-restart-glyph {
+  font-family: 'Bebas Neue';
+  font-size: 18px;
+}
+
+.sky-hop-overlay-title {
+  font-family: 'Bebas Neue';
+  font-size: 30px;
+}
+
+.sky-hop-overlay-score {
+  font-family: 'Inter';
+  font-size: 16px;
+}

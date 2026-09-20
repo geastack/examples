@@ -1,0 +1,50 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit",
+    "index:books": "node scripts/index-books.mjs",
+    "test": "vitest run",
+    "test:native": "node scripts/test-native-parser.mjs"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.3.0",
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "@geajs/vite-plugin": "^1.4.1",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  },
+  "gea": {
+    "id": "e-reader",
+    "name": "Folio Reader",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": true,
+      "geaos": false
+    },
+    "webPreload": [
+      {
+        "source": "books",
+        "target": "/sdcard/books"
+      }
+    ],
+    "nativeSources": [
+      "native/epub_archive.cpp"
+    ],
+    "launcher": {
+      "description": "EPUB reader for removable storage",
+      "order": 24,
+      "accent": "#2f50a4",
+      "hidden": false
+    }
+  },
+  "name": "@geastack/example-e-reader",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

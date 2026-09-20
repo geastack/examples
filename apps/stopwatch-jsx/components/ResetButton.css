@@ -1,0 +1,17 @@
+.stopwatch-reset-button {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10vw;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2c2c2e;
+  border-color: #3a3a3c;
+}
+
+.stopwatch-reset-label {
+  font-family: 'Inter';
+  font-size: 17px;
+  color: #f5f5f7;
+}

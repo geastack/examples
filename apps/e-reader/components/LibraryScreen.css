@@ -1,0 +1,248 @@
+.library-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #f5f2e9;
+}
+
+.library-header {
+  height: 110px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 14px;
+  border-bottom: 2px solid #171713;
+  box-sizing: border-box;
+  gap: 12px;
+}
+
+.brand-block {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #aaa498;
+  box-sizing: border-box;
+}
+
+.brand-name {
+  display: block;
+  font-family: 'Oswald';
+  font-size: 31px;
+  line-height: 34px;
+  letter-spacing: 2px;
+}
+
+.brand-edition,
+.source-label,
+.source-status,
+.filter-tab {
+  font-family: 'Inter';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.brand-edition {
+  display: block;
+  margin-top: 4px;
+  color: #6d685f;
+  white-space: nowrap;
+}
+
+.source-block {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+}
+
+.source-dot {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid #171713;
+  background-color: #f5f2e9;
+}
+
+.source-dot.is-mounted {
+  background-color: #2f50a4;
+  border-color: #2f50a4;
+}
+
+.source-copy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.source-label,
+.source-status {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.source-status {
+  color: #777166;
+}
+
+.scan-button {
+  width: 100px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #171713;
+  box-sizing: border-box;
+  font-size: 16px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.library-filters {
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #aaa498;
+}
+
+.filter-tab {
+  height: 60px;
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-right: 1px solid #c8c2b7;
+  box-sizing: border-box;
+  color: #68635a;
+}
+
+.filter-tab.is-active {
+  background-color: #171713;
+  color: #fffdf6;
+}
+
+.book-list {
+  min-height: 0;
+  flex: 1;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  /* No top padding: row k's origin must sit at exactly k * snap-step so the
+     release snap lands rows flush with the viewport top (a padded origin
+     leaves the previous row's tail peeking above every snapped position). */
+  padding: 0 22px 20px;
+  box-sizing: border-box;
+}
+
+/* 3-up cover grid: implicit rows size to their content (align-content
+   defaults to start in the engine's grid), unlike wrapped flex lines which
+   stretch to fill the scroll viewport. */
+.book-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  justify-items: center;
+}
+
+.empty-library {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.empty-title {
+  font-family: 'Oswald';
+  font-size: 28px;
+}
+
+.empty-copy {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #68635a;
+}
+
+@media (max-width: 360px) {
+  .library-header {
+    position: relative;
+    height: 132px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .brand-block {
+    width: 100%;
+    height: 56px;
+    flex-shrink: 0;
+    padding-right: 106px;
+    border-right: 0;
+  }
+
+  .source-block {
+    width: 100%;
+    min-height: 44px;
+    flex: 0;
+  }
+
+  .source-copy {
+    gap: 3px;
+  }
+
+  .source-label,
+  .source-status {
+    line-height: 19px;
+  }
+
+  .scan-button {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: 96px;
+    height: 46px;
+  }
+}
+
+@media (monochrome) {
+  .library-screen,
+  .source-dot {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .source-dot.is-mounted {
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  .filter-tab.is-active {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}

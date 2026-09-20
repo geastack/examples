@@ -1,0 +1,241 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../../assets/fonts/BebasNeue-Regular.ttf');
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.temperature-dial-root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter';
+}
+
+.temperature-dial-shell {
+  position: relative;
+  width: 96vmin;
+  height: 96vmin;
+}
+
+.temperature-dial-orbit {
+  position: absolute;
+  left: 3%;
+  top: 3%;
+  width: 94%;
+  height: 94%;
+  border-radius: 50%;
+}
+
+.temperature-dial-climate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.temperature-dial-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.temperature-dial-tick {
+  position: absolute;
+  border-radius: 1.2%;
+  background-color: #0a1626;
+}
+
+.temperature-dial-filled {
+  background-color: #ffffff;
+}
+
+.temperature-dial-face {
+  position: absolute;
+  left: 18%;
+  top: 20%;
+  width: 64%;
+  height: 54%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.temperature-dial-kicker {
+  width: 100%;
+  text-align: center;
+  font-size: 4.375vmin;
+  margin-bottom: 0.625vmin;
+  transform: translateY(14px);
+}
+
+.temperature-dial-value {
+  font-family: 'Bebas Neue';
+  width: 100%;
+  text-align: center;
+  font-size: 26.875vmin;
+  line-height: 1;
+}
+
+.temperature-dial-mode {
+  width: 100%;
+  text-align: center;
+  font-size: 6.25vmin;
+}
+
+.temperature-dial-subtitle {
+  margin-top: 0.9375vmin;
+  font-size: 3.75vmin;
+  width: 100%;
+  text-align: center;
+}
+
+.temperature-dial-fan {
+  margin-top: 3.75vmin;
+  height: 8.125vmin;
+  padding-left: 3.4375vmin;
+  padding-right: 3.4375vmin;
+  border-radius: 4.0625vmin;
+  background-color: #101d31;
+  border-width: 1px;
+  border-color: #32425a;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.1875vmin;
+}
+
+.temperature-dial-fan-dot {
+  width: 1.875vmin;
+  height: 1.875vmin;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.temperature-dial-fan-text {
+  font-size: 3.75vmin;
+  color: #dbe7f3;
+}
+
+.temperature-dial-controls {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.temperature-dial-control,
+.temperature-dial-preset {
+  position: absolute;
+  height: 8.4375vmin;
+  border-radius: 4.375vmin;
+  background-color: #ffffff;
+  color: #07101f;
+  border-width: 1px;
+  border-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temperature-dial-control {
+  width: 8.4375vmin;
+  top: 79.6%;
+  transform: translate(-50%, -50%);
+}
+
+.temperature-dial-control-minus {
+  left: 31.6%;
+}
+
+.temperature-dial-control-plus {
+  left: 68.4%;
+}
+
+.temperature-dial-preset {
+  width: 18.75vmin;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+}
+
+.temperature-dial-control-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4.0625vmin;
+  height: 4.0625vmin;
+  transform: translate(-50%, -50%);
+}
+
+.temperature-dial-control-bar {
+  position: absolute;
+  background-color: #07101f;
+  border-radius: 1px;
+}
+
+.temperature-dial-control-bar-horizontal {
+  left: 0;
+  top: 1.5625vmin;
+  width: 4.0625vmin;
+  height: 0.9375vmin;
+}
+
+.temperature-dial-control-bar-vertical {
+  left: 1.5625vmin;
+  top: 0;
+  width: 0.9375vmin;
+  height: 4.0625vmin;
+}
+
+.temperature-dial-preset-label {
+  font-size: 3.75vmin;
+  color: #07101f;
+}
+
+.temperature-dial-range-label {
+  position: absolute;
+  width: 12.5vmin;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-size: 8.75vmin;
+  line-height: 1;
+  color: #e2e8f0;
+  transform: translateX(-50%);
+}
+
+.temperature-dial-range-left {
+  left: 29.4%;
+  bottom: 26%;
+}
+
+.temperature-dial-range-right {
+  left: 70.6%;
+  bottom: 26%;
+}

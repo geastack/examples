@@ -1,0 +1,10 @@
+{
+  "width": 1280,
+  "height": 800,
+  "minWidth": 800,
+  "minHeight": 500,
+  "title": "Three ANGLE Metal",
+  "fullSizeContentView": true,
+  "titleBarTransparent": true,
+  "titleVisibility": "hidden"
+}

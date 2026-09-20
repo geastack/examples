@@ -1,0 +1,26 @@
+.todo-row-title {
+  flex: 1;
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #f8fafc;
+}
+
+.todo-text {
+  flex: 1;
+  font-family: 'Inter';
+  font-size: 16px;
+  color: #f8fafc;
+}
+
+.todo-text-done {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.todo-row-title-open {
+  color: #f8fafc;
+}
+
+.todo-row-title-done {
+  color: #94a3b8;
+}

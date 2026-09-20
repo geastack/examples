@@ -1,0 +1,46 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.3.0",
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "@geajs/vite-plugin": "^1.4.1",
+    "typescript": "6.0.2",
+    "vite": "8.0.8",
+    "vitest": "latest"
+  },
+  "gea": {
+    "id": "maps",
+    "name": "Maps",
+    "entry": "index.device.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": true,
+      "geaos": false
+    },
+    "icons": {
+      "32": "icons/icon-32.png",
+      "64": "icons/icon-64.png",
+      "128": "icons/icon-128.png",
+      "256": "icons/icon-256.png",
+      "512": "icons/icon-512.png"
+    },
+    "launcher": {
+      "description": "OpenStreetMap viewer",
+      "order": 50,
+      "accent": "#3b82f6",
+      "hidden": false
+    }
+  },
+  "name": "@geastack/example-maps",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

@@ -1,0 +1,83 @@
+.metrics {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0;
+  min-width: 100%;
+  width: max-content;
+  align-self: flex-start;
+  justify-content: flex-start;
+  overflow: visible;
+  padding: 3px 0;
+  position: relative;
+}
+
+.metrics-rule {
+  background: rgba(255, 255, 255, 0.22);
+  display: block;
+  height: 1px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
+
+.metrics-rule-top {
+  top: 0;
+}
+
+.metrics-rule-bottom {
+  bottom: 0;
+}
+
+.metric {
+  align-items: baseline;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.metric:first-child {
+  padding-left: 0;
+}
+
+.metric:last-child {
+  padding-right: 0;
+}
+
+.metric-divider {
+  background: rgba(255, 255, 255, 0.22);
+  bottom: 2px;
+  display: block;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 2px;
+  width: 1px;
+}
+
+.metric-label {
+  color: var(--muted);
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.metric .metric-value {
+  color: var(--ink);
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.05;
+  padding-left: 2px;
+  text-transform: none;
+  white-space: nowrap;
+}

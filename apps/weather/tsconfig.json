@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "allowImportingTsExtensions": true,
+    "types": []
+  },
+  "include": [
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.d.ts",
+    "../../node_modules/@geajs/vite-plugin/gea-env.d.ts"
+  ],
+  "exclude": [
+    "vite.config.ts"
+  ]
+}

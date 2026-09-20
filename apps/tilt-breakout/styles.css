@@ -1,0 +1,120 @@
+.breakout-app {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.hud {
+  position: absolute;
+  left: 3.902vw;
+  top: 3.586vh;
+  color: #e5e7eb;
+  font-size: 18px;
+}
+
+/* FPS counter at the top, after the Lives readout (top-right). */
+.fps-hud {
+  position: absolute;
+  right: 3.902vw;
+  top: 3.586vh;
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+.brick-field {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+}
+
+.brick {
+  position: absolute;
+  width: 13.171vw;
+  height: 4.390vw;
+  border-radius: 1.220vw;
+}
+
+.paddle {
+  position: absolute;
+  left: 0;
+  top: 85.657vh;
+  width: 22.439vw;
+  height: 3.415vw;
+  border-radius: 1.707vw;
+  background-color: #f8fafc;
+}
+
+.ball {
+  position: absolute;
+  width: 3.902vw;
+  height: 3.902vw;
+  border-radius: 1.951vw;
+  background-color: #fb7185;
+}
+
+/* Monochrome panels (e-paper) are white paper, not a backlit screen. Rendered
+   as authored, this game is a full-screen black field: worst case for contrast,
+   and the near-white paddle disappears completely. Repaint it dark-on-white.
+
+   Brick fills are NOT overridable here — BrickField sets backgroundColor inline
+   per brick, which wins over any rule in this block. Their saturated hues land
+   on mid grey, so give them an outline to stay legible against white paper. */
+@media (monochrome) {
+  .breakout-app {
+    background-color: #ffffff;
+  }
+
+  .hud,
+  .fps-hud {
+    color: #000000;
+  }
+
+  .paddle {
+    background-color: #000000;
+  }
+
+  .ball {
+    background-color: #000000;
+  }
+
+  .brick {
+    border-width: 1px;
+    border-color: #000000;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 900px) {
+  .hud {
+    top: 2.4vh;
+    font-size: 16px;
+  }
+
+  .status-line {
+    top: 89vh;
+    font-size: 11px;
+  }
+
+  .brick {
+    height: 2.2vw;
+    border-radius: 0.9vw;
+  }
+
+  .paddle {
+    height: 2.1vw;
+  }
+}
+
+@media (max-width: 760px) {
+  .hud {
+    font-size: 15px;
+  }
+
+  .status-line {
+    top: 94vh;
+    font-size: 11px;
+  }
+}

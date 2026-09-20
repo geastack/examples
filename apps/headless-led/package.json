@@ -1,0 +1,31 @@
+{
+  "name": "@geastack/example-headless-led",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/core": "^0.1.23"
+  },
+  "devDependencies": {
+    "typescript": "6.0.2"
+  },
+  "gea": {
+    "id": "headless-led",
+    "name": "Headless LED",
+    "entry": "index.ts",
+    "runtime": "gea",
+    "targets": {
+      "esp32": true
+    },
+    "launcher": {
+      "description": "BOOT toggles the onboard LED — no display anywhere in it",
+      "order": 998,
+      "accent": "#f59e0b",
+      "hidden": true
+    }
+  },
+  "license": "MIT"
+}

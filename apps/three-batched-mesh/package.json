@@ -1,0 +1,20 @@
+{
+  "name": "@geastack/example-three-batched-mesh",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@geastack/apple": "^0.2.8",
+    "@geastack/native-webgl-angle": "^0.1.6",
+    "three": "^0.185.0"
+  },
+  "gea": {
+    "id": "three-batched-mesh",
+    "name": "Three BatchedMesh Validation",
+    "entry": "index.tsx",
+    "runtime": "apple-native",
+    "targets": { "macos": true, "web": false, "esp32": false, "ios": false },
+    "nativeSources": ["native/angle_webgl_host.mm"],
+    "launcher": { "description": "Native BatchedMesh rendering validation", "hidden": true }
+  }
+}

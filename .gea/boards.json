@@ -1,0 +1,22 @@
+{
+  "amoled": {
+    "target": "esp32-s3-touch-amoled-2.06",
+    "adapter": "esp32-idf",
+    "transports": {
+      "usbSerial": {
+        "serial": "80:B5:4E:DA:73:88"
+      },
+      "ota": {
+        "host": "192.168.1.100"
+      }
+    }
+  },
+  "s3-devkit": {
+    "target": "esp32-s3-devkit-n16r8",
+    "transports": {
+      "usbSerial": {
+        "serial": "5C93215501"
+      }
+    }
+  }
+}

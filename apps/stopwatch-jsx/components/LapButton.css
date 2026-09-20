@@ -1,0 +1,24 @@
+.stopwatch-lap-button {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10vw;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2c2c2e;
+  border-color: #3a3a3c;
+}
+
+.stopwatch-lap-button-label {
+  font-family: 'Inter';
+  font-size: 17px;
+}
+
+.stopwatch-lap-button-label-primary {
+  color: #f5f5f7;
+}
+
+.stopwatch-lap-button-label-muted {
+  color: #8e8e93;
+}

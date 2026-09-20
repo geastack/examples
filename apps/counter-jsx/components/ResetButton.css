@@ -1,0 +1,19 @@
+.counter-reset-button {
+  display: flex;
+  flex-direction: column;
+  width: 104px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #111827;
+  border-width: 2px;
+  border-color: #475569;
+  justify-content: center;
+  align-items: center;
+}
+.counter-reset-label {
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #cbd5e1;
+  text-align: center;
+  line-height: 1;
+}

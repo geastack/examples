@@ -1,0 +1,206 @@
+/* Real UI fonts (baked into the target's glyph atlas from these TTFs). Without
+   these @font-face declarations the CSS 'Oswald'/'Inter' fall back to the
+   built-in bitmap font. Oswald = condensed display face for labels/values,
+   Inter = body/detail text. */
+@font-face {
+  font-family: 'Oswald';
+  src: url('../../assets/fonts/Oswald-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+:root {
+  --diag-bg: #0b0e14;
+  --diag-fg: #e6edf3;
+  --diag-dim: #8b949e;
+  --diag-line: #1f2630;
+  --diag-accent: #0ea5e9;
+  --badge-live: #2ea043;
+  --badge-detected: #d29922;
+  --badge-absent: #6e7681;
+}
+
+.diag-root {
+  position: absolute;
+  inset: 0;
+  background: var(--diag-bg);
+  color: var(--diag-fg);
+  font-family: 'Inter';
+  overflow: hidden;
+}
+
+/* Content fills the root; the button-hint bar is hidden on roomy touch boards
+   (they don't need it) and only appears in the narrow non-touch layout. */
+.diag-body {
+  position: absolute;
+  inset: 0;
+}
+
+.hint-bar {
+  display: none;
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--diag-line);
+}
+
+.state-badge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: 'Oswald';
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.badge-live { background: var(--badge-live); color: #fff; }
+.badge-detected { background: var(--badge-detected); color: #0b0e14; }
+.badge-absent { background: var(--badge-absent); color: #0b0e14; }
+
+@media (monochrome) {
+  :root {
+    --diag-bg: #ffffff;
+    --diag-fg: #000000;
+    --diag-dim: #333333;
+    --diag-line: #000000;
+    --badge-live: #000000;
+    --badge-detected: #000000;
+    --badge-absent: #666666;
+  }
+
+  .state-badge { color: #fff; border: 1px solid #000; }
+  .badge-absent { background: #fff; color: #000; }
+}
+
+/* Narrow non-touch layout (e.g. the M5StickC S3: 135x240 native = a ~67x120 CSS
+   canvas at DPR 2). The media query resolves against the CSS viewport, so this
+   only matches sub-140px boards — the m5paper (~540) and amoled (~273) keep
+   their default sizing. This engine's flex layout doesn't reliably clip
+   overflow, so rather than scroll a clipped column the home is a flex column
+   with a naturally-short header (dense grid hidden, one-line summary shown) and
+   the menu renders only the windowed slice of rows the store says fits. */
+@media (max-width: 140px) {
+  /* Root becomes a column: content on top, a persistent button-hint bar pinned
+     at the bottom so the two-button scheme is always self-explanatory. */
+  .diag-root { display: flex; flex-direction: column; }
+  .diag-body { position: relative; inset: auto; flex: 1 1 auto; min-height: 0; }
+  .hint-bar {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    height: 13px;
+    border-top: 1px solid var(--diag-line);
+  }
+  .hint-item {
+    font-family: 'Oswald';
+    font-size: 6px;
+    letter-spacing: 0;
+    white-space: nowrap;
+    color: var(--diag-accent);
+  }
+
+  /* Home: flex column, short header on top, menu filling the rest. */
+  .home-overview { display: flex; flex-direction: column; overflow: hidden; }
+  .overview-card { flex: 0 0 auto; padding: 6px 8px; }
+  .overview-head { margin-bottom: 2px; }
+  .overview-name { font-size: 13px; white-space: nowrap; overflow: hidden; }
+  .overview-chip { font-size: 7px; white-space: nowrap; overflow: hidden; }
+  .overview-grid { display: none; }
+  .overview-summary { display: block; }
+
+  /* Menu: single-line rows, no wrapping — the store windows the row count. */
+  .menu-viewport { flex: 1 1 auto; }
+  .diag-menu-row { height: 16px; padding: 1px 7px; gap: 5px; border-bottom-width: 1px; }
+  .menu-row-title { font-size: 7px; white-space: nowrap; overflow: hidden; }
+  .menu-row-detail { display: none; }
+  .state-badge { font-size: 5px; padding: 1px 3px; flex-shrink: 0; }
+
+  /* Subscreens: compact chrome, titles clipped instead of wrapping mid-word. A
+     short header + reserved control strip leave the middle for content. */
+  .screen-head { height: 22px; padding: 3px 8px; gap: 6px; }
+  .screen-scroll { overflow: hidden; bottom: 20px; }
+  .screen-scroll-inner { padding-top: 22px; }
+  .screen-title { font-size: 11px; white-space: nowrap; overflow: hidden; flex: 1 1 auto; }
+  .screen-body { padding: 3px 8px; }
+
+  /* Control strip: the '‹ Back' + action chips. KEY2 moves the highlight (is-on),
+     KEY1 presses it. Pinned just above the button-hint bar. */
+  .ctrl-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 4px;
+    background: var(--diag-bg);
+    border-top: 1px solid var(--diag-line);
+  }
+  .ctrl-chip {
+    font-family: 'Oswald';
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border: 1px solid var(--diag-line);
+    border-radius: 3px;
+    color: var(--diag-dim);
+    white-space: nowrap;
+  }
+  .ctrl-chip.is-on {
+    background: var(--diag-accent);
+    color: #05141f;
+    border-color: var(--diag-accent);
+  }
+  /* Stack the label above the value: a tiny caption over a full-width value line.
+     Side-by-side can't fit a label AND a value at 90px, and this engine's flex
+     text-clipping is unreliable, so each gets its own line — no overlap. */
+  .kv-row { display: block; white-space: nowrap; overflow: hidden; padding: 2px 0; border-bottom: none; }
+  .kv-k { display: block; font-size: 6px; line-height: 1.15; letter-spacing: 0.5px; color: var(--diag-dim); }
+  .kv-v { display: block; font-size: 9px; line-height: 1.05; }
+  /* Test ramps shrink to thin strips so the whole screen fits above the strip. */
+  .gray-ramp { height: 10px; margin: 2px 0; }
+  .rainbow-ramp { height: 10px; margin: 3px 0 2px; }
+  .value-big { font-size: 20px; padding: 8px 0; }
+  /* Full-width stacked action buttons so their labels fit on one line. */
+  .screen-action { margin-top: 8px; padding: 6px; font-size: 8px; white-space: nowrap; }
+  .screen-action-sub { font-size: 6px; white-space: nowrap; }
+  .wifi-controls { flex-direction: column; gap: 4px; }
+  .wifi-btn { padding: 6px; font-size: 9px; white-space: nowrap; }
+  .tone-grid { flex-direction: column; gap: 4px; }
+  .tone-btn { padding: 8px 0; font-size: 9px; white-space: nowrap; }
+
+  /* Buttons test: a compact centred readout of the last key — the 56px desktop
+     size collides with the hint/note on the narrow canvas. */
+  .buttons-screen { padding-top: 8px; gap: 8px; }
+  .buttons-hint { font-size: 6px; text-align: center; white-space: nowrap; }
+  .buttons-last { gap: 2px; }
+  .buttons-key { font-size: 30px; line-height: 1; }
+  .buttons-code { font-size: 6px; }
+  .buttons-note { font-size: 6px; text-align: center; white-space: nowrap; }
+
+  /* IMU: the tilt level is the star on the narrow board — a big centred circle
+     with a bubble that tracks tilt, plus a compact caption + accel readout. */
+  .imu-screen { display: flex; flex-direction: column; align-items: center; }
+  .level-pad { width: 84px; height: 84px; margin: 4px 0 0; border-width: 2px; }
+  .level-bubble { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+  .imu-caption { display: block; text-align: center; font-size: 6px; letter-spacing: 0.5px; color: var(--diag-dim); margin-top: 4px; white-space: nowrap; }
+  .imu-caption-accel { font-size: 7px; color: var(--diag-fg); margin-top: 2px; }
+
+  /* "Not present" body for absent/detected subsystems — fit the narrow canvas. */
+  .not-present { padding: 14px 8px; gap: 6px; }
+  .not-present-msg { font-size: 8px; }
+  .not-present-detail { font-size: 7px; }
+}
