@@ -1,0 +1,16 @@
+name: No merge commits
+
+# Calls the organisation-wide check in geastack/.github that fails when a pull
+# request contains a merge commit. Rebase onto the base branch instead. The
+# main-branch ruleset requires this check before merging.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  history:
+    uses: geastack/.github/.github/workflows/no-merge-commits.yml@main
