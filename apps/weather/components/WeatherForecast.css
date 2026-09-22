@@ -8,15 +8,6 @@
   padding: 4px 0 0;
 }
 
-/* The 68px cap keeps the forecast from crowding the hero on the 410x502 panel
-   (logical height 335). A phone or a desktop window is much taller, so let the
-   rails take the slack instead of leaving a dead band under them. */
-@media (min-height: 400px) {
-  .forecast {
-    max-height: none;
-  }
-}
-
 .section-head {
   align-items: center;
   display: flex;
