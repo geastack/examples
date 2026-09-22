@@ -1,6 +1,6 @@
 # Three ANGLE Metal
 
-This is the canonical real-Three.js compatibility path.
+This is the Three.js compatibility path. It runs upstream Three.js unmodified.
 
 The goal is to run upstream Three.js app/demo code as a native macOS app by
 compiling the JavaScript/TypeScript side with geatsc and supplying the browser
@@ -51,8 +51,8 @@ npm run audit:bridge
 ```
 
 The default guard rejects `gea_cpp_value`/`gea_cpp_key` around the native WebGL
-bridge symbols. Use `-- --strict-sources` only when the whole generated app is
-ready for a total zero-boxing requirement.
+bridge symbols. Use `-- --strict-sources` to require that the whole generated app
+is free of boxing.
 
 ## Related Folders
 

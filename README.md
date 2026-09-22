@@ -27,14 +27,14 @@ npm run check
 npm run build
 ```
 
-Some examples also carry tests, mostly guarding a layout or a device setup that
-nothing else would catch -- `npm test` in the app folder runs them.
+Some examples have tests, mostly for a layout or a device setup. Run them with
+`npm test` in the app folder.
 
 The web loop is driven from the simulator, which is a separate repository:
 [geastack/simulator](https://github.com/geastack/simulator). Its scripts read
 apps out of an app project root, which they take from `GEA_APPS_ROOT` -- this
-repo, or your own. There is no default, so set it or pass `--app-dir`; nothing
-assumes the two checkouts sit next to each other.
+repo, or your own. There is no default, so set it or pass `--app-dir`. The two
+checkouts do not need to be next to each other.
 
 ```sh
 cd /path/to/simulator
@@ -91,8 +91,7 @@ Apple targets, and the IDE extension. Keep it accurate.
 
 ## License
 
-MIT (see `LICENSE`). Use it, change it, ship closed-source products on it, no
-strings attached. The only GeaStack code under a different license is the
+MIT (see `LICENSE`). You can ship closed-source products built on it. The only GeaStack code under a different license is the
 embedded board support (`targets` and `@geastack/chips`, GPL-3.0-only):
 shipping closed-source firmware through those needs a commercial license.
 Contact [contact@geastack.com](mailto:contact@geastack.com) for commercial terms, support and hosted builds.
