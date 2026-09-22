@@ -21,3 +21,15 @@
 .weather-bg-img.is-hidden {
   opacity: 0;
 }
+
+/* Taller viewports than the 410x502 panel the backdrops were rendered for: the
+   phone and desktop targets. `contain` would letterbox a panel-shaped image
+   against the shell fill, so stretch it instead — it is a soft gradient, and
+   `fill` is the one object-fit every shell renders the same way (macOS maps
+   `cover` to proportional-fit, the Android view stretches regardless).
+   The board's logical height is 502/1.5 = 335, so this never applies there. */
+@media (min-height: 400px) {
+  .weather-bg-img {
+    object-fit: fill;
+  }
+}

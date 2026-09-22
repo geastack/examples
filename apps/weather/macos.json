@@ -1,0 +1,10 @@
+{
+  "window": {
+    "title": "Weather",
+    "width": 410,
+    "height": 760,
+    "minWidth": 273,
+    "minHeight": 335,
+    "appearance": "dark"
+  }
+}
