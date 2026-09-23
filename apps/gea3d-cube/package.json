@@ -8,7 +8,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@geajs/core": "^1.3.0",
+    "@geajs/core": "^1.4.2",
     "@geastack/core": "^0.1.23"
   },
   "devDependencies": {
