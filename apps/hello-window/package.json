@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/core": "^0.1.24"
+  },
+  "gea": {
+    "id": "hello-window",
+    "name": "Hello Window",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "macos": true
+    }
+  },
+  "name": "@geastack/example-hello-window",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

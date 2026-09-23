@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.23"
+    "@geastack/core": "^0.1.24"
   },
   "devDependencies": {
     "typescript": "6.0.2",
