@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readdirSync, rmSync } from 'node:fs'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs'
+import { createRequire } from 'node:module'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const appRoot = fileURLToPath(new URL('..', import.meta.url))
@@ -17,12 +17,20 @@ if (!fixtures.length) {
   process.exit(0)
 }
 
-const work = mkdtempSync(join(tmpdir(), 'folio-native-'))
-const binary = join(work, 'epub-parser-test')
+const coreRoot = dirname(createRequire(import.meta.url).resolve('@geastack/core/package.json'))
+const output = join(appRoot, 'dist')
+mkdirSync(output, { recursive: true })
+const binary = join(output, 'epub-parser-test')
 try {
   execFileSync('c++', [
     '-std=c++20',
     '-O2',
+    '-I', join(coreRoot, 'include'),
+    // The parser executable does not use the thumbnail renderer in this source
+    // file. Drop unused functions while keeping their engine types checked.
+    '-ffunction-sections',
+    '-fdata-sections',
+    process.platform === 'darwin' ? '-Wl,-dead_strip' : '-Wl,--gc-sections',
     '-DEPUB_ARCHIVE_TEST_MAIN=1',
     join(appRoot, 'native', 'epub_archive.cpp'),
     '-o', binary
@@ -42,5 +50,5 @@ try {
     console.log(`✓ ${filename}: ${chapters.length} chapters`)
   }
 } finally {
-  rmSync(work, { recursive: true, force: true })
+  rmSync(binary, { force: true })
 }
