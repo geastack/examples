@@ -18,6 +18,7 @@ export function VirtualListView() {
       onTouchStart={() => scrollProbe.track()}
       onTouchMove={() => scrollProbe.track()}
       onTouchEnd={() => scrollProbe.track()}
+      onScroll={() => scrollProbe.track()}
     >
       {scrollProbe.slots.map(slot => (
         <div
