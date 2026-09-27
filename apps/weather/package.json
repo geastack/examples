@@ -29,7 +29,8 @@
       "geaos": false,
       "android": true,
       "ios": true,
-      "macos": true
+      "macos": true,
+      "windows": true
     },
     "icons": {
       "32": "icons/icon-32.png",
