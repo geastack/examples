@@ -27,7 +27,14 @@
     "entry": "index.tsx",
     "runtime": "apple-native",
     "targets": {
-      "macos": true,
+      "macos": {
+        "build": {
+          "compiler": {
+            "moduleGraph": "compile",
+            "allowAny": true
+          }
+        }
+      },
       "web": false,
       "esp32": false,
       "ios": false

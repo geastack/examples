@@ -152,7 +152,10 @@ async function deviceRun(sharedStyles = false) {
   rmSync(path.join(build, 'fps-regression-result.json'), { force: true })
   const manifestPath = path.join(app, 'package.json')
   const original = readFileSync(manifestPath, 'utf8'), manifest = JSON.parse(original)
-  manifest.gea.defines = { ...manifest.gea.defines, GEA_EMBEDDED_FRAME_BENCHMARK: 2, GEA_EMBEDDED_FRAME_SCHEDULER_FPS_LOG: 0, GEA_EMBEDDED_SHARED_STYLES: Number(sharedStyles) }
+  manifest.gea.defines = { ...manifest.gea.defines, GEA_EMBEDDED_FRAME_BENCHMARK: 2, GEA_EMBEDDED_FRAME_SCHEDULER_FPS_LOG: 0 }
+  delete manifest.gea.defines.GEA_EMBEDDED_SHARED_STYLES
+  const esp32 = manifest.gea.targets.esp32
+  esp32.build = { ...esp32.build, ui: { ...esp32.build?.ui, styleStorage: sharedStyles ? 'shared' : 'inline' } }
   const run = (args, timeout = 900000) => {
     const result = spawnSync(process.execPath, [cli, ...args], { cwd: project, env: process.env, stdio: 'inherit', timeout })
     requireCondition(result.status === 0, `${args[0]} failed: ${result.error?.message || result.signal || result.status}`)

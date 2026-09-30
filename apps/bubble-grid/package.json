@@ -26,7 +26,17 @@
     "runtime": "gea",
     "targets": {
       "web": true,
-      "esp32": true,
+      "esp32": {
+        "boards": {
+          "esp32-s3-touch-amoled-2.06": {
+            "build": {
+              "compiler": {
+                "numberPrecision": "float32"
+              }
+            }
+          }
+        }
+      },
       "geaos": true
     },
     "launcher": {

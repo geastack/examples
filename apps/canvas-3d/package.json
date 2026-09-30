@@ -26,7 +26,21 @@
     "runtime": "gea",
     "targets": {
       "web": true,
-      "esp32": true,
+      "esp32": {
+        "boards": {
+          "esp32-s3-touch-amoled-2.06": {
+            "build": {
+              "services": {
+                "wifi": "disabled"
+              },
+              "display": {
+                "flushPoolBytes": 131200,
+                "presentStream": "continuous"
+              }
+            }
+          }
+        }
+      },
       "geaos": true
     },
     "icons": {

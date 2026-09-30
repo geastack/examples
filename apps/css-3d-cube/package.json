@@ -30,7 +30,14 @@
       "web": true,
       "esp32": true,
       "geaos": true,
-      "android": true
+      "android": true,
+      "rp2350": {
+        "boards": {
+          "rp2350-tufty-2350": {
+            "cssDevicePixelRatio": 1
+          }
+        }
+      }
     },
     "icons": {
       "32": "icons/icon-32.png",

@@ -23,7 +23,58 @@
     "runtime": "gea",
     "targets": {
       "web": true,
-      "esp32": true,
+      "esp32": {
+        "build": {
+          "ui": {
+            "styleStorage": "shared"
+          },
+          "compiler": {
+            "numberPrecision": "float32"
+          },
+          "renderer": {
+            "subtreeRevealChecks": false,
+            "recordInlinePositions": false,
+            "fuseReplayFlush": true
+          },
+          "diagnostics": {
+            "performanceCounters": false,
+            "frameTiming": false
+          },
+          "display": {
+            "presentStream": "continuous"
+          }
+        },
+        "boards": {
+          "esp32-s3-touch-amoled-1.8": {
+            "build": {
+              "compiler": {
+                "generatedCodeOptimization": "O2"
+              },
+              "renderer": {
+                "adaptiveCoalescing": true,
+                "broadDirtyBounds": true
+              },
+              "display": {
+                "framebufferStream": "continuous"
+              }
+            }
+          },
+          "esp32-s3-touch-amoled-2.41": {
+            "build": {
+              "display": {
+                "presentStream": "independent"
+              }
+            }
+          },
+          "esp32-s3-lilygo-t-display-s3-long": {
+            "build": {
+              "renderer": {
+                "fuseReplayFlush": false
+              }
+            }
+          }
+        }
+      },
       "rp2350": true,
       "geaos": true
     },
@@ -39,9 +90,6 @@
       "order": 6,
       "accent": "#22d3ee",
       "hidden": false
-    },
-    "defines": {
-      "GEA_EMBEDDED_SHARED_STYLES": 1
     }
   },
   "name": "@geastack/example-bouncing-balls-jsx",
