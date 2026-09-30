@@ -1,0 +1,9 @@
+{
+  "components/App.tsx": "224082f7a7223b38ce988ba329d4630cb0c04d8e35584bea5b97ba8fb59e8dcb",
+  "components/BallField.tsx": "2f1a7b92459200f4e5b4db1e90a91d6ffefdcbfa6b22855f0e859c973624f516",
+  "components/FpsBadge.tsx": "5e25b68e4e4077724261aec7123d2577de915845ab082111ce20fc0b8b8ba476",
+  "constants.tsx": "72026c0395fd72f98df3ebdef8176d7d3f57c755093d104d83e8fca399a2083d",
+  "index.tsx": "6038731ebd71be87ae1d4bdcc8399bce9769a9bc179d288393a2417a47e4b73c",
+  "stores/BallStore.tsx": "401a1a9c963c41e159953d1524e099840cceb0d91092c6d2c96f24f26987e724",
+  "styles.css": "a381f95b58cac1b6f6d30e33b8cb1fabce54dedd212d6418a42ae955acc8f1f6"
+}

@@ -2,10 +2,14 @@
   "name": "@geastack/examples",
   "version": "0.1.0",
   "private": true,
-  "description": "geastack example apps — demo gallery as an npm workspace.",
+  "description": "geastack example apps \u2014 demo gallery as an npm workspace.",
   "workspaces": [
     "apps/*",
     "tools/*"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test:balls:gate": "node --test scripts/test/bouncing-balls-fps.test.mjs",
+    "test:balls:device": "node scripts/check-bouncing-balls-fps.mjs --device"
+  }
 }
