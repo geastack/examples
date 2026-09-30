@@ -4,14 +4,14 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.24"
+    "@geajs/core": "^1.5.1",
+    "@geastack/core": "^0.1.30"
   },
   "devDependencies": {
     "@babel/parser": "latest",
     "@babel/traverse": "latest",
     "@babel/types": "latest",
-    "@geajs/vite-plugin": "^1.4.2",
+    "@geajs/vite-plugin": "^1.5.0",
     "opentype.js": "latest",
     "typescript": "latest",
     "vite": "latest"
@@ -39,6 +39,9 @@
       "order": 6,
       "accent": "#22d3ee",
       "hidden": false
+    },
+    "defines": {
+      "GEA_EMBEDDED_SHARED_STYLES": 1
     }
   },
   "name": "@geastack/example-bouncing-balls-jsx",
