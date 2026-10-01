@@ -14,6 +14,7 @@ tests, and marketing proof.
 | Games | `sky-hop`, `sky-hop-jsx`, `tic-tac-toe`, `tilt-breakout`, `button-tetris` | Interaction, simple game loops, collision/physics, deterministic logic. |
 | Device features | `camera-showcase`, `camera-studio`, `voice-notes`, `hid-clicker`, `weather`, `maps` | Target capabilities such as camera, audio, HID, network, and map assets. |
 | Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase` | Apple target and native renderer experiments. |
+| Cross-platform reference | `weather` | One source across embedded, phone and desktop: `esp32`, `android`, `ios`, `macos`, `web`. Scales its fixed-px layout through `gea.designWidth`. |
 | Windows/native experiments | `notes-jsx`, `notes-windows` | Windows target: the JSX notes app through the Win32 renderer, and the same app written against `@geastack/windows/Controls`. |
 | Reactive experiments | `reactive-counter`, `reactive-child-probe`, `reactive-nested-probe`, `reactive-tic-tac-toe` | Store/reactivity experiments, often hidden from launchers. |
 

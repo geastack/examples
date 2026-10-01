@@ -22,11 +22,15 @@
     "name": "Weather",
     "entry": "index.tsx",
     "runtime": "gea",
+    "designWidth": 273,
     "targets": {
       "web": true,
       "esp32": true,
       "geaos": false,
-      "android": true
+      "android": true,
+      "ios": true,
+      "macos": true,
+      "windows": true
     },
     "icons": {
       "32": "icons/icon-32.png",
