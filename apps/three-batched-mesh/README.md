@@ -21,11 +21,13 @@ The compiler fingerprint is checked at the build's generation checkpoint;
 subsequent native compilation uses those emitted C++ files. To repeat capture
 of an already built executable, run the same command with `--capture-only`.
 To build without launching, use `--build-only` with that runner, or build the
-app the ordinary way with the experimental plugin:
+app the ordinary way with the experimental plugin. For one translation unit per
+module, set `gea.targets.macos.build.compiler.translationUnits` to `"per-file"`
+in package.json:
 
 ```sh
 cd apps/three-batched-mesh
-GEA_PER_FILE_UNITS=1 GEA_MACOS_JOBS=2 \
+GEA_MACOS_JOBS=2 \
 GEATSC2_WEBGL_PLUGIN="$(node -p "require('path').join(require('path').dirname(require.resolve('@geastack/native-webgl-angle/package.json')), 'geatsc-plugin-batched-probe.mjs')")" \
 npx gea build --target macos
 ```

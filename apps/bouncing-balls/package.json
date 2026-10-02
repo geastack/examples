@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.24"
+    "@geastack/core": "^0.1.33"
   },
   "devDependencies": {
     "@geajs/vite-plugin": "^1.4.2",
-    "@geastack/cli": "^0.1.78",
-    "typescript": "latest",
+    "@geastack/cli": "^0.1.91",
+    "typescript": "^5.9.3",
     "vite": "latest"
   },
   "gea": {

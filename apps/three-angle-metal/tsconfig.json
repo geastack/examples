@@ -7,7 +7,8 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "jsx": "preserve",
-    "ignoreDeprecations": "6.0",
+    "types": [],
+    "ignoreDeprecations": "5.0",
     "noEmit": true
   },
   "include": [

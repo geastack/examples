@@ -4,7 +4,9 @@
   mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 15px), transparent 100%);
   min-width: 0;
   overflow-x: auto;
-  overflow-y: visible;
+  /* `visible` computes to `auto` beside overflow-x: auto, which made the strip
+     scroll vertically by the few px its cells overflow it. */
+  overflow-y: hidden;
   padding-bottom: 6px;
   padding-top: 0;
   scroll-snap-type: x proximity;

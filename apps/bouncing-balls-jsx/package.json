@@ -13,7 +13,7 @@
     "@babel/types": "latest",
     "@geajs/vite-plugin": "^1.5.0",
     "opentype.js": "latest",
-    "typescript": "latest",
+    "typescript": "^5.9.3",
     "vite": "latest"
   },
   "gea": {
@@ -67,6 +67,13 @@
             }
           },
           "esp32-s3-lilygo-t-display-s3-long": {
+            "build": {
+              "renderer": {
+                "fuseReplayFlush": false
+              }
+            }
+          },
+          "esp32-s3-touch-lcd-3.5b": {
             "build": {
               "renderer": {
                 "fuseReplayFlush": false

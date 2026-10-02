@@ -18,5 +18,17 @@
         "serial": "5C93215501"
       }
     }
+  },
+  "ws7": {
+    "target": "esp32-s3-waveshare-touch-lcd-7"
+  },
+  "amoled-18": {
+    "target": "esp32-s3-touch-amoled-1.8",
+    "adapter": "esp32-idf",
+    "transports": {
+      "usbSerial": {
+        "serial": "30:ED:A0:AC:90:DC"
+      }
+    }
   }
 }

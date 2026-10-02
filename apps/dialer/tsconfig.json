@@ -10,6 +10,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "jsx": "preserve",
+    "types": [],
     "allowImportingTsExtensions": true
   },
   "include": [

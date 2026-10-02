@@ -7,6 +7,7 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "jsx": "preserve",
+    "types": [],
     "noEmit": true
   },
   "include": ["index.tsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],

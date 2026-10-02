@@ -8,7 +8,7 @@ export class App extends Component {
   template() {
     return (
       <div style={{ width: '100vw', height: '100vh', backgroundColor: '#05070D', position: 'absolute', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <div id="wf-face" class="watch-analog-face" style={{ position: 'relative', width: 'min(84vw, 84vh)', height: 'min(84vw, 84vh)', borderRadius: '50%', borderWidth: '2px', borderColor: '#1F2937' }}>
+        <div id="wf-face" class="watch-analog-face" style={{ position: 'relative', width: 'min(84vw, 84vh)', height: 'min(84vw, 84vh)', borderRadius: '50%', borderWidth: '2px', borderColor: '#1F2937', boxSizing: 'border-box' }}>
           <div
             id="wf-hour"
             class="watch-analog-hour"

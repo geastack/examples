@@ -39,7 +39,15 @@ export function startRealThreeFrameLoop(width: number, height: number, fallbackA
     // implementation is what made the whole renderer's `parameters` object --
     // and everything downstream of it -- dynamic. Same fix as the sibling
     // three.js app (651d92b).
+    //
+    // `tsc --noEmit` (the `check` script) still resolves `three` through
+    // `@types/three`, whose `WebGLRendererParameters` names the DOM classes.
+    // The two directives below record exactly that known, intentional gap;
+    // they fail the check if the declarations ever start agreeing, so they
+    // cannot go stale silently.
+    // @ts-expect-error NativeWebGLCanvas is intentionally not an HTMLCanvasElement
     canvas,
+    // @ts-expect-error NativeWebGL2RenderingContext is intentionally not a WebGLRenderingContext
     context,
     depth: true,
     powerPreference: 'high-performance',

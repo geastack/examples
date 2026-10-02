@@ -7,7 +7,7 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@geastack/core": "^0.1.24"
+    "@geastack/core": "^0.1.33"
   },
   "devDependencies": {
     "typescript": "6.0.2"
@@ -21,7 +21,7 @@
       "esp32": true
     },
     "launcher": {
-      "description": "BOOT toggles the onboard LED — no display anywhere in it",
+      "description": "BOOT toggles the onboard LED \u2014 no display anywhere in it",
       "order": 998,
       "accent": "#f59e0b",
       "hidden": true

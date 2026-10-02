@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.24"
+    "@geastack/core": "^0.1.33"
   },
   "devDependencies": {
     "@babel/parser": "latest",
@@ -14,7 +14,7 @@
     "@babel/types": "latest",
     "@geajs/vite-plugin": "^1.4.2",
     "opentype.js": "^1.3.4",
-    "typescript": "latest",
+    "typescript": "^5.9.3",
     "vite": "latest"
   },
   "gea": {

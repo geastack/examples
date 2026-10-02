@@ -1,0 +1,10 @@
+{
+  "productName": "Hello Tauri",
+  "version": "0.1.0",
+  "identifier": "dev.geastack.hello-tauri",
+  "build": { "frontendDist": "dist" },
+  "app": {
+    "windows": [{ "title": "Hello Tauri", "width": 400, "height": 300 }]
+  },
+  "bundle": { "active": false, "icon": ["icons/icon.png"] }
+}

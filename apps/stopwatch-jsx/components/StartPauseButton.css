@@ -3,6 +3,7 @@
   height: 20vw;
   border-radius: 10vw;
   border-width: 2px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +16,7 @@
   height: 20vw;
   border-radius: 10vw;
   border-width: 2px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;

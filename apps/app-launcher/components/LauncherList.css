@@ -1,6 +1,7 @@
 .launcher-list {
   display: flex;
   width: 100vw;
+  box-sizing: border-box;
   height: 0;
   flex: 1;
   margin: 10px 0 0 0;

@@ -10,8 +10,9 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "ignoreDeprecations": "6.0",
-    "jsx": "preserve"
+    "ignoreDeprecations": "5.0",
+    "jsx": "preserve",
+    "types": []
   },
   "include": [
     "**/*.tsx",

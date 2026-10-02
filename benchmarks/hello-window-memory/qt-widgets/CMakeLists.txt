@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.21)
+project(hello_qt_widgets LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+qt_add_executable(hello-qt-widgets MACOSX_BUNDLE main.cpp)
+target_link_libraries(hello-qt-widgets PRIVATE Qt6::Widgets)

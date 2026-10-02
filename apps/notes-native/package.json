@@ -7,10 +7,10 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@geastack/apple": "^0.2.8"
+    "@geastack/apple": "^0.2.13"
   },
   "devDependencies": {
-    "typescript": "latest",
+    "typescript": "^5.9.3",
     "@geastack/vite-plugin-apple-native": "^0.1.3"
   },
   "gea": {

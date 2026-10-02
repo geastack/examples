@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.21)
+project(hello_qt_quick LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick)
+qt_standard_project_setup(REQUIRES 6.5)
+qt_add_executable(hello-qt-quick MACOSX_BUNDLE main.cpp)
+qt_add_qml_module(hello-qt-quick URI Hello VERSION 1.0 QML_FILES Main.qml)
+target_link_libraries(hello-qt-quick PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick)

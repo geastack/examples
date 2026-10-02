@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.24"
+    "@geastack/core": "^0.1.33"
   },
   "devDependencies": {
     "@geajs/vite-plugin": "^1.4.2",
-    "typescript": "latest",
+    "typescript": "^5.9.3",
     "vite": "latest",
     "vitest": "latest"
   },

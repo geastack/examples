@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@geastack/apple": "^0.2.9"
+    "@geastack/apple": "^0.2.13"
   },
   "devDependencies": {
     "@geastack/vite-plugin-apple-native": "^0.1.3"
