@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.33"
+    "@geastack/core": "^0.1.35"
   },
   "devDependencies": {
     "@geajs/vite-plugin": "^1.4.2",

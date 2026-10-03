@@ -2,7 +2,7 @@
   "name": "@geastack/examples",
   "version": "0.1.0",
   "private": true,
-  "description": "geastack example apps \u2014 demo gallery as an npm workspace.",
+  "description": "geastack example apps — demo gallery as an npm workspace.",
   "workspaces": [
     "apps/*",
     "tools/*"
@@ -13,9 +13,12 @@
     "test:balls:device": "node scripts/check-bouncing-balls-fps.mjs --device"
   },
   "devDependencies": {
-    "@geastack/cli": "^0.1.88",
-    "@geastack/compiler": "^1.0.20",
-    "@geastack/targets": "^0.1.85",
+    "@geastack/cli": "^0.1.94",
+    "@geastack/compiler": "^1.0.21",
+    "@geastack/targets": "^0.1.92",
     "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "@geastack/core": "^0.1.35"
   }
 }
