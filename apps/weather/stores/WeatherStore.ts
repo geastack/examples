@@ -67,8 +67,14 @@ function hourLabel(hour: number): string {
   return '' + (hour - 12) + ' PM'
 }
 
+// Carries the year, so a forecast that crosses New Year still sorts forward:
+// without it January's key falls below December's and the hourly scan below
+// runs off the end of the array, blanking every slot.
 function weatherTimeSortKey(time: string): number {
-  return Number(time.substring(5, 7)) * 744 + Number(time.substring(8, 10)) * 24 + Number(time.substring(11, 13))
+  const year = Number(time.substring(0, 4))
+  const month = Number(time.substring(5, 7))
+  const day = Number(time.substring(8, 10))
+  return ((year * 12 + month) * 31 + day) * 24 + Number(time.substring(11, 13))
 }
 
 function weekdayFromISO(time: string): string {
