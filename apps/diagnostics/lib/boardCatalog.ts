@@ -102,6 +102,20 @@ const RAW: DeviceRaw[] = [
     L('gps', 'LC76G (UART)'),
     L('temperature', 'S3 die sensor')
   ] },
+  { id: 'esp32-s3-touch-lcd-1.54', name: 'Waveshare LCD 1.54', cells: [
+    L('display', 'ST7789 240x240'),
+    L('touch', 'CST816'),
+    L('buttons', 'BOOT + PLUS + PWR'),
+    L('imu', 'QMI8658'),
+    L('speaker', 'ES8311 + NS4150B'),
+    L('microphone', 'ES7210 ADC'),
+    L('sdcard', 'SD_MMC 1-bit'),
+    L('storage', 'NVS + SPIFFS'),
+    L('wifi', 'native'),
+    L('ble', 'NimBLE'),
+    L('battery', 'ADC estimate + charge status'),
+    L('temperature', 'S3 die sensor')
+  ] },
   { id: 'esp32-s3-epaper-1.54', name: 'E-Paper 1.54', cells: [
     L('display', 'SSD1681 e-paper 200x200'),
     L('touch', 'FT6336'),
