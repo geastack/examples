@@ -24,7 +24,8 @@
     "targets": {
       "web": true,
       "esp32": true,
-      "geaos": true
+      "geaos": true,
+      "macos": true
     },
     "icons": {
       "32": "icons/icon-32.png",
