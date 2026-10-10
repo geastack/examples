@@ -1,0 +1,25 @@
+{
+  "name": "@geastack/example-macos-native-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@geastack/core": "^0.1.40",
+    "@geastack/apple": "^0.2.14"
+  },
+  "gea": {
+    "id": "macos-native-showcase",
+    "name": "Mac Native Showcase",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "macos": true
+    },
+    "launcher": {
+      "description": "Mac cards and controls",
+      "accent": "#5856d6",
+      "order": 0
+    }
+  }
+}

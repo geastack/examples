@@ -1,0 +1,10 @@
+{
+  "window": {
+    "title": "Mac Native Showcase",
+    "width": 1040,
+    "height": 820,
+    "minWidth": 480,
+    "minHeight": 480,
+    "appearance": "light"
+  }
+}

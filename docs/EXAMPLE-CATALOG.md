@@ -13,7 +13,7 @@ tests, and marketing proof.
 | UI components | `settings`, `dialer`, `virtual-list`, `typography`, `bubble-grid`, `bubble-grid-jsx` | Higher-level controls, scroll behavior, text layout, launchable apps. |
 | Games | `sky-hop`, `sky-hop-jsx`, `tic-tac-toe`, `tilt-breakout`, `button-tetris` | Interaction, simple game loops, collision/physics, deterministic logic. |
 | Device features | `camera-showcase`, `camera-studio`, `voice-notes`, `hid-clicker`, `weather`, `maps` | Target capabilities such as camera, audio, HID, network, and map assets. |
-| Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase` | Apple target and native renderer experiments. |
+| Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase`, `macos-native-showcase` | Apple target and native renderer experiments. |
 | Windows/native experiments | `notes-jsx`, `notes-windows` | Windows target: the JSX notes app through the Win32 renderer, and the same app written against `@geastack/windows/Controls`. |
 | Reactive experiments | `reactive-counter`, `reactive-child-probe`, `reactive-nested-probe`, `reactive-tic-tac-toe` | Store/reactivity experiments, often hidden from launchers. |
 

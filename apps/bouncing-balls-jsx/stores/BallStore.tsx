@@ -6,10 +6,10 @@ const BALL_D = BALL_R * 2
 const MIN_FIELD_SIZE = BALL_D + 1
 
 interface Ball {
-  x: int
-  y: int
-  dx: int
-  dy: int
+  x: int32
+  y: int32
+  dx: int32
+  dy: int32
   color: string
 }
 
