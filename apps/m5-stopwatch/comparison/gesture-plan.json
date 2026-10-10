@@ -1,0 +1,822 @@
+{
+  "schemaVersion": 1,
+  "factoryCommit": "6b4aa125288b6fe9dca661f10159f6e1e5ee785c",
+  "sourceAuthority": [
+    {
+      "path": "components/lvgl/src/indev/lv_indev.c",
+      "behavior": "default33ms sampling; history eight vectors;99ms expiry"
+    },
+    {
+      "path": "components/lvgl/src/indev/lv_indev_scroll.c",
+      "behavior": "integer scroll threshold/throw direction and10percent decay"
+    },
+    {
+      "path": "components/lvgl/src/widgets/roller/lv_roller.c",
+      "behavior": "46px row pitch at factory font/theme geometry;200ms selection snap"
+    }
+  ],
+  "coordinateSpace": "466x466 comparison coordinates; factory normalHAL pointer x is mapped to raw468wide coordinates by the explicit per-scene coordinateMapping/source-anchor contract (centered raw x = comparison x + 1). Screenshot crop alone is not a pointer mapping; record actual input coordinates and source anchors.",
+  "hardwareSafety": "Only physically muted diagnostic builds; require independent mute clamp assertion before execution",
+  "comparisonPolicy": "Same event recipe is insufficient unless actual sampling/timing and initial state match. Host transport delays must be retained; no screenshot command during gesture unless backend proves it does not block input processing.",
+  "cases": [
+    {
+      "id": "launcher.below-threshold",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 238,
+          "y": 220
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 238,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 166, 266, 466, 666],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.threshold-crossing",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 242,
+          "y": 220
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 245,
+          "y": 220
+        },
+        {
+          "atMs": 99,
+          "type": "up",
+          "x": 245,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 165, 199, 299, 499, 699],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.short-fast-throw",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 213,
+          "y": 220
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 67,
+          "type": "up",
+          "x": 187,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 67, 99, 100, 133, 167, 267, 467, 667],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.long-slow-drag",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 100,
+          "type": "move",
+          "x": 210,
+          "y": 220
+        },
+        {
+          "atMs": 200,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 300,
+          "type": "move",
+          "x": 164,
+          "y": 220
+        },
+        {
+          "atMs": 400,
+          "type": "move",
+          "x": 141,
+          "y": 220
+        },
+        {
+          "atMs": 500,
+          "type": "up",
+          "x": 141,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 500, 533, 566, 600, 700, 900, 1100],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.stationary-hold-cancels-velocity",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 165,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 198,
+          "type": "up",
+          "x": 187,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 198, 231, 264, 298, 398, 598, 798],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.direction-reversal",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 210,
+          "y": 220
+        },
+        {
+          "atMs": 99,
+          "type": "move",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 100,
+          "type": "up",
+          "x": 233,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 100, 133, 166, 200, 300, 500, 700],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "launcher.interrupted-snap",
+      "scene": "launcher",
+      "requiredRoute": "menu",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 116,
+          "type": "down",
+          "x": 187,
+          "y": 220
+        },
+        {
+          "atMs": 149,
+          "type": "move",
+          "x": 210,
+          "y": 220
+        },
+        {
+          "atMs": 182,
+          "type": "up",
+          "x": 210,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 182, 215, 248, 282, 382, 582, 782],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.below-threshold",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 225
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 144,
+          "y": 225
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 166, 266, 466, 666],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.threshold-crossing",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 229
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 144,
+          "y": 232
+        },
+        {
+          "atMs": 99,
+          "type": "up",
+          "x": 144,
+          "y": 232
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 165, 199, 299, 499, 699],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.short-fast-throw",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 200
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 67,
+          "type": "up",
+          "x": 144,
+          "y": 174
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 67, 99, 100, 133, 167, 267, 467, 667],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.long-slow-drag",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 100,
+          "type": "move",
+          "x": 144,
+          "y": 197
+        },
+        {
+          "atMs": 200,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 300,
+          "type": "move",
+          "x": 144,
+          "y": 151
+        },
+        {
+          "atMs": 400,
+          "type": "move",
+          "x": 144,
+          "y": 128
+        },
+        {
+          "atMs": 500,
+          "type": "up",
+          "x": 144,
+          "y": 128
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 500, 533, 566, 600, 700, 900, 1100],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.stationary-hold-cancels-velocity",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 165,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 198,
+          "type": "up",
+          "x": 144,
+          "y": 174
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 198, 231, 264, 298, 398, 598, 798],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.direction-reversal",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 144,
+          "y": 197
+        },
+        {
+          "atMs": 99,
+          "type": "move",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 100,
+          "type": "up",
+          "x": 144,
+          "y": 220
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 100, 133, 166, 200, 300, 500, 700],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "roller.interrupted-snap",
+      "scene": "roller",
+      "requiredRoute": "adjust",
+      "setup": "Open Add Alarm; verify actual default07:00 and hour roller centerx144; use hour picker, not the x233 gap between columns. Return to known selected7 and offset0 before each trace.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 144,
+          "y": 220
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 116,
+          "type": "down",
+          "x": 144,
+          "y": 174
+        },
+        {
+          "atMs": 149,
+          "type": "move",
+          "x": 144,
+          "y": 197
+        },
+        {
+          "atMs": 182,
+          "type": "up",
+          "x": 144,
+          "y": 197
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 182, 215, 248, 282, 382, 582, 782],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.below-threshold",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 325
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 233,
+          "y": 325
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 166, 266, 466, 666],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.threshold-crossing",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 329
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 233,
+          "y": 332
+        },
+        {
+          "atMs": 99,
+          "type": "up",
+          "x": 233,
+          "y": 332
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 132, 165, 199, 299, 499, 699],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.short-fast-throw",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 300
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 67,
+          "type": "up",
+          "x": 233,
+          "y": 274
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 67, 99, 100, 133, 167, 267, 467, 667],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.long-slow-drag",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 100,
+          "type": "move",
+          "x": 233,
+          "y": 297
+        },
+        {
+          "atMs": 200,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 300,
+          "type": "move",
+          "x": 233,
+          "y": 251
+        },
+        {
+          "atMs": 400,
+          "type": "move",
+          "x": 233,
+          "y": 228
+        },
+        {
+          "atMs": 500,
+          "type": "up",
+          "x": 233,
+          "y": 228
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 500, 533, 566, 600, 700, 900, 1100],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.stationary-hold-cancels-velocity",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 165,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 198,
+          "type": "up",
+          "x": 233,
+          "y": 274
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 198, 231, 264, 298, 398, 598, 798],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.direction-reversal",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 66,
+          "type": "move",
+          "x": 233,
+          "y": 297
+        },
+        {
+          "atMs": 99,
+          "type": "move",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 100,
+          "type": "up",
+          "x": 233,
+          "y": 320
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 100, 133, 166, 200, 300, 500, 700],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    },
+    {
+      "id": "settings-list.interrupted-snap",
+      "scene": "settings-list",
+      "requiredRoute": "settings",
+      "setup": "Return to documented initial state and wait for prior animation to settle; record actual selected value/scroll offset before starting.",
+      "events": [
+        {
+          "atMs": 0,
+          "type": "down",
+          "x": 233,
+          "y": 320
+        },
+        {
+          "atMs": 33,
+          "type": "move",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 66,
+          "type": "up",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 116,
+          "type": "down",
+          "x": 233,
+          "y": 274
+        },
+        {
+          "atMs": 149,
+          "type": "move",
+          "x": 233,
+          "y": 297
+        },
+        {
+          "atMs": 182,
+          "type": "up",
+          "x": 233,
+          "y": 297
+        }
+      ],
+      "observeAtMs": [0, 33, 66, 99, 182, 215, 248, 282, 382, 582, 782],
+      "expectedEvidence": "Actual pointer sample timestamps, selected value, scroll/roller offset and animation state. Source-derived expectation is not an observed parity pass."
+    }
+  ],
+  "diagnosticProtocols": {
+    "factory": {
+      "pointer": "TOUCH 1 x y for down/move;TOUCH 0 x y for up",
+      "trace": "INPUTTRACE BEGIN/END;SWINPUT [timestamp_us,touchNum,x,y] sampled normal LVGL read_cb",
+      "position": "SCROLLSTATE;SWSCROLL timestamp_us,nodes[{id,x,y,selected}]"
+    },
+    "gea": {
+      "pointer": "GEADEV TOUCH down|move|up x y",
+      "trace": "GEADEV INPUTTRACE BEGIN/END;SWINPUT [timestamp_us,phase1down/2move/3up,touchNum,x,y,pointerId,handlerX,handlerY] consumed normal TouchRuntime event",
+      "position": "GEADEV SCROLLSTATE [class...];SWSCROLL timestamp_us,nodes with class/layout/corners/scroll"
+    },
+    "samplingDifference": "Factory trace samples indev at33ms; Gea trace records consumed dispatch events. Compare against actual helper/tick history evidence too; row-count equality is not required or evidence of failure."
+  }
+}

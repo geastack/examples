@@ -1,0 +1,84 @@
+.menu {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+
+.menu-icon {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 118px;
+  left: 133px;
+}
+
+.menu-icon img {
+  width: 200px;
+  height: 200px;
+}
+
+.previous,
+.next {
+  position: absolute;
+  z-index: 1;
+  top: 153px;
+  width: 52px;
+  height: 160px;
+}
+
+.previous {
+  left: 7px;
+}
+
+.next {
+  right: 7px;
+}
+
+.menu-title {
+  position: absolute;
+  top: 374px;
+  left: 66px;
+  width: 334px;
+  text-align: center;
+}
+
+.dots {
+  position: absolute;
+  left: 149px;
+  top: 421px;
+  height: 24px;
+  width: 168px;
+}
+
+.dot {
+  position: absolute;
+  top: 8px;
+  background: #808080;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot.selected {
+  top: 5px;
+  background: #fff;
+  width: 14px;
+  height: 14px;
+}
+
+.menu-title {
+  font-family: MontserratBold;
+  font-size: 26px;
+  line-height: 27px;
+}
+
+.previous img,
+.next img {
+  position: absolute;
+  left: 12px;
+  top: 46.5px;
+  width: 28px;
+  height: 67px;
+}

@@ -1,0 +1,59 @@
+.imu {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+.accel {
+  position: absolute;
+  color: #cbffb1;
+  font-family: Montserrat;
+  font-size: 16px;
+  line-height: 18px;
+}
+.ax {
+  left: 244px;
+  top: 94px;
+}
+.ay {
+  left: 96px;
+  top: 241px;
+}
+.az {
+  left: 244px;
+  top: 352px;
+}
+
+/* LVGL CENTER alignment divides each dimension as an integer independently.
+   These rounded boxes preserve source extents and foreground order. */
+.imu-cross {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.imu-ball-horizontal {
+  width: 36px;
+  height: 2px;
+}
+
+.imu-ball-vertical {
+  width: 2px;
+  height: 36px;
+}
+
+.imu-overlay-horizontal {
+  left: 89px;
+  top: 232px;
+  width: 289px;
+  height: 2px;
+}
+
+.imu-overlay-vertical {
+  left: 232px;
+  top: 89px;
+  width: 2px;
+  height: 289px;
+}

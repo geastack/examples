@@ -1,0 +1,43 @@
+.about {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+  background: #0078d7;
+}
+.sad {
+  position: absolute;
+  left: 80px;
+  top: 80px;
+  font-family: Commissioner;
+  font-size: 108px;
+  line-height: 98px;
+  --gea-font-charset: '0123456789:%(';
+}
+.crash-message {
+  white-space: pre-line;
+  position: absolute;
+  left: 82px;
+  top: 216px;
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 16px;
+}
+.crash-progress {
+  position: absolute;
+  left: 82px;
+  top: 293px;
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 16px;
+}
+.crash-tips {
+  white-space: pre-line;
+  position: absolute;
+  left: 82px;
+  top: 336px;
+  font-family: Montserrat;
+  font-size: 10px;
+  line-height: 11px;
+}

@@ -1,0 +1,40 @@
+.simple-face {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+}
+
+.simple-time {
+  position: absolute;
+  top: 160px;
+  left: 20px;
+  width: 426px;
+  text-align: center;
+  font-family: Commissioner;
+  font-size: 108px;
+  line-height: 98px;
+  --gea-font-charset: '0123456789:%(';
+}
+
+.simple-date {
+  position: absolute;
+  top: 276px;
+  left: 40px;
+  width: 386px;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  line-height: 27px;
+}
+
+.simple-hint {
+  position: absolute;
+  left: 70px;
+  top: 341px;
+  width: 326px;
+  text-align: center;
+  color: #eae48d;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: Montserrat;
+}

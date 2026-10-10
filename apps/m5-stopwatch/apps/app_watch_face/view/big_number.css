@@ -1,0 +1,31 @@
+.big-face {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+}
+
+.digit {
+  position: absolute;
+  width: 120px;
+  height: 140px;
+}
+
+.d0 {
+  left: 131px;
+  top: 112px;
+}
+
+.d1 {
+  left: 215px;
+  top: 112px;
+}
+
+.d2 {
+  left: 131px;
+  top: 214px;
+}
+
+.d3 {
+  left: 215px;
+  top: 214px;
+}

@@ -1,0 +1,34 @@
+.fft {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+.fft {
+  background: #1f1528;
+}
+.frequency {
+  position: absolute;
+  top: 214px;
+  left: 150px;
+  width: 166px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 28px Montserrat;
+  line-height: 30px;
+  color: #ae5d92;
+}
+.frequency .unit {
+  margin-top: 2px;
+  font: 18px Montserrat;
+  line-height: 21px;
+  color: #d586ba;
+}
+.fft-graphic {
+  left: 67px;
+  top: 67px;
+  width: 332px;
+  height: 332px;
+}

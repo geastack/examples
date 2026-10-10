@@ -1,0 +1,10 @@
+.badge-edit {
+  position: absolute;
+  top: 120px;
+  left: 40px;
+  width: 386px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}

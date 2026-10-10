@@ -1,0 +1,2179 @@
+{
+  "schemaVersion": 1,
+  "referenceCommit": "6b4aa125288b6fe9dca661f10159f6e1e5ee785c",
+  "referenceSourceRoot": "vendored-sources/M5StopWatch-UserDemo",
+  "inventoryDefinition": "All installed factory tool screens, common overlays, staged workers, portal controls and finite behavioral state classes. Numeric/time/sensor states are infinite: listed boundary cases are representative test classes, not an exhaustive enumeration of pixels.",
+  "verificationPolicy": "Source-mapped means code exists and source evidence was read. Related portable tests are evidence of their explicit assertions only. Paired screenshot/device validation remains separate; absence of a paired capture is never treated as visual parity.",
+  "screens": [
+    {
+      "id": "startup.boot",
+      "geaRoute": "boot",
+      "geaComponent": "common/loading_page/boot_logo.tsx",
+      "factoryEvidence": {
+        "path": "main/hal/hal.h",
+        "line": 103,
+        "symbolOrNeedle": "class BootLogo",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal.h#L103",
+        "sha256": "d9828f06661a381f1e3078bd5a27b599beba337db5b739d8d6352598892ff6c2",
+        "excerpt": " */\nclass BootLogo {\npublic:\n    BootLogo()\n    {\n        _panel = std::make_unique<uitk::lvgl_cpp::Container>(lv_screen_active());\n        _panel->setSize(466, 466);\n        _panel->setAlign(LV_ALIGN_CENTER);"
+      },
+      "states": ["Starting up ...", "V0.5"],
+      "behaviors": [
+        "Original StopWatch/Starting up .../V0.5 overlay is presented for one actual TS app frame. Earlier native HAL-initialization phase occurs before TS entry and cannot be reproduced by this component."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/startup.test.mjs",
+          "title": "startup presents factory artwork for an app frame after settings load and before guide/menu",
+          "line": 67
+        }
+      ],
+      "assessment": "artwork_implemented_startup_phase_limit",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "startup.guide",
+      "geaRoute": "guide",
+      "geaComponent": "apps/app_launcher/view/guide_page.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_launcher/app_launcher.cpp",
+        "line": 108,
+        "symbolOrNeedle": "void AppLauncher::show_guide_page",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_launcher/app_launcher.cpp#L108",
+        "sha256": "474f81450309990ea7add1c9b0e3e8be66c1afbc8e557b201e5f2b944ae88628",
+        "excerpt": "\nvoid AppLauncher::show_guide_page()\n{\n    if (!_is_first_open) {\n        return;\n    }\n\n    if (!GetHAL().shouldShowGuide()) {"
+      },
+      "states": ["first through fifth boot", "later boots skip"],
+      "behaviors": [
+        "Original Home-chord guide artwork; boot WAV; A+B held exits guide; counter persists."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native home key returns home without triggering either single button action",
+          "line": 214
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory AP edit session gates keys and navigation until its Exit completes",
+          "line": 811
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "launcher",
+      "geaRoute": "menu",
+      "geaComponent": "apps/app_launcher/view/view.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_launcher/view/view.cpp",
+        "line": 214,
+        "symbolOrNeedle": "void LauncherView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_launcher/view/view.cpp#L214",
+        "sha256": "43f263a3696bd75b44c215e8bd2ac3eafe08b37a248e51485ddd7ded050183f7",
+        "excerpt": "\nvoid LauncherView::init(std::vector<mooncake::AppProps_t> appPorps)\n{\n    mclog::tagInfo(_tag, \"init\");\n\n    _key_manager = std::make_unique<input::KeyManager>();\n\n    /* ------------------------------ Screen setup ------------------------------ */"
+      },
+      "states": [
+        "AlarmClock",
+        "WatchFace",
+        "Stopwatch",
+        "Badge",
+        "IMU",
+        "Audio.FFT",
+        "LuckyWheel",
+        "Settings",
+        "finger drag",
+        "momentum settle"
+      ],
+      "behaviors": [
+        "Eight tools in installed order; centered icon and adjacent icon taps; arrows and short A/B release; circular wrap; fixed dots; curved clock; SCROLL_ONE drag limits; 33ms samples, shared input history, integer throw prediction and 200\u2013400ms snap; dynamic title alpha."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "44.1 kHz microphone retains frequencies above the 16 kHz capture Nyquist limit",
+          "line": 132
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "UI publication starts at the first ready window and stays near 60 Hz at both capture rates",
+          "line": 199
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "capture rates below 60 FFTs per second publish every result without accumulating phase debt",
+          "line": 284
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "FFT capture reopens with the same worklet and retained spectrum state",
+          "line": 415
+        },
+        {
+          "file": "scripts/roller.test.mjs",
+          "title": "global history expires after99ms and the same carrier supports launcher samples",
+          "line": 302
+        },
+        {
+          "file": "scripts/scroll.test.mjs",
+          "title": "SCROLL_ONE clamps drag and throw to the next center and interrupted snap resumes without jumping",
+          "line": 72
+        },
+        {
+          "file": "scripts/scroll.test.mjs",
+          "title": "dominant vertical movement cannot capture horizontal scroll, but an existing capture stays locked",
+          "line": 126
+        },
+        {
+          "file": "scripts/scroll.test.mjs",
+          "title": "LVGL capture consumes the accumulated threshold and applies only the current input vector",
+          "line": 141
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "Simple hold fires while pressed once, never renews its entry hint, and scrolling cancels it",
+          "line": 452
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "stationary alarm hold opens its dialog while pressed and scrolling cancels the hold",
+          "line": 514
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "launcher predicts a quick short throw, preserves drag position and settles with factory easing",
+          "line": 596
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "launcher stationary hold removes fling and leaves fixed dot centers while returning to the same page",
+          "line": 616
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "a captured small drag suppresses arrow clicks even below the native click slop",
+          "line": 702
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "neighboring launcher icons open their own apps and pickers use source placement",
+          "line": 715
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "launcher battery shows once after800ms, uses1800ms first duration, spring-hides and samples charge only there",
+          "line": 729
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "launcher.battery",
+      "geaRoute": "menu + batteryVisible",
+      "geaComponent": "common/status_bar/status_bar.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/common/status_bar/status_bar.cpp",
+        "line": 243,
+        "symbolOrNeedle": "void show",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/status_bar/status_bar.cpp#L243",
+        "sha256": "aa7ac497ae0db173164683e468e4101d67628474575b0916a24b4a0d89bd0748",
+        "excerpt": "\n    void show()\n    {\n        _panel->moveForeground();\n        _panel->setHidden(false);\n        _pos_y_anim = _pos_y_show;\n        _is_hidden  = false;\n    }"
+      },
+      "states": [
+        "first popup",
+        "later popup",
+        "charging",
+        "not charging",
+        "tap hide",
+        "spring hide"
+      ],
+      "behaviors": [
+        "First launcher popup after800ms for1800ms; later6000ms; battery percentage/charging icon; top pull-down and tap hide; charging transition sampled once per second."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "launcher battery shows once after800ms, uses1800ms first duration, spring-hides and samples charge only there",
+          "line": 729
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "watch.classic",
+      "geaRoute": "watch; face=0",
+      "geaComponent": "apps/app_watch_face/view/classic.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_watch_face/view/classic.cpp",
+        "line": 272,
+        "symbolOrNeedle": "void WatchFaceClassic::apply_display_mode",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/classic.cpp#L272",
+        "sha256": "2a591052fd6082b1694794a8f2e9eeb9a40603bf5b471e5200c6ae80d17669f8",
+        "excerpt": "\nvoid WatchFaceClassic::apply_display_mode()\n{\n    bool show_info  = _display_mode == 0;\n    bool show_ticks = _display_mode != 2;\n\n    if (_sub_panel) {\n        _sub_panel->setHidden(!show_info);"
+      },
+      "states": [
+        "mode0: information and ticks",
+        "mode1: ticks without information",
+        "mode2: hands only"
+      ],
+      "behaviors": [
+        "Tap cycles3 modes; image hands with factory pivots; fractional hour/minute/second angles; uppercase weekday, date and time zero-to-O formatting."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "classic hand angles match the factory clock including hour seconds",
+          "line": 285
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+          "line": 426
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "watch.number_flow",
+      "geaRoute": "watch; face=1",
+      "geaComponent": "apps/app_watch_face/view/number_flow.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_watch_face/view/number_flow.cpp",
+        "line": 79,
+        "symbolOrNeedle": "void WatchFaceNumberFlow::onCreate",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/number_flow.cpp#L79",
+        "sha256": "920e297ec6ea1f65803b816bb992a76707ce0c896daa901e519843b575f2df41",
+        "excerpt": "\nvoid WatchFaceNumberFlow::onCreate(lv_obj_t* parent)\n{\n    _theme_index = 0;\n\n    _background_panel = std::make_unique<Container>(parent);\n    _background_panel->align(LV_ALIGN_CENTER, 0, 0);\n    _background_panel->setSize(_mask_size, _mask_size);"
+      },
+      "states": [
+        "theme0..9",
+        "initial fade",
+        "unchanged digit",
+        "09\u219210",
+        "59\u219200",
+        "clock midnight wrap"
+      ],
+      "behaviors": [
+        "Independent rolling digit springs, minimum two digits, retarget velocity and wrap direction; tap cycles10 themes; date text; defaults reset when recreated."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/number-flow-geometry.test.mjs",
+          "title": "actual NumberFlow JSX rail, correction classes and clipped row geometry match the source",
+          "line": 69
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "NumberFlow rolls only changed digits, reverses at clock wrap, and recreates its defaults",
+          "line": 534
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory springs are time-based, retain retarget velocity and unwrap both angle directions",
+          "line": 566
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "watch.big_number",
+      "geaRoute": "watch; face=2",
+      "geaComponent": "apps/app_watch_face/view/big_number.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_watch_face/view/big_number.cpp",
+        "line": 92,
+        "symbolOrNeedle": "void WatchFaceBigNumber::onCreate",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/big_number.cpp#L92",
+        "sha256": "c91ea3b7d9d313bee01b1e242c3f873065b347617b0969ceaefab9bb9439a438",
+        "excerpt": "\nvoid WatchFaceBigNumber::onCreate(lv_obj_t* parent)\n{\n    _palette_index = 0;\n\n    _hour_tens = std::make_unique<Image>(parent);\n    setup_digit(*_hour_tens, _hour_tens_x_offset, _hour_tens_y_offset);\n"
+      },
+      "states": ["palette0", "palette1", "palette2", "palette3"],
+      "behaviors": ["Original digit artwork; tap cycles4 palettes; live hour/minute values."],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+          "line": 426
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "watch.simple",
+      "geaRoute": "watch; face=3",
+      "geaComponent": "apps/app_watch_face/view/simple.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_watch_face/view/simple.cpp",
+        "line": 94,
+        "symbolOrNeedle": "void WatchFaceSimple::onCreate",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/simple.cpp#L94",
+        "sha256": "2fe9d7c3ff1bfb883febf27d00632f63eb2e3444e9efcab02032cd3d98761b53",
+        "excerpt": "\nvoid WatchFaceSimple::onCreate(lv_obj_t* parent)\n{\n    _theme_index             = 0;\n    _orbit_angle_initialized = false;\n    _orbit_angle_unwrapped   = 0.0f;\n\n    _orbit_angle_anim.pause();"
+      },
+      "states": [
+        "theme0..9",
+        "dot on",
+        "dot off",
+        "three-second entry hint",
+        "stationary hold",
+        "hold canceled by scroll"
+      ],
+      "behaviors": [
+        "Tap cycles10 themes; hold toggles second dot without also clicking; shortest-angle spring; live time/date."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "Simple long press toggles the dot without cycling the color theme",
+          "line": 270
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+          "line": 426
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "Simple hold fires while pressed once, never renews its entry hint, and scrolling cancels it",
+          "line": 452
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory springs are time-based, retain retarget velocity and unwrap both angle directions",
+          "line": 566
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "stopwatch",
+      "geaRoute": "stopwatch",
+      "geaComponent": "apps/app_stopwatch/view/view.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_stopwatch/view/view.cpp",
+        "line": 59,
+        "symbolOrNeedle": "void StopwatchView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_stopwatch/view/view.cpp#L59",
+        "sha256": "bb28eb92fba880a309cb7ea85efe131b8c4e4e02f023f71fe2e3b207a51e7c14",
+        "excerpt": "\nvoid StopwatchView::init(lv_obj_t* parent)\n{\n    _stopwatch = std::make_unique<model::Stopwatch>();\n\n    lv_obj_remove_flag(parent, LV_OBJ_FLAG_SCROLLABLE);\n    lv_obj_set_style_bg_color(parent, lv_color_hex(0x000000), LV_PART_MAIN);\n"
+      },
+      "states": [
+        "stopped empty",
+        "running",
+        "running with laps",
+        "paused",
+        "resumed",
+        "long scrolling lap history",
+        "reset"
+      ],
+      "behaviors": [
+        "A/left physical press start/pause/resume; B/right physical press lap/reset by state; monotonic hundredths; paused interval excluded; unlimited cumulative laps newest first; spring press feedback; resets on exit."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "stopwatch excludes pause duration, records cumulative laps and resets",
+          "line": 21
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT overlapping lobes fit the native canvas with all four bands saturated",
+          "line": 96
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT colors match factory stops, integer interpolation and saturated overlap",
+          "line": 115
+        },
+        {
+          "file": "scripts/roller.test.mjs",
+          "title": "animation samples truncate absolute millisecond ticks before elapsed subtraction",
+          "line": 265
+        },
+        {
+          "file": "scripts/scroll.test.mjs",
+          "title": "Profiler fractions truncate each timestamp before computing integer LVGL elapsed time",
+          "line": 156
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "real UI store records unlimited laps and resumes without including paused time",
+          "line": 144
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "stopwatch actions measure monotonic time while rendering is stalled",
+          "line": 168
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native navigation acts on short release, stopwatch on press, and Home suppresses combination releases",
+          "line": 479
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+          "line": 830
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "alarms.list",
+      "geaRoute": "alarms",
+      "geaComponent": "apps/app_alarm_clock/view/alarm_list.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_alarm_clock/view/alarm_list.cpp",
+        "line": 98,
+        "symbolOrNeedle": "void AlarmListView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/alarm_list.cpp#L98",
+        "sha256": "2d2af82a28b4218730f58f44b25db56b414c9d2feb33c75ae38dc6fcf86d71c9",
+        "excerpt": "\nvoid AlarmListView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->setSize(_panel_width, _panel_height);\n    _panel->setBgColor(lv_color_hex(_bg_color));\n    _panel->setPadding(0, 72, 0, 0);\n    _panel->setBorderWidth(0);"
+      },
+      "states": ["empty", "multiple", "enabled", "disabled", "long scrolling list"],
+      "behaviors": [
+        "Persistent daily alarms; switches; Add action; stationary hold opens delete confirmation; scrolling cancels hold."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "daily alarms trigger once per calendar date and respect disable",
+          "line": 41
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "daily alarms persist, ring in another tool, dismiss and do not retrigger that day",
+          "line": 195
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "stationary alarm hold opens its dialog while pressed and scrolling cancels the hold",
+          "line": 514
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "simultaneous factory alarms queue until each OK, block underlying navigation and never retrigger that date",
+          "line": 780
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "alarms.add",
+      "geaRoute": "alarm-add",
+      "geaComponent": "apps/app_alarm_clock/view/add_alarm.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_alarm_clock/view/add_alarm.cpp",
+        "line": 45,
+        "symbolOrNeedle": "void AlarmAddView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/add_alarm.cpp#L45",
+        "sha256": "934d3f703784e2c59956b21e4643ee900dccee8444070e0b24496cd977a2a4eb",
+        "excerpt": "\nvoid AlarmAddView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_width, _panel_height);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+      },
+      "states": ["default07:00", "time pickers drag", "picker fling", "OK", "Home cancel"],
+      "behaviors": [
+        "Two infinite hour/minute pickers; default07:00; confirm adds enabled alarm; Home cancels."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "daily alarms trigger once per calendar date and respect disable",
+          "line": 41
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "daily alarms persist, ring in another tool, dismiss and do not retrigger that day",
+          "line": 195
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "picker drags continuously, commits at release and settles without discrete row jumps",
+          "line": 631
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "finite picker predicts momentum and clamps while time pickers wrap",
+          "line": 650
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "pointer bubbling samples a picker once and retains recent velocity across different columns",
+          "line": 677
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "neighboring launcher icons open their own apps and pickers use source placement",
+          "line": 715
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "alarms.delete",
+      "geaRoute": "dialog=delete over alarms",
+      "geaComponent": "common/dialog/Dialog.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_alarm_clock/view/alarm_list.cpp",
+        "line": 62,
+        "symbolOrNeedle": "Delete this alarm?",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/alarm_list.cpp#L62",
+        "sha256": "2d2af82a28b4218730f58f44b25db56b414c9d2feb33c75ae38dc6fcf86d71c9",
+        "excerpt": "    _label = std::make_unique<Label>(_panel->get());\n    _label->setText(\"Delete this alarm?\");\n    _label->setTextFont(&MontserratSemiBold26);\n    _label->setTextColor(lv_color_hex(_label_color));\n    _label->align(LV_ALIGN_TOP_LEFT, 49, 40);\n\n    _confirm_button = std::make_unique<Button>(_panel->get());\n    _confirm_button->setSize(_dialog_button_width, _dialog_button_height);"
+      },
+      "states": ["Delete", "Cancel"],
+      "behaviors": [
+        "Blocking Delete/Cancel dialog; persisted deletion; underlying navigation cannot act."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "stationary alarm hold opens its dialog while pressed and scrolling cancels the hold",
+          "line": 514
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "alarms.trigger",
+      "geaRoute": "ringing over any app",
+      "geaComponent": "apps/app_alarm_clock/view/trigger_alarm.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_alarm_clock/app_alarm_clock.cpp",
+        "line": 31,
+        "symbolOrNeedle": "onTriggered().connect",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/app_alarm_clock.cpp#L31",
+        "sha256": "0a072e0a668fd1c0714144e5f828cfa66902e3cce6edc9f2e589db10ac938ead",
+        "excerpt": "\n    _alarm_clock->onTriggered().connect([this](const model::AlarmClock::AlarmTriggeredEvent& event) {\n        std::unique_ptr<view::AlarmTriggerView> trigger_view;\n        {\n            LvglLockGuard lock;\n            trigger_view = std::make_unique<view::AlarmTriggerView>();\n            trigger_view->init(event.time);\n        }"
+      },
+      "states": ["single alert", "simultaneous queue", "OK dismiss", "muted speaker"],
+      "behaviors": [
+        "Scheduled even while another app runs; blocking overlay; original sound/vibration cadence; repeated same-day suppression; sequential simultaneous alerts."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "muted positive tones preserve the existing PCM while explicit cancellation still stops it",
+          "line": 434
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "daily alarms trigger once per calendar date and respect disable",
+          "line": 41
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "daily alarms persist, ring in another tool, dismiss and do not retrigger that day",
+          "line": 195
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "simultaneous factory alarms queue until each OK, block underlying navigation and never retrigger that date",
+          "line": 780
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+          "line": 830
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "badge.display",
+      "geaRoute": "badge",
+      "geaComponent": "apps/app_badge/view/badge.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_badge/view/badge.cpp",
+        "line": 81,
+        "symbolOrNeedle": "void BadgeView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_badge/view/badge.cpp#L81",
+        "sha256": "30df972f86268d17e43f48d73a210cf720def6907343b28a49dc9cffda29e598",
+        "excerpt": "\nvoid BadgeView::init(lv_obj_t* parent)\n{\n    _edit_requested = false;\n\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);"
+      },
+      "states": [
+        "no image edit hint",
+        "occupied slot",
+        "A/B previous/next occupied slot",
+        "last slot wraps"
+      ],
+      "behaviors": [
+        "Six persistent JPEG slots; original empty-state hint; A/B cycles occupied slots; hold requests editor."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "TS badge server stores six slots, selects images and deletes the active slot",
+          "line": 78
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "startup and active deletion choose the lowest occupied slot, including no-image reset",
+          "line": 129
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "badge.confirm",
+      "geaRoute": "dialog=badge over badge",
+      "geaComponent": "common/dialog/Dialog.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_badge/view/badge.cpp",
+        "line": 49,
+        "symbolOrNeedle": "Enter badge edit?",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_badge/view/badge.cpp#L49",
+        "sha256": "30df972f86268d17e43f48d73a210cf720def6907343b28a49dc9cffda29e598",
+        "excerpt": "    _label = std::make_unique<Label>(_panel->get());\n    _label->setText(\"Enter badge edit?\");\n    _label->setTextFont(&MontserratSemiBold26);\n    _label->setTextColor(lv_color_hex(_label_color));\n    _label->align(LV_ALIGN_TOP_LEFT, 49, 40);\n\n    _confirm_button = std::make_unique<Button>(_panel->get());\n    _confirm_button->setSize(_dialog_button_width, _dialog_button_height);"
+      },
+      "states": ["Edit", "Cancel"],
+      "behaviors": ["Blocking edit confirmation before starting the AP."],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory AP edit session gates keys and navigation until its Exit completes",
+          "line": 811
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "badge.ap_instructions",
+      "geaRoute": "badge-edit",
+      "geaComponent": "apps/app_badge/view/badge_editor.tsx",
+      "factoryEvidence": {
+        "path": "main/hal/utils/config_ap/config_ap.cpp",
+        "line": 133,
+        "symbolOrNeedle": "Connect to Wi-Fi:",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L133",
+        "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+        "excerpt": "\n        log(\"Connect to Wi-Fi: \" + _ssid + \"\\nAnd open page:\\n\" + std::string(_ap_url));\n\n        xEventGroupWaitBits(_event_group, _exit_requested_bit, pdTRUE, pdFALSE, portMAX_DELAY);\n\n        stop();\n\n        log(\"Exited edit mode\");"
+      },
+      "states": ["AP ready", "Wi-Fi start failure", "server start failure", "Exit requested"],
+      "behaviors": [
+        "Open MAC-suffixed M5StopWatch AP; instructions for192.168.4.1; captive redirect; editing blocks physical/app navigation; Exit replies before teardown then reloads selected image."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "portal close returns its reply before shutting down HTTP and Wi-Fi",
+          "line": 102
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "phone captive probes redirect with factory headers and upload metadata rejects PNG",
+          "line": 169
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory AP edit session gates keys and navigation until its Exit completes",
+          "line": 811
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "badge.phone",
+      "geaRoute": "HTTP /",
+      "geaComponent": "assets/badge-config.html",
+      "factoryEvidence": {
+        "path": "main/hal/utils/config_ap/assets/badge_config_ap.html",
+        "line": 1,
+        "symbolOrNeedle": "<!doctype html>",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/assets/badge_config_ap.html#L1",
+        "sha256": "9200fb3969304252443b0d63813804fbe6ec2bd9de88b6c7d5723ca9265a356a",
+        "excerpt": "<!doctype html>\n<html lang=\"en\">\n\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Badge Manager</title>"
+      },
+      "states": [
+        "empty slots",
+        "occupied thumbnails",
+        "selected/active tile",
+        "image preview",
+        "drag crop",
+        "zoom",
+        "background color",
+        "upload busy/success/error",
+        "delete",
+        "activate",
+        "Exit",
+        "mobile layout",
+        "desktop layout"
+      ],
+      "behaviors": [
+        "Original HTML editor: six slots, JPEG file chooser (3MB source cap),466\u00b2 crop canvas, zoom and pointer capture, background fill, resized JPEG upload, activation/delete, inline errors and disabled busy controls, responsive layout."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "portal close returns its reply before shutting down HTTP and Wi-Fi",
+          "line": 102
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "original phone page receives usable thumbnail URLs after a real-sized JPEG upload",
+          "line": 111
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "empty-slot mutations and failed persistent writes report errors without changing selection",
+          "line": 151
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "imu",
+      "geaRoute": "imu",
+      "geaComponent": "apps/app_imu/view/view.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_imu/view/view.cpp",
+        "line": 93,
+        "symbolOrNeedle": "void ImuView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_imu/view/view.cpp#L93",
+        "sha256": "cc72b4c710c5db8aedde8f1482470c2249b2cf53bfc9e84cef833b5b9e9317f0",
+        "excerpt": "\nvoid ImuView::init(lv_obj_t* parent)\n{\n    _orbit_angle_initialized = false;\n    _orbit_angle_unwrapped   = 0.0f;\n\n    _anim_x.pause();\n    _anim_x.easingOptions().duration       = 0.1;"
+      },
+      "states": [
+        "labels on",
+        "labels off",
+        "ball moved",
+        "gyro size",
+        "orbit visible",
+        "orbit hidden"
+      ],
+      "behaviors": [
+        "Physical acceleration axis mapping, dead zones and bound clamps; linear interpolation; gyro magnitude controls size; independent integrated yaw orbit; tap toggles labels; state reset on entry."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "IMU orbit unwrap follows the shortest continuous angle across both boundaries",
+          "line": 337
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "IMU cross boxes use factory integer center alignment and foreground layering",
+          "line": 345
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "IMU uses gyro magnitude for size and integrates yaw independently of gravity",
+          "line": 255
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "simultaneous factory alarms queue until each OK, block underlying navigation and never retrigger that date",
+          "line": 780
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "fft",
+      "geaRoute": "fft",
+      "geaComponent": "apps/app_fft/view/view.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_fft/view/view.cpp",
+        "line": 86,
+        "symbolOrNeedle": "void FftView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_fft/view/view.cpp#L86",
+        "sha256": "45617e13ebb0fbed5f5e64297683b5ad9e5bd3a06ed9310249f803c055bfa00d",
+        "excerpt": "\nvoid FftView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+      },
+      "states": [
+        "silence",
+        "active spectrum",
+        "peak labels shown",
+        "peak labels hidden",
+        "microphone failure"
+      ],
+      "behaviors": [
+        "44100Hz capture;512-point Hann FFT/hop256;20 logarithmic bands; DC removal, learned noise floor, normalization/AGC, attack/decay; weighted groups, geometric/color motion, label toggle; DSP state survives reopen; peak interpolation deliberately retains factory raw-neighbor/normalized-center units."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "microphone worklet measures a 1 kHz tone and publishes normalized bands",
+          "line": 45
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "microphone worklet removes DC and keeps silence silent",
+          "line": 66
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "factory logarithmic band boundaries remain contiguous at both microphone rates",
+          "line": 89
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "factory attack and decay follow the microphone signal while removing learned stationary noise",
+          "line": 105
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "44.1 kHz microphone retains frequencies above the 16 kHz capture Nyquist limit",
+          "line": 132
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "flattened FFT matches an independent direct transform of a broadband microphone window",
+          "line": 141
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "UI publication starts at the first ready window and stays near 60 Hz at both capture rates",
+          "line": 199
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "publication pacing keeps every FFT state update bitwise identical to the unrestricted baseline",
+          "line": 224
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "latest-spectrum publication is invariant to microphone chunk partitioning",
+          "line": 265
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "capture rates below 60 FFTs per second publish every result without accumulating phase debt",
+          "line": 284
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "FFT capture reopens with the same worklet and retained spectrum state",
+          "line": 415
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT groups use the factory weighted average and retain each fifth band",
+          "line": 83
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT overlapping lobes fit the native canvas with all four bands saturated",
+          "line": 96
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT colors match factory stops, integer interpolation and saturated overlap",
+          "line": 115
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "precomputed FFT lobes preserve the factory formula for deterministic random inputs",
+          "line": 125
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "actual FFT triangle kernel preserves native rounded coordinates within its radius bounds",
+          "line": 155
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT display smoothing follows factory Float32 attack and release within normalized bounds",
+          "line": 256
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "reusable FFT radii reset previous lobes and cached integer indices preserve blend geometry",
+          "line": 285
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "FFT amplitude uses the factory float product before integer truncation",
+          "line": 327
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "FFT preserves hidden presentation strings while time progresses and active screens refresh immediately",
+          "line": 302
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "wheel.selection",
+      "geaRoute": "wheel; wheelReady=false",
+      "geaComponent": "apps/app_lucky_wheel/view/selection.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_lucky_wheel/view/selection.cpp",
+        "line": 30,
+        "symbolOrNeedle": "void SelectionView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_lucky_wheel/view/selection.cpp#L30",
+        "sha256": "003e47ef4ef67db9d84014ef7067fb2c277ef4eedb30369fec578154133da7af",
+        "excerpt": "\nvoid SelectionView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+      },
+      "states": ["2 options", "18 options", "finite drag endpoints", "fling", "OK"],
+      "behaviors": [
+        "Finite2\u201318 normal roller, plain numeric labels, initial2; OK builds wheel."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/roller.test.mjs",
+          "title": "finite roller drags freely but release clamps first and last options",
+          "line": 100
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "finite picker predicts momentum and clamps while time pickers wrap",
+          "line": 650
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "neighboring launcher icons open their own apps and pickers use source placement",
+          "line": 715
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "wheel.spin",
+      "geaRoute": "wheel; wheelReady=true",
+      "geaComponent": "apps/app_lucky_wheel/view/wheel.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_lucky_wheel/view/wheel.cpp",
+        "line": 113,
+        "symbolOrNeedle": "void WheelView::init",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_lucky_wheel/view/wheel.cpp#L113",
+        "sha256": "daae4520ef2451f422fb8e70f5f90a952c4f8029ec14cabfe77068e5e88e4388",
+        "excerpt": "\nvoid WheelView::init(lv_obj_t* parent, int optionCount)\n{\n    _option_count = std::max(2, optionCount);\n\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);"
+      },
+      "states": [
+        "ready",
+        "clockwise",
+        "counterclockwise",
+        "random tap direction",
+        "spinning ignores extra requests",
+        "settled outcome"
+      ],
+      "behaviors": [
+        "Factory sector colors/number placement; A/B spin directions; tap random direction; random duration/turns/outcome bounded away from sector boundaries; cubic easing and pointer timing; resets on entry."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "wheel outcomes stay within selected sector in either spin direction",
+          "line": 58
+        },
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "wheel color order has no neighboring or wraparound duplicates",
+          "line": 72
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.menu",
+      "geaRoute": "settings",
+      "geaComponent": "apps/app_setup/view/view.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/app_setup.cpp",
+        "line": 39,
+        "symbolOrNeedle": "_menu_sections =",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/app_setup.cpp#L39",
+        "sha256": "2917d03c53173cc4b491b4b9a322d271b4609cfbf77f8b295c0ecc5b83e4b9af",
+        "excerpt": "\n    _menu_sections = {\n        {\n            \"Device\",\n            {\n                {\"Brightness\",\n                 [&]() {\n                     _destroy_menu = true;"
+      },
+      "states": ["Device", "Time & Date", "Firmware"],
+      "behaviors": [
+        "Brightness, Volume, Button, Set Time, Set Date, V0.5; scrolling list; Home closes worker/settings; version ten-tap easter egg."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+          "line": 349
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "About progresses in bounded bursts without capping100 or restarting",
+          "line": 759
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.brightness",
+      "geaRoute": "brightness",
+      "geaComponent": "apps/app_setup/workers/brightness.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/device.cpp",
+        "line": 233,
+        "symbolOrNeedle": "BrightnessWorker::BrightnessWorker",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L233",
+        "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+        "excerpt": "\nBrightnessWorker::BrightnessWorker()\n{\n    mclog::tagInfo(_tag, \"start brightness worker\");\n\n    _applied_brightness = GetHAL().getBackLightBrightness();\n    _view               = std::make_unique<PercentageAdjustView>(_applied_brightness, 10, 100, 1);\n}"
+      },
+      "states": ["10%", "100%", "live drag", "OK persist", "Home cancel persistence"],
+      "behaviors": [
+        "Slider10\u2013100; live display change; explicit OK persistence; cancellation does not save other workers."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+          "line": 349
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.volume",
+      "geaRoute": "volume",
+      "geaComponent": "apps/app_setup/workers/volume.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/device.cpp",
+        "line": 258,
+        "symbolOrNeedle": "VolumeWorker::VolumeWorker",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L258",
+        "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+        "excerpt": "\nVolumeWorker::VolumeWorker()\n{\n    mclog::tagInfo(_tag, \"start volume worker\");\n\n    _applied_volume = GetHAL().getSpeakerVolume();\n    _view           = std::make_unique<PercentageAdjustView>(_applied_volume, 0, 100, 5);\n}"
+      },
+      "states": ["0 mute", "100%", "5% steps", "live preview", "OK persist"],
+      "behaviors": [
+        "Slider0\u2013100 in5-point steps; live audio volume and factory preview cadence; save only active worker."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "muted positive tones preserve the existing PCM while explicit cancellation still stops it",
+          "line": 434
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+          "line": 349
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+          "line": 830
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.button",
+      "geaRoute": "button",
+      "geaComponent": "apps/app_setup/workers/button.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/device.cpp",
+        "line": 283,
+        "symbolOrNeedle": "ButtonWorker::ButtonWorker",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L283",
+        "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+        "excerpt": "\nButtonWorker::ButtonWorker()\n{\n    mclog::tagInfo(_tag, \"start button worker\");\n\n    _applied_config = GetHAL().getButtonConfig();\n    _view           = std::make_unique<ButtonConfigView>(_applied_config);\n}"
+      },
+      "states": ["SFX on/off", "vibration on/off", "OK persist"],
+      "behaviors": [
+        "Independent sound/vibration switches; enabled default; per-press A/B pitches and20ms feedback; explicit persistence."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/startup.test.mjs",
+          "title": "startup presents factory artwork for an app frame after settings load and before guide/menu",
+          "line": 67
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+          "line": 349
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+          "line": 830
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.time",
+      "geaRoute": "set-time",
+      "geaComponent": "apps/app_setup/workers/set_time.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/datetime.cpp",
+        "line": 54,
+        "symbolOrNeedle": "class SetTimeWorker::TimeAdjustView",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L54",
+        "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+        "excerpt": "\nclass SetTimeWorker::TimeAdjustView {\npublic:\n    explicit TimeAdjustView(const TimeHms& initialTime)\n    {\n        _current_time = initialTime;\n\n        _panel = std::make_unique<Container>(lv_screen_active());"
+      },
+      "states": [
+        "current RTC values",
+        "hour/minute/second drag and fling",
+        "wrap",
+        "summary",
+        "OK write RTC",
+        "Home cancel"
+      ],
+      "behaviors": [
+        "Three infinite selectors; live summary; source picker geometry,200ms snap and shared device momentum; RTC save on OK."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+          "line": 349
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "picker drags continuously, commits at release and settles without discrete row jumps",
+          "line": 631
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "finite picker predicts momentum and clamps while time pickers wrap",
+          "line": 650
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "pointer bubbling samples a picker once and retains recent velocity across different columns",
+          "line": 677
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "neighboring launcher icons open their own apps and pickers use source placement",
+          "line": 715
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.date_year_month",
+      "geaRoute": "set-date; dateStage=0",
+      "geaComponent": "apps/app_setup/workers/set_date.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/datetime.cpp",
+        "line": 168,
+        "symbolOrNeedle": "class SetDateWorker::DateAdjustView",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L168",
+        "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+        "excerpt": "\nclass SetDateWorker::DateAdjustView {\npublic:\n    explicit DateAdjustView(const DateYmd& initialDate)\n    {\n        _current_date = initialDate;\n\n        _panel = std::make_unique<Container>(lv_screen_active());"
+      },
+      "states": ["year2000..2099", "month1..12", "summary", "Next"],
+      "behaviors": [
+        "First staged date screen; initial RTC values; Next changes to day stage; months allocate five infinite pages from pre-style font."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "date selectors clamp leap days correctly",
+          "line": 52
+        },
+        {
+          "file": "scripts/roller.test.mjs",
+          "title": "infinite page count uses the font when options were installed, not final text size",
+          "line": 222
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.date_day",
+      "geaRoute": "set-date; dateStage=1",
+      "geaComponent": "apps/app_setup/workers/set_date.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/datetime.cpp",
+        "line": 277,
+        "symbolOrNeedle": "void syncDateValidity",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L277",
+        "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+        "excerpt": "\n    void syncDateValidity()\n    {\n        const uint8_t max_day = DateYmd::daysInMonth(_current_date.year, _current_date.month);\n        if (_current_date.day > max_day) {\n            _current_date.day = max_day;\n        }\n"
+      },
+      "states": ["28/29/30/31-day ranges", "invalid prior day clamps", "OK write RTC"],
+      "behaviors": [
+        "Day options recreated for selected month/year; leap years; live summary; save valid date only; day uses final font when allocating pages."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/model.test.mjs",
+          "title": "date selectors clamp leap days correctly",
+          "line": 52
+        },
+        {
+          "file": "scripts/roller.test.mjs",
+          "title": "reset changes a date range and cancels motion without erasing global input history",
+          "line": 198
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "settings.about",
+      "geaRoute": "about",
+      "geaComponent": "apps/app_setup/workers/about.tsx",
+      "factoryEvidence": {
+        "path": "main/apps/app_setup/workers/about.cpp",
+        "line": 84,
+        "symbolOrNeedle": "void AboutWorker::update",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/about.cpp#L84",
+        "sha256": "0ed5f0fb83759103d8607568853e414bda19fa2bc3ba35cfcb57a9b5704f8ce6",
+        "excerpt": "\nvoid AboutWorker::update()\n{\n    auto& random = Random::getInstance();\n    uint32_t now = GetHAL().millis();\n\n    if (now < _next_progress_tick) {\n        return;"
+      },
+      "states": ["0% Complete", "burst progress", "progress beyond100"],
+      "behaviors": [
+        "Ten version taps enter original blue-screen joke; random1\u20135 step bursts,1\u20138 progress increments and bounded delays; no actual reboot and no100% cap."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "About progresses in bounded bursts without capping100 or restarting",
+          "line": 759
+        }
+      ],
+      "assessment": "implemented_source_mapped",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    },
+    {
+      "id": "error.overlay",
+      "geaRoute": "error over current route",
+      "geaComponent": "common/error/ErrorMessage.tsx",
+      "factoryEvidence": {
+        "path": "main/hal/utils/config_ap/config_ap.cpp",
+        "line": 118,
+        "symbolOrNeedle": "Wi-Fi initialization failed",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L118",
+        "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+        "excerpt": "        if (!ensure_wifi_stack_ready()) {\n            log(\"Wi-Fi initialization failed\");\n            return false;\n        }\n\n        _event_group = xEventGroupCreate();\n        if (_event_group == nullptr) {\n            log(\"Failed to create sync event group\");"
+      },
+      "states": [
+        "microphone unavailable",
+        "badge AP/server startup failure",
+        "RTC write failure",
+        "tap clear"
+      ],
+      "behaviors": [
+        "Gea adds dismissible service-failure feedback; factory AP errors appear in its loading message/log callbacks. Failure UI and exact error wording are not assumed pixel-equivalent."
+      ],
+      "relatedPortableTests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "empty-slot mutations and failed persistent writes report errors without changing selection",
+          "line": 151
+        }
+      ],
+      "assessment": "intentional_error_surface_difference",
+      "pairedScreenshotValidation": "pending_report_capture",
+      "deviceInteractionValidation": "requires_human_or_recorded_device_evidence"
+    }
+  ],
+  "crossCuttingFeatures": [
+    {
+      "id": "global.navigation",
+      "factoryEvidence": {
+        "path": "main/apps/common/key_manager/key_manager.cpp",
+        "line": 10,
+        "symbolOrNeedle": "const KeyEvent& KeyManager::update",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/key_manager/key_manager.cpp#L10",
+        "sha256": "6879c6e8cd92f0afe9ed9c79a42dd590a3ac614c52a1f4193f291d9173a5be60",
+        "excerpt": "\nconst KeyEvent& KeyManager::update(bool updateButtonStates)\n{\n    if (updateButtonStates) {\n        GetHAL().updateButtonStates();\n    }\n\n    _event = KeyEvent::None;"
+      },
+      "behavior": "A/B short release navigate; simultaneously held A+B emits one latched Home until both released; stopwatch consumes physical press actions; touch swipe threshold60px/last pressed point; modal/editor blocks underlying handlers.",
+      "gea": ["stores/WatchStore.tsx:keyDown/keyUp/pointerDown/pointerMove/pointerUp"],
+      "tests": [
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native home key returns home without triggering either single button action",
+          "line": 214
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+          "line": 426
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native navigation acts on short release, stopwatch on press, and Home suppresses combination releases",
+          "line": 479
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory AP edit session gates keys and navigation until its Exit completes",
+          "line": 811
+        }
+      ]
+    },
+    {
+      "id": "global.audio",
+      "factoryEvidence": {
+        "path": "main/apps/common/audio/audio.cpp",
+        "line": 23,
+        "symbolOrNeedle": "play_tone",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/audio/audio.cpp#L23",
+        "sha256": "4baa99d5fe584a485a0b1509a104f280e3d7e7c7c2d3421cd1de97f571d9ef3e",
+        "excerpt": "\nvoid play_tone(int frequency, float durationSec, float volumeScale)\n{\n    if (GetHAL().getSpeakerVolume() <= 0) {\n        return;\n    }\n\n    const int sample_rate = GetHAL().getAudioSampleRate();"
+      },
+      "behavior": "Original boot WAV, quantized44.1kHz PCM tones, half gain,200-sample fade, replacement/mute; factory button notes and alarm cadence; microphone30dB codec gain.",
+      "gea": ["lib/audio.ts", "worklets/spectrum.ts", "package.json:defines"],
+      "tests": [
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "factory tone uses quantized 44.1 kHz PCM, default half gain and a 200 sample fade",
+          "line": 396
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "FFT capture reopens with the same worklet and retained spectrum state",
+          "line": 415
+        },
+        {
+          "file": "scripts/audio.test.mjs",
+          "title": "muted positive tones preserve the existing PCM while explicit cancellation still stops it",
+          "line": 434
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+          "line": 830
+        }
+      ]
+    },
+    {
+      "id": "global.persistence",
+      "factoryEvidence": {
+        "path": "main/hal/utils/settings/settings.h",
+        "line": 8,
+        "symbolOrNeedle": "class Settings",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/settings/settings.h#L8",
+        "sha256": "135d7afd8596e9fc181b645225a53eaad0d56efc4487987c4fd447e5e6a30eba",
+        "excerpt": "\nclass Settings {\npublic:\n    Settings(const std::string& ns, bool read_write = false);\n    ~Settings();\n\n    std::string GetString(const std::string& key, const std::string& default_value = \"\");\n    void SetString(const std::string& key, const std::string& value);"
+      },
+      "behavior": "Boot guide count, selected badge slot/images, alarms, brightness/volume and button settings persist; watch face/wheel/stopwatch presentation resets on app recreation.",
+      "gea": ["lib/settings.ts", "lib/badge.ts", "stores/WatchStore.tsx"],
+      "tests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "empty-slot mutations and failed persistent writes report errors without changing selection",
+          "line": 151
+        },
+        {
+          "file": "scripts/scroll.test.mjs",
+          "title": "SCROLL_ONE clamps drag and throw to the next center and interrupted snap resumes without jumping",
+          "line": 72
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "real UI store records unlimited laps and resumes without including paused time",
+          "line": 144
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "daily alarms persist, ring in another tool, dismiss and do not retrigger that day",
+          "line": 195
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "accepting one factory settings worker does not persist canceled live changes from another",
+          "line": 382
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+          "line": 426
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "NumberFlow rolls only changed digits, reverses at clock wrap, and recreates its defaults",
+          "line": 534
+        }
+      ]
+    },
+    {
+      "id": "badge.http_contract",
+      "factoryEvidence": {
+        "path": "main/hal/utils/config_ap/config_ap.cpp",
+        "line": 215,
+        "symbolOrNeedle": "bool start_web_server",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L215",
+        "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+        "excerpt": "\n    bool start_web_server()\n    {\n        httpd_config_t config    = HTTPD_DEFAULT_CONFIG();\n        config.max_uri_handlers  = 24;\n        config.recv_wait_timeout = 15;\n        config.send_wait_timeout = 15;\n        config.uri_match_fn      = httpd_uri_match_wildcard;"
+      },
+      "behavior": "GET /; GET /badge/state; GET /badge/image?slot=n; POST /badge/active?slot=n; DELETE /badge/image?slot=n; POST /upload?slot=n; POST /close; six slots; request body1..2MiB; JPEG-only upload; factory case-insensitive slot/strtoul prefixes and buffer bounds; invalid/missing slot, empty data, absent image, persistence failure; captive302 withLocation/no-cache/Connection headers.",
+      "gea": ["lib/badge.ts", "assets/badge-config.html"],
+      "tests": [
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "TS badge server stores six slots, selects images and deletes the active slot",
+          "line": 78
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "portal close returns its reply before shutting down HTTP and Wi-Fi",
+          "line": 102
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "original phone page receives usable thumbnail URLs after a real-sized JPEG upload",
+          "line": 111
+        },
+        {
+          "file": "scripts/badge.test.mjs",
+          "title": "phone captive probes redirect with factory headers and upload metadata rejects PNG",
+          "line": 169
+        },
+        {
+          "file": "scripts/store.test.mjs",
+          "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+          "line": 225
+        }
+      ]
+    },
+    {
+      "id": "renderer.output",
+      "factoryEvidence": {
+        "path": "main/hal/hal_display.cpp",
+        "line": 360,
+        "symbolOrNeedle": "lv_display_set_buffers",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal_display.cpp#L360",
+        "sha256": "40367bd2f007e4b68f356366aab0fe3d0181d171b7eb0914ef4d9b247d4ce670",
+        "excerpt": "    static uint8_t *buf2 = (uint8_t *)heap_caps_malloc(_display->width() * LV_BUFFER_LINE, MALLOC_CAP_SPIRAM);\n    lv_display_set_buffers(disp, (void *)buf1, (void *)buf2, _display->width() * LV_BUFFER_LINE,\n                           LV_DISPLAY_RENDER_MODE_PARTIAL);\n\n    lvTouchpad = lv_indev_create();\n    LV_ASSERT_MALLOC(lvTouchpad);\n    if (lvTouchpad == NULL) {\n        printf(\"lv_indev_create failed\\n\");"
+      },
+      "behavior": "Both run466\u00d7466 logical pixels. LVGL partial-render buffer versus Gea retained native renderer; typography/AA/rounded edges/FFT raster can differ.60Hz requested rate is not a measured universal60FPS guarantee.",
+      "gea": ["index.tsx", "package.json:gea.targets.esp32"],
+      "tests": []
+    }
+  ],
+  "testCatalog": [
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "microphone worklet measures a 1 kHz tone and publishes normalized bands",
+      "line": 45
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "microphone worklet removes DC and keeps silence silent",
+      "line": 66
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "factory logarithmic band boundaries remain contiguous at both microphone rates",
+      "line": 89
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "factory attack and decay follow the microphone signal while removing learned stationary noise",
+      "line": 105
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "44.1 kHz microphone retains frequencies above the 16 kHz capture Nyquist limit",
+      "line": 132
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "flattened FFT matches an independent direct transform of a broadband microphone window",
+      "line": 141
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "UI publication starts at the first ready window and stays near 60 Hz at both capture rates",
+      "line": 199
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "publication pacing keeps every FFT state update bitwise identical to the unrestricted baseline",
+      "line": 224
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "latest-spectrum publication is invariant to microphone chunk partitioning",
+      "line": 265
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "capture rates below 60 FFTs per second publish every result without accumulating phase debt",
+      "line": 284
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "factory tone uses quantized 44.1 kHz PCM, default half gain and a 200 sample fade",
+      "line": 396
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "FFT capture reopens with the same worklet and retained spectrum state",
+      "line": 415
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "muted positive tones preserve the existing PCM while explicit cancellation still stops it",
+      "line": 434
+    },
+    {
+      "file": "scripts/audio.test.mjs",
+      "title": "factory off-bin peak interpolation preserves its normalized-center/raw-neighbor units",
+      "line": 446
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "TS badge server stores six slots, selects images and deletes the active slot",
+      "line": 78
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "portal close returns its reply before shutting down HTTP and Wi-Fi",
+      "line": 102
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "original phone page receives usable thumbnail URLs after a real-sized JPEG upload",
+      "line": 111
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "startup and active deletion choose the lowest occupied slot, including no-image reset",
+      "line": 129
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "empty-slot mutations and failed persistent writes report errors without changing selection",
+      "line": 151
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "phone captive probes redirect with factory headers and upload metadata rejects PNG",
+      "line": 169
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "factory upload metadata precedence preserves nonempty JPG-labeled bytes without decoding",
+      "line": 214
+    },
+    {
+      "file": "scripts/badge.test.mjs",
+      "title": "factory HTTP slot parsing and error messages retain strtoul prefixes and route precedence",
+      "line": 241
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "stopwatch excludes pause duration, records cumulative laps and resets",
+      "line": 21
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "daily alarms trigger once per calendar date and respect disable",
+      "line": 41
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "date selectors clamp leap days correctly",
+      "line": 52
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "wheel outcomes stay within selected sector in either spin direction",
+      "line": 58
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "wheel color order has no neighboring or wraparound duplicates",
+      "line": 72
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "FFT groups use the factory weighted average and retain each fifth band",
+      "line": 83
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "FFT overlapping lobes fit the native canvas with all four bands saturated",
+      "line": 96
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "FFT colors match factory stops, integer interpolation and saturated overlap",
+      "line": 115
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "precomputed FFT lobes preserve the factory formula for deterministic random inputs",
+      "line": 125
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "actual FFT triangle kernel preserves native rounded coordinates within its radius bounds",
+      "line": 155
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "FFT display smoothing follows factory Float32 attack and release within normalized bounds",
+      "line": 256
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "reusable FFT radii reset previous lobes and cached integer indices preserve blend geometry",
+      "line": 285
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "FFT amplitude uses the factory float product before integer truncation",
+      "line": 327
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "IMU orbit unwrap follows the shortest continuous angle across both boundaries",
+      "line": 337
+    },
+    {
+      "file": "scripts/model.test.mjs",
+      "title": "IMU cross boxes use factory integer center alignment and foreground layering",
+      "line": 345
+    },
+    {
+      "file": "scripts/number-flow-geometry.test.mjs",
+      "title": "rail reproduces factory Float32 subtraction then integer truncation at every row/cell/fraction boundary",
+      "line": 29
+    },
+    {
+      "file": "scripts/number-flow-geometry.test.mjs",
+      "title": "fractional offset fixes the prior one-pixel error and retains Float32 rounding at tiny negative offsets",
+      "line": 58
+    },
+    {
+      "file": "scripts/number-flow-geometry.test.mjs",
+      "title": "actual NumberFlow JSX rail, correction classes and clipped row geometry match the source",
+      "line": 69
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "factory roller geometry and initial selected page",
+      "line": 38
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "slow short drag snaps back but fast short fling selects multiple rows immediately",
+      "line": 50
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "stationary input polls erase momentum and drag does not commit selection",
+      "line": 81
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "finite roller drags freely but release clamps first and last options",
+      "line": 100
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "infinite wrap preserves animation direction and recenters only at completion",
+      "line": 117
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "tap selects its row and any nonzero pointer move is a drag",
+      "line": 133
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "press interrupts snap at its current position; single option does not move",
+      "line": 154
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "integer throw loses subpixel tails and ease-out follows the LVGL fixed-point path",
+      "line": 176
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "reset changes a date range and cancels motion without erasing global input history",
+      "line": 198
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "infinite page count uses the font when options were installed, not final text size",
+      "line": 222
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "expanded infinite endpoints leave absent rows blank until snap recenters",
+      "line": 237
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "animation samples truncate absolute millisecond ticks before elapsed subtraction",
+      "line": 265
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "rapid gestures on different rollers share the input-device momentum trace",
+      "line": 278
+    },
+    {
+      "file": "scripts/roller.test.mjs",
+      "title": "global history expires after99ms and the same carrier supports launcher samples",
+      "line": 302
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "LVGL integer throw decay expires at99ms and prediction preserves signed truncation",
+      "line": 10
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "LVGL fixed-point ease-out retains its source quarter-step values and signed pixel rounding",
+      "line": 21
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "input reads coalesce moves and preserve the10px drag threshold without double history writes",
+      "line": 35
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "fast release projects momentum while stationary input reads remove throw velocity",
+      "line": 51
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "SCROLL_ONE clamps drag and throw to the next center and interrupted snap resumes without jumping",
+      "line": 72
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "factory DynamicIconLabel retains its previous alpha beyond the150px transition range",
+      "line": 92
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "press and recenter preserve unexpired input history while a later press decays it naturally",
+      "line": 107
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "dominant vertical movement cannot capture horizontal scroll, but an existing capture stays locked",
+      "line": 126
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "LVGL capture consumes the accumulated threshold and applies only the current input vector",
+      "line": 141
+    },
+    {
+      "file": "scripts/scroll.test.mjs",
+      "title": "Profiler fractions truncate each timestamp before computing integer LVGL elapsed time",
+      "line": 156
+    },
+    {
+      "file": "scripts/startup.test.mjs",
+      "title": "startup presents factory artwork for an app frame after settings load and before guide/menu",
+      "line": 67
+    },
+    {
+      "file": "scripts/startup.test.mjs",
+      "title": "comparison-only startup hold is bounded and does not repeat initialization or boot sound",
+      "line": 85
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "real UI store records unlimited laps and resumes without including paused time",
+      "line": 144
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "stopwatch actions measure monotonic time while rendering is stalled",
+      "line": 168
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "daily alarms persist, ring in another tool, dismiss and do not retrigger that day",
+      "line": 195
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "native home key returns home without triggering either single button action",
+      "line": 214
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "native button events, badge editor, theme navigation, date clamping and hidden screen",
+      "line": 225
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "IMU uses gyro magnitude for size and integrates yaw independently of gravity",
+      "line": 255
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "Simple long press toggles the dot without cycling the color theme",
+      "line": 270
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "classic hand angles match the factory clock including hour seconds",
+      "line": 285
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "FFT preserves hidden presentation strings while time progresses and active screens refresh immediately",
+      "line": 302
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "factory settings clamp loaded values, normalize workers and map the brightness range",
+      "line": 349
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "accepting one factory settings worker does not persist canceled live changes from another",
+      "line": 382
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "factory watch dates, face defaults and exact60px last-pressed-point swipe",
+      "line": 426
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "Simple hold fires while pressed once, never renews its entry hint, and scrolling cancels it",
+      "line": 452
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "native navigation acts on short release, stopwatch on press, and Home suppresses combination releases",
+      "line": 479
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "stationary alarm hold opens its dialog while pressed and scrolling cancels the hold",
+      "line": 514
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "NumberFlow rolls only changed digits, reverses at clock wrap, and recreates its defaults",
+      "line": 534
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "factory springs are time-based, retain retarget velocity and unwrap both angle directions",
+      "line": 566
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "launcher predicts a quick short throw, preserves drag position and settles with factory easing",
+      "line": 596
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "launcher stationary hold removes fling and leaves fixed dot centers while returning to the same page",
+      "line": 616
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "picker drags continuously, commits at release and settles without discrete row jumps",
+      "line": 631
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "finite picker predicts momentum and clamps while time pickers wrap",
+      "line": 650
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "pointer bubbling samples a picker once and retains recent velocity across different columns",
+      "line": 677
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "a captured small drag suppresses arrow clicks even below the native click slop",
+      "line": 702
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "neighboring launcher icons open their own apps and pickers use source placement",
+      "line": 715
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "launcher battery shows once after800ms, uses1800ms first duration, spring-hides and samples charge only there",
+      "line": 729
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "About progresses in bounded bursts without capping100 or restarting",
+      "line": 759
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "simultaneous factory alarms queue until each OK, block underlying navigation and never retrigger that date",
+      "line": 780
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "factory AP edit session gates keys and navigation until its Exit completes",
+      "line": 811
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "physical stopwatch buttons spring inward and release, while muted feedback never starts positive PCM",
+      "line": 830
+    },
+    {
+      "file": "scripts/store.test.mjs",
+      "title": "factory negative half-angle rounding matches C++ instead of JavaScript ties",
+      "line": 858
+    }
+  ],
+  "factoryProductionInputs": [
+    {
+      "path": "sdkconfig.defaults",
+      "sha256": "d73f3bc803c8d988a96d5413abd6d9c9ff1002d2ccb2d55ae25a723f5b00b0c9"
+    },
+    {
+      "path": "dependencies.lock",
+      "sha256": "4fac953422cc956aec53e41cb05984b33fcbc01ba9dded417f143ae6c389a83a"
+    },
+    {
+      "path": "repos.json",
+      "sha256": "55509615a41f255c23bb2e3a7599a41c26c3212b8fca5d2f03b391fb2b61aa37"
+    }
+  ],
+  "dependencyPins": [
+    {
+      "url": "https://github.com/Forairaaaaa/mooncake.git",
+      "path": "components/mooncake",
+      "branch": "v2.3.3"
+    },
+    {
+      "url": "https://github.com/Forairaaaaa/mooncake_log.git",
+      "path": "components/mooncake_log",
+      "branch": "v1.5.0"
+    },
+    {
+      "url": "https://github.com/Forairaaaaa/smooth_ui_toolkit.git",
+      "path": "components/smooth_ui_toolkit",
+      "branch": "v2.12.1"
+    },
+    {
+      "url": "https://github.com/m5stack/M5GFX.git",
+      "path": "components/M5GFX",
+      "branch": "0.2.19"
+    },
+    {
+      "url": "https://github.com/bblanchon/ArduinoJson.git",
+      "path": "components/ArduinoJson",
+      "branch": "v7.4.3"
+    },
+    {
+      "url": "https://github.com/lvgl/lvgl.git",
+      "path": "components/lvgl",
+      "branch": "v9.5.0"
+    },
+    {
+      "url": "https://github.com/m5stack/M5IOE1",
+      "path": "components/M5IOE1",
+      "branch": "1.0.8",
+      "patch": "patches/M5IOE1.patch"
+    },
+    {
+      "url": "https://github.com/m5stack/M5PM1",
+      "path": "components/M5PM1",
+      "branch": "1.0.6",
+      "patch": "patches/M5PM1.patch"
+    },
+    {
+      "url": "https://github.com/lbuque/BMI270_BMM150_Sensor.git",
+      "path": "components/BMI270_BMM150_Sensor",
+      "branch": "0.1.2",
+      "with_submodules": true
+    }
+  ],
+  "phoneEditorByteIdentity": true,
+  "confirmedDifferences": [
+    {
+      "id": "boot_logo_phase",
+      "status": "earlier_native_phase_not_reproduced",
+      "screens": ["startup.boot"],
+      "detail": "Original startup artwork now has a TS route and actual app frame, but factory shows it during native HAL initialization. Gea TS executes only after target/runtime initialization, so the earlier phase/timing remains distinct."
+    },
+    {
+      "id": "raster_pixels",
+      "status": "renderer_difference",
+      "detail": "Different renderer/AA can change edge/text pixels even with equivalent layout/artwork and behavior."
+    },
+    {
+      "id": "http_error_mime",
+      "status": "backend_formatting_difference",
+      "detail": "Pinned ESP-IDF 5.5.4 httpd_resp_send_err sends the custom plain message directly with text/html MIME; Gea replies preserve status/message bodies with text/plain MIME. Invalid JPG-labeled bytes are intentionally accepted, matching the factory rather than adding decoder validation."
+    },
+    {
+      "id": "service_errors",
+      "status": "error_surface_difference",
+      "screens": ["error.overlay"],
+      "detail": "Gea provides dismissible service errors; original AP shows callback status messages and some HAL failures only log."
+    }
+  ],
+  "validationLimits": [
+    "Physical button chord, audible speaker output, tactile vibration and phone captive-login experience require recorded hardware/human checks; portable mocks do not establish them.",
+    "No locked60FPS or paired factory-vs-Gea speed advantage is implied by source/portable tests.",
+    "FFT peak interpolation now retains the factory mixed units exactly; off-bin frequency labels are knowingly less accurate than the earlier corrected Gea implementation.",
+    "Intermittent NumberFlow static-digit omission was investigated; portable regression passes. Require final device sequence evidence before claiming resolved visual reliability.",
+    "Factory tracks sdkconfig.defaults and dependencies.lock; report those exact production settings and dependency pins. Do not substitute SDK defaults or a simulator configuration for device firmware."
+  ],
+  "notInstalledOrNotAFactoryScreen": [
+    {
+      "id": "template",
+      "evidence": {
+        "path": "main/main.cpp",
+        "line": 41,
+        "symbolOrNeedle": "// GetMooncake().installApp(std::make_unique<AppTemplate>());",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/main.cpp#L41",
+        "sha256": "96b35a6fd7a4ca9b819fae895d2c33f5fa9a854d0f062237e87cd4dfc4d5ceae",
+        "excerpt": "    GetMooncake().installApp(std::make_unique<AppSetup>());\n    // GetMooncake().installApp(std::make_unique<AppTemplate>());\n\n    // Main loop\n    while (1) {\n        GetHAL().feedTheDog();\n        GetMooncake().update();\n    }"
+      },
+      "detail": "Template QUIT demo is commented out and is not an installed factory tool."
+    },
+    {
+      "id": "power_off",
+      "evidence": {
+        "path": "main/hal/hal_button.cpp",
+        "line": 39,
+        "symbolOrNeedle": "// btnPwr.setRawState",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal_button.cpp#L39",
+        "sha256": "7ea0a1adce4ed9af020056e149f13ce890945da6cca9dada5f13820e95cf7439",
+        "excerpt": "    btnB.setRawState(millis(), !gpio_get_level(USER_BUTTONB_PIN));\n    // btnPwr.setRawState(millis(), pmic_get_pwr_btn_state());\n\n    auto& config = getButtonConfig();\n    if (btnA.wasPressed()) {\n        if (config.sfxEnabled) {\n            audio::play_tone_from_midi(62 + 32, 0.02);\n        }"
+      },
+      "detail": "No dedicated Off/shutdown UI screen or power-button polling is installed by this application. PMIC power retention/charging is hardware behavior; capture powered-off panel separately if the report covers board hardware."
+    },
+    {
+      "id": "factory_reset",
+      "evidence": {
+        "path": "main/hal/hal.cpp",
+        "line": 92,
+        "symbolOrNeedle": "void Hal::factoryReset",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal.cpp#L92",
+        "sha256": "f78c290cfc0ed3ccb22772d16088e824ba36451730eef92042ae61a75e8888ad",
+        "excerpt": "\nvoid Hal::factoryReset()\n{\n    mclog::tagInfo(_tag, \"start factory reset\");\n    ESP_ERROR_CHECK(nvs_flash_erase());\n    reboot();\n}\n"
+      },
+      "detail": "HAL API exists but no Settings menu action invokes it; do not invent a missing factory reset screen."
+    },
+    {
+      "id": "about_reboot",
+      "evidence": {
+        "path": "main/apps/app_setup/workers/about.cpp",
+        "line": 84,
+        "symbolOrNeedle": "void AboutWorker::update",
+        "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/about.cpp#L84",
+        "sha256": "0ed5f0fb83759103d8607568853e414bda19fa2bc3ba35cfcb57a9b5704f8ce6",
+        "excerpt": "\nvoid AboutWorker::update()\n{\n    auto& random = Random::getInstance();\n    uint32_t now = GetHAL().millis();\n\n    if (now < _next_progress_tick) {\n        return;"
+      },
+      "detail": "Blue-screen text promises a restart, but worker never performs one."
+    }
+  ]
+}

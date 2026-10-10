@@ -1,0 +1,11 @@
+.percentage {
+  position: absolute;
+  top: 54px;
+  left: 100px;
+  width: 266px;
+  text-align: center;
+  font-family: Commissioner;
+  font-size: 108px;
+  line-height: 98px;
+  --gea-font-charset: '0123456789:%(';
+}

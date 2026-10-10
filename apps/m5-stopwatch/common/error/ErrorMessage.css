@@ -1,0 +1,12 @@
+.error {
+  position: absolute;
+  left: 40px;
+  top: 170px;
+  width: 386px;
+  height: 126px;
+  border-radius: 40px;
+  background: #682f39;
+  font-size: 24px;
+  line-height: 27px;
+  font-family: Montserrat;
+}

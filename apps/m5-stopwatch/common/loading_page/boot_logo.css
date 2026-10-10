@@ -1,0 +1,41 @@
+.boot-logo {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  background: #000000;
+  color: #ffffff;
+  font-family: Montserrat;
+  text-align: center;
+}
+
+.boot-logo-title {
+  font-family: Montserrat;
+  position: absolute;
+  top: 204px;
+  width: 466px;
+  font-size: 28px;
+  line-height: 30px;
+  --gea-font-charset: 'StopWatch';
+}
+
+.boot-logo-status {
+  font-family: Montserrat;
+  position: absolute;
+  top: 238px;
+  width: 466px;
+  color: #bfbfbf;
+  font-size: 16px;
+  line-height: 18px;
+  --gea-font-charset: 'Starting up ...';
+}
+
+.boot-logo-version {
+  font-family: Montserrat;
+  position: absolute;
+  bottom: 12px;
+  width: 466px;
+  color: #8b8b8b;
+  font-size: 14px;
+  line-height: 16px;
+  --gea-font-charset: 'V0.5';
+}

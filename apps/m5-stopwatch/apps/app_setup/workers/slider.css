@@ -1,0 +1,32 @@
+.slider-hit {
+  position: absolute;
+  left: 46px;
+  top: 180px;
+  width: 374px;
+  height: 90px;
+}
+.slider-track {
+  position: absolute;
+  left: 0;
+  top: 33px;
+  width: 374px;
+  height: 24px;
+  background: #343434;
+  border-radius: 12px;
+}
+.slider-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  background: #4ad78c;
+  border-radius: 12px;
+}
+.slider-knob {
+  position: absolute;
+  top: -8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+}

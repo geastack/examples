@@ -1,0 +1,24 @@
+.time-adjust .adjust-title {
+  top: 60px;
+}
+
+.time-adjust .adjust-summary {
+  position: absolute;
+  top: 100px;
+  width: 466px;
+  text-align: center;
+  color: #9a9a9a;
+  font-family: Montserrat;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.time-rollers {
+  left: 58px;
+  width: 350px;
+  gap: 10px;
+}
+
+.time-rollers .roller {
+  width: 110px;
+}

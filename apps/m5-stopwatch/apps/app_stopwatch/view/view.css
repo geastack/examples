@@ -1,0 +1,97 @@
+.stopwatch {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+.sw-left,
+.sw-right {
+  position: absolute;
+  top: 54px;
+  width: 105px;
+  height: 72px;
+  border-radius: 34px;
+  font-family: Maple;
+  font-size: 24px;
+  --gea-font-charset: '0123456789OLAPREST';
+  line-height: 72px;
+  color: #2e487a;
+}
+.sw-left {
+  left: 108px;
+  background: #b3cdff;
+}
+.sw-right {
+  left: 252px;
+  background: #9cf1b6;
+  color: #176c31;
+}
+.sw-right.stop {
+  background: #ff9eab;
+  color: #7a1926;
+}
+.sw-info {
+  position: absolute;
+  left: 0;
+  top: 148px;
+  width: 466px;
+  height: 330px;
+  background: #41484b;
+  border-radius: 60px;
+}
+.elapsed {
+  position: absolute;
+  top: 26px;
+  left: 6px;
+  width: 454px;
+  text-align: center;
+  color: #d8f2ff;
+  font-family: Maple;
+  font-size: 48px;
+  line-height: 55px;
+  --gea-font-charset: '0123456789O:.';
+}
+.divider {
+  position: absolute;
+  top: 98px;
+  left: 153px;
+  width: 160px;
+  height: 4px;
+  background: #58646a;
+  border-radius: 6px;
+}
+.laps {
+  position: absolute;
+  top: 104px;
+  left: 0;
+  width: 466px;
+  height: 214px;
+  overflow: scroll;
+  padding: 24px 64px 74px;
+  background: #41484b;
+  border-radius: 60px;
+}
+.lap {
+  height: 48px;
+  width: 338px;
+  display: flex;
+  justify-content: space-between;
+  font-family: Maple;
+  font-size: 28px;
+  line-height: 33px;
+  --gea-font-charset: '0123456789OLAP:.-';
+  color: #d8f2ff;
+}
+.no-laps {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 338px;
+  text-align: center;
+  line-height: 33px;
+  color: #738086;
+  font-family: Maple;
+  font-size: 28px;
+  --gea-font-charset: '0123456789OLAP:.-';
+}

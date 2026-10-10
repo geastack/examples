@@ -1,0 +1,35 @@
+.badge {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000000;
+}
+.badge-default {
+  position: absolute;
+  left: 133px;
+  top: 133px;
+  width: 200px;
+  height: 200px;
+}
+.badge-image {
+  width: auto;
+  height: auto;
+  flex-shrink: 0;
+}
+.badge-hint {
+  position: absolute;
+  top: 205px;
+  left: 73px;
+  width: 320px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 27px;
+  font-family: Montserrat;
+  color: #d9d9d9;
+}

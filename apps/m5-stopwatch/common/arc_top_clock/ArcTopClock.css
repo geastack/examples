@@ -1,0 +1,50 @@
+.top-clock {
+  position: absolute;
+  top: 4px;
+  left: 176px;
+  width: 114px;
+  height: 36px;
+  font-family: Maple;
+  font-size: 28px;
+  line-height: 33px;
+  color: #ffffff;
+  text-align: center;
+  --gea-font-charset: '0123456789O:';
+}
+
+.arc-glyph {
+  position: absolute;
+  width: 17px;
+  height: 33px;
+  line-height: 33px;
+  transform-origin: 0px 233px;
+}
+
+.arc0 {
+  left: 51px;
+  top: 1px;
+  transform: rotate(-10deg);
+}
+
+.arc1 {
+  left: 51px;
+  top: 1px;
+  transform: rotate(-4.6deg);
+}
+
+.arc2 {
+  left: 49px;
+  top: -1px;
+}
+
+.arc3 {
+  left: 52px;
+  top: 0;
+  transform: rotate(3.2deg);
+}
+
+.arc4 {
+  left: 52px;
+  top: 0;
+  transform: rotate(8.4deg);
+}

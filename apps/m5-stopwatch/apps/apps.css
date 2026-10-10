@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('../assets/Montserrat-Medium.ttf');
+  --gea-font-source: url('../assets/factory-montserrat.json');
+}
+
+@font-face {
+  font-family: Maple;
+  src: url('../assets/MapleMono-Medium.ttf');
+  --gea-font-source: url('../assets/factory-maple.json');
+}
+
+@font-face {
+  font-family: Commissioner;
+  src: url('../assets/Commissioner-Medium.ttf');
+  --gea-font-source: url('../assets/factory-commissioner.json');
+}
+
+@font-face {
+  font-family: MontserratBold;
+  src: url('../assets/Montserrat-SemiBold.ttf');
+  --gea-font-source: url('../assets/factory-montserrat-semibold.json');
+}
+
+.factory {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 466px;
+  height: 466px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  font-family: Montserrat;
+  font-size: 26px;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  color: #fff;
+  background: transparent;
+  font-family: Montserrat;
+  font-size: 28px;
+  text-align: center;
+}
+.battery-pull-target {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 466px;
+  height: 20px;
+  z-index: 90;
+}

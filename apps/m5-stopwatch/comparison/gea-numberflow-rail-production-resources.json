@@ -1,0 +1,1521 @@
+{
+  "framework": "gea",
+  "elf": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/gea-production.elf",
+  "elfSha256": "a0387eb791c95ca8d89b932948214dc8c81e189728ccd9041c1971c3e1ca0693",
+  "method": "Defined ELF symbols in mapped DROM range; explicit name categories only.",
+  "limits": "Not total renderer cost. Categories exclude code, unnamed data, alignment and metadata not matching these names. Symbols may share names; each address is counted separately.",
+  "groups": {
+    "baked_font_atlases": {
+      "bytes": 742438,
+      "symbolCount": 16,
+      "symbols": [
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_13b0bdc102fee4deE",
+          "address": 1011746520,
+          "bytes": 32704,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_17499b400f9a47ffE",
+          "address": 1011604304,
+          "bytes": 54540,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_18a56838fa9a3386E",
+          "address": 1011212736,
+          "bytes": 40369,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_2c1be880932d5b3bE",
+          "address": 1011253108,
+          "bytes": 10240,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_348eb3bb8f122ec2E",
+          "address": 1011814944,
+          "bytes": 9174,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_5674122c5d79421dE",
+          "address": 1011263348,
+          "bytes": 104648,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_683a2bd52bf9d817E",
+          "address": 1011838620,
+          "bytes": 91605,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_7e6230cb61f0b587E",
+          "address": 1011779224,
+          "bytes": 16797,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_89c0142ab4ce2171E",
+          "address": 1011453000,
+          "bytes": 78740,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_94717a559f58296bE",
+          "address": 1011824120,
+          "bytes": 14500,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_9f2637616bd155dcE",
+          "address": 1011531740,
+          "bytes": 72562,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_d423388d738fd6f2E",
+          "address": 1011930228,
+          "bytes": 24960,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_da55533676945f9fE",
+          "address": 1011796024,
+          "bytes": 18920,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_ef7d4ed0d4e6f511E",
+          "address": 1011709944,
+          "bytes": 36576,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_f3421302d711644bE",
+          "address": 1011367996,
+          "bytes": 85003,
+          "kind": "V"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generated31gea_font_atlas_fffcbdf7b8389b94E",
+          "address": 1011658844,
+          "bytes": 51100,
+          "kind": "V"
+        }
+      ]
+    },
+    "baked_font_descriptors": {
+      "bytes": 960,
+      "symbolCount": 16,
+      "symbols": [
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_0E",
+          "address": 1011212172,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_1E",
+          "address": 1011211644,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_2E",
+          "address": 1011210180,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_3E",
+          "address": 1011209400,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_4E",
+          "address": 1011208764,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_5E",
+          "address": 1011175824,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_6E",
+          "address": 1011141132,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_7E",
+          "address": 1011106188,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_8E",
+          "address": 1011071244,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL11font_data_9E",
+          "address": 1011036300,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_10E",
+          "address": 1011001356,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_11E",
+          "address": 1010966412,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_12E",
+          "address": 1010931468,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_13E",
+          "address": 1010896524,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_14E",
+          "address": 1010895372,
+          "bytes": 60,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL12font_data_15E",
+          "address": 1010891820,
+          "bytes": 60,
+          "kind": "d"
+        }
+      ]
+    },
+    "baked_font_glyph_metadata": {
+      "bytes": 59184,
+      "symbolCount": 16,
+      "symbols": [
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_0E",
+          "address": 1011212232,
+          "bytes": 504,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_1E",
+          "address": 1011211704,
+          "bytes": 468,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_2E",
+          "address": 1011210240,
+          "bytes": 1404,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_3E",
+          "address": 1011209460,
+          "bytes": 720,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_4E",
+          "address": 1011208824,
+          "bytes": 576,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_5E",
+          "address": 1011203040,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_6E",
+          "address": 1011170100,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_7E",
+          "address": 1011135408,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_8E",
+          "address": 1011100464,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL13font_glyphs_9E",
+          "address": 1011065520,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_10E",
+          "address": 1011030576,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_11E",
+          "address": 1010995632,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_12E",
+          "address": 1010960688,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_13E",
+          "address": 1010925744,
+          "bytes": 5724,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_14E",
+          "address": 1010896020,
+          "bytes": 504,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_glyphs_15E",
+          "address": 1010891880,
+          "bytes": 3492,
+          "kind": "d"
+        }
+      ]
+    },
+    "baked_font_kerning_metadata": {
+      "bytes": 260772,
+      "symbolCount": 10,
+      "symbols": [
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_kerning_5E",
+          "address": 1011175884,
+          "bytes": 27156,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_kerning_6E",
+          "address": 1011141192,
+          "bytes": 28908,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_kerning_7E",
+          "address": 1011106248,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_kerning_8E",
+          "address": 1011071304,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL14font_kerning_9E",
+          "address": 1011036360,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL15font_kerning_10E",
+          "address": 1011001416,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL15font_kerning_11E",
+          "address": 1010966472,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL15font_kerning_12E",
+          "address": 1010931528,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL15font_kerning_13E",
+          "address": 1010896584,
+          "bytes": 29160,
+          "kind": "d"
+        },
+        {
+          "symbol": "_ZN3gea9framework8graphics9generatedL15font_kerning_14E",
+          "address": 1010895432,
+          "bytes": 588,
+          "kind": "d"
+        }
+      ]
+    },
+    "png_assets": {
+      "bytes": 374269,
+      "symbolCount": 187,
+      "symbols": [
+        {
+          "symbol": "gea_asset_assets_alarm_icon_png",
+          "address": 1010881668,
+          "bytes": 1502,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p0_0_png",
+          "address": 1010878304,
+          "bytes": 1660,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p0_1_png",
+          "address": 1010876648,
+          "bytes": 1655,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p0_2_png",
+          "address": 1010875000,
+          "bytes": 1648,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p0_3_png",
+          "address": 1010873320,
+          "bytes": 1677,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p1_0_png",
+          "address": 1010871668,
+          "bytes": 1650,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p1_1_png",
+          "address": 1010870020,
+          "bytes": 1646,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p1_2_png",
+          "address": 1010868372,
+          "bytes": 1648,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p1_3_png",
+          "address": 1010866692,
+          "bytes": 1677,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p2_0_png",
+          "address": 1010865012,
+          "bytes": 1677,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p2_1_png",
+          "address": 1010863344,
+          "bytes": 1665,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p2_2_png",
+          "address": 1010861692,
+          "bytes": 1651,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p2_3_png",
+          "address": 1010860040,
+          "bytes": 1649,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p3_0_png",
+          "address": 1010858380,
+          "bytes": 1660,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p3_1_png",
+          "address": 1010856728,
+          "bytes": 1649,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p3_2_png",
+          "address": 1010855072,
+          "bytes": 1654,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_p3_3_png",
+          "address": 1010853412,
+          "bytes": 1659,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_0_png",
+          "address": 1010879964,
+          "bytes": 1703,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p0_0_png",
+          "address": 1010852248,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p0_1_png",
+          "address": 1010851652,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p0_2_png",
+          "address": 1010851056,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p0_3_png",
+          "address": 1010850460,
+          "bytes": 593,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p1_0_png",
+          "address": 1010849864,
+          "bytes": 593,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p1_1_png",
+          "address": 1010849268,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p1_2_png",
+          "address": 1010848672,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p1_3_png",
+          "address": 1010848076,
+          "bytes": 596,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p2_0_png",
+          "address": 1010847480,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p2_1_png",
+          "address": 1010846884,
+          "bytes": 594,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p2_2_png",
+          "address": 1010846288,
+          "bytes": 594,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p2_3_png",
+          "address": 1010845692,
+          "bytes": 593,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p3_0_png",
+          "address": 1010845096,
+          "bytes": 594,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p3_1_png",
+          "address": 1010844500,
+          "bytes": 594,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p3_2_png",
+          "address": 1010843904,
+          "bytes": 595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_p3_3_png",
+          "address": 1010843308,
+          "bytes": 594,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_1_png",
+          "address": 1010852844,
+          "bytes": 566,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p0_0_png",
+          "address": 1010840192,
+          "bytes": 1573,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p0_1_png",
+          "address": 1010838624,
+          "bytes": 1567,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p0_2_png",
+          "address": 1010837056,
+          "bytes": 1565,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p0_3_png",
+          "address": 1010835480,
+          "bytes": 1573,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p1_0_png",
+          "address": 1010833916,
+          "bytes": 1564,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p1_1_png",
+          "address": 1010832348,
+          "bytes": 1567,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p1_2_png",
+          "address": 1010830792,
+          "bytes": 1554,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p1_3_png",
+          "address": 1010829216,
+          "bytes": 1576,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p2_0_png",
+          "address": 1010827640,
+          "bytes": 1576,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p2_1_png",
+          "address": 1010826068,
+          "bytes": 1571,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p2_2_png",
+          "address": 1010824500,
+          "bytes": 1565,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p2_3_png",
+          "address": 1010822932,
+          "bytes": 1567,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p3_0_png",
+          "address": 1010821356,
+          "bytes": 1576,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p3_1_png",
+          "address": 1010819784,
+          "bytes": 1571,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p3_2_png",
+          "address": 1010818216,
+          "bytes": 1567,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_p3_3_png",
+          "address": 1010816640,
+          "bytes": 1575,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_2_png",
+          "address": 1010841768,
+          "bytes": 1538,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p0_0_png",
+          "address": 1010813644,
+          "bytes": 1491,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p0_1_png",
+          "address": 1010812152,
+          "bytes": 1490,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p0_2_png",
+          "address": 1010810680,
+          "bytes": 1471,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p0_3_png",
+          "address": 1010809176,
+          "bytes": 1501,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p1_0_png",
+          "address": 1010807708,
+          "bytes": 1466,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p1_1_png",
+          "address": 1010806236,
+          "bytes": 1471,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p1_2_png",
+          "address": 1010804776,
+          "bytes": 1457,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p1_3_png",
+          "address": 1010803272,
+          "bytes": 1502,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p2_0_png",
+          "address": 1010801768,
+          "bytes": 1502,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p2_1_png",
+          "address": 1010800276,
+          "bytes": 1489,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p2_2_png",
+          "address": 1010798808,
+          "bytes": 1467,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p2_3_png",
+          "address": 1010797316,
+          "bytes": 1490,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p3_0_png",
+          "address": 1010795824,
+          "bytes": 1490,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p3_1_png",
+          "address": 1010794336,
+          "bytes": 1488,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p3_2_png",
+          "address": 1010792864,
+          "bytes": 1471,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_p3_3_png",
+          "address": 1010791372,
+          "bytes": 1489,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_3_png",
+          "address": 1010815136,
+          "bytes": 1501,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p0_0_png",
+          "address": 1010789764,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p0_1_png",
+          "address": 1010788948,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p0_2_png",
+          "address": 1010788132,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p0_3_png",
+          "address": 1010787320,
+          "bytes": 810,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p1_0_png",
+          "address": 1010786504,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p1_1_png",
+          "address": 1010785688,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p1_2_png",
+          "address": 1010784876,
+          "bytes": 811,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p1_3_png",
+          "address": 1010784060,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p2_0_png",
+          "address": 1010783244,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p2_1_png",
+          "address": 1010782428,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p2_2_png",
+          "address": 1010781612,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p2_3_png",
+          "address": 1010780800,
+          "bytes": 811,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p3_0_png",
+          "address": 1010779984,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p3_1_png",
+          "address": 1010779168,
+          "bytes": 813,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p3_2_png",
+          "address": 1010778352,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_p3_3_png",
+          "address": 1010777536,
+          "bytes": 814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_4_png",
+          "address": 1010790580,
+          "bytes": 789,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p0_0_png",
+          "address": 1010775052,
+          "bytes": 1246,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p0_1_png",
+          "address": 1010773804,
+          "bytes": 1245,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p0_2_png",
+          "address": 1010772580,
+          "bytes": 1223,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p0_3_png",
+          "address": 1010771328,
+          "bytes": 1249,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p1_0_png",
+          "address": 1010770108,
+          "bytes": 1220,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p1_1_png",
+          "address": 1010768884,
+          "bytes": 1223,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p1_2_png",
+          "address": 1010767676,
+          "bytes": 1207,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p1_3_png",
+          "address": 1010766428,
+          "bytes": 1248,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p2_0_png",
+          "address": 1010765180,
+          "bytes": 1248,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p2_1_png",
+          "address": 1010763932,
+          "bytes": 1245,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p2_2_png",
+          "address": 1010762708,
+          "bytes": 1222,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p2_3_png",
+          "address": 1010761472,
+          "bytes": 1235,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p3_0_png",
+          "address": 1010760224,
+          "bytes": 1245,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p3_1_png",
+          "address": 1010758988,
+          "bytes": 1236,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p3_2_png",
+          "address": 1010757764,
+          "bytes": 1223,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_p3_3_png",
+          "address": 1010756516,
+          "bytes": 1245,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_5_png",
+          "address": 1010776300,
+          "bytes": 1234,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p0_0_png",
+          "address": 1010753340,
+          "bytes": 1560,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p0_1_png",
+          "address": 1010751776,
+          "bytes": 1561,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p0_2_png",
+          "address": 1010750224,
+          "bytes": 1552,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p0_3_png",
+          "address": 1010748660,
+          "bytes": 1561,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p1_0_png",
+          "address": 1010747112,
+          "bytes": 1547,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p1_1_png",
+          "address": 1010745560,
+          "bytes": 1550,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p1_2_png",
+          "address": 1010744008,
+          "bytes": 1549,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p1_3_png",
+          "address": 1010742444,
+          "bytes": 1563,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p2_0_png",
+          "address": 1010740880,
+          "bytes": 1563,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p2_1_png",
+          "address": 1010739320,
+          "bytes": 1558,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p2_2_png",
+          "address": 1010737768,
+          "bytes": 1551,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p2_3_png",
+          "address": 1010736216,
+          "bytes": 1550,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p3_0_png",
+          "address": 1010734656,
+          "bytes": 1559,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p3_1_png",
+          "address": 1010733100,
+          "bytes": 1553,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p3_2_png",
+          "address": 1010731548,
+          "bytes": 1550,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_p3_3_png",
+          "address": 1010729988,
+          "bytes": 1559,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_6_png",
+          "address": 1010754900,
+          "bytes": 1615,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p0_0_png",
+          "address": 1010728404,
+          "bytes": 789,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p0_1_png",
+          "address": 1010727616,
+          "bytes": 788,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p0_2_png",
+          "address": 1010726828,
+          "bytes": 787,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p0_3_png",
+          "address": 1010726040,
+          "bytes": 788,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p1_0_png",
+          "address": 1010725252,
+          "bytes": 785,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p1_1_png",
+          "address": 1010724464,
+          "bytes": 788,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p1_2_png",
+          "address": 1010723648,
+          "bytes": 815,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p1_3_png",
+          "address": 1010722856,
+          "bytes": 790,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p2_0_png",
+          "address": 1010722064,
+          "bytes": 789,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p2_1_png",
+          "address": 1010721276,
+          "bytes": 787,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p2_2_png",
+          "address": 1010720488,
+          "bytes": 787,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p2_3_png",
+          "address": 1010719704,
+          "bytes": 784,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p3_0_png",
+          "address": 1010718912,
+          "bytes": 790,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p3_1_png",
+          "address": 1010718124,
+          "bytes": 786,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p3_2_png",
+          "address": 1010717336,
+          "bytes": 788,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_p3_3_png",
+          "address": 1010716544,
+          "bytes": 789,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_7_png",
+          "address": 1010729196,
+          "bytes": 790,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p0_0_png",
+          "address": 1010712904,
+          "bytes": 1814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p0_1_png",
+          "address": 1010711088,
+          "bytes": 1813,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p0_2_png",
+          "address": 1010709288,
+          "bytes": 1798,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p0_3_png",
+          "address": 1010707472,
+          "bytes": 1814,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p1_0_png",
+          "address": 1010705680,
+          "bytes": 1790,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p1_1_png",
+          "address": 1010703884,
+          "bytes": 1793,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p1_2_png",
+          "address": 1010702104,
+          "bytes": 1779,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p1_3_png",
+          "address": 1010700284,
+          "bytes": 1818,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p2_0_png",
+          "address": 1010698464,
+          "bytes": 1818,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p2_1_png",
+          "address": 1010696652,
+          "bytes": 1812,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p2_2_png",
+          "address": 1010694848,
+          "bytes": 1804,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p2_3_png",
+          "address": 1010693036,
+          "bytes": 1810,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p3_0_png",
+          "address": 1010691224,
+          "bytes": 1811,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p3_1_png",
+          "address": 1010689408,
+          "bytes": 1813,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p3_2_png",
+          "address": 1010687604,
+          "bytes": 1801,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_p3_3_png",
+          "address": 1010685792,
+          "bytes": 1810,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_8_png",
+          "address": 1010714720,
+          "bytes": 1824,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p0_0_png",
+          "address": 1010682616,
+          "bytes": 1590,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p0_1_png",
+          "address": 1010681024,
+          "bytes": 1591,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p0_2_png",
+          "address": 1010679448,
+          "bytes": 1576,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p0_3_png",
+          "address": 1010677852,
+          "bytes": 1595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p1_0_png",
+          "address": 1010676272,
+          "bytes": 1579,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p1_1_png",
+          "address": 1010674684,
+          "bytes": 1585,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p1_2_png",
+          "address": 1010673124,
+          "bytes": 1557,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p1_3_png",
+          "address": 1010671528,
+          "bytes": 1596,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p2_0_png",
+          "address": 1010669932,
+          "bytes": 1595,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p2_1_png",
+          "address": 1010668344,
+          "bytes": 1588,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p2_2_png",
+          "address": 1010666768,
+          "bytes": 1574,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p2_3_png",
+          "address": 1010665176,
+          "bytes": 1589,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p3_0_png",
+          "address": 1010663584,
+          "bytes": 1589,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p3_1_png",
+          "address": 1010661992,
+          "bytes": 1590,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p3_2_png",
+          "address": 1010660408,
+          "bytes": 1584,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_p3_3_png",
+          "address": 1010658816,
+          "bytes": 1589,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_big_number_9_png",
+          "address": 1010684208,
+          "bytes": 1581,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_classic_hour_hand_png",
+          "address": 1010499736,
+          "bytes": 273,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_classic_minute_hand_png",
+          "address": 1010499548,
+          "bytes": 185,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_classic_second_hand_png",
+          "address": 1010499220,
+          "bytes": 326,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_go_home_guide_png",
+          "address": 1010476356,
+          "bytes": 22862,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_badge_png",
+          "address": 1010461244,
+          "bytes": 15110,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_bat_lightning_png",
+          "address": 1010461052,
+          "bytes": 189,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_clock_png",
+          "address": 1010446416,
+          "bytes": 14635,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_fft_png",
+          "address": 1010435020,
+          "bytes": 11394,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_imu_png",
+          "address": 1010417368,
+          "bytes": 17652,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_indicator_left_png",
+          "address": 1010417000,
+          "bytes": 365,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_indicator_right_png",
+          "address": 1010416624,
+          "bytes": 375,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_lucky_wheel_png",
+          "address": 1010397768,
+          "bytes": 18853,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_setup_png",
+          "address": 1010381404,
+          "bytes": 16362,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_stopwatch_png",
+          "address": 1010367712,
+          "bytes": 13692,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_icon_watch_face_png",
+          "address": 1010351480,
+          "bytes": 16230,
+          "kind": "V"
+        },
+        {
+          "symbol": "gea_asset_assets_lucky_wheel_pointer_png",
+          "address": 1010349792,
+          "bytes": 1686,
+          "kind": "V"
+        }
+      ]
+    },
+    "wav_assets": {
+      "bytes": 158804,
+      "symbolCount": 1,
+      "symbols": [
+        {
+          "symbol": "gea_asset_assets_boot_sfx_wav",
+          "address": 1010500012,
+          "bytes": 158804,
+          "kind": "V"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.guide img {
+  position: absolute;
+  width: 375px;
+  height: 278px;
+  left: 45px;
+  top: 94px;
+}
+
+.guide span {
+  position: absolute;
+  top: 370px;
+  width: 466px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 27px;
+  font-family: Montserrat;
+}

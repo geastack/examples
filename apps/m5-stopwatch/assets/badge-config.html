@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Badge Manager</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef4ff;
+      --panel: rgba(255, 255, 255, 0.94);
+      --text: #172033;
+      --muted: #5d6b85;
+      --line: #d7e1f4;
+      --primary: #176ff2;
+      --danger: #cb2d3e;
+      --surface: rgba(250, 252, 255, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Helvetica Neue", "PingFang SC", "Noto Sans SC", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(23, 111, 242, 0.18), transparent 38%),
+        linear-gradient(180deg, #f7faff 0%, var(--bg) 100%);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: min(100%, 960px);
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      box-shadow: 0 20px 48px rgba(22, 42, 92, 0.14);
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1.02fr 0.98fr;
+      margin-top: 20px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: var(--surface);
+    }
+
+    .slots-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .slot-tile {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      padding: 12px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .slot-tile:hover {
+      transform: translateY(-1px);
+    }
+
+    .slot-tile.selected {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(23, 111, 242, 0.12);
+    }
+
+    .slot-tile.active {
+      background: linear-gradient(180deg, #ffffff, #f4f8ff);
+    }
+
+    .slot-thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #f6f9ff, #edf3ff);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      position: relative;
+    }
+
+    .slot-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slot-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eaf2ff;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .slot-empty {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .editor-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .crop-shell {
+      width: 100%;
+      max-width: 466px;
+      margin: 0 auto;
+    }
+
+    .crop-frame {
+      width: 100%;
+      position: relative;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #edf3ff);
+      padding: 10px;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .crop-frame::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    .crop-frame.dragging {
+      cursor: grabbing;
+    }
+
+    .crop-viewport {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff, #edf3ff);
+      box-shadow: inset 0 0 0 1px rgba(23, 111, 242, 0.12);
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .controls {
+      display: grid;
+      gap: 12px;
+    }
+
+    .file {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: 1px dashed #98b3ea;
+      border-radius: 16px;
+      background: #fbfdff;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .footer-actions {
+      margin-top: 18px;
+    }
+
+    .color-row {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+    }
+
+    .color-input {
+      width: 56px;
+      height: 44px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: white;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+      background: var(--primary);
+    }
+
+    button.secondary {
+      background: #e9eef8;
+      color: var(--text);
+    }
+
+    button.ghost {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    button.done {
+      background: #172033;
+      color: white;
+      box-shadow: 0 10px 24px rgba(23, 32, 51, 0.18);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    #status {
+      margin-top: 18px;
+      min-height: 22px;
+      font-size: 14px;
+      color: var(--muted);
+      white-space: pre-line;
+    }
+
+    .error {
+      color: var(--danger);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 0;
+      }
+
+      .card {
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        backdrop-filter: none;
+        padding: 12px;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .slots-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .crop-shell {
+        max-width: none;
+      }
+
+      .color-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>Badge Manager</h1>
+
+    <section class="section-grid">
+      <section class="panel">
+        <h2>Slots</h2>
+        <div id="slotsGrid" class="slots-grid"></div>
+        <div class="toolbar">
+          <button id="setActive" type="button" class="ghost">Set Active</button>
+          <button id="deleteSlot" type="button" class="secondary">Delete</button>
+          <button id="refresh" type="button" class="ghost">Refresh</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Editor</h2>
+        <div class="editor-grid">
+          <div class="crop-shell">
+            <div class="crop-frame" id="cropFrame">
+              <div class="crop-viewport">
+                <canvas id="previewCanvas" width="466" height="466"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <input id="file" class="file" type="file" accept="image/jpeg,image/jpg" />
+            <label>
+              Zoom
+              <input id="zoomRange" type="range" min="1" max="4" step="0.01" value="1" />
+            </label>
+            <div class="color-row">
+              <label for="bgColor">Background</label>
+              <input id="bgColor" class="color-input" type="color" value="#edf3ff" />
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="upload">Upload To Selected Slot</button>
+        </div>
+      </section>
+    </section>
+
+    <div class="footer-actions">
+      <button id="close" type="button" class="done">Done</button>
+    </div>
+
+    <div id="status"></div>
+  </main>
+
+  <script>
+    const DEFAULT_JPEG_QUALITY = 0.84;
+
+    const fileInput = document.getElementById('file');
+    const uploadButton = document.getElementById('upload');
+    const refreshButton = document.getElementById('refresh');
+    const closeButton = document.getElementById('close');
+    const setActiveButton = document.getElementById('setActive');
+    const deleteSlotButton = document.getElementById('deleteSlot');
+    const statusNode = document.getElementById('status');
+    const slotsGrid = document.getElementById('slotsGrid');
+    const previewCanvas = document.getElementById('previewCanvas');
+    const cropFrame = document.getElementById('cropFrame');
+    const zoomRange = document.getElementById('zoomRange');
+    const bgColorInput = document.getElementById('bgColor');
+    const context = previewCanvas.getContext('2d');
+
+    const editorState = {
+      image: null,
+      scale: 1,
+      baseScale: 1,
+      offsetX: 0,
+      offsetY: 0,
+      dragging: false,
+      dragStartX: 0,
+      dragStartY: 0,
+      dragOriginX: 0,
+      dragOriginY: 0,
+      badgeState: null,
+      selectedSlot: 0,
+    };
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function setStatus(message, isError = false) {
+      statusNode.textContent = message;
+      statusNode.className = isError ? 'error' : '';
+    }
+
+    function selectedSlotState() {
+      if (!editorState.badgeState) {
+        return null;
+      }
+      return editorState.badgeState.slots.find((slot) => slot.slot === editorState.selectedSlot) || null;
+    }
+
+    function updateSelectionUi() {
+      const slot = selectedSlotState();
+      const canUseImage = !!(slot && slot.hasImage);
+      setActiveButton.disabled = !canUseImage || !!(slot && slot.isActive);
+      deleteSlotButton.disabled = !canUseImage;
+    }
+
+    function setBusy(isBusy) {
+      uploadButton.disabled = isBusy;
+      refreshButton.disabled = isBusy;
+      closeButton.disabled = isBusy;
+      setActiveButton.disabled = isBusy || setActiveButton.disabled;
+      deleteSlotButton.disabled = isBusy || deleteSlotButton.disabled;
+      fileInput.disabled = isBusy;
+      zoomRange.disabled = isBusy;
+      bgColorInput.disabled = isBusy;
+      if (!isBusy) {
+        updateSelectionUi();
+      }
+    }
+
+    function fitImageToCanvas(image) {
+      const baseScale = Math.max(466 / image.width, 466 / image.height);
+      const minScale = Math.max(baseScale * 0.35, 0.1);
+      editorState.baseScale = baseScale;
+      editorState.scale = baseScale;
+      zoomRange.min = String(minScale);
+      zoomRange.max = String(baseScale * 4);
+      zoomRange.value = String(baseScale);
+      editorState.offsetX = (466 - image.width * baseScale) / 2;
+      editorState.offsetY = (466 - image.height * baseScale) / 2;
+    }
+
+    function constrainOffsets() {
+      if (!editorState.image) {
+        return;
+      }
+
+      const scaledWidth = editorState.image.width * editorState.scale;
+      const scaledHeight = editorState.image.height * editorState.scale;
+      const minOffsetX = Math.min(0, 466 - scaledWidth);
+      const minOffsetY = Math.min(0, 466 - scaledHeight);
+      const maxOffsetX = Math.max(0, 466 - scaledWidth);
+      const maxOffsetY = Math.max(0, 466 - scaledHeight);
+
+      editorState.offsetX = clamp(editorState.offsetX, minOffsetX, maxOffsetX);
+      editorState.offsetY = clamp(editorState.offsetY, minOffsetY, maxOffsetY);
+    }
+
+    function drawPreview() {
+      context.clearRect(0, 0, 466, 466);
+      context.fillStyle = bgColorInput.value || '#edf3ff';
+      context.fillRect(0, 0, 466, 466);
+
+      if (!editorState.image) {
+        context.fillStyle = '#5d6b85';
+        context.font = '18px sans-serif';
+        context.textAlign = 'center';
+        context.fillText('Select an image', 233, 220);
+        return;
+      }
+
+      constrainOffsets();
+      context.drawImage(
+        editorState.image,
+        editorState.offsetX,
+        editorState.offsetY,
+        editorState.image.width * editorState.scale,
+        editorState.image.height * editorState.scale
+      );
+    }
+
+    async function loadSelectedImage(file) {
+      const bitmap = await createImageBitmap(file);
+      editorState.image = bitmap;
+      fitImageToCanvas(bitmap);
+      drawPreview();
+    }
+
+    async function fetchJson(url, options) {
+      const response = await fetch(url, options);
+      const text = await response.text();
+      if (!response.ok) {
+        throw new Error(text || 'Request failed');
+      }
+      return text ? JSON.parse(text) : {};
+    }
+
+    function renderState(state) {
+      editorState.badgeState = state;
+
+      const hasCurrentSelection = state.slots.some((slot) => slot.slot === editorState.selectedSlot);
+      if (!hasCurrentSelection) {
+        editorState.selectedSlot = state.activeSlot || 0;
+      }
+
+      slotsGrid.innerHTML = '';
+      state.slots.forEach((slot) => {
+        const tile = document.createElement('div');
+        tile.className = `slot-tile${slot.isActive ? ' active' : ''}${slot.slot === editorState.selectedSlot ? ' selected' : ''}`;
+        tile.dataset.slot = String(slot.slot);
+
+        const thumb = slot.hasImage
+          ? `<img src="${slot.imageUrl}&t=${Date.now()}" alt="Slot ${slot.slot + 1}" />`
+          : `<span class="slot-empty">Empty</span>`;
+        const badge = slot.isActive ? '<span class="badge">Active</span>' : '';
+        tile.innerHTML = `
+          <div class="slot-thumb">${thumb}</div>
+          <div class="slot-footer">
+            <div>Slot ${slot.slot + 1}</div>
+            ${badge}
+          </div>
+        `;
+        slotsGrid.appendChild(tile);
+      });
+
+      updateSelectionUi();
+    }
+
+    async function refreshState() {
+      const state = await fetchJson('/badge/state');
+      renderState(state);
+    }
+
+    async function setActive(slot) {
+      setBusy(true);
+      setStatus(`Updating active slot ${Number(slot) + 1}...`);
+      try {
+        const result = await fetchJson(`/badge/active?slot=${slot}`, { method: 'POST' });
+        await refreshState();
+        setStatus(result.message || 'Active slot updated.');
+      } catch (error) {
+        setStatus(error.message || 'Failed to update active slot.', true);
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    async function deleteSlot(slot) {
+      setBusy(true);
+      setStatus(`Deleting slot ${Number(slot) + 1}...`);
+      try {
+        const result = await fetchJson(`/badge/image?slot=${slot}`, { method: 'DELETE' });
+        await refreshState();
+        setStatus(result.message || 'Badge image deleted.');
+      } catch (error) {
+        setStatus(error.message || 'Failed to delete badge image.', true);
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    async function renderUploadBlob() {
+      return new Promise((resolve) => {
+        previewCanvas.toBlob((blob) => resolve(blob), 'image/jpeg', DEFAULT_JPEG_QUALITY);
+      });
+    }
+
+    async function upload() {
+      if (!editorState.image) {
+        setStatus('Please select an image.', true);
+        return;
+      }
+
+      setBusy(true);
+      const slot = editorState.selectedSlot;
+      setStatus(`Uploading to slot ${slot + 1}...`);
+
+      try {
+        const blob = await renderUploadBlob();
+        const response = await fetch(`/upload?slot=${slot}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'image/jpeg',
+            'X-File-Name': `slot-${slot + 1}.jpg`,
+          },
+          body: blob,
+        });
+
+        const text = await response.text();
+        if (!response.ok) {
+          throw new Error(text || 'Upload failed');
+        }
+
+        const result = text ? JSON.parse(text) : {};
+        await refreshState();
+        setStatus(result.message || 'Upload complete.');
+      } catch (error) {
+        setStatus(error.message || 'Upload failed.', true);
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    async function closePage() {
+      setBusy(true);
+      try {
+        await fetch('/close', { method: 'POST' });
+      } catch (error) {
+      }
+      setStatus('OK');
+    }
+
+    fileInput.addEventListener('change', async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) {
+        return;
+      }
+
+      if (!/image\/jpeg/.test(file.type) && !/\.jpe?g$/i.test(file.name)) {
+        setStatus('Please select an image.', true);
+        fileInput.value = '';
+        return;
+      }
+
+      try {
+        await loadSelectedImage(file);
+        setStatus('Image loaded.');
+      } catch (error) {
+        setStatus('Failed to decode the selected image.', true);
+      }
+    });
+
+    zoomRange.addEventListener('input', () => {
+      if (!editorState.image) {
+        return;
+      }
+
+      const previousScale = editorState.scale;
+      const nextScale = Number(zoomRange.value);
+      const centerX = 233;
+      const centerY = 233;
+      const imageX = (centerX - editorState.offsetX) / previousScale;
+      const imageY = (centerY - editorState.offsetY) / previousScale;
+      editorState.scale = nextScale;
+      editorState.offsetX = centerX - imageX * nextScale;
+      editorState.offsetY = centerY - imageY * nextScale;
+      drawPreview();
+    });
+
+    bgColorInput.addEventListener('input', () => {
+      drawPreview();
+    });
+
+    cropFrame.addEventListener('pointerdown', (event) => {
+      if (!editorState.image) {
+        return;
+      }
+
+      editorState.dragging = true;
+      editorState.dragStartX = event.clientX;
+      editorState.dragStartY = event.clientY;
+      editorState.dragOriginX = editorState.offsetX;
+      editorState.dragOriginY = editorState.offsetY;
+      cropFrame.classList.add('dragging');
+      cropFrame.setPointerCapture(event.pointerId);
+    });
+
+    cropFrame.addEventListener('pointermove', (event) => {
+      if (!editorState.dragging) {
+        return;
+      }
+
+      editorState.offsetX = editorState.dragOriginX + (event.clientX - editorState.dragStartX);
+      editorState.offsetY = editorState.dragOriginY + (event.clientY - editorState.dragStartY);
+      drawPreview();
+    });
+
+    function stopDrag(event) {
+      if (!editorState.dragging) {
+        return;
+      }
+
+      editorState.dragging = false;
+      cropFrame.classList.remove('dragging');
+      cropFrame.releasePointerCapture(event.pointerId);
+    }
+
+    cropFrame.addEventListener('pointerup', stopDrag);
+    cropFrame.addEventListener('pointercancel', stopDrag);
+
+    slotsGrid.addEventListener('click', (event) => {
+      const tile = event.target.closest('.slot-tile');
+      if (!tile) {
+        return;
+      }
+
+      editorState.selectedSlot = Number(tile.dataset.slot);
+      renderState(editorState.badgeState);
+    });
+
+    uploadButton.addEventListener('click', upload);
+    refreshButton.addEventListener('click', async () => {
+      setBusy(true);
+      try {
+        await refreshState();
+        setStatus('OK');
+      } catch (error) {
+        setStatus(error.message || 'Failed to refresh badge slots.', true);
+      } finally {
+        setBusy(false);
+      }
+    });
+    setActiveButton.addEventListener('click', () => setActive(editorState.selectedSlot));
+    deleteSlotButton.addEventListener('click', () => deleteSlot(editorState.selectedSlot));
+    closeButton.addEventListener('click', closePage);
+
+    drawPreview();
+    setBusy(true);
+    refreshState().then(() => {
+      setStatus('OK');
+    }).catch((error) => {
+      setStatus(error.message || 'Failed to load badge slots.', true);
+    }).finally(() => {
+      setBusy(false);
+    });
+  </script>
+</body>
+
+</html>

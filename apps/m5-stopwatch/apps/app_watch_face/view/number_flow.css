@@ -1,0 +1,74 @@
+.number-face {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+}
+
+.flow {
+  position: absolute;
+  top: 145px;
+  left: 66px;
+  width: 100px;
+  height: 132px;
+  border-radius: 42px;
+  overflow: hidden;
+}
+
+.flow-minute {
+  left: 183px;
+}
+
+.flow-second {
+  left: 300px;
+}
+
+.flow-digits {
+  position: absolute;
+  top: 36px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.flow-column {
+  position: absolute;
+  width: 42px;
+  height: 60px;
+}
+
+.flow-rail {
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 720px;
+}
+
+.flow-minus {
+  margin-top: -1px;
+}
+
+.flow-plus {
+  margin-top: 1px;
+}
+
+.flow-number {
+  font-family: Commissioner;
+  font-size: 64px;
+  --gea-font-charset: '0123456789:()';
+  position: absolute;
+  left: 0;
+  width: 42px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.face-date {
+  position: absolute;
+  top: 295px;
+  left: 50px;
+  width: 366px;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  line-height: 27px;
+}

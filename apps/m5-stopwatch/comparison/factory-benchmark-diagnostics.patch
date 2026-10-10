@@ -1,0 +1,899 @@
+diff --git a/main/CMakeLists.txt b/main/CMakeLists.txt
+index 12f461c..0e7ae01 100644
+--- a/main/CMakeLists.txt
++++ b/main/CMakeLists.txt
+@@ -25,3 +25,8 @@ idf_component_register(
+     EMBED_TXTFILES
+         "hal/utils/config_ap/assets/badge_config_ap.html"
+ )
++
++if(FACTORY_COMPARISON)
++    target_sources(${COMPONENT_LIB} PRIVATE "comparison/factory_diagnostics.cpp")
++    target_compile_definitions(${COMPONENT_LIB} PRIVATE FACTORY_COMPARISON=1)
++endif()
+diff --git a/main/hal/hal_audio.cpp b/main/hal/hal_audio.cpp
+index b1bc2b6..774984d 100644
+--- a/main/hal/hal_audio.cpp
++++ b/main/hal/hal_audio.cpp
+@@ -78,6 +78,11 @@ public:
+             .sample_rate     = sample_rate,
+         };
+         esp_codec_dev_open(_codec_dev, &fs);
++#ifdef FACTORY_COMPARISON
++        // Diagnostic UI tests retain logical volume but must stay physically silent.
++        ESP_ERROR_CHECK(esp_codec_dev_set_out_vol(_codec_dev, 0));
++        ESP_ERROR_CHECK(esp_codec_dev_set_out_mute(_codec_dev, true));
++#endif
+     }
+ 
+     void updateSpectrum(Hal::AudioSpectrumFrame& frame)
+@@ -100,15 +105,25 @@ public:
+     void setVolume(int volume)
+     {
+         std::lock_guard<std::mutex> lock(_mutex);
++#ifdef FACTORY_COMPARISON
++        _comparison_volume = volume;
++        ESP_ERROR_CHECK(esp_codec_dev_set_out_vol(_codec_dev, 0));
++        ESP_ERROR_CHECK(esp_codec_dev_set_out_mute(_codec_dev, true));
++#else
+         esp_codec_dev_set_out_vol(_codec_dev, volume);
++#endif
+     }
+ 
+     int getVolume()
+     {
+         std::lock_guard<std::mutex> lock(_mutex);
++#ifdef FACTORY_COMPARISON
++        return _comparison_volume;
++#else
+         int volume = 0;
+         esp_codec_dev_get_out_vol(_codec_dev, &volume);
+         return volume;
++#endif
+     }
+ 
+     void setMicGain(float gain)
+@@ -412,6 +427,9 @@ private:
+     i2s_chan_handle_t _tx_handle          = NULL;
+     i2s_chan_handle_t _rx_handle          = NULL;
+     esp_codec_dev_handle_t _codec_dev     = NULL;
++#ifdef FACTORY_COMPARISON
++    int _comparison_volume = 80;
++#endif
+     const audio_codec_data_if_t* _data_if = NULL;
+     const audio_codec_ctrl_if_t* _ctrl_if = NULL;
+     const audio_codec_gpio_if_t* _gpio_if = NULL;
+diff --git a/main/hal/hal_button.cpp b/main/hal/hal_button.cpp
+index 563c089..711c9d2 100644
+--- a/main/hal/hal_button.cpp
++++ b/main/hal/hal_button.cpp
+@@ -4,6 +4,9 @@
+  * SPDX-License-Identifier: MIT
+  */
+ #include "hal.h"
++#ifdef FACTORY_COMPARISON
++#include "../comparison/factory_diagnostics.h"
++#endif
+ #include "utils/settings/settings.h"
+ #include <apps/common/audio/audio.h>
+ #include <mooncake_log.h>
+@@ -34,8 +37,13 @@ void Hal::button_init()
+ 
+ void Hal::updateButtonStates()
+ {
++#ifdef FACTORY_COMPARISON
++    btnA.setRawState(millis(), factory_comparison::button(0, !gpio_get_level(USER_BUTTONA_PIN)));
++    btnB.setRawState(millis(), factory_comparison::button(1, !gpio_get_level(USER_BUTTONB_PIN)));
++#else
+     btnA.setRawState(millis(), !gpio_get_level(USER_BUTTONA_PIN));
+     btnB.setRawState(millis(), !gpio_get_level(USER_BUTTONB_PIN));
++#endif
+     // btnPwr.setRawState(millis(), pmic_get_pwr_btn_state());
+ 
+     auto& config = getButtonConfig();
+diff --git a/main/hal/hal_display.cpp b/main/hal/hal_display.cpp
+index ffcb6c7..627cffd 100644
+--- a/main/hal/hal_display.cpp
++++ b/main/hal/hal_display.cpp
+@@ -4,6 +4,9 @@
+  * SPDX-License-Identifier: MIT
+  */
+ #include "hal.h"
++#ifdef FACTORY_COMPARISON
++#include "../comparison/factory_diagnostics.h"
++#endif
+ #include "utils/settings/settings.h"
+ #include <mooncake_log.h>
+ #include <M5GFX.h>
+@@ -247,6 +250,9 @@ void Hal::touchpad_init()
+ Hal::TouchPoint Hal::getTouchPoint()
+ {
+     Hal::TouchPoint point;
++#ifdef FACTORY_COMPARISON
++    if (factory_comparison::touch(point.num, point.x, point.y)) return point;
++#endif
+     if (_cst820 && _cst820->read()) {
+         point.num = _cst820->getFingerNum();
+         if (point.num > 0) {
+@@ -282,7 +288,14 @@ static void lvgl_rtos_task(void *pvParameter)
+     (void)pvParameter;
+     while (1) {
+         if (_lvgl_update_enabled && pdTRUE == xSemaphoreTake(xGuiSemaphore, portMAX_DELAY)) {
++#ifdef FACTORY_COMPARISON
++            factory_comparison::poll();
++            const uint64_t workStart = esp_timer_get_time();
++#endif
+             lv_timer_handler();
++#ifdef FACTORY_COMPARISON
++            factory_comparison::work(esp_timer_get_time() - workStart);
++#endif
+             xSemaphoreGive(xGuiSemaphore);
+         }
+         vTaskDelay(pdMS_TO_TICKS(10));
+@@ -323,6 +336,9 @@ static void lvgl_flush_cb(lv_display_t *disp, const lv_area_t *area, uint8_t *px
+ 
+     gfx.endWrite();
+ 
++#ifdef FACTORY_COMPARISON
++    factory_comparison::flushed(pixels, lv_display_flush_is_last(disp));
++#endif
+     lv_display_flush_ready(disp);
+ }
+ 
+@@ -331,6 +347,9 @@ static void lvgl_read_cb(lv_indev_t *indev, lv_indev_data_t *data)
+     M5GFX &gfx = *(M5GFX *)lv_indev_get_driver_data(indev);
+ 
+     auto tp = GetHAL().getTouchPoint();
++#ifdef FACTORY_COMPARISON
++    factory_comparison::inputRead(tp.num, tp.x, tp.y);
++#endif
+     if (tp.num == 0) {
+         data->state = LV_INDEV_STATE_REL;
+     } else {
+@@ -376,6 +395,9 @@ void Hal::lvgl_init()
+     esp_timer_handle_t periodic_timer;
+     ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &periodic_timer));
+     ESP_ERROR_CHECK(esp_timer_start_periodic(periodic_timer, 10 * 1000));
++#ifdef FACTORY_COMPARISON
++    factory_comparison::init(disp);
++#endif
+     xTaskCreate(lvgl_rtos_task, "lvgl_rtos_task", 4096 * 4, NULL, 1, NULL);
+ 
+     startLvglUpdate();
+diff --git a/main/hal/hal_ioe.cpp b/main/hal/hal_ioe.cpp
+index cc56797..ac1b679 100644
+--- a/main/hal/hal_ioe.cpp
++++ b/main/hal/hal_ioe.cpp
+@@ -107,6 +107,9 @@ void Hal::ioe_tp_reset()
+ 
+ void Hal::ioe_speaker_enable(bool enable)
+ {
++#ifdef FACTORY_COMPARISON
++    enable = false;
++#endif
+     mclog::tagInfo(_tag, "set speaker {}", enable ? "enable" : "disable");
+ 
+     if (enable) {
+@@ -160,6 +163,10 @@ public:
+ private:
+     uint8_t get_duty_cycle(uint8_t strength)
+     {
++#ifdef FACTORY_COMPARISON
++        // Keep request scheduling/state intact while preventing physical vibration.
++        return 0;
++#endif
+         if (strength == 0) {
+             return 0;
+         }
+diff --git a/main/main.cpp b/main/main.cpp
+index ba08782..4c47cef 100644
+--- a/main/main.cpp
++++ b/main/main.cpp
+@@ -9,6 +9,9 @@
+ #include <mooncake.h>
+ #include <apps/apps.h>
+ #include <hal/hal.h>
++#ifdef FACTORY_COMPARISON
++#include "comparison/factory_diagnostics.h"
++#endif
+ #include <lv_demos.h>
+ #include <apps/common/audio/audio.h>
+ 
+@@ -23,6 +26,9 @@ extern "C" void app_main(void)
+ 
+     // HAL init
+     GetHAL().init();
++#ifdef FACTORY_COMPARISON
++    factory_comparison::holdBoot();
++#endif
+ 
+     // Setup ui hal
+     ui_hal::on_delay([](uint32_t ms) { GetHAL().delay(ms); });
+diff --git a/main/comparison/factory_diagnostics.h b/main/comparison/factory_diagnostics.h
+new file mode 100644
+index 0000000..f2c8f4a
+--- /dev/null
++++ b/main/comparison/factory_diagnostics.h
+@@ -0,0 +1,15 @@
++#pragma once
++
++#include <cstdint>
++#include <lvgl.h>
++
++namespace factory_comparison {
++void init(lv_display_t* display);
++void holdBoot();
++void poll();
++void work(uint64_t duration);
++void inputRead(int number, int x, int y);
++void flushed(uint32_t pixels, bool last);
++bool button(int index, bool physical);
++bool touch(int& number, int& x, int& y);
++}  // namespace factory_comparison
+diff --git a/main/comparison/factory_diagnostics.cpp b/main/comparison/factory_diagnostics.cpp
+new file mode 100644
+index 0000000..f558d73
+--- /dev/null
++++ b/main/comparison/factory_diagnostics.cpp
+@@ -0,0 +1,661 @@
++// SPDX-License-Identifier: MIT
++// Opt-in reference-firmware instrumentation. The production build excludes this unit.
++#include "factory_diagnostics.h"
++#include "../hal/hal.h"
++#include <atomic>
++#include <cstdio>
++#include <cstdarg>
++#include <cstring>
++#include <cstdlib>
++#include <sys/time.h>
++#include <driver/usb_serial_jtag.h>
++#include <driver/usb_serial_jtag_vfs.h>
++#include <esp_system.h>
++#include <nvs.h>
++#include <ctime>
++#include <esp_heap_caps.h>
++#include <esp_timer.h>
++#include <freertos/FreeRTOS.h>
++#include <freertos/queue.h>
++#include <freertos/task.h>
++
++namespace factory_comparison {
++namespace {
++struct Command {
++    char text[160];
++};
++struct Counters {
++    uint64_t started      = 0;
++    uint64_t scheduler    = 0;
++    uint64_t rendered     = 0;
++    uint64_t presented    = 0;
++    uint64_t chunks       = 0;
++    uint64_t pixels       = 0;
++    uint64_t work         = 0;
++    uint64_t workMax      = 0;
++    uint64_t renderStart  = 0;
++    uint64_t renderTime   = 0;
++    uint64_t lastPresent  = 0;
++    uint64_t cadenceCount = 0;
++    uint64_t cadenceSum   = 0;
++    uint64_t cadenceMax   = 0;
++    uint32_t workHistogram[256]{};
++    uint32_t cadenceHistogram[256]{};
++    uint64_t submitted             = 0;
++    uint64_t completionWaitSum     = 0;
++    uint64_t completionWaitMax     = 0;
++    uint64_t lastWork              = 0;
++    uint64_t schedulerCadenceCount = 0;
++    uint64_t schedulerCadenceSum   = 0;
++    uint64_t schedulerCadenceMax   = 0;
++    uint32_t schedulerCadenceHistogram[256]{};
++};
++Counters counters;
++QueueHandle_t commands;
++lv_display_t* displayHandle;
++int refreshMs        = 33;
++bool measuring       = false;
++bool completionFence = true;
++time_t frozenEpoch   = 0;
++struct InputSample {
++    uint64_t time;
++    int number;
++    int x;
++    int y;
++};
++InputSample* inputSamples    = nullptr;
++unsigned inputSampleCount    = 0;
++unsigned inputSamplesDropped = 0;
++struct GestureEvent {
++    int atMs;
++    int state;
++    int x;
++    int y;
++    uint64_t actual;
++};
++struct ScrollNode {
++    unsigned id;
++    int x;
++    int y;
++    int selected;
++    int left;
++    int top;
++    int width;
++    int height;
++};
++struct GestureObservation {
++    int atMs;
++    uint64_t actual;
++    unsigned count;
++    bool truncated;
++    ScrollNode nodes[16];
++};
++struct Gesture {
++    uint64_t origin;
++    int endMs;
++    unsigned eventCount;
++    unsigned eventCursor;
++    unsigned observationCount;
++    unsigned observationCursor;
++    bool active;
++    GestureEvent events[128];
++    GestureObservation observations[128];
++};
++Gesture* gesture  = nullptr;
++char runId[64]    = "reference";
++char scenario[64] = "unspecified";
++std::atomic<int> buttons[2]{{-1}, {-1}};
++std::atomic<int> touchNumber{-1};
++std::atomic<int> touchX{0};
++std::atomic<int> touchY{0};
++
++bool diagnosticPrintf(const char* format, ...)
++{
++    char text[2048];
++    va_list arguments;
++    va_start(arguments, format);
++    const int length = std::vsnprintf(text, sizeof(text), format, arguments);
++    va_end(arguments);
++    if (length < 0 || length >= sizeof(text)) return false;
++    int offset = 0;
++    while (offset < length) {
++        const int sent = usb_serial_jtag_write_bytes(text + offset, length - offset, pdMS_TO_TICKS(500));
++        if (sent <= 0) return false;
++        offset += sent;
++    }
++    return true;
++}
++
++void heapJson(const char* name, uint32_t caps)
++{
++    diagnosticPrintf("\"%s\":{\"total_bytes\":%u,\"free_bytes\":%u,\"min_free_bytes\":%u,\"largest_free_bytes\":%u}",
++                     name, static_cast<unsigned>(heap_caps_get_total_size(caps)),
++                     static_cast<unsigned>(heap_caps_get_free_size(caps)),
++                     static_cast<unsigned>(heap_caps_get_minimum_free_size(caps)),
++                     static_cast<unsigned>(heap_caps_get_largest_free_block(caps)));
++}
++
++void addHistogram(uint32_t* histogram, uint64_t value)
++{
++    histogram[value >= 255000 ? 255 : value / 1000]++;
++}
++
++int percentile99(const uint32_t* histogram, uint64_t count)
++{
++    if (count == 0) return -1;
++    const uint64_t rank = (count * 99 + 99) / 100;
++    uint64_t cumulative = 0;
++    for (int i = 0; i < 256; i++) {
++        cumulative += histogram[i];
++        if (cumulative >= rank) return i == 255 ? -1 : (i + 1) * 1000;
++    }
++    return -1;
++}
++
++void report(const char* phase)
++{
++    const uint64_t now = esp_timer_get_time();
++    diagnosticPrintf(
++        "SWBENCH {\"schema_version\":1,\"framework\":\"factory\",\"run_id\":\"%s\",\"scenario\":\"%s\","
++        "\"phase\":\"%s\",\"timestamp_us\":%llu,\"window_us\":%llu,\"scheduler_frames\":%llu,"
++        "\"rendered_frames\":%llu,\"submitted_frames\":%llu,\"present_chunks\":%llu,\"present_pixels\":%llu,"
++        "\"work_us\":%llu,\"work_max_us\":%llu,\"rendered_duration_sum_us\":%llu,"
++        "\"work_definition\":\"lv_timer_handler_wall\",\"heap_min_scope\":\"boot\",",
++        runId, scenario, phase, now, now - counters.started, counters.scheduler, counters.rendered, counters.submitted,
++        counters.chunks, counters.pixels, counters.work, counters.workMax, counters.renderTime);
++    diagnosticPrintf(
++        "\"work_p99_upper_us\":%d,\"presented_cadence_count\":%llu,\"presented_cadence_sum_us\":%llu,"
++        "\"presented_cadence_max_us\":%llu,\"presented_cadence_p99_upper_us\":%d,",
++        percentile99(counters.workHistogram, counters.scheduler), counters.cadenceCount, counters.cadenceSum,
++        counters.cadenceMax, percentile99(counters.cadenceHistogram, counters.cadenceCount));
++    if (completionFence)
++        diagnosticPrintf("\"presented_frames\":%llu,", counters.presented);
++    else
++        diagnosticPrintf("\"presented_frames\":null,");
++    diagnosticPrintf("\"completion_fence\":%s,\"completion_wait_us_sum\":%llu,\"completion_wait_us_max\":%llu,",
++                     completionFence ? "true" : "false", counters.completionWaitSum, counters.completionWaitMax);
++    diagnosticPrintf(
++        "\"cadence_count\":%llu,\"cadence_sum_us\":%llu,\"cadence_max_us\":%llu,\"cadence_p99_upper_us\":%d,",
++        counters.schedulerCadenceCount, counters.schedulerCadenceSum, counters.schedulerCadenceMax,
++        percentile99(counters.schedulerCadenceHistogram, counters.schedulerCadenceCount));
++    diagnosticPrintf("\"optimization\":\"%s\",",
++#ifdef CONFIG_COMPILER_OPTIMIZATION_PERF
++                     "O2"
++#else
++                     "Og"
++#endif
++    );
++    diagnosticPrintf("\"variant\":\"%s\",\"refresh_ms\":%d,",
++                     (refreshMs == 33 ? (completionFence ? "original33" : "original33-unfenced")
++                                      : (completionFence ? "refresh16" : "refresh16-unfenced")),
++                     refreshMs);
++    diagnosticPrintf("\"hardware_audio_muted\":true,\"hardware_vibration_disabled\":true,");
++    heapJson("internal", MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
++    diagnosticPrintf(",");
++    heapJson("psram", MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
++    diagnosticPrintf("}\n");
++    std::fflush(stdout);
++}
++
++void snapshot()
++{
++    if (measuring) {
++        diagnosticPrintf("SWCONTROL ERROR capture_during_measurement\n");
++        return;
++    }
++
++    auto& display    = GetHAL().getDisplay();
++    const int width  = display.width();
++    const int height = display.height();
++    uint16_t pixels[480];
++    char line[2048];
++    const char* hex = "0123456789abcdef";
++
++    if (width > 480) {
++        diagnosticPrintf("SWCONTROL ERROR unsupported_capture_width\n");
++        return;
++    }
++
++    diagnosticPrintf("SWCAP BEGIN %d %d RGB565\n", width, height);
++    for (int y = 0; y < height; y++) {
++        display.readRect(0, y, width, 1, pixels);
++        int length = std::snprintf(line, sizeof(line), "SWCAP ROW %d ", y);
++        for (int x = 0; x < width; x++) {
++            const uint16_t value = pixels[x];
++            line[length++]       = hex[(value >> 12) & 15];
++            line[length++]       = hex[(value >> 8) & 15];
++            line[length++]       = hex[(value >> 4) & 15];
++            line[length++]       = hex[value & 15];
++        }
++        line[length] = 0;
++        if (!diagnosticPrintf("%s\n", line)) return;
++    }
++    diagnosticPrintf("SWCAP END\n");
++    std::fflush(stdout);
++}
++
++void treeNode(lv_obj_t* object, unsigned depth, unsigned& count)
++{
++    if (depth > 24 || ++count > 1000) return;
++    lv_area_t area;
++    lv_obj_get_coords(object, &area);
++    const char* type = "object";
++    const char* text = "";
++    int value        = -1;
++    if (lv_obj_check_type(object, &lv_label_class)) {
++        type = "label";
++        text = lv_label_get_text(object);
++    } else if (lv_obj_check_type(object, &lv_roller_class)) {
++        type  = "roller";
++        value = lv_roller_get_selected(object);
++    } else if (lv_obj_check_type(object, &lv_slider_class)) {
++        type  = "slider";
++        value = lv_slider_get_value(object);
++    }
++    char hexText[1025];
++    const char* hex = "0123456789abcdef";
++    unsigned length = 0;
++    while (text[length] && length < 512) {
++        const auto byte         = static_cast<unsigned char>(text[length]);
++        hexText[length * 2]     = hex[byte >> 4];
++        hexText[length * 2 + 1] = hex[byte & 15];
++        length++;
++    }
++    hexText[length * 2] = 0;
++    diagnosticPrintf("SWTREE NODE %u %s %d %d %d %d %u %u %d %s\n", depth, type, area.x1, area.y1, area.x2, area.y2,
++                     static_cast<unsigned>(lv_obj_get_style_opa(object, LV_PART_MAIN)),
++                     static_cast<unsigned>(lv_obj_has_flag(object, LV_OBJ_FLAG_HIDDEN)), value, hexText);
++    for (unsigned index = 0; index < lv_obj_get_child_count(object); index++) {
++        treeNode(lv_obj_get_child(object, index), depth + 1, count);
++    }
++}
++
++void tree()
++{
++    if (measuring) {
++        diagnosticPrintf("SWCONTROL ERROR tree_during_measurement\n");
++        return;
++    }
++    unsigned count = 0;
++    diagnosticPrintf("SWTREE BEGIN\n");
++    treeNode(lv_screen_active(), 0, count);
++    treeNode(lv_layer_top(), 0, count);
++    diagnosticPrintf("SWTREE END\n");
++}
++
++void scrollState(lv_obj_t* object, unsigned& index, bool& first)
++{
++    const unsigned id = index++;
++    const int x       = lv_obj_get_scroll_x(object);
++    const int y       = lv_obj_get_scroll_y(object);
++    if (x != 0 || y != 0 || lv_obj_check_type(object, &lv_roller_class) ||
++        (lv_obj_has_flag(object, LV_OBJ_FLAG_SCROLLABLE) && lv_obj_get_scroll_dir(object) != LV_DIR_NONE)) {
++        diagnosticPrintf(
++            "%s{\"id\":%u,\"x\":%d,\"y\":%d,\"selected\":%d}", first ? "" : ",", id, x, y,
++            lv_obj_check_type(object, &lv_roller_class) ? static_cast<int>(lv_roller_get_selected(object)) : -1);
++        first = false;
++    }
++    for (unsigned child = 0; child < lv_obj_get_child_count(object); child++) {
++        scrollState(lv_obj_get_child(object, child), index, first);
++    }
++}
++
++void collectScroll(lv_obj_t* object, unsigned& index, GestureObservation& observation)
++{
++    const unsigned id = index++;
++    const int x       = lv_obj_get_scroll_x(object);
++    const int y       = lv_obj_get_scroll_y(object);
++    if (x != 0 || y != 0 || lv_obj_check_type(object, &lv_roller_class) ||
++        (lv_obj_has_flag(object, LV_OBJ_FLAG_SCROLLABLE) && lv_obj_get_scroll_dir(object) != LV_DIR_NONE)) {
++        if (observation.count < 16) {
++            lv_area_t area;
++            lv_obj_get_coords(object, &area);
++            observation.nodes[observation.count++] = {
++                id,
++                x,
++                y,
++                lv_obj_check_type(object, &lv_roller_class) ? static_cast<int>(lv_roller_get_selected(object)) : -1,
++                area.x1,
++                area.y1,
++                area.x2 - area.x1 + 1,
++                area.y2 - area.y1 + 1};
++        } else {
++            observation.truncated = true;
++        }
++    }
++    for (unsigned child = 0; child < lv_obj_get_child_count(object); child++) {
++        collectScroll(lv_obj_get_child(object, child), index, observation);
++    }
++}
++
++void advanceGesture()
++{
++    if (!gesture || !gesture->active) return;
++    const uint64_t now = esp_timer_get_time();
++    const int elapsed  = static_cast<int>((now - gesture->origin) / 1000);
++    while (gesture->eventCursor < gesture->eventCount && gesture->events[gesture->eventCursor].atMs <= elapsed) {
++        auto& event  = gesture->events[gesture->eventCursor++];
++        touchX       = event.x;
++        touchY       = event.y;
++        touchNumber  = event.state;
++        event.actual = esp_timer_get_time();
++    }
++    while (gesture->observationCursor < gesture->observationCount &&
++           gesture->observations[gesture->observationCursor].atMs <= elapsed) {
++        auto& observation  = gesture->observations[gesture->observationCursor++];
++        observation.actual = esp_timer_get_time();
++        unsigned index     = 0;
++        collectScroll(lv_screen_active(), index, observation);
++    }
++    if (elapsed >= gesture->endMs + 40) gesture->active = false;
++}
++
++void gestureResult()
++{
++    if (!gesture || gesture->active || !gesture->origin) {
++        diagnosticPrintf("SWCONTROL ERROR gesture_incomplete\n");
++        return;
++    }
++    diagnosticPrintf("SWGESTURE {\"clock_origin_us\":%llu,\"normal_hal_verified\":true,\"events\":[",
++                     static_cast<unsigned long long>(gesture->origin));
++    for (unsigned i = 0; i < gesture->eventCount; i++) {
++        const auto& event = gesture->events[i];
++        diagnosticPrintf("%s{\"requested_at_ms\":%d,\"actual_at_us\":%llu,\"state\":%d,\"x\":%d,\"y\":%d}",
++                         i ? "," : "", event.atMs, static_cast<unsigned long long>(event.actual), event.state, event.x,
++                         event.y);
++    }
++    diagnosticPrintf("],\"pointer_reads\":[");
++    for (unsigned i = 0; i < inputSampleCount; i++) {
++        const auto& sample = inputSamples[i];
++        diagnosticPrintf("%s{\"actual_at_us\":%llu,\"state\":%d,\"x\":%d,\"y\":%d}", i ? "," : "",
++                         static_cast<unsigned long long>(sample.time), sample.number, sample.x, sample.y);
++    }
++    diagnosticPrintf("],\"pointer_reads_dropped\":%u,\"observations\":[", inputSamplesDropped);
++    for (unsigned i = 0; i < gesture->observationCount; i++) {
++        const auto& observation = gesture->observations[i];
++        diagnosticPrintf("%s{\"requested_at_ms\":%d,\"actual_at_us\":%llu,\"truncated\":%s,\"nodes\":[", i ? "," : "",
++                         observation.atMs, static_cast<unsigned long long>(observation.actual),
++                         observation.truncated ? "true" : "false");
++        for (unsigned n = 0; n < observation.count; n++) {
++            const auto& node = observation.nodes[n];
++            diagnosticPrintf(
++                "%s{\"id\":%u,\"x\":%d,\"y\":%d,\"selected\":%d,\"left\":%d,\"top\":%d,\"width\":%d,\"height\":%d}",
++                n ? "," : "", node.id, node.x, node.y, node.selected, node.left, node.top, node.width, node.height);
++        }
++        diagnosticPrintf("]}");
++    }
++    diagnosticPrintf("]}\n");
++    heap_caps_free(inputSamples);
++    inputSamples     = nullptr;
++    inputSampleCount = 0;
++    heap_caps_free(gesture);
++    gesture = nullptr;
++}
++
++void displayEvent(lv_event_t* event)
++{
++    if (!measuring) return;
++
++    const auto code = lv_event_get_code(event);
++    if (code == LV_EVENT_RENDER_START) {
++        counters.renderStart = esp_timer_get_time();
++    } else if (code == LV_EVENT_RENDER_READY) {
++        counters.rendered++;
++        counters.renderTime += esp_timer_get_time() - counters.renderStart;
++    }
++}
++
++void controller(void*)
++{
++    Command command{};
++    unsigned length = 0;
++    while (true) {
++        uint8_t byte;
++        if (usb_serial_jtag_read_bytes(&byte, 1, pdMS_TO_TICKS(50)) <= 0) continue;
++        if (byte == '\n') {
++            command.text[length] = 0;
++            if (length > 0 && xQueueSend(commands, &command, pdMS_TO_TICKS(100)) != pdTRUE) {
++                diagnosticPrintf("SWCONTROL ERROR command_queue_full\n");
++            }
++            length = 0;
++        } else if (byte != '\r' && length < sizeof(command.text) - 1) {
++            command.text[length++] = static_cast<char>(byte);
++        }
++    }
++}
++}  // namespace
++
++void init(lv_display_t* display)
++{
++    displayHandle = display;
++    commands      = xQueueCreate(16, sizeof(Command));
++    lv_display_add_event_cb(display, displayEvent, LV_EVENT_ALL, nullptr);
++    usb_serial_jtag_driver_config_t config{4096, 4096};
++    const auto status = usb_serial_jtag_driver_install(&config);
++    if (status != ESP_OK && status != ESP_ERR_INVALID_STATE) {
++        diagnosticPrintf("SWCONTROL ERROR usb_driver_%d\n", status);
++        return;
++    }
++    usb_serial_jtag_vfs_use_driver();
++    xTaskCreate(controller, "comparison_control", 4096, nullptr, 1, nullptr);
++    diagnosticPrintf("SWCONTROL READY factory 6b4aa125288b6fe9dca661f10159f6e1e5ee785c\n");
++}
++
++void poll()
++{
++    if (frozenEpoch != 0) {
++        const timeval value{frozenEpoch, 0};
++        settimeofday(&value, nullptr);
++    }
++    advanceGesture();
++    Command command;
++    while (xQueueReceive(commands, &command, 0) == pdTRUE) {
++        int x, y, state, atMs;
++        long long epoch;
++        char key[16];
++        if (std::sscanf(command.text, "BENCH BEGIN %63s %63s", runId, scenario) == 2) {
++            if (gesture || inputSamples) {
++                diagnosticPrintf("SWCONTROL ERROR trace_active\n");
++                continue;
++            }
++            counters         = {};
++            counters.started = esp_timer_get_time();
++            report("begin");
++            counters.started = esp_timer_get_time();
++            measuring        = true;
++        } else if (std::strcmp(command.text, "BENCH END") == 0) {
++            measuring = false;
++            report("end");
++        } else if (std::strcmp(command.text, "GESTURE RESET") == 0 && !measuring && (!gesture || !gesture->active)) {
++            heap_caps_free(gesture);
++            gesture = static_cast<Gesture*>(heap_caps_calloc(1, sizeof(Gesture), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
++            diagnosticPrintf(gesture ? "SWCONTROL OK GESTURE RESET\n" : "SWCONTROL ERROR gesture_allocation\n");
++        } else if (std::sscanf(command.text, "GESTURE TOUCH %d %d %d %d", &atMs, &state, &x, &y) == 4 && !measuring &&
++                   gesture && !gesture->active && !gesture->origin && atMs >= 0 && atMs <= 6000 &&
++                   (state == 0 || state == 1) && gesture->eventCount < 128 &&
++                   (!gesture->eventCount || atMs >= gesture->events[gesture->eventCount - 1].atMs)) {
++            gesture->events[gesture->eventCount++] = {atMs, state, x, y, 0};
++            if (atMs > gesture->endMs) gesture->endMs = atMs;
++            diagnosticPrintf("SWCONTROL OK GESTURE TOUCH\n");
++        } else if (std::sscanf(command.text, "GESTURE OBSERVE %d", &atMs) == 1 && !measuring && gesture &&
++                   !gesture->active && !gesture->origin && atMs >= 0 && atMs <= 6000 &&
++                   gesture->observationCount < 128 &&
++                   (!gesture->observationCount || atMs >= gesture->observations[gesture->observationCount - 1].atMs)) {
++            gesture->observations[gesture->observationCount++].atMs = atMs;
++            if (atMs > gesture->endMs) gesture->endMs = atMs;
++            diagnosticPrintf("SWCONTROL OK GESTURE OBSERVE\n");
++        } else if (std::strcmp(command.text, "GESTURE BEGIN") == 0 && !measuring && gesture && !gesture->active &&
++                   !gesture->origin && gesture->eventCount && gesture->observationCount) {
++            if (!inputSamples)
++                inputSamples = static_cast<InputSample*>(
++                    heap_caps_malloc(sizeof(InputSample) * 256, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
++            if (!inputSamples) {
++                diagnosticPrintf("SWCONTROL ERROR input_trace_allocation\n");
++                continue;
++            }
++            inputSampleCount = inputSamplesDropped = 0;
++            diagnosticPrintf("SWCONTROL OK GESTURE BEGIN\n");
++            gesture->origin = esp_timer_get_time();
++            gesture->active = true;
++        } else if (std::strcmp(command.text, "GESTURE RESULT") == 0 && !measuring) {
++            gestureResult();
++        } else if (std::strcmp(command.text, "INPUTTRACE BEGIN") == 0 && !measuring) {
++            if (!inputSamples)
++                inputSamples = static_cast<InputSample*>(
++                    heap_caps_malloc(sizeof(InputSample) * 256, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT));
++            inputSampleCount = inputSamplesDropped = 0;
++            diagnosticPrintf(inputSamples ? "SWCONTROL OK INPUTTRACE\n" : "SWCONTROL ERROR input_trace_allocation\n");
++        } else if (std::strcmp(command.text, "INPUTTRACE END") == 0 && !measuring) {
++            diagnosticPrintf("SWINPUT {\"dropped\":%u,\"samples\":[", inputSamplesDropped);
++            for (unsigned i = 0; i < inputSampleCount; i++) {
++                const auto& sample = inputSamples[i];
++                diagnosticPrintf("%s[%llu,%d,%d,%d]", i ? "," : "", static_cast<unsigned long long>(sample.time),
++                                 sample.number, sample.x, sample.y);
++            }
++            diagnosticPrintf("]}\n");
++            heap_caps_free(inputSamples);
++            inputSamples     = nullptr;
++            inputSampleCount = 0;
++        } else if (std::strcmp(command.text, "SCROLLSTATE") == 0 && !measuring) {
++            unsigned index = 0;
++            bool first     = true;
++            diagnosticPrintf("SWSCROLL {\"timestamp_us\":%llu,\"nodes\":[",
++                             static_cast<unsigned long long>(esp_timer_get_time()));
++            scrollState(lv_screen_active(), index, first);
++            diagnosticPrintf("]}\n");
++        } else if (std::sscanf(command.text, "CLOCKFREEZE %lld", &epoch) == 1 && !measuring) {
++            frozenEpoch = static_cast<time_t>(epoch);
++            setenv("TZ", "UTC0", 1);
++            tzset();
++            diagnosticPrintf("SWCONTROL OK CLOCKFREEZE\n");
++        } else if (std::strcmp(command.text, "TREE") == 0) {
++            tree();
++        } else if (std::strcmp(command.text, "SNAPSHOT") == 0) {
++            snapshot();
++        } else if (std::sscanf(command.text, "TOUCH %d %d %d", &state, &x, &y) == 3) {
++            touchX      = x;
++            touchY      = y;
++            touchNumber = state;
++            diagnosticPrintf("SWCONTROL OK TOUCH\n");
++        } else if (std::sscanf(command.text, "BUTTON %15s %d", key, &state) == 2 && (key[0] == 'A' || key[0] == 'B')) {
++            buttons[key[0] == 'A' ? 0 : 1] = state;
++            diagnosticPrintf("SWCONTROL OK BUTTON\n");
++        } else if (std::sscanf(command.text, "COMPLETION %d", &state) == 1 && !measuring) {
++            completionFence = state != 0;
++            diagnosticPrintf("SWCONTROL OK COMPLETION %d\n", state);
++        } else if (std::sscanf(command.text, "REFRESH %d", &state) == 1 && (state == 16 || state == 33)) {
++            refreshMs = state;
++            lv_timer_set_period(lv_display_get_refr_timer(displayHandle), refreshMs);
++            diagnosticPrintf("SWCONTROL OK REFRESH %d\n", refreshMs);
++        } else if (std::sscanf(command.text, "BOOTHOLDNEXT %d", &state) == 1) {
++            nvs_handle_t handle;
++            if (nvs_open("comparison", NVS_READWRITE, &handle) == ESP_OK) {
++                nvs_set_u32(handle, "boot_hold", state < 0 ? 0 : state > 30000 ? 30000 : state);
++                nvs_commit(handle);
++                nvs_close(handle);
++                diagnosticPrintf("SWCONTROL OK BOOTHOLDNEXT\n");
++            }
++        } else if (std::strcmp(command.text, "REBOOT") == 0) {
++            esp_restart();
++        } else if (std::sscanf(command.text, "TIME %lld", &epoch) == 1) {
++            frozenEpoch = 0;
++            setenv("TZ", "UTC0", 1);
++            tzset();
++            const timeval value{static_cast<time_t>(epoch), 0};
++            settimeofday(&value, nullptr);
++            diagnosticPrintf("SWCONTROL OK TIME\n");
++        } else {
++            diagnosticPrintf("SWCONTROL ERROR unknown_command\n");
++        }
++    }
++}
++
++void inputRead(int number, int x, int y)
++{
++    if (!inputSamples) return;
++    if (inputSampleCount >= 256) {
++        inputSamplesDropped++;
++        return;
++    }
++    inputSamples[inputSampleCount++] = {static_cast<uint64_t>(esp_timer_get_time()), number, x, y};
++}
++
++void work(uint64_t duration)
++{
++    if (!measuring) return;
++
++    const uint64_t now = esp_timer_get_time();
++    if (counters.lastWork != 0) {
++        const uint64_t period = now - counters.lastWork;
++        counters.schedulerCadenceCount++;
++        counters.schedulerCadenceSum += period;
++        if (period > counters.schedulerCadenceMax) counters.schedulerCadenceMax = period;
++        addHistogram(counters.schedulerCadenceHistogram, period);
++    }
++    counters.lastWork = now;
++    counters.scheduler++;
++    counters.work += duration;
++    addHistogram(counters.workHistogram, duration);
++    if (duration > counters.workMax) counters.workMax = duration;
++}
++
++void flushed(uint32_t pixels, bool last)
++{
++    if (!measuring) return;
++
++    counters.chunks++;
++    counters.pixels += pixels;
++    if (last) {
++        counters.submitted++;
++        if (!completionFence) return;
++        const uint64_t waitStart = esp_timer_get_time();
++        GetHAL().getDisplay().getPanel()->getBus()->wait();
++        const uint64_t waited = esp_timer_get_time() - waitStart;
++        counters.completionWaitSum += waited;
++        if (waited > counters.completionWaitMax) counters.completionWaitMax = waited;
++        counters.presented++;
++        const uint64_t now = esp_timer_get_time();
++        if (counters.lastPresent != 0) {
++            const uint64_t duration = now - counters.lastPresent;
++            counters.cadenceCount++;
++            counters.cadenceSum += duration;
++            if (duration > counters.cadenceMax) counters.cadenceMax = duration;
++            addHistogram(counters.cadenceHistogram, duration);
++        }
++        counters.lastPresent = now;
++    }
++}
++
++bool button(int index, bool physical)
++{
++    const int injected = buttons[index].load();
++    return injected < 0 ? physical : injected != 0;
++}
++
++bool touch(int& number, int& x, int& y)
++{
++    const int injected = touchNumber.load();
++    if (injected < 0) return false;
++
++    number = injected;
++    x      = touchX.load();
++    y      = touchY.load();
++    return true;
++}
++}  // namespace factory_comparison
++
++namespace factory_comparison {
++void holdBoot()
++{
++    nvs_handle_t handle;
++    uint32_t duration = 0;
++    if (nvs_open("comparison", NVS_READWRITE, &handle) == ESP_OK) {
++        nvs_get_u32(handle, "boot_hold", &duration);
++        nvs_erase_key(handle, "boot_hold");
++        nvs_commit(handle);
++        nvs_close(handle);
++    }
++    diagnosticPrintf("SWCONTROL APPREADY boot_hold_ms=%u\n", static_cast<unsigned>(duration));
++    if (duration > 0) GetHAL().delay(duration);
++}
++}  // namespace factory_comparison

@@ -1,0 +1,11 @@
+.wheel-selection {
+  background: #3b3b3b;
+}
+.wheel-selection .roller {
+  width: 374px;
+  background: #4c4c4c;
+}
+
+.wheel-selection .roller-value {
+  background: #737373;
+}

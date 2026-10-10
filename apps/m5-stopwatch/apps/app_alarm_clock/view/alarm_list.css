@@ -1,0 +1,17 @@
+.alarm-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4c4c4c;
+  width: 374px;
+  height: 119px;
+  border-radius: 60px;
+  margin-bottom: 21px;
+}
+.alarm-row {
+  justify-content: space-between;
+  padding: 0 36px 0 49px;
+  font: 36px Montserrat;
+  line-height: 40px;
+  --gea-font-charset: '0123456789:';
+}

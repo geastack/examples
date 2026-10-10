@@ -1,0 +1,48 @@
+.date-adjust .adjust-title {
+  top: 60px;
+}
+
+.date-adjust .adjust-summary {
+  position: absolute;
+  top: 100px;
+  width: 466px;
+  text-align: center;
+  color: #9a9a9a;
+  font-family: Montserrat;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.date-rollers {
+  left: 0;
+  top: 143px;
+  width: 466px;
+  display: block;
+}
+
+.date-rollers .date-year-month {
+  position: absolute;
+  left: 73px;
+  top: 0;
+  width: 310px;
+  gap: 30px;
+}
+
+.date-year .roller {
+  width: 170px;
+}
+
+.date-month .roller {
+  width: 110px;
+}
+
+.date-day .roller {
+  width: 140px;
+  height: 164px;
+}
+
+.date-day {
+  position: absolute;
+  left: 163px;
+  top: 0;
+}

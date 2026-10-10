@@ -1,0 +1,47 @@
+.dialog {
+  box-sizing: border-box;
+  position: absolute;
+  left: 31px;
+  top: 132px;
+  width: 404px;
+  height: 202px;
+  background: #2b2b2b;
+  border: 3px solid #6a6a6a;
+  border-radius: 58px;
+  padding: 40px 49px;
+}
+
+.dialog span {
+  font-size: 26px;
+  line-height: 27px;
+  font-family: MontserratBold;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 36px;
+  margin-top: 22px;
+  margin-left: -13px;
+}
+
+.dialog button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 148px;
+  height: 63px;
+  border-radius: 32px;
+  background: #515151;
+  font-size: 24px;
+  line-height: 27px;
+  font-family: Montserrat;
+}
+
+.dialog button.confirm {
+  background: #4ad78c;
+  color: #0f5831;
+}
+
+.dialog button.delete {
+  background: #ea5858;
+}

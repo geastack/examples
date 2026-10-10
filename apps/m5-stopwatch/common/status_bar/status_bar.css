@@ -1,0 +1,61 @@
+.battery {
+  position: absolute;
+  left: 154px;
+  top: -17px;
+  width: 158px;
+  height: 65px;
+  background: #edf4ff;
+  color: #385179;
+  border-radius: 27px;
+}
+
+.battery-level {
+  position: absolute;
+  right: 78px;
+  top: 31px;
+  font: 16px Montserrat;
+  line-height: 18px;
+}
+
+.battery-cap {
+  position: absolute;
+  left: 113px;
+  top: 37px;
+  width: 6px;
+  height: 6px;
+  background: #edf4ff;
+  border: 1px solid #385179;
+  border-radius: 4px;
+}
+
+.battery-body {
+  position: absolute;
+  left: 84px;
+  top: 34px;
+  width: 32px;
+  height: 14px;
+  background: #edf4ff;
+  border: 1px solid #385179;
+  border-radius: 4px;
+}
+
+.battery-fill {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  height: 10px;
+  background: #385179;
+  border-radius: 3px;
+}
+
+.battery-fill.charging {
+  background: #19c25f;
+}
+
+.battery-lightning {
+  position: absolute;
+  left: 9px;
+  top: -2px;
+  width: 12px;
+  height: 16px;
+}

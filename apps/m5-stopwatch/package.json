@@ -1,0 +1,94 @@
+{
+  "scripts": {
+    "build": "vite build",
+    "check": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "eslint . --fix && prettier . --write",
+    "format:check": "eslint . && prettier . --check",
+    "test": "node --test scripts/model.test.mjs scripts/store.test.mjs scripts/audio.test.mjs scripts/badge.test.mjs scripts/scroll.test.mjs scripts/roller.test.mjs scripts/startup.test.mjs scripts/number-flow-geometry.test.mjs"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.5.1",
+    "@geastack/core": "0.1.37"
+  },
+  "devDependencies": {
+    "@babel/parser": "latest",
+    "@babel/traverse": "latest",
+    "@babel/types": "latest",
+    "@eslint/js": "^10.0.1",
+    "@geajs/vite-plugin": "^1.5.0",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "opentype.js": "latest",
+    "prettier": "^3.9.9",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.0",
+    "vite": "latest"
+  },
+  "gea": {
+    "id": "m5-stopwatch",
+    "name": "M5 StopWatch",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": false,
+      "esp32": {
+        "build": {
+          "ui": {
+            "styleStorage": "shared"
+          },
+          "compiler": {
+            "numberPrecision": "float64",
+            "generatedCodeOptimization": "O2"
+          },
+          "display": {
+            "presentStream": "continuous",
+            "framebufferStream": "continuous"
+          },
+          "renderer": {
+            "fuseReplayFlush": true
+          },
+          "diagnostics": {
+            "performanceCounters": false,
+            "frameTiming": false
+          }
+        },
+        "cssDevicePixelRatio": 1,
+        "sdkconfig": "sdkconfig.defaults"
+      }
+    },
+    "launcher": {
+      "description": "M5Stack C152 factory app in Gea",
+      "order": 7,
+      "accent": "#9cf1b6"
+    },
+    "defines": [
+      "GEA_AUDIO_FULL_DUPLEX=1",
+      "GEA_EMBEDDED_H264_UNUSED=1",
+      "GEA_EMBEDDED_RTC_UNUSED=1",
+      "GEA_AUDIO_DEVICE_SAMPLE_RATE=44100",
+      "GEA_AUDIO_RECORD_GAIN_DB=30",
+      "GEA_EMBEDDED_FRAME_SCHEDULER_FPS_LOG=0"
+    ],
+    "embeddedAssets": {
+      "compileTimeOnly": [
+        "assets/Commissioner-Medium.ttf",
+        "assets/MapleMono-Medium.ttf",
+        "assets/Montserrat-Medium.ttf",
+        "assets/Montserrat-Regular.ttf",
+        "assets/Montserrat-SemiBold.ttf",
+        "assets/factory-montserrat.json",
+        "assets/factory-maple.json",
+        "assets/factory-commissioner.json",
+        "assets/factory-montserrat-semibold.json"
+      ]
+    }
+  },
+  "name": "@geastack/example-m5-stopwatch",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}

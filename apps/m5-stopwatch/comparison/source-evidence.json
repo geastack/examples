@@ -1,0 +1,285 @@
+{
+  "referenceCommit": "6b4aa125288b6fe9dca661f10159f6e1e5ee785c",
+  "sources": [
+    {
+      "path": "main/hal/hal.h",
+      "line": 103,
+      "symbolOrNeedle": "class BootLogo",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal.h#L103",
+      "sha256": "d9828f06661a381f1e3078bd5a27b599beba337db5b739d8d6352598892ff6c2",
+      "excerpt": " */\nclass BootLogo {\npublic:\n    BootLogo()\n    {\n        _panel = std::make_unique<uitk::lvgl_cpp::Container>(lv_screen_active());\n        _panel->setSize(466, 466);\n        _panel->setAlign(LV_ALIGN_CENTER);"
+    },
+    {
+      "path": "main/apps/app_launcher/app_launcher.cpp",
+      "line": 108,
+      "symbolOrNeedle": "void AppLauncher::show_guide_page",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_launcher/app_launcher.cpp#L108",
+      "sha256": "474f81450309990ea7add1c9b0e3e8be66c1afbc8e557b201e5f2b944ae88628",
+      "excerpt": "\nvoid AppLauncher::show_guide_page()\n{\n    if (!_is_first_open) {\n        return;\n    }\n\n    if (!GetHAL().shouldShowGuide()) {"
+    },
+    {
+      "path": "main/apps/app_launcher/view/view.cpp",
+      "line": 214,
+      "symbolOrNeedle": "void LauncherView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_launcher/view/view.cpp#L214",
+      "sha256": "43f263a3696bd75b44c215e8bd2ac3eafe08b37a248e51485ddd7ded050183f7",
+      "excerpt": "\nvoid LauncherView::init(std::vector<mooncake::AppProps_t> appPorps)\n{\n    mclog::tagInfo(_tag, \"init\");\n\n    _key_manager = std::make_unique<input::KeyManager>();\n\n    /* ------------------------------ Screen setup ------------------------------ */"
+    },
+    {
+      "path": "main/apps/common/status_bar/status_bar.cpp",
+      "line": 243,
+      "symbolOrNeedle": "void show",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/status_bar/status_bar.cpp#L243",
+      "sha256": "aa7ac497ae0db173164683e468e4101d67628474575b0916a24b4a0d89bd0748",
+      "excerpt": "\n    void show()\n    {\n        _panel->moveForeground();\n        _panel->setHidden(false);\n        _pos_y_anim = _pos_y_show;\n        _is_hidden  = false;\n    }"
+    },
+    {
+      "path": "main/apps/app_watch_face/view/classic.cpp",
+      "line": 272,
+      "symbolOrNeedle": "void WatchFaceClassic::apply_display_mode",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/classic.cpp#L272",
+      "sha256": "2a591052fd6082b1694794a8f2e9eeb9a40603bf5b471e5200c6ae80d17669f8",
+      "excerpt": "\nvoid WatchFaceClassic::apply_display_mode()\n{\n    bool show_info  = _display_mode == 0;\n    bool show_ticks = _display_mode != 2;\n\n    if (_sub_panel) {\n        _sub_panel->setHidden(!show_info);"
+    },
+    {
+      "path": "main/apps/app_watch_face/view/number_flow.cpp",
+      "line": 79,
+      "symbolOrNeedle": "void WatchFaceNumberFlow::onCreate",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/number_flow.cpp#L79",
+      "sha256": "920e297ec6ea1f65803b816bb992a76707ce0c896daa901e519843b575f2df41",
+      "excerpt": "\nvoid WatchFaceNumberFlow::onCreate(lv_obj_t* parent)\n{\n    _theme_index = 0;\n\n    _background_panel = std::make_unique<Container>(parent);\n    _background_panel->align(LV_ALIGN_CENTER, 0, 0);\n    _background_panel->setSize(_mask_size, _mask_size);"
+    },
+    {
+      "path": "main/apps/app_watch_face/view/big_number.cpp",
+      "line": 92,
+      "symbolOrNeedle": "void WatchFaceBigNumber::onCreate",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/big_number.cpp#L92",
+      "sha256": "c91ea3b7d9d313bee01b1e242c3f873065b347617b0969ceaefab9bb9439a438",
+      "excerpt": "\nvoid WatchFaceBigNumber::onCreate(lv_obj_t* parent)\n{\n    _palette_index = 0;\n\n    _hour_tens = std::make_unique<Image>(parent);\n    setup_digit(*_hour_tens, _hour_tens_x_offset, _hour_tens_y_offset);\n"
+    },
+    {
+      "path": "main/apps/app_watch_face/view/simple.cpp",
+      "line": 94,
+      "symbolOrNeedle": "void WatchFaceSimple::onCreate",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_watch_face/view/simple.cpp#L94",
+      "sha256": "2fe9d7c3ff1bfb883febf27d00632f63eb2e3444e9efcab02032cd3d98761b53",
+      "excerpt": "\nvoid WatchFaceSimple::onCreate(lv_obj_t* parent)\n{\n    _theme_index             = 0;\n    _orbit_angle_initialized = false;\n    _orbit_angle_unwrapped   = 0.0f;\n\n    _orbit_angle_anim.pause();"
+    },
+    {
+      "path": "main/apps/app_stopwatch/view/view.cpp",
+      "line": 59,
+      "symbolOrNeedle": "void StopwatchView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_stopwatch/view/view.cpp#L59",
+      "sha256": "bb28eb92fba880a309cb7ea85efe131b8c4e4e02f023f71fe2e3b207a51e7c14",
+      "excerpt": "\nvoid StopwatchView::init(lv_obj_t* parent)\n{\n    _stopwatch = std::make_unique<model::Stopwatch>();\n\n    lv_obj_remove_flag(parent, LV_OBJ_FLAG_SCROLLABLE);\n    lv_obj_set_style_bg_color(parent, lv_color_hex(0x000000), LV_PART_MAIN);\n"
+    },
+    {
+      "path": "main/apps/app_alarm_clock/view/alarm_list.cpp",
+      "line": 98,
+      "symbolOrNeedle": "void AlarmListView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/alarm_list.cpp#L98",
+      "sha256": "2d2af82a28b4218730f58f44b25db56b414c9d2feb33c75ae38dc6fcf86d71c9",
+      "excerpt": "\nvoid AlarmListView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->setSize(_panel_width, _panel_height);\n    _panel->setBgColor(lv_color_hex(_bg_color));\n    _panel->setPadding(0, 72, 0, 0);\n    _panel->setBorderWidth(0);"
+    },
+    {
+      "path": "main/apps/app_alarm_clock/view/add_alarm.cpp",
+      "line": 45,
+      "symbolOrNeedle": "void AlarmAddView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/add_alarm.cpp#L45",
+      "sha256": "934d3f703784e2c59956b21e4643ee900dccee8444070e0b24496cd977a2a4eb",
+      "excerpt": "\nvoid AlarmAddView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_width, _panel_height);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+    },
+    {
+      "path": "main/apps/app_alarm_clock/view/alarm_list.cpp",
+      "line": 62,
+      "symbolOrNeedle": "Delete this alarm?",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/view/alarm_list.cpp#L62",
+      "sha256": "2d2af82a28b4218730f58f44b25db56b414c9d2feb33c75ae38dc6fcf86d71c9",
+      "excerpt": "    _label = std::make_unique<Label>(_panel->get());\n    _label->setText(\"Delete this alarm?\");\n    _label->setTextFont(&MontserratSemiBold26);\n    _label->setTextColor(lv_color_hex(_label_color));\n    _label->align(LV_ALIGN_TOP_LEFT, 49, 40);\n\n    _confirm_button = std::make_unique<Button>(_panel->get());\n    _confirm_button->setSize(_dialog_button_width, _dialog_button_height);"
+    },
+    {
+      "path": "main/apps/app_alarm_clock/app_alarm_clock.cpp",
+      "line": 31,
+      "symbolOrNeedle": "onTriggered().connect",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_alarm_clock/app_alarm_clock.cpp#L31",
+      "sha256": "0a072e0a668fd1c0714144e5f828cfa66902e3cce6edc9f2e589db10ac938ead",
+      "excerpt": "\n    _alarm_clock->onTriggered().connect([this](const model::AlarmClock::AlarmTriggeredEvent& event) {\n        std::unique_ptr<view::AlarmTriggerView> trigger_view;\n        {\n            LvglLockGuard lock;\n            trigger_view = std::make_unique<view::AlarmTriggerView>();\n            trigger_view->init(event.time);\n        }"
+    },
+    {
+      "path": "main/apps/app_badge/view/badge.cpp",
+      "line": 81,
+      "symbolOrNeedle": "void BadgeView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_badge/view/badge.cpp#L81",
+      "sha256": "30df972f86268d17e43f48d73a210cf720def6907343b28a49dc9cffda29e598",
+      "excerpt": "\nvoid BadgeView::init(lv_obj_t* parent)\n{\n    _edit_requested = false;\n\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);"
+    },
+    {
+      "path": "main/apps/app_badge/view/badge.cpp",
+      "line": 49,
+      "symbolOrNeedle": "Enter badge edit?",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_badge/view/badge.cpp#L49",
+      "sha256": "30df972f86268d17e43f48d73a210cf720def6907343b28a49dc9cffda29e598",
+      "excerpt": "    _label = std::make_unique<Label>(_panel->get());\n    _label->setText(\"Enter badge edit?\");\n    _label->setTextFont(&MontserratSemiBold26);\n    _label->setTextColor(lv_color_hex(_label_color));\n    _label->align(LV_ALIGN_TOP_LEFT, 49, 40);\n\n    _confirm_button = std::make_unique<Button>(_panel->get());\n    _confirm_button->setSize(_dialog_button_width, _dialog_button_height);"
+    },
+    {
+      "path": "main/hal/utils/config_ap/config_ap.cpp",
+      "line": 133,
+      "symbolOrNeedle": "Connect to Wi-Fi:",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L133",
+      "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+      "excerpt": "\n        log(\"Connect to Wi-Fi: \" + _ssid + \"\\nAnd open page:\\n\" + std::string(_ap_url));\n\n        xEventGroupWaitBits(_event_group, _exit_requested_bit, pdTRUE, pdFALSE, portMAX_DELAY);\n\n        stop();\n\n        log(\"Exited edit mode\");"
+    },
+    {
+      "path": "main/hal/utils/config_ap/assets/badge_config_ap.html",
+      "line": 1,
+      "symbolOrNeedle": "<!doctype html>",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/assets/badge_config_ap.html#L1",
+      "sha256": "9200fb3969304252443b0d63813804fbe6ec2bd9de88b6c7d5723ca9265a356a",
+      "excerpt": "<!doctype html>\n<html lang=\"en\">\n\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Badge Manager</title>"
+    },
+    {
+      "path": "main/apps/app_imu/view/view.cpp",
+      "line": 93,
+      "symbolOrNeedle": "void ImuView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_imu/view/view.cpp#L93",
+      "sha256": "cc72b4c710c5db8aedde8f1482470c2249b2cf53bfc9e84cef833b5b9e9317f0",
+      "excerpt": "\nvoid ImuView::init(lv_obj_t* parent)\n{\n    _orbit_angle_initialized = false;\n    _orbit_angle_unwrapped   = 0.0f;\n\n    _anim_x.pause();\n    _anim_x.easingOptions().duration       = 0.1;"
+    },
+    {
+      "path": "main/apps/app_fft/view/view.cpp",
+      "line": 86,
+      "symbolOrNeedle": "void FftView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_fft/view/view.cpp#L86",
+      "sha256": "45617e13ebb0fbed5f5e64297683b5ad9e5bd3a06ed9310249f803c055bfa00d",
+      "excerpt": "\nvoid FftView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+    },
+    {
+      "path": "main/apps/app_lucky_wheel/view/selection.cpp",
+      "line": 30,
+      "symbolOrNeedle": "void SelectionView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_lucky_wheel/view/selection.cpp#L30",
+      "sha256": "003e47ef4ef67db9d84014ef7067fb2c277ef4eedb30369fec578154133da7af",
+      "excerpt": "\nvoid SelectionView::init(lv_obj_t* parent)\n{\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);\n    _panel->setRadius(0);\n    _panel->setBorderWidth(0);"
+    },
+    {
+      "path": "main/apps/app_lucky_wheel/view/wheel.cpp",
+      "line": 113,
+      "symbolOrNeedle": "void WheelView::init",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_lucky_wheel/view/wheel.cpp#L113",
+      "sha256": "daae4520ef2451f422fb8e70f5f90a952c4f8029ec14cabfe77068e5e88e4388",
+      "excerpt": "\nvoid WheelView::init(lv_obj_t* parent, int optionCount)\n{\n    _option_count = std::max(2, optionCount);\n\n    _panel = std::make_unique<Container>(parent);\n    _panel->align(LV_ALIGN_CENTER, 0, 0);\n    _panel->setSize(_panel_size, _panel_size);"
+    },
+    {
+      "path": "main/apps/app_setup/app_setup.cpp",
+      "line": 39,
+      "symbolOrNeedle": "_menu_sections =",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/app_setup.cpp#L39",
+      "sha256": "2917d03c53173cc4b491b4b9a322d271b4609cfbf77f8b295c0ecc5b83e4b9af",
+      "excerpt": "\n    _menu_sections = {\n        {\n            \"Device\",\n            {\n                {\"Brightness\",\n                 [&]() {\n                     _destroy_menu = true;"
+    },
+    {
+      "path": "main/apps/app_setup/workers/device.cpp",
+      "line": 233,
+      "symbolOrNeedle": "BrightnessWorker::BrightnessWorker",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L233",
+      "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+      "excerpt": "\nBrightnessWorker::BrightnessWorker()\n{\n    mclog::tagInfo(_tag, \"start brightness worker\");\n\n    _applied_brightness = GetHAL().getBackLightBrightness();\n    _view               = std::make_unique<PercentageAdjustView>(_applied_brightness, 10, 100, 1);\n}"
+    },
+    {
+      "path": "main/apps/app_setup/workers/device.cpp",
+      "line": 258,
+      "symbolOrNeedle": "VolumeWorker::VolumeWorker",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L258",
+      "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+      "excerpt": "\nVolumeWorker::VolumeWorker()\n{\n    mclog::tagInfo(_tag, \"start volume worker\");\n\n    _applied_volume = GetHAL().getSpeakerVolume();\n    _view           = std::make_unique<PercentageAdjustView>(_applied_volume, 0, 100, 5);\n}"
+    },
+    {
+      "path": "main/apps/app_setup/workers/device.cpp",
+      "line": 283,
+      "symbolOrNeedle": "ButtonWorker::ButtonWorker",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/device.cpp#L283",
+      "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee",
+      "excerpt": "\nButtonWorker::ButtonWorker()\n{\n    mclog::tagInfo(_tag, \"start button worker\");\n\n    _applied_config = GetHAL().getButtonConfig();\n    _view           = std::make_unique<ButtonConfigView>(_applied_config);\n}"
+    },
+    {
+      "path": "main/apps/app_setup/workers/datetime.cpp",
+      "line": 54,
+      "symbolOrNeedle": "class SetTimeWorker::TimeAdjustView",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L54",
+      "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+      "excerpt": "\nclass SetTimeWorker::TimeAdjustView {\npublic:\n    explicit TimeAdjustView(const TimeHms& initialTime)\n    {\n        _current_time = initialTime;\n\n        _panel = std::make_unique<Container>(lv_screen_active());"
+    },
+    {
+      "path": "main/apps/app_setup/workers/datetime.cpp",
+      "line": 168,
+      "symbolOrNeedle": "class SetDateWorker::DateAdjustView",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L168",
+      "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+      "excerpt": "\nclass SetDateWorker::DateAdjustView {\npublic:\n    explicit DateAdjustView(const DateYmd& initialDate)\n    {\n        _current_date = initialDate;\n\n        _panel = std::make_unique<Container>(lv_screen_active());"
+    },
+    {
+      "path": "main/apps/app_setup/workers/datetime.cpp",
+      "line": 277,
+      "symbolOrNeedle": "void syncDateValidity",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/datetime.cpp#L277",
+      "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a",
+      "excerpt": "\n    void syncDateValidity()\n    {\n        const uint8_t max_day = DateYmd::daysInMonth(_current_date.year, _current_date.month);\n        if (_current_date.day > max_day) {\n            _current_date.day = max_day;\n        }\n"
+    },
+    {
+      "path": "main/apps/app_setup/workers/about.cpp",
+      "line": 84,
+      "symbolOrNeedle": "void AboutWorker::update",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/app_setup/workers/about.cpp#L84",
+      "sha256": "0ed5f0fb83759103d8607568853e414bda19fa2bc3ba35cfcb57a9b5704f8ce6",
+      "excerpt": "\nvoid AboutWorker::update()\n{\n    auto& random = Random::getInstance();\n    uint32_t now = GetHAL().millis();\n\n    if (now < _next_progress_tick) {\n        return;"
+    },
+    {
+      "path": "main/hal/utils/config_ap/config_ap.cpp",
+      "line": 118,
+      "symbolOrNeedle": "Wi-Fi initialization failed",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L118",
+      "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+      "excerpt": "        if (!ensure_wifi_stack_ready()) {\n            log(\"Wi-Fi initialization failed\");\n            return false;\n        }\n\n        _event_group = xEventGroupCreate();\n        if (_event_group == nullptr) {\n            log(\"Failed to create sync event group\");"
+    },
+    {
+      "path": "main/apps/common/key_manager/key_manager.cpp",
+      "line": 10,
+      "symbolOrNeedle": "const KeyEvent& KeyManager::update",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/key_manager/key_manager.cpp#L10",
+      "sha256": "6879c6e8cd92f0afe9ed9c79a42dd590a3ac614c52a1f4193f291d9173a5be60",
+      "excerpt": "\nconst KeyEvent& KeyManager::update(bool updateButtonStates)\n{\n    if (updateButtonStates) {\n        GetHAL().updateButtonStates();\n    }\n\n    _event = KeyEvent::None;"
+    },
+    {
+      "path": "main/apps/common/audio/audio.cpp",
+      "line": 23,
+      "symbolOrNeedle": "play_tone",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/apps/common/audio/audio.cpp#L23",
+      "sha256": "4baa99d5fe584a485a0b1509a104f280e3d7e7c7c2d3421cd1de97f571d9ef3e",
+      "excerpt": "\nvoid play_tone(int frequency, float durationSec, float volumeScale)\n{\n    if (GetHAL().getSpeakerVolume() <= 0) {\n        return;\n    }\n\n    const int sample_rate = GetHAL().getAudioSampleRate();"
+    },
+    {
+      "path": "main/hal/utils/settings/settings.h",
+      "line": 8,
+      "symbolOrNeedle": "class Settings",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/settings/settings.h#L8",
+      "sha256": "135d7afd8596e9fc181b645225a53eaad0d56efc4487987c4fd447e5e6a30eba",
+      "excerpt": "\nclass Settings {\npublic:\n    Settings(const std::string& ns, bool read_write = false);\n    ~Settings();\n\n    std::string GetString(const std::string& key, const std::string& default_value = \"\");\n    void SetString(const std::string& key, const std::string& value);"
+    },
+    {
+      "path": "main/hal/utils/config_ap/config_ap.cpp",
+      "line": 215,
+      "symbolOrNeedle": "bool start_web_server",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/utils/config_ap/config_ap.cpp#L215",
+      "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6",
+      "excerpt": "\n    bool start_web_server()\n    {\n        httpd_config_t config    = HTTPD_DEFAULT_CONFIG();\n        config.max_uri_handlers  = 24;\n        config.recv_wait_timeout = 15;\n        config.send_wait_timeout = 15;\n        config.uri_match_fn      = httpd_uri_match_wildcard;"
+    },
+    {
+      "path": "main/hal/hal_display.cpp",
+      "line": 360,
+      "symbolOrNeedle": "lv_display_set_buffers",
+      "url": "https://github.com/m5stack/M5StopWatch-UserDemo/blob/6b4aa125288b6fe9dca661f10159f6e1e5ee785c/main/hal/hal_display.cpp#L360",
+      "sha256": "40367bd2f007e4b68f356366aab0fe3d0181d171b7eb0914ef4d9b247d4ce670",
+      "excerpt": "    static uint8_t *buf2 = (uint8_t *)heap_caps_malloc(_display->width() * LV_BUFFER_LINE, MALLOC_CAP_SPIRAM);\n    lv_display_set_buffers(disp, (void *)buf1, (void *)buf2, _display->width() * LV_BUFFER_LINE,\n                           LV_DISPLAY_RENDER_MODE_PARTIAL);\n\n    lvTouchpad = lv_indev_create();\n    LV_ASSERT_MALLOC(lvTouchpad);\n    if (lvTouchpad == NULL) {\n        printf(\"lv_indev_create failed\\n\");"
+    }
+  ]
+}

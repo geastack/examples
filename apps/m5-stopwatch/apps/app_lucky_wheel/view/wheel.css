@@ -1,0 +1,26 @@
+.wheel {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+.wheel-pointer {
+  position: absolute;
+  top: 159px;
+  left: 186px;
+  width: 94px;
+  height: 121px;
+  transform-origin: 47px 74px;
+}
+.wheel-label {
+  position: absolute;
+  left: 143px;
+  top: 413px;
+  width: 180px;
+  height: 40px;
+  font: 26px MontserratBold;
+  line-height: 27px;
+  text-align: center;
+  transform-origin: 90px -180px;
+}

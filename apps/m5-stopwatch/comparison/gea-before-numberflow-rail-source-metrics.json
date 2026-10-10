@@ -1,0 +1,1415 @@
+{
+  "schemaVersion": 1,
+  "referenceCommit": "6b4aa125288b6fe9dca661f10159f6e1e5ee785c",
+  "factoryReadPolicy": "Immutable git blobs at referenceCommit, excluding working-tree diagnostics/mute/capture patches.",
+  "definitions": {
+    "physicalLines": "UTF8 splitlines count; blank/comment/string/data lines included.",
+    "nonblankLines": "Physical lines containing any non-whitespace character, including comments and embedded strings. This is a source-size measure, not executable SLOC or cyclomatic complexity.",
+    "bytes": "Raw UTF8 source file bytes.",
+    "fileCount": "Number of source files selected by the explicitly documented scopes; hashes allow exact reproduction."
+  },
+  "scopes": {
+    "factoryAppCpp": {
+      "fileCount": 65,
+      "bytes": 231720,
+      "physicalLines": 7816,
+      "nonblankLines": 6587,
+      "largestFiles": [
+        {
+          "path": "main/apps/app_launcher/view/view.cpp",
+          "bytes": 16311,
+          "physicalLines": 471,
+          "nonblankLines": 394,
+          "sha256": "43f263a3696bd75b44c215e8bd2ac3eafe08b37a248e51485ddd7ded050183f7"
+        },
+        {
+          "path": "main/apps/common/status_bar/status_bar.cpp",
+          "bytes": 10604,
+          "physicalLines": 381,
+          "nonblankLines": 326,
+          "sha256": "aa7ac497ae0db173164683e468e4101d67628474575b0916a24b4a0d89bd0748"
+        },
+        {
+          "path": "main/apps/app_setup/workers/datetime.cpp",
+          "bytes": 13395,
+          "physicalLines": 376,
+          "nonblankLines": 324,
+          "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a"
+        },
+        {
+          "path": "main/apps/app_fft/view/view.cpp",
+          "bytes": 12323,
+          "physicalLines": 381,
+          "nonblankLines": 315,
+          "sha256": "45617e13ebb0fbed5f5e64297683b5ad9e5bd3a06ed9310249f803c055bfa00d"
+        },
+        {
+          "path": "main/apps/app_imu/view/view.cpp",
+          "bytes": 10133,
+          "physicalLines": 330,
+          "nonblankLines": 273,
+          "sha256": "cc72b4c710c5db8aedde8f1482470c2249b2cf53bfc9e84cef833b5b9e9317f0"
+        }
+      ],
+      "files": [
+        {
+          "path": "main/apps/app_alarm_clock/app_alarm_clock.cpp",
+          "bytes": 2909,
+          "physicalLines": 128,
+          "nonblankLines": 101,
+          "sha256": "0a072e0a668fd1c0714144e5f828cfa66902e3cce6edc9f2e589db10ac938ead"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/app_alarm_clock.h",
+          "bytes": 811,
+          "physicalLines": 34,
+          "nonblankLines": 31,
+          "sha256": "b51166b4a4334bccd45d03891cc5e63ebb1a7f272f75ea0589ba95f27d153fb0"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/model/alarm_clock.cpp",
+          "bytes": 6543,
+          "physicalLines": 239,
+          "nonblankLines": 194,
+          "sha256": "aa0ceb74bc7460d9dcfe100e4be6fcc6978c56861fb7b2cf75e64a7c89bd0d63"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/model/alarm_clock.h",
+          "bytes": 1829,
+          "physicalLines": 82,
+          "nonblankLines": 64,
+          "sha256": "ab5b195db5c17bd4b3c527abb01d83126ea04b66a8f1789702b818149aebccdf"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/view/add_alarm.cpp",
+          "bytes": 6161,
+          "physicalLines": 131,
+          "nonblankLines": 119,
+          "sha256": "934d3f703784e2c59956b21e4643ee900dccee8444070e0b24496cd977a2a4eb"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/view/alarm_list.cpp",
+          "bytes": 9201,
+          "physicalLines": 263,
+          "nonblankLines": 227,
+          "sha256": "2d2af82a28b4218730f58f44b25db56b414c9d2feb33c75ae38dc6fcf86d71c9"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/view/trigger_alarm.cpp",
+          "bytes": 2358,
+          "physicalLines": 73,
+          "nonblankLines": 62,
+          "sha256": "4d81baecbd8afecc3ca69ab7d53ce4249988b765d79c82bf7f693c7701d4f084"
+        },
+        {
+          "path": "main/apps/app_alarm_clock/view/view.h",
+          "bytes": 2863,
+          "physicalLines": 104,
+          "nonblankLines": 91,
+          "sha256": "1e2f283bf5952a08e3470f106b2e462e6f3685c639a18a57e6b87dd69e7fef4b"
+        },
+        {
+          "path": "main/apps/app_badge/app_badge.cpp",
+          "bytes": 2516,
+          "physicalLines": 98,
+          "nonblankLines": 80,
+          "sha256": "27df85d70e8d4e6648a6de15450e80ae4a6d34f105c79bcc0687bee64128a28e"
+        },
+        {
+          "path": "main/apps/app_badge/app_badge.h",
+          "bytes": 600,
+          "physicalLines": 29,
+          "nonblankLines": 26,
+          "sha256": "61a849da6d252977222c6da0c48a536611e764347f97ce67e96f554af9444e5f"
+        },
+        {
+          "path": "main/apps/app_badge/view/badge.cpp",
+          "bytes": 5057,
+          "physicalLines": 159,
+          "nonblankLines": 135,
+          "sha256": "30df972f86268d17e43f48d73a210cf720def6907343b28a49dc9cffda29e598"
+        },
+        {
+          "path": "main/apps/app_badge/view/view.h",
+          "bytes": 1377,
+          "physicalLines": 57,
+          "nonblankLines": 50,
+          "sha256": "c780358737f0a23d41a50279c13d6d238e40449e65f9d2d4ffbf4de820563b58"
+        },
+        {
+          "path": "main/apps/app_fft/app_fft.cpp",
+          "bytes": 1272,
+          "physicalLines": 66,
+          "nonblankLines": 51,
+          "sha256": "c752edbed5687d1c3a402048068460c549140be143d34591752496c17b655bb5"
+        },
+        {
+          "path": "main/apps/app_fft/app_fft.h",
+          "bytes": 540,
+          "physicalLines": 28,
+          "nonblankLines": 25,
+          "sha256": "eb146525be49c37ce691653a3253708c6ece09e49776eea311869ba06e65a378"
+        },
+        {
+          "path": "main/apps/app_fft/view/view.cpp",
+          "bytes": 12323,
+          "physicalLines": 381,
+          "nonblankLines": 315,
+          "sha256": "45617e13ebb0fbed5f5e64297683b5ad9e5bd3a06ed9310249f803c055bfa00d"
+        },
+        {
+          "path": "main/apps/app_fft/view/view.h",
+          "bytes": 2289,
+          "physicalLines": 76,
+          "nonblankLines": 70,
+          "sha256": "0d8df5d9b0bd35dc1eb687840e0d2894bbce272c997b228e4862949bba89e27b"
+        },
+        {
+          "path": "main/apps/app_imu/app_imu.cpp",
+          "bytes": 2228,
+          "physicalLines": 92,
+          "nonblankLines": 74,
+          "sha256": "c57d1bcc958d709766252f05f2f347c440d08a774602d175113b9fc3e3a11fd9"
+        },
+        {
+          "path": "main/apps/app_imu/app_imu.h",
+          "bytes": 658,
+          "physicalLines": 31,
+          "nonblankLines": 28,
+          "sha256": "220e42ab7d8e2073892619cd6810d9226ecce91011a3fb53c85465608eeae272"
+        },
+        {
+          "path": "main/apps/app_imu/view/view.cpp",
+          "bytes": 10133,
+          "physicalLines": 330,
+          "nonblankLines": 273,
+          "sha256": "cc72b4c710c5db8aedde8f1482470c2249b2cf53bfc9e84cef833b5b9e9317f0"
+        },
+        {
+          "path": "main/apps/app_imu/view/view.h",
+          "bytes": 1683,
+          "physicalLines": 50,
+          "nonblankLines": 44,
+          "sha256": "c384867dab50417b4043101bcf22db13586669c87dc603e7015f491f6ea28fbb"
+        },
+        {
+          "path": "main/apps/app_launcher/app_launcher.cpp",
+          "bytes": 3250,
+          "physicalLines": 139,
+          "nonblankLines": 110,
+          "sha256": "474f81450309990ea7add1c9b0e3e8be66c1afbc8e557b201e5f2b944ae88628"
+        },
+        {
+          "path": "main/apps/app_launcher/app_launcher.h",
+          "bytes": 879,
+          "physicalLines": 32,
+          "nonblankLines": 29,
+          "sha256": "da4ec47b3f2f63fd6509479773cefe11e7e94afaf84ef59a21fb587a077b74f6"
+        },
+        {
+          "path": "main/apps/app_launcher/view/guide_page.cpp",
+          "bytes": 695,
+          "physicalLines": 29,
+          "nonblankLines": 26,
+          "sha256": "ad75335002208a921d1d59e6a75bff62c65875c103bcaaccde5af120d2e2e970"
+        },
+        {
+          "path": "main/apps/app_launcher/view/view.cpp",
+          "bytes": 16311,
+          "physicalLines": 471,
+          "nonblankLines": 394,
+          "sha256": "43f263a3696bd75b44c215e8bd2ac3eafe08b37a248e51485ddd7ded050183f7"
+        },
+        {
+          "path": "main/apps/app_launcher/view/view.h",
+          "bytes": 1578,
+          "physicalLines": 68,
+          "nonblankLines": 57,
+          "sha256": "25a711f72dd81230fc24d47829d7ff3b86ededb4e0a9fdda712e408c91c00bb9"
+        },
+        {
+          "path": "main/apps/app_lucky_wheel/app_lucky_wheel.cpp",
+          "bytes": 2039,
+          "physicalLines": 89,
+          "nonblankLines": 70,
+          "sha256": "024def3c8bc39ba1ac362d0c5a9c6667ce65309b8e3cbe3ac36ff35c5756e693"
+        },
+        {
+          "path": "main/apps/app_lucky_wheel/app_lucky_wheel.h",
+          "bytes": 668,
+          "physicalLines": 30,
+          "nonblankLines": 27,
+          "sha256": "3ecfac6ec769120f8c887f4bb05e82e0092d31c24ca0a0e475ccabf3222c8df1"
+        },
+        {
+          "path": "main/apps/app_lucky_wheel/view/selection.cpp",
+          "bytes": 3893,
+          "physicalLines": 93,
+          "nonblankLines": 82,
+          "sha256": "003e47ef4ef67db9d84014ef7067fb2c277ef4eedb30369fec578154133da7af"
+        },
+        {
+          "path": "main/apps/app_lucky_wheel/view/view.h",
+          "bytes": 1763,
+          "physicalLines": 72,
+          "nonblankLines": 64,
+          "sha256": "685440ea5e4788f648a4d90effa2a73151360475824a4325c753042e26d275d3"
+        },
+        {
+          "path": "main/apps/app_lucky_wheel/view/wheel.cpp",
+          "bytes": 9954,
+          "physicalLines": 289,
+          "nonblankLines": 240,
+          "sha256": "daae4520ef2451f422fb8e70f5f90a952c4f8029ec14cabfe77068e5e88e4388"
+        },
+        {
+          "path": "main/apps/app_setup/app_setup.cpp",
+          "bytes": 3250,
+          "physicalLines": 138,
+          "nonblankLines": 119,
+          "sha256": "2917d03c53173cc4b491b4b9a322d271b4609cfbf77f8b295c0ecc5b83e4b9af"
+        },
+        {
+          "path": "main/apps/app_setup/app_setup.h",
+          "bytes": 878,
+          "physicalLines": 37,
+          "nonblankLines": 33,
+          "sha256": "3aec6c9ae7bb3799199eebebe7e3903e7623164a9c56f5fea64162193a946f1f"
+        },
+        {
+          "path": "main/apps/app_setup/view/view.cpp",
+          "bytes": 2960,
+          "physicalLines": 92,
+          "nonblankLines": 82,
+          "sha256": "7e4911f7aa08e4fadce168876bacc88366ad2ce75f26b7ab1312cecb86379ed8"
+        },
+        {
+          "path": "main/apps/app_setup/view/view.h",
+          "bytes": 1043,
+          "physicalLines": 43,
+          "nonblankLines": 35,
+          "sha256": "89340467bdf7c3066ca72cf46c1f9eabf53bbb93a3b4ae92178e27ca0202fadd"
+        },
+        {
+          "path": "main/apps/app_setup/workers/about.cpp",
+          "bytes": 3355,
+          "physicalLines": 113,
+          "nonblankLines": 95,
+          "sha256": "0ed5f0fb83759103d8607568853e414bda19fa2bc3ba35cfcb57a9b5704f8ce6"
+        },
+        {
+          "path": "main/apps/app_setup/workers/datetime.cpp",
+          "bytes": 13395,
+          "physicalLines": 376,
+          "nonblankLines": 324,
+          "sha256": "6a5c7280c7be11b44ed950be34edbe74ed65055a1cc7839c13574e477801859a"
+        },
+        {
+          "path": "main/apps/app_setup/workers/device.cpp",
+          "bytes": 10768,
+          "physicalLines": 307,
+          "nonblankLines": 265,
+          "sha256": "07e962313374b2bbdf6bc1040835ca62a25b9f494b0c98cb134e7cdc2334eaee"
+        },
+        {
+          "path": "main/apps/app_setup/workers/workers.h",
+          "bytes": 2219,
+          "physicalLines": 141,
+          "nonblankLines": 118,
+          "sha256": "88d1e510601e6c0125b702b12237f158d57f228b7d911bb77c95fe5f0c6a1026"
+        },
+        {
+          "path": "main/apps/app_stopwatch/app_stopwatch.cpp",
+          "bytes": 1151,
+          "physicalLines": 60,
+          "nonblankLines": 46,
+          "sha256": "0fd38dc76b9d67a59a3f539908ffe596e5538a4ba15cc9fe3e760783e6730c98"
+        },
+        {
+          "path": "main/apps/app_stopwatch/app_stopwatch.h",
+          "bytes": 607,
+          "physicalLines": 29,
+          "nonblankLines": 26,
+          "sha256": "67d6900dc37496b6f33c68b5540363c123724a490bf90af004e236407f8e060c"
+        },
+        {
+          "path": "main/apps/app_stopwatch/model/stopwatch.cpp",
+          "bytes": 1906,
+          "physicalLines": 82,
+          "nonblankLines": 72,
+          "sha256": "af71b2c40d23201ca63a0b1f9fcc36bce006fbb517157fda47763c2359404ca4"
+        },
+        {
+          "path": "main/apps/app_stopwatch/model/stopwatch.h",
+          "bytes": 1068,
+          "physicalLines": 49,
+          "nonblankLines": 41,
+          "sha256": "8cb187a448e2ba381bec03b9aa8d027791c65aa9d04a3a51e1599ae05c1054bb"
+        },
+        {
+          "path": "main/apps/app_stopwatch/view/view.cpp",
+          "bytes": 8929,
+          "physicalLines": 256,
+          "nonblankLines": 215,
+          "sha256": "bb28eb92fba880a309cb7ea85efe131b8c4e4e02f023f71fe2e3b207a51e7c14"
+        },
+        {
+          "path": "main/apps/app_stopwatch/view/view.h",
+          "bytes": 1695,
+          "physicalLines": 59,
+          "nonblankLines": 49,
+          "sha256": "32f1d198a158516ab701541734dc557697a87ff724b75cba11a474e8b9e86108"
+        },
+        {
+          "path": "main/apps/app_watch_face/app_watch_face.cpp",
+          "bytes": 1743,
+          "physicalLines": 77,
+          "nonblankLines": 63,
+          "sha256": "22cb837749a5f2b79ea9b955f11bca44c63e4048ae3cca4d79d370453501fdac"
+        },
+        {
+          "path": "main/apps/app_watch_face/app_watch_face.h",
+          "bytes": 630,
+          "physicalLines": 29,
+          "nonblankLines": 26,
+          "sha256": "84f115e96680dc00196edb154603e35efb93d7288ceea0615d3d545dbcc56bdd"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/big_number.cpp",
+          "bytes": 4619,
+          "physicalLines": 178,
+          "nonblankLines": 149,
+          "sha256": "c91ea3b7d9d313bee01b1e242c3f873065b347617b0969ceaefab9bb9439a438"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/classic.cpp",
+          "bytes": 9579,
+          "physicalLines": 296,
+          "nonblankLines": 245,
+          "sha256": "2a591052fd6082b1694794a8f2e9eeb9a40603bf5b471e5200c6ae80d17669f8"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/number_flow.cpp",
+          "bytes": 6594,
+          "physicalLines": 224,
+          "nonblankLines": 192,
+          "sha256": "920e297ec6ea1f65803b816bb992a76707ce0c896daa901e519843b575f2df41"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/simple.cpp",
+          "bytes": 8490,
+          "physicalLines": 289,
+          "nonblankLines": 243,
+          "sha256": "2fe9d7c3ff1bfb883febf27d00632f63eb2e3444e9efcab02032cd3d98761b53"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/watch_face.h",
+          "bytes": 4579,
+          "physicalLines": 156,
+          "nonblankLines": 136,
+          "sha256": "b532c1b32226c9214ff1531249b6b7a3941041a60725c654d6c40d677d35da5e"
+        },
+        {
+          "path": "main/apps/app_watch_face/view/watch_face_manager.cpp",
+          "bytes": 4089,
+          "physicalLines": 160,
+          "nonblankLines": 128,
+          "sha256": "a6ef59a8ac38fd5f02d8f17d7a06b3464fa8e8178e216f2cd19e00d2766f27c2"
+        },
+        {
+          "path": "main/apps/apps.h",
+          "bytes": 494,
+          "physicalLines": 16,
+          "nonblankLines": 16,
+          "sha256": "66e0c0cedda95ab887528eb887c7712d4e4985f559755ce952603a1ec460c4d0"
+        },
+        {
+          "path": "main/apps/common/arc_top_clock/arc_top_clock.cpp",
+          "bytes": 1949,
+          "physicalLines": 66,
+          "nonblankLines": 59,
+          "sha256": "0b8abdd769c8164a7ed570e3b6c1b8e608eae0f1f7dbd0d0782073b48d5ddb7d"
+        },
+        {
+          "path": "main/apps/common/arc_top_clock/arc_top_clock.h",
+          "bytes": 872,
+          "physicalLines": 37,
+          "nonblankLines": 30,
+          "sha256": "488482a20882e3ef90f0e445b97b209971b853a4f4084cdda51af281176f149b"
+        },
+        {
+          "path": "main/apps/common/audio/audio.cpp",
+          "bytes": 4385,
+          "physicalLines": 141,
+          "nonblankLines": 111,
+          "sha256": "4baa99d5fe584a485a0b1509a104f280e3d7e7c7c2d3421cd1de97f571d9ef3e"
+        },
+        {
+          "path": "main/apps/common/audio/audio.h",
+          "bytes": 574,
+          "physicalLines": 20,
+          "nonblankLines": 14,
+          "sha256": "0b5dd1aaccdb16fc10ba79fb22525b81c7cfb5c61843da326d011acc7767d15c"
+        },
+        {
+          "path": "main/apps/common/audio/common.h",
+          "bytes": 220,
+          "physicalLines": 13,
+          "nonblankLines": 10,
+          "sha256": "8018532f50143be5e1fca453ba4920be876048134df94fb18b1f7aa9b468ab17"
+        },
+        {
+          "path": "main/apps/common/common.h",
+          "bytes": 220,
+          "physicalLines": 13,
+          "nonblankLines": 10,
+          "sha256": "cfee50a8a4ba0822493fa1f7094e45810c1338f7dcc690768824ee90cf3ca93e"
+        },
+        {
+          "path": "main/apps/common/key_manager/key_manager.cpp",
+          "bytes": 814,
+          "physicalLines": 32,
+          "nonblankLines": 27,
+          "sha256": "6879c6e8cd92f0afe9ed9c79a42dd590a3ac614c52a1f4193f291d9173a5be60"
+        },
+        {
+          "path": "main/apps/common/key_manager/key_manager.h",
+          "bytes": 504,
+          "physicalLines": 31,
+          "nonblankLines": 26,
+          "sha256": "bb4a9edbcf6d0c44edacf71d4edb3b3c02cc8f0bdd2cc214264acc69786894c7"
+        },
+        {
+          "path": "main/apps/common/loading_page/loading_page.h",
+          "bytes": 1175,
+          "physicalLines": 44,
+          "nonblankLines": 38,
+          "sha256": "cb9841fee2ec0ac77bf3151a8b91370d731ef35790add7665d19cff40fb4b733"
+        },
+        {
+          "path": "main/apps/common/status_bar/status_bar.cpp",
+          "bytes": 10604,
+          "physicalLines": 381,
+          "nonblankLines": 326,
+          "sha256": "aa7ac497ae0db173164683e468e4101d67628474575b0916a24b4a0d89bd0748"
+        },
+        {
+          "path": "main/apps/common/status_bar/status_bar.h",
+          "bytes": 506,
+          "physicalLines": 20,
+          "nonblankLines": 17,
+          "sha256": "8cbc816127bbc49dd12815d03aa9b093b418d225174d531f3c8b8b467fbb0ccb"
+        },
+        {
+          "path": "main/main.cpp",
+          "bytes": 1475,
+          "physicalLines": 48,
+          "nonblankLines": 42,
+          "sha256": "96b35a6fd7a4ca9b819fae895d2c33f5fa9a854d0f062237e87cd4dfc4d5ceae"
+        }
+      ]
+    },
+    "factoryHalCpp": {
+      "fileCount": 12,
+      "bytes": 86692,
+      "physicalLines": 2937,
+      "nonblankLines": 2466,
+      "largestFiles": [
+        {
+          "path": "main/hal/hal_audio.cpp",
+          "bytes": 19221,
+          "physicalLines": 521,
+          "nonblankLines": 436,
+          "sha256": "da2d0624da45f01e4ac1ed9455f4789a421e107d4eae5dd11858bd2ccc930bb3"
+        },
+        {
+          "path": "main/hal/hal_badge.cpp",
+          "bytes": 13754,
+          "physicalLines": 508,
+          "nonblankLines": 425,
+          "sha256": "0742a9d94a021aed53cb09aaf61b8b6adc755da1bd8bc0844d517e95f014849d"
+        },
+        {
+          "path": "main/hal/hal_display.cpp",
+          "bytes": 12071,
+          "physicalLines": 409,
+          "nonblankLines": 338,
+          "sha256": "40367bd2f007e4b68f356366aab0fe3d0181d171b7eb0914ef4d9b247d4ce670"
+        },
+        {
+          "path": "main/hal/hal.h",
+          "bytes": 8414,
+          "physicalLines": 306,
+          "nonblankLines": 268,
+          "sha256": "d9828f06661a381f1e3078bd5a27b599beba337db5b739d8d6352598892ff6c2"
+        },
+        {
+          "path": "main/hal/hal_alarm.cpp",
+          "bytes": 7208,
+          "physicalLines": 250,
+          "nonblankLines": 205,
+          "sha256": "fed3f08abcfb396a3d79f1a85da3651d760339213324c0ea0f9cb5b0202c5fa9"
+        }
+      ],
+      "files": [
+        {
+          "path": "main/hal/hal.cpp",
+          "bytes": 4601,
+          "physicalLines": 181,
+          "nonblankLines": 155,
+          "sha256": "f78c290cfc0ed3ccb22772d16088e824ba36451730eef92042ae61a75e8888ad"
+        },
+        {
+          "path": "main/hal/hal.h",
+          "bytes": 8414,
+          "physicalLines": 306,
+          "nonblankLines": 268,
+          "sha256": "d9828f06661a381f1e3078bd5a27b599beba337db5b739d8d6352598892ff6c2"
+        },
+        {
+          "path": "main/hal/hal_alarm.cpp",
+          "bytes": 7208,
+          "physicalLines": 250,
+          "nonblankLines": 205,
+          "sha256": "fed3f08abcfb396a3d79f1a85da3651d760339213324c0ea0f9cb5b0202c5fa9"
+        },
+        {
+          "path": "main/hal/hal_audio.cpp",
+          "bytes": 19221,
+          "physicalLines": 521,
+          "nonblankLines": 436,
+          "sha256": "da2d0624da45f01e4ac1ed9455f4789a421e107d4eae5dd11858bd2ccc930bb3"
+        },
+        {
+          "path": "main/hal/hal_badge.cpp",
+          "bytes": 13754,
+          "physicalLines": 508,
+          "nonblankLines": 425,
+          "sha256": "0742a9d94a021aed53cb09aaf61b8b6adc755da1bd8bc0844d517e95f014849d"
+        },
+        {
+          "path": "main/hal/hal_button.cpp",
+          "bytes": 2468,
+          "physicalLines": 80,
+          "nonblankLines": 70,
+          "sha256": "7ea0a1adce4ed9af020056e149f13ce890945da6cca9dada5f13820e95cf7439"
+        },
+        {
+          "path": "main/hal/hal_display.cpp",
+          "bytes": 12071,
+          "physicalLines": 409,
+          "nonblankLines": 338,
+          "sha256": "40367bd2f007e4b68f356366aab0fe3d0181d171b7eb0914ef4d9b247d4ce670"
+        },
+        {
+          "path": "main/hal/hal_fs.cpp",
+          "bytes": 327,
+          "physicalLines": 17,
+          "nonblankLines": 14,
+          "sha256": "901b5eaf8f82716b1a8d482fe39a4309bee5778e229533b153e4bb5d5d6c910c"
+        },
+        {
+          "path": "main/hal/hal_imu.cpp",
+          "bytes": 1478,
+          "physicalLines": 48,
+          "nonblankLines": 42,
+          "sha256": "a01f68fcddfd3f44b9a5f3f500acb90dbbd19153cf62490857ca17064fa00639"
+        },
+        {
+          "path": "main/hal/hal_ioe.cpp",
+          "bytes": 7070,
+          "physicalLines": 239,
+          "nonblankLines": 202,
+          "sha256": "a270c62d8395c5c60bb13bb8e14478db6c98464a387adb470d6659ada3d80f19"
+        },
+        {
+          "path": "main/hal/hal_pmic.cpp",
+          "bytes": 4624,
+          "physicalLines": 167,
+          "nonblankLines": 135,
+          "sha256": "77701f639cec486a332f96ee840d8103d84b37b8b10eb231f7c2b1042e65ca46"
+        },
+        {
+          "path": "main/hal/hal_rtc.cpp",
+          "bytes": 5456,
+          "physicalLines": 211,
+          "nonblankLines": 176,
+          "sha256": "882e5591f4eb8c97efb0c8d7302896a092dad685ac6138804e79800cd34d4245"
+        }
+      ]
+    },
+    "factorySupportCpp": {
+      "fileCount": 9,
+      "bytes": 35461,
+      "physicalLines": 1172,
+      "nonblankLines": 994,
+      "largestFiles": [
+        {
+          "path": "main/hal/utils/config_ap/config_ap.cpp",
+          "bytes": 19227,
+          "physicalLines": 585,
+          "nonblankLines": 501,
+          "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6"
+        },
+        {
+          "path": "main/hal/drivers/rx8130/rx8130.cpp",
+          "bytes": 6123,
+          "physicalLines": 198,
+          "nonblankLines": 168,
+          "sha256": "0984da88b5bb0e4d1ad54aec15a9a6849fc41596cdda9172e3c83d51dbd6287b"
+        },
+        {
+          "path": "main/hal/drivers/cst820/cst820.cpp",
+          "bytes": 2997,
+          "physicalLines": 109,
+          "nonblankLines": 86,
+          "sha256": "326c3ab5c99ae876fb093ec661593e28c60d5b81f8513e13d024206cf6d00e28"
+        },
+        {
+          "path": "main/hal/drivers/cst820/cst820.h",
+          "bytes": 1783,
+          "physicalLines": 77,
+          "nonblankLines": 66,
+          "sha256": "4bfceb7d938220d9b258887b5a552005310263e9d3045246e9a38eea713e842d"
+        },
+        {
+          "path": "main/hal/utils/button/Button_Class.cpp",
+          "bytes": 2030,
+          "physicalLines": 70,
+          "nonblankLines": 63,
+          "sha256": "b2b174ac954317e455acdd8242862496c0dfc8af56471717a2b63fd316800446"
+        }
+      ],
+      "files": [
+        {
+          "path": "main/hal/drivers/cst820/cst820.cpp",
+          "bytes": 2997,
+          "physicalLines": 109,
+          "nonblankLines": 86,
+          "sha256": "326c3ab5c99ae876fb093ec661593e28c60d5b81f8513e13d024206cf6d00e28"
+        },
+        {
+          "path": "main/hal/drivers/cst820/cst820.h",
+          "bytes": 1783,
+          "physicalLines": 77,
+          "nonblankLines": 66,
+          "sha256": "4bfceb7d938220d9b258887b5a552005310263e9d3045246e9a38eea713e842d"
+        },
+        {
+          "path": "main/hal/drivers/rx8130/rx8130.cpp",
+          "bytes": 6123,
+          "physicalLines": 198,
+          "nonblankLines": 168,
+          "sha256": "0984da88b5bb0e4d1ad54aec15a9a6849fc41596cdda9172e3c83d51dbd6287b"
+        },
+        {
+          "path": "main/hal/drivers/rx8130/rx8130.h",
+          "bytes": 496,
+          "physicalLines": 25,
+          "nonblankLines": 21,
+          "sha256": "4496189d4be6cc9c2334b4ff634879d91e8ef94a35a2e4261e95d4d1f73edc49"
+        },
+        {
+          "path": "main/hal/utils/button/Button_Class.cpp",
+          "bytes": 2030,
+          "physicalLines": 70,
+          "nonblankLines": 63,
+          "sha256": "b2b174ac954317e455acdd8242862496c0dfc8af56471717a2b63fd316800446"
+        },
+        {
+          "path": "main/hal/utils/config_ap/config_ap.cpp",
+          "bytes": 19227,
+          "physicalLines": 585,
+          "nonblankLines": 501,
+          "sha256": "1b23b712e258967e09bdad50a6e9198b18108a9d67d088123f5c92c54e7a4bd6"
+        },
+        {
+          "path": "main/hal/utils/config_ap/config_ap.h",
+          "bytes": 1360,
+          "physicalLines": 56,
+          "nonblankLines": 46,
+          "sha256": "09c779fb94975b99685202c88db61310c26f2d03fef2c5ac9d69609bb68c1b87"
+        },
+        {
+          "path": "main/hal/utils/settings/settings.h",
+          "bytes": 1076,
+          "physicalLines": 32,
+          "nonblankLines": 27,
+          "sha256": "135d7afd8596e9fc181b645225a53eaad0d56efc4487987c4fd447e5e6a30eba"
+        },
+        {
+          "path": "main/hal/utils/wear_levelling/wear_levelling.h",
+          "bytes": 369,
+          "physicalLines": 20,
+          "nonblankLines": 16,
+          "sha256": "362861452f661b6be9b1c3d818188adaa181b4cff5f9bef8298542a2cb22ecc2"
+        }
+      ]
+    },
+    "geaAppTsJsx": {
+      "fileCount": 47,
+      "bytes": 145234,
+      "physicalLines": 5318,
+      "nonblankLines": 4597,
+      "largestFiles": [
+        {
+          "path": "stores/WatchStore.tsx",
+          "bytes": 39955,
+          "physicalLines": 1627,
+          "nonblankLines": 1395,
+          "sha256": "2cc9ca95841f945efeaf5962041dba3a4490b36849936f7a6b8210ee338e96b8"
+        },
+        {
+          "path": "assets.ts",
+          "bytes": 11447,
+          "physicalLines": 355,
+          "nonblankLines": 353,
+          "sha256": "175dfc6e65a22d6740fa4af9fcc6bc004249adddd2e9704522163431ffb6776a"
+        },
+        {
+          "path": "worklets/spectrum.ts",
+          "bytes": 12123,
+          "physicalLines": 370,
+          "nonblankLines": 307,
+          "sha256": "fdcc7b27149931a817a36cb894de8db1882586fec563f4b53f806171deda1fc9"
+        },
+        {
+          "path": "lib/badge.ts",
+          "bytes": 8619,
+          "physicalLines": 375,
+          "nonblankLines": 291,
+          "sha256": "c7c69fb0fb385f2d5ce3fab1dc506976d438bde2eae5d92a0630c000ba0e4761"
+        },
+        {
+          "path": "lib/scroll.ts",
+          "bytes": 7465,
+          "physicalLines": 320,
+          "nonblankLines": 256,
+          "sha256": "09afa51601a57877621b988c795c0643a306a6000887d112984acaa2bd29028a"
+        }
+      ],
+      "files": [
+        {
+          "path": "apps/app_alarm_clock/view/add_alarm.tsx",
+          "bytes": 629,
+          "physicalLines": 20,
+          "nonblankLines": 20,
+          "sha256": "692cbcec43fd63a7ab4a244b09fa2f221e6f8818f20aec626c11989c0cbcc2f9"
+        },
+        {
+          "path": "apps/app_alarm_clock/view/alarm_list.tsx",
+          "bytes": 1073,
+          "physicalLines": 37,
+          "nonblankLines": 36,
+          "sha256": "243197aed0041cdde547857f91d433374271ecc37406bf34aa9da4ccc7831ec6"
+        },
+        {
+          "path": "apps/app_alarm_clock/view/trigger_alarm.tsx",
+          "bytes": 507,
+          "physicalLines": 19,
+          "nonblankLines": 18,
+          "sha256": "dc50482d96c9938f9a70ab4c463ba23667287b8246b7c6a933ff51cca501a788"
+        },
+        {
+          "path": "apps/app_badge/view/badge.tsx",
+          "bytes": 415,
+          "physicalLines": 14,
+          "nonblankLines": 13,
+          "sha256": "7a9db2fceb936aa364e576727aa0ea7cd8253fdd4750b60206be4f2049493813"
+        },
+        {
+          "path": "apps/app_badge/view/badge_editor.tsx",
+          "bytes": 392,
+          "physicalLines": 16,
+          "nonblankLines": 15,
+          "sha256": "69b3343857b65a07da69b30c789584fc079164457f35e98bf5a5d4babb7312e2"
+        },
+        {
+          "path": "apps/app_fft/view/view.tsx",
+          "bytes": 4177,
+          "physicalLines": 117,
+          "nonblankLines": 103,
+          "sha256": "4adb0ea2dbc72746ce501f0fe562150055f6facb872b1cb6119cdce3abf97aa2"
+        },
+        {
+          "path": "apps/app_imu/view/view.tsx",
+          "bytes": 1428,
+          "physicalLines": 48,
+          "nonblankLines": 45,
+          "sha256": "0342ffb2289451868a12fce0806e92cdb2943294515b2a06ea2fece7dabdacec"
+        },
+        {
+          "path": "apps/app_launcher/view/guide_page.tsx",
+          "bytes": 260,
+          "physicalLines": 13,
+          "nonblankLines": 12,
+          "sha256": "b9a6d8c211d351e0d1029fecee5aee67d019fc863d4f0beafe5f6d265befe1f4"
+        },
+        {
+          "path": "apps/app_launcher/view/view.tsx",
+          "bytes": 1845,
+          "physicalLines": 52,
+          "nonblankLines": 51,
+          "sha256": "80657b19ea4abd2230a0fba960cbd6c70029b01793309162195390cd08931ea2"
+        },
+        {
+          "path": "apps/app_lucky_wheel/view/selection.tsx",
+          "bytes": 623,
+          "physicalLines": 21,
+          "nonblankLines": 20,
+          "sha256": "7de27c504944307bfc9f8f44a00039a16fb825d77253102fb01e850eb806a876"
+        },
+        {
+          "path": "apps/app_lucky_wheel/view/wheel.tsx",
+          "bytes": 1980,
+          "physicalLines": 60,
+          "nonblankLines": 54,
+          "sha256": "feb903d5a3e00ef4bbb085a6fc4f3b985f04f6e4e8ed505dee3a3fe8e27f3e0b"
+        },
+        {
+          "path": "apps/app_setup/view/view.tsx",
+          "bytes": 1172,
+          "physicalLines": 34,
+          "nonblankLines": 33,
+          "sha256": "ca4c010672bb0c1fb6b1729b09498c48a3a9973f384d082d4348abceb2ef9e9a"
+        },
+        {
+          "path": "apps/app_setup/workers/about.tsx",
+          "bytes": 711,
+          "physicalLines": 22,
+          "nonblankLines": 21,
+          "sha256": "32699869e7bc27c6b2d0ddc96aa6d623d392f5dd05366ba2ff2007c60e3999aa"
+        },
+        {
+          "path": "apps/app_setup/workers/brightness.tsx",
+          "bytes": 500,
+          "physicalLines": 19,
+          "nonblankLines": 18,
+          "sha256": "58548d1785365e30f23626633ae9ddc81defb34ef6f660c4d98f2abddf50a170"
+        },
+        {
+          "path": "apps/app_setup/workers/button.tsx",
+          "bytes": 894,
+          "physicalLines": 31,
+          "nonblankLines": 30,
+          "sha256": "af98df560a8cbee7d9a26c88b0193d640dee37f95a36fb9a5104aa84f1de8f2f"
+        },
+        {
+          "path": "apps/app_setup/workers/set_date.tsx",
+          "bytes": 1203,
+          "physicalLines": 36,
+          "nonblankLines": 35,
+          "sha256": "1cb1261c648ba04054bc86696226814a7577074b4b639a24c4dfc618136314ed"
+        },
+        {
+          "path": "apps/app_setup/workers/set_time.tsx",
+          "bytes": 814,
+          "physicalLines": 24,
+          "nonblankLines": 23,
+          "sha256": "8ac02e976ca1f0e312ec4ba685a4d52dad6687f6aa93361864c1c9a601d00676"
+        },
+        {
+          "path": "apps/app_setup/workers/slider.tsx",
+          "bytes": 651,
+          "physicalLines": 22,
+          "nonblankLines": 21,
+          "sha256": "f4eef2b086ff298b0cfbb3006a69f2c2b1c30fcc55c8d97bc736c62fbfc1641f"
+        },
+        {
+          "path": "apps/app_setup/workers/volume.tsx",
+          "bytes": 495,
+          "physicalLines": 19,
+          "nonblankLines": 18,
+          "sha256": "2a9b9bebf3f6bfe03c6bcea72f52a602a27db80e23a4f57a8a041d353bbadb40"
+        },
+        {
+          "path": "apps/app_stopwatch/view/view.tsx",
+          "bytes": 1305,
+          "physicalLines": 41,
+          "nonblankLines": 40,
+          "sha256": "753ccb80e3e60ad54f2204f6911d2f03c6c9980aafd0c94f8e4a9ce5e255cb9f"
+        },
+        {
+          "path": "apps/app_watch_face/view/animation.ts",
+          "bytes": 5166,
+          "physicalLines": 196,
+          "nonblankLines": 168,
+          "sha256": "c00af864d2fa84eeb909ed76130dd2ebe90dcaf0fadf3a5ed265b24364455652"
+        },
+        {
+          "path": "apps/app_watch_face/view/big_number.tsx",
+          "bytes": 694,
+          "physicalLines": 20,
+          "nonblankLines": 19,
+          "sha256": "f44d212dcac5a9b5a7abad7f1990ad9655a14450e2cb495f40cff6f94cd44ab6"
+        },
+        {
+          "path": "apps/app_watch_face/view/classic.tsx",
+          "bytes": 1831,
+          "physicalLines": 53,
+          "nonblankLines": 49,
+          "sha256": "00930d6b8bf7265411ef7cb14d64c13c8a1f16d575f32eecdc822af2423f9755"
+        },
+        {
+          "path": "apps/app_watch_face/view/number_flow.tsx",
+          "bytes": 2824,
+          "physicalLines": 104,
+          "nonblankLines": 99,
+          "sha256": "25f73015746b21dba604e1f21ad43720e56c94cf61331a3d2e8c72e78eb70a27"
+        },
+        {
+          "path": "apps/app_watch_face/view/simple.tsx",
+          "bytes": 1398,
+          "physicalLines": 48,
+          "nonblankLines": 43,
+          "sha256": "7aee87e0b16e294d4e1f7f000545f59f1f70be8d7e5322d22006a1c6bcdb6397"
+        },
+        {
+          "path": "apps/app_watch_face/view/watch_face_manager.tsx",
+          "bytes": 622,
+          "physicalLines": 20,
+          "nonblankLines": 19,
+          "sha256": "b70ef1300b9246cff354a24b0967d0841c8ebf904cc0e7244cb4b1c5a781fcfa"
+        },
+        {
+          "path": "apps/apps.tsx",
+          "bytes": 3095,
+          "physicalLines": 65,
+          "nonblankLines": 64,
+          "sha256": "c1bf0a4a82d2588e8a3533e1edeeb40c93476d4bb7319ce91232b10e92eba18d"
+        },
+        {
+          "path": "assets.ts",
+          "bytes": 11447,
+          "physicalLines": 355,
+          "nonblankLines": 353,
+          "sha256": "175dfc6e65a22d6740fa4af9fcc6bc004249adddd2e9704522163431ffb6776a"
+        },
+        {
+          "path": "common/arc_top_clock/ArcTopClock.tsx",
+          "bytes": 817,
+          "physicalLines": 28,
+          "nonblankLines": 26,
+          "sha256": "ee69f39989a5428ed9b7fc1d13b792f6123ef0a6a6d08710213c07076fc33cda"
+        },
+        {
+          "path": "common/canvas/CanvasSurface.tsx",
+          "bytes": 902,
+          "physicalLines": 39,
+          "nonblankLines": 33,
+          "sha256": "37897ba590bab7c0f7ede2f551f83f934afa89fa2e348561a341d8eea3ccdd49"
+        },
+        {
+          "path": "common/canvas/paint.ts",
+          "bytes": 577,
+          "physicalLines": 31,
+          "nonblankLines": 29,
+          "sha256": "7f0606e285620d9e033e41e1930848a764863f986bee213ae7c3e8ab8e733abd"
+        },
+        {
+          "path": "common/canvas/render.ts",
+          "bytes": 1960,
+          "physicalLines": 78,
+          "nonblankLines": 63,
+          "sha256": "2730082f2383cc9ae1511c57766588dcbd2c07f38658738257f86baed18eda3e"
+        },
+        {
+          "path": "common/dialog/Dialog.tsx",
+          "bytes": 678,
+          "physicalLines": 23,
+          "nonblankLines": 21,
+          "sha256": "3a122fdeba02dec8244293308c1b99b71cf850e046824aa88a626ff7fe43603d"
+        },
+        {
+          "path": "common/error/ErrorMessage.tsx",
+          "bytes": 309,
+          "physicalLines": 14,
+          "nonblankLines": 12,
+          "sha256": "00abc776912f4a01984b28144f57d7680c48618ac60d54461f92e7546c518226"
+        },
+        {
+          "path": "common/loading_page/boot_logo.tsx",
+          "bytes": 363,
+          "physicalLines": 14,
+          "nonblankLines": 13,
+          "sha256": "31fbcf2648c3f6bc9072363e66073a308291c04aac44e15aa8c80b7c838544da"
+        },
+        {
+          "path": "common/roller/Roller.tsx",
+          "bytes": 1779,
+          "physicalLines": 58,
+          "nonblankLines": 54,
+          "sha256": "fc2a3b3599d7a024784d328ad8bc79ef279d9012cfbe066b161b8065e364a743"
+        },
+        {
+          "path": "common/roller/dynamics.ts",
+          "bytes": 7091,
+          "physicalLines": 255,
+          "nonblankLines": 210,
+          "sha256": "ca68e7abc864111d03c61cf9102e426021ba4b02889c035c9a940594a3fdeb30"
+        },
+        {
+          "path": "common/status_bar/status_bar.tsx",
+          "bytes": 788,
+          "physicalLines": 22,
+          "nonblankLines": 21,
+          "sha256": "29bae7b21cd7b84f295a586424ab43e77e31670f0414059b7d30aa64fa28ac20"
+        },
+        {
+          "path": "env.d.ts",
+          "bytes": 321,
+          "physicalLines": 19,
+          "nonblankLines": 14,
+          "sha256": "9feb39e5330e2ee38862117aef568357f2e4f3cfc3db98f31ff1ab0105df0c79"
+        },
+        {
+          "path": "index.tsx",
+          "bytes": 1487,
+          "physicalLines": 53,
+          "nonblankLines": 44,
+          "sha256": "995539b35b2ceef59eda986c52b6001383aedbf74007504d4db738c9ab8c1682"
+        },
+        {
+          "path": "lib/audio.ts",
+          "bytes": 4063,
+          "physicalLines": 167,
+          "nonblankLines": 129,
+          "sha256": "b6db1f8b0f58e8a54f21f9245378a6e7ef487e3ae0bdb9a2d4e8904ab3c975ab"
+        },
+        {
+          "path": "lib/badge.ts",
+          "bytes": 8619,
+          "physicalLines": 375,
+          "nonblankLines": 291,
+          "sha256": "c7c69fb0fb385f2d5ce3fab1dc506976d438bde2eae5d92a0630c000ba0e4761"
+        },
+        {
+          "path": "lib/model.ts",
+          "bytes": 6606,
+          "physicalLines": 249,
+          "nonblankLines": 200,
+          "sha256": "676416002b9129f06ba5c84706d948e46d92d7e4571fc40a72aa17468898dc1d"
+        },
+        {
+          "path": "lib/scroll.ts",
+          "bytes": 7465,
+          "physicalLines": 320,
+          "nonblankLines": 256,
+          "sha256": "09afa51601a57877621b988c795c0643a306a6000887d112984acaa2bd29028a"
+        },
+        {
+          "path": "lib/settings.ts",
+          "bytes": 1180,
+          "physicalLines": 50,
+          "nonblankLines": 39,
+          "sha256": "e45c4998157eaa0f48b07bbd5e56d2893ff18975546317bbe92060befac6eebd"
+        },
+        {
+          "path": "stores/WatchStore.tsx",
+          "bytes": 39955,
+          "physicalLines": 1627,
+          "nonblankLines": 1395,
+          "sha256": "2cc9ca95841f945efeaf5962041dba3a4490b36849936f7a6b8210ee338e96b8"
+        },
+        {
+          "path": "worklets/spectrum.ts",
+          "bytes": 12123,
+          "physicalLines": 370,
+          "nonblankLines": 307,
+          "sha256": "fdcc7b27149931a817a36cb894de8db1882586fec563f4b53f806171deda1fc9"
+        }
+      ]
+    },
+    "geaAppCss": {
+      "fileCount": 33,
+      "bytes": 19563,
+      "physicalLines": 1261,
+      "nonblankLines": 1168,
+      "largestFiles": [
+        {
+          "path": "common/adjust/Adjust.css",
+          "bytes": 1622,
+          "physicalLines": 110,
+          "nonblankLines": 98,
+          "sha256": "131fea4088318aa9ad643c860b7feafca560f2a2afc6abb5b5210ebc0cea8c5a"
+        },
+        {
+          "path": "apps/app_stopwatch/view/view.css",
+          "bytes": 1624,
+          "physicalLines": 97,
+          "nonblankLines": 97,
+          "sha256": "48813707fee8408f3a504e04af959d5e5c506be4abb2f4338da514f4b73986f0"
+        },
+        {
+          "path": "apps/app_launcher/view/view.css",
+          "bytes": 981,
+          "physicalLines": 83,
+          "nonblankLines": 72,
+          "sha256": "489eabaab0425e32dcdd8daef16d558de246c492b9994d1741a8967d3ade398d"
+        },
+        {
+          "path": "apps/app_watch_face/view/classic.css",
+          "bytes": 1181,
+          "physicalLines": 70,
+          "nonblankLines": 65,
+          "sha256": "2837459cdf9f11a1caa70e51b6649f0964237bf608c5345a8aa42c47de02feb2"
+        },
+        {
+          "path": "common/status_bar/status_bar.css",
+          "bytes": 901,
+          "physicalLines": 61,
+          "nonblankLines": 55,
+          "sha256": "8b9bda27aca37a645420e641ec54c04631ce28bd49fc4e2b947506fa03beeff8"
+        }
+      ],
+      "files": [
+        {
+          "path": "apps/app_alarm_clock/view/alarm_list.css",
+          "bytes": 342,
+          "physicalLines": 17,
+          "nonblankLines": 17,
+          "sha256": "0b75479a3a3c97ef09c8f3dc51a0bef6507aed7814f97dd04bd8ea43a52a171e"
+        },
+        {
+          "path": "apps/app_alarm_clock/view/trigger_alarm.css",
+          "bytes": 493,
+          "physicalLines": 33,
+          "nonblankLines": 33,
+          "sha256": "13b554a53bf206daf60b1881b088c635e9af0eb0d5559ca3afa29965a91e4fce"
+        },
+        {
+          "path": "apps/app_badge/view/badge.css",
+          "bytes": 555,
+          "physicalLines": 35,
+          "nonblankLines": 35,
+          "sha256": "97f4af61c22e0dfc706dff59da394d05c62b4b84c1d1f62afadd5169df6867c0"
+        },
+        {
+          "path": "apps/app_badge/view/badge_editor.css",
+          "bytes": 160,
+          "physicalLines": 10,
+          "nonblankLines": 10,
+          "sha256": "9e492088c6522e8ccf9506cfd62f669bc8531a216df9b4bb59c609da4a66de23"
+        },
+        {
+          "path": "apps/app_fft/view/view.css",
+          "bytes": 510,
+          "physicalLines": 34,
+          "nonblankLines": 34,
+          "sha256": "3c82f13e8d45f181e2d4f40cbb6ae86bdc8f6869613de622b4a9fdbd1d56975a"
+        },
+        {
+          "path": "apps/app_imu/view/view.css",
+          "bytes": 852,
+          "physicalLines": 59,
+          "nonblankLines": 54,
+          "sha256": "7bde734294270e7bc999e1dce90625f62f49edff5874424e0ffa329c442e5b84"
+        },
+        {
+          "path": "apps/app_launcher/view/guide_page.css",
+          "bytes": 255,
+          "physicalLines": 17,
+          "nonblankLines": 16,
+          "sha256": "7d826441aba38a5330ed1e27d593638ae8e3ef1d9eac1887ae9df50aa97a7e52"
+        },
+        {
+          "path": "apps/app_launcher/view/view.css",
+          "bytes": 981,
+          "physicalLines": 83,
+          "nonblankLines": 72,
+          "sha256": "489eabaab0425e32dcdd8daef16d558de246c492b9994d1741a8967d3ade398d"
+        },
+        {
+          "path": "apps/app_lucky_wheel/view/selection.css",
+          "bytes": 171,
+          "physicalLines": 11,
+          "nonblankLines": 10,
+          "sha256": "eedcdd9dce785f876e302e5725b10863bca13da7f12d02e7e9abeece8c03bb3e"
+        },
+        {
+          "path": "apps/app_lucky_wheel/view/wheel.css",
+          "bytes": 425,
+          "physicalLines": 26,
+          "nonblankLines": 26,
+          "sha256": "7fa0f6dfecc248eab36e905b884ffb8e823b9dc7717a1a039b8c91289d2173cd"
+        },
+        {
+          "path": "apps/app_setup/view/view.css",
+          "bytes": 276,
+          "physicalLines": 16,
+          "nonblankLines": 14,
+          "sha256": "2ed3e231d9e04b9f946f8e34cd024674010debea2477f87723542508d8d84525"
+        },
+        {
+          "path": "apps/app_setup/workers/about.css",
+          "bytes": 733,
+          "physicalLines": 43,
+          "nonblankLines": 43,
+          "sha256": "79f79ee2edfad6013f6d5ffe1741986e67883e19764ab48fb65929c45fe67a31"
+        },
+        {
+          "path": "apps/app_setup/workers/brightness.css",
+          "bytes": 213,
+          "physicalLines": 11,
+          "nonblankLines": 11,
+          "sha256": "f7f6a07cc7639488af027f11778d735424423821bfa5cba809c004ca71d16012"
+        },
+        {
+          "path": "apps/app_setup/workers/button.css",
+          "bytes": 306,
+          "physicalLines": 18,
+          "nonblankLines": 17,
+          "sha256": "fc1f34851943c59d19e3288f26440f9f5c0b8b72c547a7d88c061b632610b9cb"
+        },
+        {
+          "path": "apps/app_setup/workers/set_date.css",
+          "bytes": 625,
+          "physicalLines": 48,
+          "nonblankLines": 41,
+          "sha256": "9a48b5ef9aca78e078be49e822faac4f5c56849c8a05227848f91d737dce434c"
+        },
+        {
+          "path": "apps/app_setup/workers/set_time.css",
+          "bytes": 342,
+          "physicalLines": 24,
+          "nonblankLines": 21,
+          "sha256": "a31719ea2548c46a1bd485fedba8dcd5516fc5852ddc1dbefe3d31f11a376974"
+        },
+        {
+          "path": "apps/app_setup/workers/slider.css",
+          "bytes": 491,
+          "physicalLines": 32,
+          "nonblankLines": 32,
+          "sha256": "de8bf7d07464e9deee32f9addbce8c6ec5f3dc95a1dda8db454b11ff7c7d61e1"
+        },
+        {
+          "path": "apps/app_setup/workers/volume.css",
+          "bytes": 213,
+          "physicalLines": 11,
+          "nonblankLines": 11,
+          "sha256": "f7f6a07cc7639488af027f11778d735424423821bfa5cba809c004ca71d16012"
+        },
+        {
+          "path": "apps/app_stopwatch/view/view.css",
+          "bytes": 1624,
+          "physicalLines": 97,
+          "nonblankLines": 97,
+          "sha256": "48813707fee8408f3a504e04af959d5e5c506be4abb2f4338da514f4b73986f0"
+        },
+        {
+          "path": "apps/app_watch_face/view/big_number.css",
+          "bytes": 288,
+          "physicalLines": 31,
+          "nonblankLines": 26,
+          "sha256": "0e078b870f5841a1ac033b8063a6756b24080fb0f7bfeb53546073ad2f637f7c"
+        },
+        {
+          "path": "apps/app_watch_face/view/classic.css",
+          "bytes": 1181,
+          "physicalLines": 70,
+          "nonblankLines": 65,
+          "sha256": "2837459cdf9f11a1caa70e51b6649f0964237bf608c5345a8aa42c47de02feb2"
+        },
+        {
+          "path": "apps/app_watch_face/view/number_flow.css",
+          "bytes": 818,
+          "physicalLines": 59,
+          "nonblankLines": 52,
+          "sha256": "b0cf67b13a43bb075ddcfa134e837391d30c1b75652347fda30434e80f16bdd5"
+        },
+        {
+          "path": "apps/app_watch_face/view/simple.css",
+          "bytes": 651,
+          "physicalLines": 40,
+          "nonblankLines": 37,
+          "sha256": "073e6b393efacd646ae9bc5cac4a11a9a63bd3ae1f717e72b43dc7d0b7e84884"
+        },
+        {
+          "path": "apps/app_watch_face/view/watch_face_manager.css",
+          "bytes": 91,
+          "physicalLines": 7,
+          "nonblankLines": 7,
+          "sha256": "c55fed8aa60eaf81d86a5889efb3f9fed1e3480f68687187fbd6d7993226455c"
+        },
+        {
+          "path": "apps/apps.css",
+          "bytes": 994,
+          "physicalLines": 50,
+          "nonblankLines": 44,
+          "sha256": "147d1411f56cc93b0aa8fd928d47a4e92de8d7cfa530e7581ea09a69d6ca449e"
+        },
+        {
+          "path": "common/adjust/Adjust.css",
+          "bytes": 1622,
+          "physicalLines": 110,
+          "nonblankLines": 98,
+          "sha256": "131fea4088318aa9ad643c860b7feafca560f2a2afc6abb5b5210ebc0cea8c5a"
+        },
+        {
+          "path": "common/arc_top_clock/ArcTopClock.css",
+          "bytes": 656,
+          "physicalLines": 50,
+          "nonblankLines": 44,
+          "sha256": "c31fc424fe0d9b40fe769600e27e5e1e04cedb38f34cf0748f8e3b8d17db9b62"
+        },
+        {
+          "path": "common/canvas/CanvasSurface.css",
+          "bytes": 89,
+          "physicalLines": 7,
+          "nonblankLines": 7,
+          "sha256": "fcbfa732a19b2b4736c4dcfa63eec79362ed407cfaed4f68e8f452f465db5b8d"
+        },
+        {
+          "path": "common/dialog/Dialog.css",
+          "bytes": 751,
+          "physicalLines": 47,
+          "nonblankLines": 42,
+          "sha256": "becf02c67ce15f018edc2caec824687174c8c8f39368b51735a2e858b5de0b75"
+        },
+        {
+          "path": "common/error/ErrorMessage.css",
+          "bytes": 207,
+          "physicalLines": 12,
+          "nonblankLines": 12,
+          "sha256": "a009b44e2ac410f9821078e4927863813b39e3b391092c0d5441fe1c6499d4b9"
+        },
+        {
+          "path": "common/loading_page/boot_logo.css",
+          "bytes": 730,
+          "physicalLines": 41,
+          "nonblankLines": 38,
+          "sha256": "c02694bb07c0ff348afdec10f2a83c7c2f21a5d43cf920792a5624d247260b9a"
+        },
+        {
+          "path": "common/roller/Roller.css",
+          "bytes": 1017,
+          "physicalLines": 51,
+          "nonblankLines": 47,
+          "sha256": "607ab0940dea9801f453800d6e8405225cf69c1cc247cd28b0420e73cf240e98"
+        },
+        {
+          "path": "common/status_bar/status_bar.css",
+          "bytes": 901,
+          "physicalLines": 61,
+          "nonblankLines": 55,
+          "sha256": "8b9bda27aca37a645420e641ec54c04631ce28bd49fc4e2b947506fa03beeff8"
+        }
+      ]
+    }
+  },
+  "scopeRules": {
+    "factoryAppCpp": "main/apps/**/*.{cpp,h}, excluding uninstalled app_template, plus main/main.cpp. Inline styling is included.",
+    "factoryHalCpp": "main/hal direct application/board HAL .cpp/.h files; driver and utils implementation excluded here and reported separately.",
+    "factorySupportCpp": "main/hal/drivers and main/hal/utils .cpp/.h; includes button, RTC, AP/HTTP and settings wrappers.",
+    "geaAppTsJsx": "Application .ts/.tsx excluding scripts, comparison, node_modules, assets directory and vite.config.ts; includes stores, common, lib and worklet.",
+    "geaAppCss": "Application .css excluding assets, node_modules and comparison."
+  },
+  "interpretation": [
+    "Compare factory application C++ against Gea TS/JSX PLUS CSS for application source footprint; C++ styling is inline while Gea styling is external.",
+    "HAL/support layers are reported separately rather than quietly added to one side.",
+    "Both depend on substantial shared frameworks/drivers. Gea native/compiler/target changes made during this port are excluded from application-file counts and must be disclosed as shared engineering work, not zero-cost savings.",
+    "Assets, tests, generated native code, package/build configuration and dependency code are excluded from these source-size totals.",
+    "Do not convert line/file counts into developer-time, maintainability, safety, cyclomatic complexity or performance claims; those require separate measurements.",
+    "Structure comparison: factory app/view/model/HAL ownership versus Gea component/CSS/Store/lib/worklet/shared-host ownership. Equivalent feature coverage is established by the manifest, not shorter source alone."
+  ]
+}

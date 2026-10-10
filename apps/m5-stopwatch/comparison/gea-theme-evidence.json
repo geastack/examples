@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "sourceAuthority": "stores/WatchStore.tsx background/panel arrays; native RGB565 channel expansion",
+  "policy": "These color probes establish Gea theme parameters only. They are not paired factory pixel parity or matching date/time/animation evidence. Capture0 images were visually reviewed; full dynamic state needs normalized capture receipts.",
+  "captures": [
+    {
+      "id": "number-flow-0",
+      "sha256": "1029e66f4acebd03b7b77e9be4b3a0a33dc44729f32f5ce30cb5011885a92057",
+      "themeIndex": 0,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#000000",
+          "expectedRgb565Expanded": [0, 0, 0],
+          "actualRgb": [0, 0, 0],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#1a1919",
+          "expectedRgb565Expanded": [24, 24, 24],
+          "actualRgb": [24, 24, 24],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-1",
+      "sha256": "033f5e161e018cac1bbddda4c0980f6af209c69cf078457afa8cebcbef6cd0b5",
+      "themeIndex": 1,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#eeeeee",
+          "expectedRgb565Expanded": [239, 239, 239],
+          "actualRgb": [239, 239, 239],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#e4e3e3",
+          "expectedRgb565Expanded": [231, 227, 231],
+          "actualRgb": [231, 227, 231],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-2",
+      "sha256": "af3907bdc43848eaa5dd9c72135f18be6a1ee4a8399aee874c841b7354d9beaa",
+      "themeIndex": 2,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#c2efeb",
+          "expectedRgb565Expanded": [198, 239, 239],
+          "actualRgb": [198, 239, 239],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#b1e1dd",
+          "expectedRgb565Expanded": [181, 227, 222],
+          "actualRgb": [181, 227, 222],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-3",
+      "sha256": "5a4acaff9d7609c675c89c0d7fe8204863083c3497dd153c163570cd45fbef84",
+      "themeIndex": 3,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#eee0cb",
+          "expectedRgb565Expanded": [239, 227, 206],
+          "actualRgb": [239, 227, 206],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#d9cab2",
+          "expectedRgb565Expanded": [222, 203, 181],
+          "actualRgb": [222, 203, 181],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-4",
+      "sha256": "8bfc784072a628e22208b008f12519b5b8bd81fdf2061d18330d466c12019e94",
+      "themeIndex": 4,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#b1cc74",
+          "expectedRgb565Expanded": [181, 207, 115],
+          "actualRgb": [181, 207, 115],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#a4bd6b",
+          "expectedRgb565Expanded": [165, 190, 107],
+          "actualRgb": [165, 190, 107],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-5",
+      "sha256": "c657fcdbe00326213b4b376f9ae66f4a61c100b74970359d34114226796cc47a",
+      "themeIndex": 5,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#8a89c0",
+          "expectedRgb565Expanded": [140, 138, 198],
+          "actualRgb": [140, 138, 198],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#8180b4",
+          "expectedRgb565Expanded": [132, 130, 181],
+          "actualRgb": [132, 130, 181],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-6",
+      "sha256": "7147aa871b6794deb5c452065bc06f439b42ec88749eb2fa0a81ab24d09c5b2d",
+      "themeIndex": 6,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#f26419",
+          "expectedRgb565Expanded": [247, 101, 24],
+          "actualRgb": [247, 101, 24],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#f6722c",
+          "expectedRgb565Expanded": [247, 113, 41],
+          "actualRgb": [247, 113, 41],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-7",
+      "sha256": "e2e5c0f81874be653e4d55e7feea60393ba27deac0189cdd0b9e358e36034e40",
+      "themeIndex": 7,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#f2d7ee",
+          "expectedRgb565Expanded": [247, 215, 239],
+          "actualRgb": [247, 215, 239],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#e9c9e5",
+          "expectedRgb565Expanded": [239, 203, 231],
+          "actualRgb": [239, 203, 231],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-8",
+      "sha256": "048f368d08b1f085a84c0ff69bb254e6b1472ab012c3527873ba8b7896b1ac66",
+      "themeIndex": 8,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#048a81",
+          "expectedRgb565Expanded": [0, 138, 132],
+          "actualRgb": [0, 138, 132],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#05968c",
+          "expectedRgb565Expanded": [0, 150, 140],
+          "actualRgb": [0, 150, 140],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "number-flow-9",
+      "sha256": "9ec0e798cb4873aa072605e009f1931bf9b4edd178bcc2de01b94bdbf1be2de9",
+      "themeIndex": 9,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#9db4c0",
+          "expectedRgb565Expanded": [156, 182, 198],
+          "actualRgb": [156, 182, 198],
+          "matches": true
+        },
+        {
+          "xy": [115, 160],
+          "sourceColor": "#92a8b3",
+          "expectedRgb565Expanded": [148, 170, 181],
+          "actualRgb": [148, 170, 181],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-0",
+      "sha256": "921d57d7ad9506ae94526fc799505228a0d6fc058cc8a4c60a3693b46cad5046",
+      "themeIndex": 0,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#000000",
+          "expectedRgb565Expanded": [0, 0, 0],
+          "actualRgb": [0, 0, 0],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-1",
+      "sha256": "ad22508a6405b2a50782d00d028f9e1cacca6e2a4d83a8cf03947423ce36d043",
+      "themeIndex": 1,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#eeeeee",
+          "expectedRgb565Expanded": [239, 239, 239],
+          "actualRgb": [239, 239, 239],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-2",
+      "sha256": "e2f95d4a09109eeaab7636acc6dde22bfe5dc1073ef9bb24dd3f62e504b9ca3e",
+      "themeIndex": 2,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#c2efeb",
+          "expectedRgb565Expanded": [198, 239, 239],
+          "actualRgb": [198, 239, 239],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-3",
+      "sha256": "8ac7c44db06c044c52ab750dc9ffb8fdeb984e331c2a83b4ca27a81478a7c475",
+      "themeIndex": 3,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#eee0cb",
+          "expectedRgb565Expanded": [239, 227, 206],
+          "actualRgb": [239, 227, 206],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-4",
+      "sha256": "eb1432afad40cd4e9dd4887edad538608b65ae810c869a39af321467cbd9138e",
+      "themeIndex": 4,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#b1cc74",
+          "expectedRgb565Expanded": [181, 207, 115],
+          "actualRgb": [181, 207, 115],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-5",
+      "sha256": "c70c8233b1556e6632b723e938206e531fc8222004917886c9f94190a2807e0b",
+      "themeIndex": 5,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#8a89c0",
+          "expectedRgb565Expanded": [140, 138, 198],
+          "actualRgb": [140, 138, 198],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-6",
+      "sha256": "71491e13813086b9441571b1774276f009fcbe345228bf2c125b436210b0775a",
+      "themeIndex": 6,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#f26419",
+          "expectedRgb565Expanded": [247, 101, 24],
+          "actualRgb": [247, 101, 24],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-7",
+      "sha256": "e70ad08473c4490290e82b18af4bff74625f3f163634f8dcd5482de007e848d0",
+      "themeIndex": 7,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#f2d7ee",
+          "expectedRgb565Expanded": [247, 215, 239],
+          "actualRgb": [247, 215, 239],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-8",
+      "sha256": "9a7ba67ef4e70d97b76a1abc2d0a4cbf29afd1f69745e2b83f789c53269cc0fe",
+      "themeIndex": 8,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#048a81",
+          "expectedRgb565Expanded": [0, 138, 132],
+          "actualRgb": [0, 138, 132],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    },
+    {
+      "id": "simple-9",
+      "sha256": "e0f1917c8a7bf9ae8b3c9e3049680f77cbe12f5abb1e795dfabacbeb9b848f5e",
+      "themeIndex": 9,
+      "probes": [
+        {
+          "xy": [233, 60],
+          "sourceColor": "#9db4c0",
+          "expectedRgb565Expanded": [156, 182, 198],
+          "actualRgb": [156, 182, 198],
+          "matches": true
+        }
+      ],
+      "themeParameterEvidenceVerified": true,
+      "dynamicTimeStateVerified": false
+    }
+  ],
+  "visualReview": [
+    {
+      "id": "classic-0",
+      "visibleContent": "11:38, day28, FRI; moving hands",
+      "dateYearVerified": false
+    },
+    {
+      "id": "number-flow-0",
+      "visibleContent": "11:38:59; 2000/1/28 FRI"
+    },
+    {
+      "id": "big-number-0",
+      "visibleContent": "11:39; seconds/background phase not verified"
+    },
+    {
+      "id": "simple-0",
+      "visibleContent": "11:40; 2000/1/28 FRI; dot and initial long-press hint visible"
+    }
+  ]
+}

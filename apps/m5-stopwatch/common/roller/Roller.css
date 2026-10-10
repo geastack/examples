@@ -1,0 +1,51 @@
+/* Factory LVGL 9.5 sets five visible rows before selecting Montserrat 28.
+   At its default 130 DPI, the initial 16px font line, 16px theme spacing and
+   2px border fix the box at 164px. The final 30px font line has a 46px pitch. */
+.roller {
+  position: relative;
+  width: 160px;
+  height: 164px;
+  background: #343434;
+  border-radius: 52px;
+  overflow: hidden;
+}
+
+.roller-track {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 50%;
+  margin-top: -15px;
+  height: 30px;
+  pointer-events: none;
+}
+
+.roller-row {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  line-height: 30px;
+  font-family: Montserrat;
+}
+
+.roller-value {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -23px;
+  width: 100%;
+  /* LVGL's inclusive selected area is one 46px row plus its ending pixel. */
+  height: 47px;
+  background: #696969;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.roller-selected-track {
+  top: 8px;
+  margin-top: 0;
+}

@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-06T01:59:05.643046+00:00",
+  "scope": "Read-only audit of current frozen emitted app/worklet C++; no compiler, app, native source, build or serial change. It does not claim the entire translation unit or runtime is free of Value.",
+  "production_image": {
+    "path": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/gea-production.bin",
+    "bytes": 5669456,
+    "sha256": "fb563534256479dc620bb8793d2b91faa29fbe0a920e3d78adcb6d29015b3e4c"
+  },
+  "production_elf": {
+    "path": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/gea-production.elf",
+    "bytes": 65324388,
+    "sha256": "a0387eb791c95ca8d89b932948214dc8c81e189728ccd9041c1971c3e1ca0693"
+  },
+  "generated_sources": [
+    {
+      "path": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/apps/m5-stopwatch/index.cpp",
+      "bytes": 2052853,
+      "sha256": "3576aeb44955d2c53e6dcaa7efd177ea5accabe806c7e816876434716522b60e",
+      "application_function_definitions_audited": 710,
+      "literal_box_occurrences": 46,
+      "box_source_lines": 40,
+      "application_body_boxing_sites": [
+        {
+          "function": "gea_body_fn_decl_f66_2409",
+          "start_line": 16713,
+          "sites": [
+            {
+              "line": 16722,
+              "text": "GEA_THROW((gea::Value::box(gea::Value::Tag::Object, static_cast<gea::Ref<gea::runtime::Error>>(v3))));"
+            }
+          ]
+        },
+        {
+          "function": "gea_body_fn_decl_f68_17_0",
+          "start_line": 16820,
+          "sites": [
+            {
+              "line": 16827,
+              "text": "GEA_THROW((gea::Value::box(gea::Value::Tag::Object, static_cast<gea::Ref<gea::runtime::Error>>(v2))));"
+            }
+          ]
+        }
+      ],
+      "ordinary_typed_application_body_boxing_sites": [],
+      "all_box_sites": [
+        {
+          "line": 4970,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Number, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 4977,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 5847,
+          "text": "      if (gea_slot) { gea_out = ((*gea_slot).has_value() ? gea::Value::box(gea::Value::Tag::String, static_cast<std::string>((*(*gea_slot)))) : gea::Value::box(gea::Value::Tag::Undefined, static_cast<gea::Undefined>(gea::Undefined{}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 5932,
+          "text": "      if (gea_slot) { gea_out = ((*gea_slot).has_value() ? ((*(*gea_slot)).is<0>() ? gea::Value::box(gea::Value::Tag::String, static_cast<std::string>((*(*gea_slot)).get<0>())) : (*(*gea_slot)).is<1>() ? gea::Value::box(gea::Value::Tag::Number, static_cast<double>((*(*gea_slot)).get<1>())) : gea::Value()) : gea::Value::box(gea::Value::Tag::Undefined, static_cast<gea::Undefined>(gea::Undefined{}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 5941,
+          "text": "      if (gea_slot) { gea_out = ((*gea_slot).has_value() ? gea::Value::box(gea::Value::Tag::Number, static_cast<double>((*(*gea_slot)))) : gea::Value::box(gea::Value::Tag::Undefined, static_cast<gea::Undefined>(gea::Undefined{}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 5947,
+          "text": "      if (gea_slot) { gea_out = ((*gea_slot).has_value() ? ((*(*gea_slot)).is<0>() ? gea::Value::box(gea::Value::Tag::Number, static_cast<double>((*(*gea_slot)).get<0>())) : (*(*gea_slot)).is<1>() ? gea::Value::box(gea::Value::Tag::String, static_cast<std::string>((*(*gea_slot)).get<1>())) : gea::Value()) : gea::Value::box(gea::Value::Tag::Undefined, static_cast<gea::Undefined>(gea::Undefined{}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7598,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Number, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7605,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::String, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7611,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Object, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7619,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<double()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7650,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(double)>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7657,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<std::string()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7663,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(std::string)>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7669,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<gea::Ref<gea::ArrayObject<std::string>>()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7676,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(bool)>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7682,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7686,
+          "text": "    if (gea_name == \"ctx\") { if (!gea_present_ctx) return false; gea_out = gea::Value::box(gea::Value::Tag::Object, static_cast<gea::embedded::ui::CanvasRenderingContext2D>(ctx)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7690,
+          "text": "    if (gea_name == \"autoRotate\") { if (!gea_present_autoRotate) return false; gea_out = gea::Value::box(gea::Value::Tag::Boolean, static_cast<bool>(autoRotate)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7694,
+          "text": "    if (gea_name == \"getAutoRotate\") { if (!gea_present_getAutoRotate) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<bool()>>(getAutoRotate)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7698,
+          "text": "    if (gea_name == \"setFlushConfig\") { if (!gea_present_setFlushConfig) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(gea::Ref<gea_record_type_229>)>>(setFlushConfig)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7702,
+          "text": "    if (gea_name == \"setMemoryConfig\") { if (!gea_present_setMemoryConfig) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(gea::Ref<gea_record_type_231>)>>(setMemoryConfig)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7706,
+          "text": "    if (gea_name == \"setEpaperRefreshConfig\") { if (!gea_present_setEpaperRefreshConfig) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(gea::Ref<gea_record_type_234>)>>(setEpaperRefreshConfig)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 7710,
+          "text": "    if (gea_name == \"setSupportedOrientations\") { if (!gea_present_setSupportedOrientations) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(gea_union_3)>>(setSupportedOrientations)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 9251,
+          "text": "    if (gea_name == \"getUserMedia\") { if (!gea_present_getUserMedia) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<gea::Promise<gea::host::MediaStream>(gea::Ref<gea_record_type_336>)>>(getUserMedia)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 9631,
+          "text": "    if (gea_name == \"lastDate\") { if (!gea_present_lastDate) return false; gea_out = gea::Value::box(gea::Value::Tag::Number, static_cast<double>(lastDate)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10141,
+          "text": "      if (gea_key.symbolId() == static_cast<std::uint32_t>(gea::detail::WellKnownSymbol::Iterator)) { const std::string& gea_name = \"sym(decl|f6|3)\"; (void)gea_name;     if (gea_name == \"sym(decl|f6|3)\") { if (!gea_present_gea_sym_decl_f6_3) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<gea::Ref<gea_record_type_723>()>>(gea_sym_decl_f6_3)); return true; } }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10145,
+          "text": "    if (gea_name == \"sym(decl|f6|3)\") { if (!gea_present_gea_sym_decl_f6_3) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<gea::Ref<gea_record_type_723>()>>(gea_sym_decl_f6_3)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10168,
+          "text": "      if (gea_key.symbolId() == static_cast<std::uint32_t>(gea::detail::WellKnownSymbol::Iterator)) { const std::string& gea_name = \"sym(decl|f6|3)\"; (void)gea_name;     if (gea_name == \"sym(decl|f6|3)\") { if (!gea_present_gea_sym_decl_f6_3) return false; gea_out = gea::PropertyDescriptor::assignment(gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<gea::Ref<gea_record_type_723>()>>(gea_sym_decl_f6_3))); gea_out.writable = gea_attributes_gea_sym_decl_f6_3.writable; gea_out.enumerable = gea_attributes_gea_sym_decl_f6_3.enumerable; gea_out.configurable = gea_attributes_gea_sym_decl_f6_3.configurable; return true; } }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10825,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<std::string()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10833,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<bool()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10840,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10846,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<double()>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10852,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<bool(double)>>(*gea_slot)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10854,
+          "text": "    if (gea_name == \"startAccessPoint\") { if (!gea_present_startAccessPoint) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<bool(std::string, gea::Optional<std::string>)>>(startAccessPoint)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10855,
+          "text": "    if (gea_name == \"setEnabled\") { if (!gea_present_setEnabled) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(bool)>>(setEnabled)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10856,
+          "text": "    if (gea_name == \"configure\") { if (!gea_present_configure) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<void(std::string, std::string)>>(configure)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10857,
+          "text": "    if (gea_name == \"scanSsidAt\") { if (!gea_present_scanSsidAt) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<std::string(double)>>(scanSsidAt)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 10858,
+          "text": "    if (gea_name == \"scanRssiAt\") { if (!gea_present_scanRssiAt) return false; gea_out = gea::Value::box(gea::Value::Tag::Function, static_cast<gea::CallableObject<double(double)>>(scanRssiAt)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 16722,
+          "text": "GEA_THROW((gea::Value::box(gea::Value::Tag::Object, static_cast<gea::Ref<gea::runtime::Error>>(v3))));",
+          "scope": "exception-carrier"
+        },
+        {
+          "line": 16827,
+          "text": "GEA_THROW((gea::Value::box(gea::Value::Tag::Object, static_cast<gea::Ref<gea::runtime::Error>>(v2))));",
+          "scope": "exception-carrier"
+        }
+      ],
+      "other_boxing_api_hits": {
+        "gea::toValue": 0,
+        "gea::boxValue": 0,
+        "gea::runtime::dynamic": 0
+      }
+    },
+    {
+      "path": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/apps/m5-stopwatch/worklet-22df0d4d92924188/spectrum.cpp",
+      "bytes": 128730,
+      "sha256": "925aa69365dd24d4931dea9434df75adfd96ce6dbe2750243a78a08d13b2ffc1",
+      "application_function_definitions_audited": 31,
+      "literal_box_occurrences": 7,
+      "box_source_lines": 7,
+      "application_body_boxing_sites": [],
+      "ordinary_typed_application_body_boxing_sites": [],
+      "all_box_sites": [
+        {
+          "line": 60,
+          "text": "    if (gea_name == \"port\") { if (!gea_present_port) return false; gea_out = gea::Value::box(gea::Value::Tag::Object, static_cast<gea::host::workers::MessagePort>(port)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 361,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Object, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 368,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Object, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 399,
+          "text": "      if (gea_slot) { gea_out = gea::Value::box(gea::Value::Tag::Number, *gea_slot); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 401,
+          "text": "    if (gea_name == \"publicationStarted\") { if (!gea_present_publicationStarted) return false; gea_out = gea::Value::box(gea::Value::Tag::Boolean, static_cast<bool>(publicationStarted)); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 979,
+          "text": "    if (gea_name == \"process\") { gea_out = gea::Value::boxMethod<-1>(static_cast<gea::CallableObject<bool(gea::Ref<gea_class_decl_f119_9>, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>>, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>>)>>(gea::nativeClassMethodValue<gea_class_decl_f119_9, &gea_decl_tag_fn_decl_f119_464>(this->gea_method_state, gea::CallableObject<bool(gea::Ref<gea_class_decl_f119_9>, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>>, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>>)>{+[](void*, gea::Ref<gea_class_decl_f119_9> gea_receiver, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>> gea_arg_0, gea::Ref<gea::ArrayObject<gea::Ref<gea::ArrayObject<gea::Ref<gea::TypedArray<float>>>>>> gea_arg_1) -> bool { return gea_body_fn_decl_f119_464(gea_receiver, gea_arg_0, gea_arg_1); }, nullptr}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        },
+        {
+          "line": 980,
+          "text": "    if (gea_name == \"publish\") { gea_out = gea::Value::boxMethod<-1>(static_cast<gea::CallableObject<void(gea::Ref<gea_class_decl_f119_9>)>>(gea::nativeClassMethodValue<gea_class_decl_f119_9, &gea_decl_tag_fn_decl_f119_663>(this->gea_method_state, gea::CallableObject<void(gea::Ref<gea_class_decl_f119_9>)>{+[](void*, gea::Ref<gea_class_decl_f119_9> gea_receiver) -> void { return gea_body_fn_decl_f119_663(gea_receiver); }, nullptr}))); return true; }",
+          "scope": "generated-reflection-or-property-descriptor-adapter"
+        }
+      ],
+      "other_boxing_api_hits": {
+        "gea::toValue": 0,
+        "gea::boxValue": 0,
+        "gea::runtime::dynamic": 0
+      }
+    }
+  ],
+  "generated_font": {
+    "path": "/Users/dashersw/Projects/Code/github/geastack/examples/.gea/build/esp32-s3-m5stack-stopwatch/app-builds/m5-stopwatch/apps/m5-stopwatch/gea_embedded_font_generated.cpp",
+    "bytes": 5074776,
+    "sha256": "41c98f8ec1efc9c488289c1c39c6baea68dba75c1253485ef938b617ec3efea4",
+    "matches_expected_frozen_sha": true
+  },
+  "findings": [
+    "No non-exception gea::Value::box site occurs in the audited global application function definitions. The index emits two thrown Error carriers; the spectrum processing bodies emit none.",
+    "Generated gea_readOwnField and property-descriptor compatibility adapters explicitly box native fields/handles/functions. NativeFieldRead alternatives are also emitted. These adapter sites are retained explicitly here; this is not a blanket zero-boxing pass.",
+    "index.cpp includes Value-typed iterator compatibility records and a NumericDictionary<Value> sidecar. The module Array.from({length:6},...) call constructs the native length record and calls fromLength with its double length; no Value payload is produced there.",
+    "spectrum.cpp FFT processing reads/writes native TypedArray<float>/TypedArray<uint16_t>, keeps float32 arithmetic, and posts a native ArrayBuffer with a tagged-union transfer list. No boxed Value appears in those processing/publication bodies.",
+    "The source audit identifies no ordinary typed application value lowered to a boxed carrier. It does not prove dynamic reflection adapters are never executed, and does not audit hidden runtime implementations behind every native host call."
+  ],
+  "audio_info_overhead": {
+    "source": {
+      "path": "/Users/dashersw/Projects/Code/github/geastack/core/packages/host/host/audio_worklet.cpp",
+      "sha256": "fe7f4137f38d26973947cc6327623f4b5bbcfc6195460b8df787d79ed68d2159",
+      "anchors": [
+        {
+          "line": 106,
+          "text": "    if (statsStart && now - statsStart < 2000000) return;",
+          "finding": "Ordinary AudioWorklet INFO stats report no more frequently than every two seconds; separate from disabled display performance/FPS flags."
+        },
+        {
+          "line": 122,
+          "text": "    ESP_LOGI(\"gea_worklet\", \"span_ms=%lld cpu_us=%lld rate=%d quanta=%llu render_avg_us=%llu process_avg_us=%llu render_max_us=%lld process_max_us=%lld lag_max_us=%lld capture_samples=%llu capture_pending_max=%u capture_lost=%llu input_waits=%llu input_real_frames=%llu output_queued=%u output_peak=%u empty_pulls=%u backpressure_waits=%u\",",
+          "finding": "Info output, formatting and USB/console transport overhead remain active under retained INFO configuration."
+        },
+        {
+          "line": 268,
+          "text": "        const auto processStart = esp_timer_get_time();",
+          "finding": "Audio process wall timing uses timer reads and per-quantum counters under ESP_PLATFORM."
+        },
+        {
+          "line": 381,
+          "text": "        self->reportStats();",
+          "finding": "Ordinary audio runtime calls the stats reporter."
+        },
+        {
+          "line": 107,
+          "text": "    std::int64_t cpuUs = -1;",
+          "finding": "Task CPU accounting is unavailable when FreeRTOS trace/runtime stats are disabled; wall timings are not CPU utilization."
+        }
+      ]
+    },
+    "retained_configuration": {
+      "CONFIG_LOG_DEFAULT_LEVEL": "3",
+      "CONFIG_FREERTOS_USE_TRACE_FACILITY": "n",
+      "CONFIG_FREERTOS_GENERATE_RUN_TIME_STATS": "n"
+    },
+    "display_diagnostic_defines": [
+      "GEA_EMBEDDED_FRAME_SCHEDULER_FPS_LOG=0",
+      "GEA_EMBEDDED_FRAME_SCHEDULER_PERF_LITE=0",
+      "GEA_EMBEDDED_PERF=0"
+    ],
+    "included_in_measured_runtime": true,
+    "timing_overhead_percentage": null,
+    "cpu_utilization_available": false,
+    "disclosure": "Ordinary FFT worklet timer/counter/INFO-log overhead remains part of production and diagnostic behavior. No fixed penalty is estimated; cpu_us=-1 is unavailable task CPU evidence."
+  }
+}

@@ -1,0 +1,18 @@
+.button-setting {
+  position: absolute;
+  top: 88px;
+  width: 374px;
+  height: 119px;
+  margin-left: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  font-size: 24px;
+  font-family: Montserrat;
+  line-height: 27px;
+}
+
+.button-vibration {
+  top: 195px;
+}

@@ -1,0 +1,573 @@
+{
+  "framework": "factory",
+  "elf": "/Users/dashersw/Projects/Code/github/geastack/vendored-sources/M5StopWatch-UserDemo/build/StopWatch-UserDemo-production-O2.elf",
+  "elfSha256": "032bf7801941fc4c1ef2fb051453eb47510d87e97b1b9535519737e1d716b869",
+  "method": "Defined ELF symbols in mapped DROM range; explicit name categories only.",
+  "limits": "Not total renderer cost. Categories exclude code, unnamed data, alignment and metadata not matching these names. Symbols may share names; each address is counted separately.",
+  "groups": {
+    "lvgl_font_bitmaps": {
+      "bytes": 235190,
+      "symbolCount": 15,
+      "symbols": [
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010132484,
+          "bytes": 16986,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010154296,
+          "bytes": 20639,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1008410020,
+          "bytes": 4582,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010097528,
+          "bytes": 11090,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1008390488,
+          "bytes": 12173,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010245776,
+          "bytes": 52589,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1009526176,
+          "bytes": 4400,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010208468,
+          "bytes": 32484,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010074496,
+          "bytes": 4549,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010179760,
+          "bytes": 23884,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1008415456,
+          "bytes": 6160,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1008403516,
+          "bytes": 5649,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010113444,
+          "bytes": 14213,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1010083872,
+          "bytes": 8832,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_bitmap",
+          "address": 1008422468,
+          "bytes": 16960,
+          "kind": "d"
+        }
+      ]
+    },
+    "lvgl_font_glyph_metadata": {
+      "bytes": 14680,
+      "symbolCount": 15,
+      "symbols": [
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010131220,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010207204,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1008414688,
+          "bytes": 768,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010112180,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1008409252,
+          "bytes": 768,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1008421700,
+          "bytes": 768,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010153032,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010244512,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010096264,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1009526064,
+          "bytes": 112,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1008402748,
+          "bytes": 768,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010178496,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1008390368,
+          "bytes": 120,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010082608,
+          "bytes": 1264,
+          "kind": "d"
+        },
+        {
+          "symbol": "glyph_dsc",
+          "address": 1010073232,
+          "bytes": 1264,
+          "kind": "d"
+        }
+      ]
+    },
+    "lvgl_font_kerning_metadata": {
+      "bytes": 29745,
+      "symbolCount": 27,
+      "symbols": [
+        {
+          "symbol": "kern_class_values",
+          "address": 1010127736,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010092780,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010241028,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010149548,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010203720,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010069748,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010108696,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010175012,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_class_values",
+          "address": 1010079124,
+          "bytes": 2989,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010152700,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010095932,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010082276,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010130888,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010072900,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010206872,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010178164,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010244180,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_left_class_mapping",
+          "address": 1010111848,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010178004,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010244020,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010206712,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010072740,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010095772,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010111688,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010152540,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010082116,
+          "bytes": 158,
+          "kind": "d"
+        },
+        {
+          "symbol": "kern_right_class_mapping",
+          "address": 1010130728,
+          "bytes": 158,
+          "kind": "d"
+        }
+      ]
+    },
+    "named_image_maps": {
+      "bytes": 1430723,
+      "symbolCount": 33,
+      "symbols": [
+        {
+          "symbol": "alarm_icon_map",
+          "address": 1008439456,
+          "bytes": 11712,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_0_map",
+          "address": 1009530604,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_1_map",
+          "address": 1009581032,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_2_map",
+          "address": 1009631460,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_3_map",
+          "address": 1009681888,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_4_map",
+          "address": 1009732316,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_5_map",
+          "address": 1009782744,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_6_map",
+          "address": 1009833172,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_7_map",
+          "address": 1009883600,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_8_map",
+          "address": 1009934028,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "big_number_9_map",
+          "address": 1009984456,
+          "bytes": 50400,
+          "kind": "D"
+        },
+        {
+          "symbol": "classic_hour_hand_map",
+          "address": 1010034884,
+          "bytes": 5292,
+          "kind": "D"
+        },
+        {
+          "symbol": "classic_minute_hand_map",
+          "address": 1010040204,
+          "bytes": 4560,
+          "kind": "D"
+        },
+        {
+          "symbol": "classic_second_hand_map",
+          "address": 1010044792,
+          "bytes": 10080,
+          "kind": "D"
+        },
+        {
+          "symbol": "default_kb_ctrl_lc_map",
+          "address": 1010301028,
+          "bytes": 160,
+          "kind": "d"
+        },
+        {
+          "symbol": "default_kb_ctrl_num_map",
+          "address": 1010300204,
+          "bytes": 68,
+          "kind": "d"
+        },
+        {
+          "symbol": "default_kb_ctrl_spec_map",
+          "address": 1010300356,
+          "bytes": 160,
+          "kind": "d"
+        },
+        {
+          "symbol": "default_kb_ctrl_uc_map",
+          "address": 1010300692,
+          "bytes": 160,
+          "kind": "d"
+        },
+        {
+          "symbol": "go_home_guide_map",
+          "address": 1008451196,
+          "bytes": 208500,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_badge_map",
+          "address": 1008659724,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_bat_lightning_map",
+          "address": 1008739752,
+          "bytes": 576,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_clock_map",
+          "address": 1008740356,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_fft_map",
+          "address": 1008820384,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_imu_map",
+          "address": 1008900412,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_indicator_left_map",
+          "address": 1008980440,
+          "bytes": 5628,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_indicator_right_map",
+          "address": 1008986096,
+          "bytes": 5628,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_lucky_wheel_map",
+          "address": 1008991752,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_setup_map",
+          "address": 1009071780,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_stopwatch_map",
+          "address": 1009151808,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "icon_watch_face_map",
+          "address": 1009231836,
+          "bytes": 80000,
+          "kind": "D"
+        },
+        {
+          "symbol": "lucky_wheel_pointer_map",
+          "address": 1009311864,
+          "bytes": 34122,
+          "kind": "D"
+        },
+        {
+          "symbol": "lv_buttonmatrix_def_map",
+          "address": 1010299776,
+          "bytes": 28,
+          "kind": "d"
+        },
+        {
+          "symbol": "rtc_io_num_map",
+          "address": 1010340684,
+          "bytes": 49,
+          "kind": "D"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.settings {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.section-title {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  line-height: 27px;
+  margin-bottom: 25px;
+  font-family: MontserratBold;
+}
+
+.settings .list-button + .section-title {
+  margin-top: 5px;
+}
+
+.settings .list-button:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,33 @@
+.ringing {
+  position: absolute;
+  width: 466px;
+  height: 466px;
+  top: 0;
+  left: 0;
+}
+.ringing {
+  background: #000;
+}
+.ringing img {
+  position: absolute;
+  left: 172px;
+  top: 90px;
+  width: 122px;
+  height: 32px;
+}
+.ringing > span {
+  position: absolute;
+  top: 136px;
+  left: 30px;
+  width: 406px;
+  text-align: center;
+  font: 108px Commissioner;
+  line-height: 98px;
+  --gea-font-charset: '0123456789:';
+}
+.ringing .ok {
+  top: 282px;
+  left: 66px;
+  width: 333px;
+  height: 103px;
+}
