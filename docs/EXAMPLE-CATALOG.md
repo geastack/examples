@@ -10,7 +10,7 @@ tests, and marketing proof.
 | Watch and wearable UI | `watch`, `watch-analog`, `watch-date`, `watch-face` | Compact layouts, clock/date rendering, small-screen app surfaces. |
 | Basic JSX apps | `counter-jsx`, `todo-jsx`, `static-card`, `stopwatch-jsx` | Component rendering, state updates, text/input, timers. |
 | Canvas and animation | `bouncing-balls`, `bouncing-balls-jsx`, `canvas-3d`, `canvas-3d-cube`, `css-3d-cube`, `css-animation-showcase` | Canvas drawing, CSS animation, frame loop, transform behavior. |
-| UI components | `settings`, `dialer`, `virtual-list`, `typography`, `bubble-grid`, `bubble-grid-jsx` | Higher-level controls, scroll behavior, text layout, launchable apps. |
+| UI components | `settings`, `dialer`, `virtual-list`, `progress-bar`, `typography`, `bubble-grid`, `bubble-grid-jsx` | Higher-level controls, scroll behavior, text layout, launchable apps. |
 | Games | `sky-hop`, `sky-hop-jsx`, `tic-tac-toe`, `tilt-breakout`, `button-tetris` | Interaction, simple game loops, collision/physics, deterministic logic. |
 | Device features | `camera-showcase`, `camera-studio`, `voice-notes`, `hid-clicker`, `weather`, `maps` | Target capabilities such as camera, audio, HID, network, and map assets. |
 | Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase`, `macos-native-showcase` | Apple target and native renderer experiments. |
