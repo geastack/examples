@@ -1,0 +1,29 @@
+{
+  "name": "@geastack/example-inline-alert",
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/core": "^0.1.41",
+    "@geastack/elements": "^0.1.6"
+  },
+  "gea": {
+    "id": "inline-alert",
+    "name": "Inline Alert",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": false
+    },
+    "launcher": {
+      "description": "inline alert variants",
+      "order": 999,
+      "hidden": true
+    }
+  },
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}
