@@ -25,7 +25,16 @@
     "targets": {
       "web": true,
       "esp32": {
-        "cssDevicePixelRatio": 1
+        "cssDevicePixelRatio": 1,
+        "boards": {
+          "esp32-s3-elecrow-crowpanel-advance-7.0": {
+            "build": {
+              "renderer": {
+                "fuseReplayFlush": true
+              }
+            }
+          }
+        }
       }
     },
     "icons": {
