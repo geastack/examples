@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.ttf');
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #020617;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: 'Inter';
+  color: #e2e8f0;
+}
+
+.title {
+  font-size: 22px;
+  color: #94a3b8;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+  border-radius: 14px;
+  background-color: #0f172a;
+}
+
+/* Fixed card widths: the live value text never resizes a card, so the row
+   never reflows while the charts animate. */
+.card-wide {
+  width: 340px;
+}
+
+.card-square {
+  width: 170px;
+}
+
+.card-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-title {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.card-value {
+  font-size: 16px;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+
+/* SVG paint from CSS: the selected slice is outlined, others dimmed. */
+.slice {
+  fill-opacity: 0.55;
+}
+
+.slice-selected {
+  fill-opacity: 1;
+  stroke: #f8fafc;
+  stroke-width: 3px;
+}
