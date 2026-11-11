@@ -9,17 +9,21 @@ function LineChart() {
         <span class="card-title">Throughput</span>
         <span class="card-value">{charts.latestText}</span>
       </div>
-      <svg width="340" height="170" viewBox="-10 -10 320 160">
-        <g class="grid" stroke="#1e293b" stroke-width="1">
-          <line x1="0" y1="0" x2="300" y2="0" />
-          <line x1="0" y1="35" x2="300" y2="35" />
-          <line x1="0" y1="70" x2="300" y2="70" />
-          <line x1="0" y1="105" x2="300" y2="105" />
-          <line x1="0" y1="140" x2="300" y2="140" />
+      <svg width="340" height="170" viewBox="0 -100 3200 1600">
+        <g class="grid" stroke="#1e293b" stroke-width="10">
+          <line x1="0" y1="0" x2="3000" y2="0" />
+          <line x1="0" y1="350" x2="3000" y2="350" />
+          <line x1="0" y1="700" x2="3000" y2="700" />
+          <line x1="0" y1="1050" x2="3000" y2="1050" />
+          <line x1="0" y1="1400" x2="3000" y2="1400" />
         </g>
-        <path d={charts.areaPath} fill="#38bdf8" fill-opacity="0.18" />
-        <path d={charts.linePath} class="line" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-        <circle cx={charts.lastX} cy={charts.lastY} r="5" fill="#0f172a" stroke="#38bdf8" stroke-width="3" />
+        <g transform={charts.historyShift}>
+          <path d={charts.historyArea} fill="#38bdf8" fill-opacity="0.18" />
+          <path d={charts.historyLine} class="line" fill="none" stroke="#38bdf8" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
+        <path d={charts.tipArea} fill="#38bdf8" fill-opacity="0.18" />
+        <path d={charts.tipLine} fill="none" stroke="#38bdf8" stroke-width="30" stroke-linecap="round" />
+        <circle cx="3000" cy={charts.lastY} r="50" fill="#0f172a" stroke="#38bdf8" stroke-width="30" />
       </svg>
     </div>
   )
@@ -32,7 +36,7 @@ function Donut() {
         <span class="card-title">{charts.selectedLabel}</span>
         <span class="card-value">{charts.selectedText}</span>
       </div>
-      <svg width="170" height="170" viewBox="0 0 200 200">
+      <svg width="170" height="170" viewBox="0 0 2000 2000">
         {charts.slices.map(slice => (
           <path
             key={slice.index}
@@ -42,7 +46,7 @@ function Donut() {
             onClick={() => charts.select(slice.index)}
           />
         ))}
-        <circle cx="100" cy="100" r="50" fill="#0f172a" pointer-events="none" />
+        <circle cx="1000" cy="1000" r="500" fill="#0f172a" pointer-events="none" />
       </svg>
     </div>
   )
@@ -55,15 +59,15 @@ function Gauge() {
         <span class="card-title">Pressure</span>
         <span class="card-value" style={{ color: charts.gaugeColor }}>{charts.gaugeText}</span>
       </div>
-      <svg width="170" height="170" viewBox="0 0 200 200">
-        <path d="M30.7 140A80 80 0 1 1 169.3 140" fill="none" stroke="#1e293b" stroke-width="16" stroke-linecap="round" />
-        <path d={charts.gaugeArc} fill="none" stroke={charts.gaugeColor} stroke-width="16" stroke-linecap="round" />
+      <svg width="170" height="170" viewBox="0 0 2000 2000">
+        <path d="M307 1400A800 800 0 1 1 1693 1400" fill="none" stroke="#1e293b" stroke-width="160" stroke-linecap="round" />
+        <path d={charts.gaugeArc} fill="none" stroke={charts.gaugeColor} stroke-width="160" stroke-linecap="round" />
         <g transform={charts.needleTransform}>
-          <polygon points="96,100 104,100 100,34" fill="#e2e8f0" />
+          <polygon points="960,1000 1040,1000 1000,340" fill="#e2e8f0" />
         </g>
-        <circle cx="100" cy="100" r="10" fill="#e2e8f0" />
-        <ellipse cx="100" cy="100" rx="4" ry="4" fill="#0f172a" />
-        <rect x="70" y="150" width="60" height="22" rx="11" ry="11" fill="none" stroke="#334155" stroke-width="2" />
+        <circle cx="1000" cy="1000" r="100" fill="#e2e8f0" />
+        <ellipse cx="1000" cy="1000" rx="40" ry="40" fill="#0f172a" />
+        <rect x="700" y="1500" width="600" height="220" rx="110" ry="110" fill="none" stroke="#334155" stroke-width="20" />
       </svg>
     </div>
   )

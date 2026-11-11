@@ -1,9 +1,14 @@
 import { Store } from '@geastack/core'
 
-// Chart geometry lives in viewBox units; the svg scales it to its box.
-const CHART_W = 300
-const CHART_H = 140
-const SAMPLES = 24
+// Chart geometry lives in viewBox units; the svg scales it to its box. Units
+// are a tenth of the old 300x140 plot so every coordinate is a whole number:
+// integers turn into path text with a couple of divisions, while a fraction
+// needs the full shortest-round-trip double formatting (slow on soft-float
+// targets such as the ESP32).
+const CHART_W: i32 = 3000
+const CHART_H: i32 = 1400
+const SAMPLES: i32 = 24
+const STEP: i32 = 125 // CHART_W / SAMPLES
 // A new throughput sample arrives every SAMPLE_MS; between arrivals the
 // history scrolls left smoothly, so past points keep their values and only move.
 const SAMPLE_MS = 160
@@ -19,7 +24,7 @@ export interface DonutSlice {
   label: string
   d: string
   color: string
-  value: number
+  value: i32
 }
 
 // Animation clock, not store state: nothing renders it directly.
@@ -28,36 +33,46 @@ let phase = 0
 const SLICE_COLORS = ['#38bdf8', '#a78bfa', '#f472b6', '#facc15']
 const SLICE_LABELS = ['CPU', 'GPU', 'NET', 'I/O']
 
-function round2(value: number) {
-  return Math.round(value * 100) / 100
+// A value in tenths, spelled with one decimal from integers only.
+function tenths(value: number): string {
+  const t: i32 = Math.round(value * 10)
+  const a: i32 = t < 0 ? -t : t
+  const whole: i32 = Math.floor(a / 10)
+  const frac: i32 = a - whole * 10
+  return `${t < 0 ? '-' : ''}${whole}.${frac}`
 }
 
-function round1(value: number) {
-  return Math.round(value * 10) / 10
+function toY(value: number): i32 {
+  return Math.round(CHART_H - (value / 100) * CHART_H)
 }
 
 // One donut segment as a closed path: outer arc forward, inner arc back.
-function arcSegment(cx: number, cy: number, outer: number, inner: number, start: number, end: number) {
-  const large = end - start > Math.PI ? 1 : 0
-  const ox0 = round1(cx + outer * Math.cos(start))
-  const oy0 = round1(cy + outer * Math.sin(start))
-  const ox1 = round1(cx + outer * Math.cos(end))
-  const oy1 = round1(cy + outer * Math.sin(end))
-  const ix0 = round1(cx + inner * Math.cos(end))
-  const iy0 = round1(cy + inner * Math.sin(end))
-  const ix1 = round1(cx + inner * Math.cos(start))
-  const iy1 = round1(cy + inner * Math.sin(start))
+function arcSegment(cx: i32, cy: i32, outer: i32, inner: i32, start: number, end: number) {
+  const large: i32 = end - start > Math.PI ? 1 : 0
+  const ox0: i32 = Math.round(cx + outer * Math.cos(start))
+  const oy0: i32 = Math.round(cy + outer * Math.sin(start))
+  const ox1: i32 = Math.round(cx + outer * Math.cos(end))
+  const oy1: i32 = Math.round(cy + outer * Math.sin(end))
+  const ix0: i32 = Math.round(cx + inner * Math.cos(end))
+  const iy0: i32 = Math.round(cy + inner * Math.sin(end))
+  const ix1: i32 = Math.round(cx + inner * Math.cos(start))
+  const iy1: i32 = Math.round(cy + inner * Math.sin(start))
   return `M${ox0} ${oy0}A${outer} ${outer} 0 ${large} 1 ${ox1} ${oy1}L${ix0} ${iy0}A${inner} ${inner} 0 ${large} 0 ${ix1} ${iy1}Z`
 }
 
 export class ChartStore extends Store {
-  // Line chart
-  linePath = 'M0 140'
-  areaPath = 'M0 140Z'
-  lastValue = 0
-  lastX = 0
-  lastY = 140
+  // Line chart. The recorded history only changes when a new reading lands
+  // (every SAMPLE_MS); between readings it slides left through a translate,
+  // so its geometry is reused and only the short live tip is rebuilt.
+  historyLine = 'M0 1400'
+  historyArea = 'M0 1400Z'
+  historyShift = 'translate(0 0)'
+  tipLine = 'M3000 1400'
+  tipArea = 'M3000 1400Z'
+  lastValue: i32 = 0
+  lastY: i32 = 1400
   latestText = '0'
+  newestShown: i32 = -1
 
   // Donut
   slices: DonutSlice[] = []
@@ -68,7 +83,7 @@ export class ChartStore extends Store {
   // Gauge
   gaugeValue = 40
   gaugeArc = 'M0 0'
-  needleTransform = 'rotate(0 100 100)'
+  needleTransform = 'rotate(0 1000 1000)'
   gaugeText = '40'
   gaugeColor = '#38bdf8'
 
@@ -91,29 +106,31 @@ export class ChartStore extends Store {
     this.setGauge(50 + 45 * Math.sin(p / 6))
   }
 
-  // `now` is the live position on the sample timeline (fractional). Recorded
-  // readings sit at whole indices and slide left as `now` advances; the right
-  // edge shows the live value between the last reading and the next, and the
-  // left edge is interpolated at x = 0, so the line never leaves the plot.
+  // `now` is the live position on the sample timeline (fractional). Reading k
+  // sits at x = (k - newest + SAMPLES) * STEP in history space, so the newest
+  // reading is at the right edge; the history group shifts left by the
+  // fraction of a step elapsed since it landed, and the svg viewport clips the
+  // part that slides past x = 0. The tip joins the newest reading to the live
+  // value at the right edge.
   rebuildLine(now: number) {
-    const step = CHART_W / SAMPLES
-    const toY = (value: number) => round2(CHART_H - (value / 100) * CHART_H)
-    const newest = Math.floor(now)
+    const newest: i32 = Math.floor(now)
     const frac = now - newest
+    if (newest !== this.newestShown) {
+      this.newestShown = newest
+      let line = `M0 ${toY(reading(newest - SAMPLES))}`
+      for (let k: i32 = 1; k <= SAMPLES; k++) line += `L${k * STEP} ${toY(reading(newest - SAMPLES + k))}`
+      this.historyLine = line
+      this.historyArea = `${line}L${CHART_W} ${CHART_H}L0 ${CHART_H}Z`
+    }
+    const shift: i32 = Math.round(frac * STEP)
+    this.historyShift = `translate(${-shift} 0)`
     const live = reading(newest) + (reading(newest + 1) - reading(newest)) * frac
-    // Left edge: the reading timeline at now - SAMPLES.
-    const oldest = now - SAMPLES
-    const o = Math.floor(oldest)
-    const edge = reading(o) + (reading(o + 1) - reading(o)) * (oldest - o)
-    let line = `M0 ${toY(edge)}`
-    for (let index = o + 1; index <= newest; index++)
-      line += `L${round2((index - oldest) * step)} ${toY(reading(index))}`
-    const liveY = toY(live)
-    line += `L${CHART_W} ${liveY}`
-    this.lastX = CHART_W
+    const tipX: i32 = CHART_W - shift
+    const tipY: i32 = toY(reading(newest))
+    const liveY: i32 = toY(live)
+    this.tipLine = `M${tipX} ${tipY}L${CHART_W} ${liveY}`
+    this.tipArea = `M${tipX} ${tipY}L${CHART_W} ${liveY}L${CHART_W} ${CHART_H}L${tipX} ${CHART_H}Z`
     this.lastY = liveY
-    this.linePath = line
-    this.areaPath = `${line}L${CHART_W} ${CHART_H}L0 ${CHART_H}Z`
     this.lastValue = Math.round(live)
     this.latestText = `${this.lastValue}`
   }
@@ -141,7 +158,7 @@ export class ChartStore extends Store {
       const sweep = (values[i] / total) * Math.PI * 2
       const gap = 0.03
       const slice = this.slices[i]
-      slice.d = arcSegment(100, 100, 90, 58, angle + gap, angle + sweep - gap)
+      slice.d = arcSegment(1000, 1000, 900, 580, angle + gap, angle + sweep - gap)
       slice.value = Math.round((values[i] / total) * 100)
       angle += sweep
     }
@@ -165,15 +182,16 @@ export class ChartStore extends Store {
     // 240 degree sweep from 150 deg (bottom-left) clockwise.
     const start = (150 * Math.PI) / 180
     const end = start + (v / 100) * ((240 * Math.PI) / 180)
-    const large = end - start > Math.PI ? 1 : 0
-    const r = 80
-    const x0 = round1(100 + r * Math.cos(start))
-    const y0 = round1(100 + r * Math.sin(start))
-    const x1 = round1(100 + r * Math.cos(end))
-    const y1 = round1(100 + r * Math.sin(end))
+    const large: i32 = end - start > Math.PI ? 1 : 0
+    const r: i32 = 800
+    const x0: i32 = Math.round(1000 + r * Math.cos(start))
+    const y0: i32 = Math.round(1000 + r * Math.sin(start))
+    const x1: i32 = Math.round(1000 + r * Math.cos(end))
+    const y1: i32 = Math.round(1000 + r * Math.sin(end))
     this.gaugeArc = v < 0.5 ? `M${x0} ${y0}` : `M${x0} ${y0}A${r} ${r} 0 ${large} 1 ${x1} ${y1}`
-    this.needleTransform = `rotate(${round1(-120 + v * 2.4)} 100 100)`
-    this.gaugeText = `${Math.round(v)}`
+    this.needleTransform = `rotate(${tenths(-120 + v * 2.4)} 1000 1000)`
+    const shown: i32 = Math.round(v)
+    this.gaugeText = `${shown}`
     this.gaugeColor = v > 80 ? '#f87171' : v > 60 ? '#facc15' : '#38bdf8'
   }
 

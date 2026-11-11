@@ -85,5 +85,5 @@ body,
 .slice-selected {
   fill-opacity: 1;
   stroke: #f8fafc;
-  stroke-width: 3px;
+  stroke-width: 30px; /* user units: the donut viewBox is 2000 wide */
 }
