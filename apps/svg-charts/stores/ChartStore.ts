@@ -4,6 +4,15 @@ import { Store } from '@geastack/core'
 const CHART_W = 300
 const CHART_H = 140
 const SAMPLES = 24
+// A new throughput sample arrives every SAMPLE_MS; between arrivals the
+// history scrolls left smoothly, so past points keep their values and only move.
+const SAMPLE_MS = 160
+
+// Throughput reading number `index` (a fixed value per index: history never
+// changes once recorded).
+function reading(index: number) {
+  return 50 + 30 * Math.sin(index / 3) + 15 * Math.sin(index / 1.7)
+}
 
 export interface DonutSlice {
   index: number
@@ -13,13 +22,15 @@ export interface DonutSlice {
   value: number
 }
 
-// Working buffers, not store state: nothing renders them directly, so writing
-// them every frame costs no reactive updates.
-const samples: number[] = []
+// Animation clock, not store state: nothing renders it directly.
 let phase = 0
 
 const SLICE_COLORS = ['#38bdf8', '#a78bfa', '#f472b6', '#facc15']
 const SLICE_LABELS = ['CPU', 'GPU', 'NET', 'I/O']
+
+function round2(value: number) {
+  return Math.round(value * 100) / 100
+}
 
 function round1(value: number) {
   return Math.round(value * 10) / 10
@@ -64,7 +75,6 @@ export class ChartStore extends Store {
   // Every chart updates once per rendered frame (requestAnimationFrame, 60fps
   // target). Motion follows elapsed time, so it stays smooth at any frame rate.
   start() {
-    for (let i = 0; i < SAMPLES; i++) samples.push(0)
     this.step(0)
     const frame = (timestampMs: number) => {
       this.step(timestampMs)
@@ -76,30 +86,35 @@ export class ChartStore extends Store {
   step(timestampMs: number) {
     phase = timestampMs * 0.004
     const p = phase
-    for (let i = 0; i < SAMPLES; i++) {
-      const u = i + p
-      samples[i] = 50 + 30 * Math.sin(u / 3) + 15 * Math.sin(u / 1.7)
-    }
-    this.rebuildLine()
+    this.rebuildLine(timestampMs / SAMPLE_MS)
     this.rebuildDonut()
     this.setGauge(50 + 45 * Math.sin(p / 6))
   }
 
-  rebuildLine() {
-    const step = CHART_W / (SAMPLES - 1)
-    let line = ''
-    let x = 0
-    let y = 0
-    for (let i = 0; i < samples.length; i++) {
-      x = round1(i * step)
-      y = round1(CHART_H - (samples[i] / 100) * CHART_H)
-      line += i === 0 ? `M${x} ${y}` : `L${x} ${y}`
-    }
-    this.lastX = x
-    this.lastY = y
+  // `now` is the live position on the sample timeline (fractional). Recorded
+  // readings sit at whole indices and slide left as `now` advances; the right
+  // edge shows the live value between the last reading and the next, and the
+  // left edge is interpolated at x = 0, so the line never leaves the plot.
+  rebuildLine(now: number) {
+    const step = CHART_W / SAMPLES
+    const toY = (value: number) => round2(CHART_H - (value / 100) * CHART_H)
+    const newest = Math.floor(now)
+    const frac = now - newest
+    const live = reading(newest) + (reading(newest + 1) - reading(newest)) * frac
+    // Left edge: the reading timeline at now - SAMPLES.
+    const oldest = now - SAMPLES
+    const o = Math.floor(oldest)
+    const edge = reading(o) + (reading(o + 1) - reading(o)) * (oldest - o)
+    let line = `M0 ${toY(edge)}`
+    for (let index = o + 1; index <= newest; index++)
+      line += `L${round2((index - oldest) * step)} ${toY(reading(index))}`
+    const liveY = toY(live)
+    line += `L${CHART_W} ${liveY}`
+    this.lastX = CHART_W
+    this.lastY = liveY
     this.linePath = line
     this.areaPath = `${line}L${CHART_W} ${CHART_H}L0 ${CHART_H}Z`
-    this.lastValue = Math.round(samples[samples.length - 1])
+    this.lastValue = Math.round(live)
     this.latestText = `${this.lastValue}`
   }
 
