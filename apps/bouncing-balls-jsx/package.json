@@ -23,6 +23,7 @@
     "runtime": "gea",
     "targets": {
       "web": true,
+      "tvos": true,
       "esp32": {
         "build": {
           "ui": {
