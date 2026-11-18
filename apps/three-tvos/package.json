@@ -11,7 +11,11 @@
     "three": "^0.185.0"
   },
   "devDependencies": {
-    "@geastack/vite-plugin-apple-native": "^0.1.4",
+    "@geastack/apple": "^0.2.22",
+    "@geastack/cli": "^0.1.112",
+    "@geastack/compiler": "^1.0.49",
+    "@geastack/core": "^0.1.52",
+    "@geastack/host": "^0.1.23",
     "@types/three": "^0.185.0",
     "typescript": "^5.9.3"
   },
@@ -19,7 +23,6 @@
     "id": "three-tvos",
     "name": "Three tvOS",
     "entry": "index.ts",
-    "runtime": "apple-native",
     "targets": {
       "tvos": {
         "build": {

@@ -23,9 +23,7 @@ const context = canvas.getContext('webgl2')
 if (!context) throw new Error('WebGL 2 is unavailable')
 
 const renderer = new WebGLRenderer({
-  // @ts-expect-error NativeWebGLCanvas is intentionally not an HTMLCanvasElement
   canvas,
-  // @ts-expect-error NativeWebGL2RenderingContext is intentionally not a WebGLRenderingContext
   context,
   antialias: true,
   powerPreference: 'high-performance',
