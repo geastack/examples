@@ -1,0 +1,40 @@
+{
+  "name": "@geastack/example-three-tvos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/native-webgl-angle": "^0.1.20",
+    "three": "^0.185.0"
+  },
+  "devDependencies": {
+    "@geastack/vite-plugin-apple-native": "^0.1.4",
+    "@types/three": "^0.185.0",
+    "typescript": "^5.9.3"
+  },
+  "gea": {
+    "id": "three-tvos",
+    "name": "Three tvOS",
+    "entry": "index.ts",
+    "runtime": "apple-native",
+    "targets": {
+      "tvos": {
+        "build": {
+          "compiler": {
+            "moduleGraph": "compile"
+          }
+        }
+      },
+      "web": false,
+      "esp32": false
+    },
+    "launcher": {
+      "description": "Three.js on Apple TV through native WebGL backed by ANGLE/Metal",
+      "hidden": true
+    }
+  },
+  "license": "MIT"
+}
