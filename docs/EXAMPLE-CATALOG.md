@@ -25,10 +25,17 @@ Common targets:
 
 - `web`: can run through the web simulator.
 - `esp32`: can build for embedded ESP32 boards.
+- `rp2350`: can build for RP2350 boards.
 - `geaos`: can run in the GeaOS environment.
-- `macos`: can run through the Apple macOS target.
-- `ios`: can run through the Apple iOS target.
-- `windows`: can run through the Windows (Win32) target.
+- `macos`: can run through the Apple macOS target (needs `@geastack/apple`).
+- `ios`, `tvos`: can run through the Apple iOS and tvOS targets (needs `@geastack/apple`).
+- `windows`: can run through the Windows (Win32) target (needs `@geastack/windows`).
+- `raspberry-pi-os`: can build as an SDL Linux executable (needs `@geastack/linux`);
+  `counter-jsx` and `todo-jsx` declare it.
+- `pebble`: can build as a Pebble Time 2 app (needs `@geastack/pebble`).
+
+An app that declares a native target lists that target's package in its own
+`package.json`, so the app still builds when copied out of this repository.
 
 Do not infer compatibility from whether an app happens to compile. The manifest
 is the source of truth used by tools.

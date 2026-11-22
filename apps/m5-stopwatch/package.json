@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "build": "vite build",
     "check": "tsc --noEmit",
     "lint": "eslint .",
     "format": "eslint . --fix && prettier . --write",

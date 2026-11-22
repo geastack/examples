@@ -16,19 +16,19 @@ to it.
 
 ## Standard Commands
 
-From an example folder:
+Install once at the repository root (the apps are npm workspaces), then from an
+example folder:
 
 ```sh
-npm install
 npm run check
-npm run build
+npm run build        # web apps: gea build --target web
 ```
 
 Some examples also expose:
 
 ```sh
 npm test
-npm run flash
+npm run flash            # gea flash (the only registered board, or pass --board)
 npm run flash:monitor
 ```
 

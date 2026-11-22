@@ -16,11 +16,26 @@ examples/apps/gea3d-cube
   -> Display.ctx / Gea runtime
 ```
 
-The vendored copy exists because the current app packaging path does not yet
-consume the local `@geastack/gea3d` package directly.
+The app's `package.json` does not depend on `@geastack/gea3d`; `index.tsx`
+imports the vendored copy under `src/gea3d/`, and `nativeSources` compiles its
+`src/gea3d/native/gea3d_native.cpp` into native builds. The copy exists because
+the app build copies only the app directory before bundling, so a package
+outside its alias table does not resolve there.
 
-Resync it from the library source with:
+Resync it from the library source. The command runs from a directory that
+holds both the `gea3d` and `examples` checkouts side by side:
 
 ```sh
 bash gea3d/scripts/sync-into-app.sh examples/apps/gea3d-cube
+```
+
+## Run
+
+The renderer calls its native engine (`gea3dNative`), so it runs on the WASM
+renderer or a device, not in the DOM-only `gea dev`. From this folder, after
+`npm install` at the examples root:
+
+```sh
+npx gea simulate --renderer wasm          # in the browser; needs the Emscripten SDK
+npx gea flash --board <alias> --monitor   # on a registered ESP32 board
 ```

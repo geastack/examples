@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "vite build",
+    "build": "gea build --target web",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "@babel/traverse": "latest",
     "@babel/types": "latest",
     "@geajs/vite-plugin": "^1.4.2",
+    "@geastack/apple": "^0.2.26",
     "opentype.js": "latest",
     "typescript": "^5.9.3",
     "vite": "latest"

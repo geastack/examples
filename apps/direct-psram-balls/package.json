@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "vite build",
+    "build": "gea build --target web",
     "check": "tsc --noEmit",
     "flash": "gea flash",
     "flash:monitor": "gea flash --monitor",

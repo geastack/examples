@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { readdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -42,6 +42,8 @@ function metadata(epubPath, filename) {
     author: tagText(packageXml, 'dc:creator') || tagText(packageXml, 'creator') || 'Unknown author'
   }
 }
+
+mkdirSync(booksRoot, { recursive: true })
 
 const filenames = readdirSync(booksRoot)
   .filter(filename => filename.toLowerCase().endsWith('.epub'))

@@ -2,6 +2,13 @@
 
 Sky Hop is an original platformer example using a Gea TSX `<canvas>` app.
 
+Run it from this folder, after `npm install` at the examples root:
+
+```sh
+npx gea dev                               # in the browser
+npx gea flash --board <alias> --monitor   # on a registered ESP32 board (see npx gea setup)
+```
+
 Controls:
 
 - Simulator: keyboard arrows/WASD, Space/W to jump, R/Enter to restart. Pointer/touch also works through the on-screen left/right/jump buttons.

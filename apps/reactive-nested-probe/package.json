@@ -2,7 +2,7 @@
   "name": "@geastack/example-reactive-nested-probe",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "gea build --target web",
     "check": "tsc --noEmit"
   },
   "dependencies": {

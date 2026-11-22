@@ -29,29 +29,46 @@ upstream three
 The ANGLE/WebGL compatibility layer lives in `native-webgl-angle`.
 This example owns the Three.js demo code and app shell only.
 
-## Current Bridge Status
+## Build and run
 
-The current bridge still has transitional opcode-style host calls such as
-`threeWebGLCall(...)`. That is a temporary compatibility surface. The desired
-shape is a typed native WebGL object whose methods lower directly to C++ calls,
-for example:
+From this folder, after `npm install` at the examples root, on a Mac with
+Xcode:
+
+```sh
+npx gea build --target macos
+open "dist/macos/three-angle-metal/Three ANGLE Metal.app"
+```
+
+With `@geastack/cli` later than 0.1.116, `npx gea run --target macos` builds and
+opens the app in one step.
+
+## Bridge shape
+
+The bridge is a typed native WebGL object. Each `NativeWebGL2RenderingContext`
+method in `@geastack/native-webgl-angle` calls one typed host function, which
+`native/angle_webgl_host.mm` implements on ANGLE, for example:
 
 ```text
 gl.createTexture()
-  -> NativeWebGL2RenderingContext::createTexture()
+  -> NativeWebGL2RenderingContext.createTexture()
+  -> threeWebGLCreateTexture()
   -> glGenTextures through ANGLE
 ```
 
-After a native build has produced `geatsc-sources.txt`, the bridge guard can inspect
-those existing generated module files without rebuilding:
+This app's `native/angle_webgl_host.mm` only includes the package's host source,
+because app `nativeSources` cannot point into a package.
+
+After `npx gea build --target macos` has produced the generated C++, the bridge
+guard can inspect those files without rebuilding. The build writes their list to
+`dist/macos/.generated/three-angle-metal/geatsc-sources.txt`, which the script
+reads by default (pass another list or file as its argument to inspect that):
 
 ```sh
-cd examples/apps/three-angle-metal
 npm run audit:bridge
 ```
 
 The default guard rejects `gea_cpp_value`/`gea_cpp_key` around the native WebGL
-bridge symbols. Use `-- --strict-sources` to require that the whole generated app
+bridge symbols. Add `--strict-sources` to require that the whole generated app
 is free of boxing.
 
 ## Related Folders

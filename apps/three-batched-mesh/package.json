@@ -8,6 +8,9 @@
     "@geastack/native-webgl-angle": "^0.1.12",
     "three": "^0.185.0"
   },
+  "devDependencies": {
+    "@geastack/vite-plugin-apple-native": "^0.1.4"
+  },
   "gea": {
     "id": "three-batched-mesh",
     "name": "Three BatchedMesh Validation",

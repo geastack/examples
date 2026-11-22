@@ -35,16 +35,20 @@ status bar, dialogs and the canvas surface; common adjustment styles are reused
 across tools. Canvas painting lives in the relevant view modules. The shared
 `WatchStore` retains application state and coordinates navigation and services.
 
-From the examples repository:
+## Build and flash
+
+From the `examples` repository, after `npm install` at its root and
+`npx gea setup` (choose **M5Stack StopWatch (C152)**; the suggested alias is
+`stopwatch`, substitute yours if it differs):
 
 ```sh
-gea build --board stopwatch --app m5-stopwatch
-gea flash --board stopwatch --app m5-stopwatch
-npm run format --workspace apps/m5-stopwatch
-npm run format:check --workspace apps/m5-stopwatch
-npm run check --workspace apps/m5-stopwatch
-npm test --workspace apps/m5-stopwatch
+npx gea flash --board stopwatch --app m5-stopwatch --monitor
 ```
+
+`gea flash` builds first; `npx gea build --board stopwatch --app m5-stopwatch`
+only compiles.
+
+## Controls
 
 Hold yellow A and blue B together to return to the menu. A/B and horizontal
 swipes move through the carousel and watch faces. Touch icons to open a tool;
@@ -92,8 +96,26 @@ file-cache APIs; JPEG uploads arrive as typed `Uint8Array` request bodies.
 Settings and alarms use `localStorage`. There are no app-owned C/C++ sources,
 native compiler plugins or private hardware bindings.
 
-For development against the workspace's updated APIs, build the plugin first
-and run the following from the `examples` repository:
+## Tests and formatting
+
+```sh
+npm run format --workspace apps/m5-stopwatch
+npm run format:check --workspace apps/m5-stopwatch
+npm run check --workspace apps/m5-stopwatch
+npm test --workspace apps/m5-stopwatch
+```
+
+The tests exercise the TS store actions (stopwatch, alarm scheduling, date
+clamping, wheel outcomes), the microphone DSP against an independent FFT
+reference, the badge HTTP routes, and the drag/picker physics.
+[comparison/README.md](comparison/README.md) documents the factory comparison
+captures.
+
+## Contributor build (sibling checkouts)
+
+To build against unreleased framework sources, run from the `examples`
+checkout with the `core`, `targets`, `compiler` and `cli` checkouts next to it
+(one parent directory holding all five), after building the plugin:
 
 ```sh
 (cd ../core/packages/geatsc-plugin-gea && npm run build)
@@ -107,99 +129,14 @@ GEA_ENGINE_DIR="$PWD/../core/packages/engine" \
 GEA_ELEMENTS_DIR="$PWD/../core/packages/elements" \
 GEA_PLUGIN_DIR="$PWD/../core/packages/geatsc-plugin-gea" \
 GEA_IDF_JOBS=4 node ../cli/bin/gea.mjs build --board stopwatch --app m5-stopwatch
-
-GEA_TARGETS_ROOT="$PWD/../targets" \
-node ../cli/bin/gea.mjs flash --no-build --board stopwatch --app m5-stopwatch
 ```
 
-The installed packages must include these APIs before the ordinary build command
-can use them.
+Run the same command with `flash` in place of `build` to build and install it.
 
-The 87 scoped tests exercise actual TS store actions, including a stalled-render
-stopwatch sequence and factory classic-hand angles; daily alarm scheduling; date clamping; wheel outcomes;
-microphone tone, noise, smoothing and high-frequency response; an independent
-FFT reference, sample-clock publication at 60 Hz with unchanged DSP state; and
-the six-slot badge HTTP routes with deferred shutdown. Source-based drag and picker
-checks cover integer velocity history, momentum prediction, fixed-point easing,
-stationary holds, axis locking, interrupted snaps, wrapping, finite limits,
-shared samples across columns and original picker geometry.
-The generic engine's native pixel regression also verifies rotated images,
-noncentral and negative pixel origins, percentage origins, source alpha and
-node opacity, clipping, retained snapshots and transform updates. Classic
-hands and wheel labels use the factory pivots through standard CSS transforms.
-Complete opaque numeric canvas batches can remain as retained framework commands:
-the engine replays them in the normal painter order directly into the framebuffer
-or DMA strips. Incremental drawing, images, text, paths and unsupported style
-effects materialize the owned bitmap. Native pixel tests compare both paths,
-including overlapping translucent geometry, overlays, clipping, snapshots,
-poisoned 16-row strips and fallback after mutations.
-
-Run those native checks from the `examples` repository:
+The engine's native pixel regressions for the retained canvas batches and
+projected images run from the same layout:
 
 ```sh
 bash ../core/packages/core/test/run-canvas-retained-batch.sh
 bash ../core/packages/core/test/run-projected-image.sh
 ```
-
-Both runners enable triangle occlusion and reuse the core test `.build` output.
-These checks do not establish button sound audibility, display parity or the
-device's frame rate.
-
-Previous checks on the connected C152 StopWatch (2026-10-05) recorded
-scheduler-only microphone-spectrum rates: 1,152 iterations in 19,179 ms
-(60.1 per second), 57.9–60.7 across longer 300-iteration windows, and
-62.1–62.5 in a later set of 300-iteration windows. These count scheduler
-iterations, rather than rendered frames or completed display uploads. They do
-not establish display FPS or a universally locked 60 FPS. Those checks reported
-44.1 kHz capture with zero lost samples. The app requests 60 FPS at DPR 1.
-
-The current same-board factory comparison records rendered frames and, in
-diagnostic fenced windows, completed DMA uploads separately. Final benchmark
-results remain pending. [Measurement definitions](comparison/METRICS.md) explain
-the frame boundaries, configuration differences and instrumentation overhead;
-the previous scheduler-only figures are not substituted for those results.
-
-On-device badge validation confirmed new uploads, replacement of occupied slots,
-byte-exact JPEG downloads (including a 257,178-byte replacement), rejection of
-invalid uploads without damaging the
-existing image, deletion and persistence across reboot. DHCP advertises the
-board as DNS; wildcard DNS and all ten factory captive-portal redirects work.
-A phone's automatic login window has not been observed directly. The firmware
-stops HTTP/DNS and Wi-Fi on Close and restores the normal display buffers.
-Watch faces, stopwatch, IMU, wheel and settings were also checked on the board.
-The font audit corrected the body face to factory Montserrat Medium and restored
-source line heights and text alignment. Device captures verify the curved top
-clock, watch faces, stopwatch labels, brightness controls and wheel selector.
-Eighty consecutive NumberFlow captures retained the seconds tens glyph; earlier
-captures intermittently omitted it, and a physical-panel check remains pending.
-On-device touch injection verified a short fast launcher flick advancing one page,
-a slow held drag returning to its page and a reverse flick returning to the previous
-page. The wheel selector advanced from 2 to 7 under momentum, retained 7 after a
-small slow drag, selected 8 by a row tap and clamped at 2 and 18. The alarm minute
-picker wrapped 00 to 59. Native captures confirm the factory's 164 px picker height,
-46 px row pitch and 47 px selection band. The board's diagnostic injection now owns
-the touch stream through release, preventing an idle physical controller from
-prematurely lifting synthetic gestures. An interrupted-animation capture overlapped
-with the user's physical touch and is not an isolated device assertion; focused
-source-based tests cover that behavior.
-
-The final firmware has a 404×202 confirmation dialog and a 466×466 settings list;
-static universal CSS matching is covered by a native regression.
-Physical A/B presses, speaker audibility and vibration still need hands-on
-confirmation. The retained production image is 5,669,456 bytes, leaving
-1,670,576 bytes in the 7 MiB application partition (7,340,032 bytes).
-[The production artifact manifest](comparison/gea-production-build.json) records
-its image hash and static-memory footprint. The shared native renderer's ESP-only triangle cache uses 33,536
-bytes of PSRAM for immutable exact division results; desktop rendering keeps
-its hardware-division path.
-
-The transient factory startup artwork has a TypeScript component and appears for
-one actual app frame. Target/runtime hardware initialization happens before the
-TS entry point, so its earlier factory HAL phase and duration cannot be recreated
-there. Comparison capture controls and the source/test inventory are documented
-in [comparison/README.md](comparison/README.md).
-
-Badge HTTP compatibility deliberately retains the factory's acceptance of
-nonempty JPG-labeled bytes without validating their decoder contents. Error
-status and plain message bodies match the source. Pinned ESP-IDF 5.5.4 labels
-those error bodies `text/html`; Gea defaults to `text/plain`.

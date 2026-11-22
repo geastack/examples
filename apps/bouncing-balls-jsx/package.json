@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "vite build",
+    "build": "gea build --target web",
     "check": "tsc --noEmit"
   },
   "dependencies": {
@@ -12,6 +12,7 @@
     "@babel/traverse": "latest",
     "@babel/types": "latest",
     "@geajs/vite-plugin": "^1.5.0",
+    "@geastack/apple": "^0.2.26",
     "opentype.js": "latest",
     "typescript": "^5.9.3",
     "vite": "latest"
@@ -86,6 +87,11 @@
               "renderer": {
                 "fuseReplayFlush": false
               }
+            }
+          },
+          "esp32-s3-elecrow-crowpanel-advance-7.0": {
+            "defines": {
+              "GEA_EMBEDDED_DIRTY_REGION_MAX_RECTS": 64
             }
           }
         }

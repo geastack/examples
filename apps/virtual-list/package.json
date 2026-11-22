@@ -2,7 +2,7 @@
   "name": "@geastack/example-virtual-list",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "gea build --target web",
     "check": "tsc --noEmit"
   },
   "dependencies": {

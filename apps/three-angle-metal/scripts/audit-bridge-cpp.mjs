@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
-const defaultSourceListPath = resolve(scriptDir, '../../../../apple/targets/macos/generated/three-angle-metal/geatsc-sources.txt')
+const defaultSourceListPath = resolve(scriptDir, '../dist/macos/.generated/three-angle-metal/geatsc-sources.txt')
 const args = process.argv.slice(2)
 const strictSources = args.includes('--strict-sources')
 const inputPath = args.find((arg) => !arg.startsWith('--')) ?? defaultSourceListPath

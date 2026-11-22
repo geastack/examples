@@ -13,10 +13,21 @@ The palette menu also transitions the corner sample's color.
 Resize the window to switch between two columns and stacked cards. Small windows
 stack the form fields too; scroll to reach the remaining controls.
 
-From this folder, with the debug-capable Gea CLI and Apple toolchain installed:
+From this folder, after `npm install` at the examples root, on a Mac with
+Xcode. To build and open the app:
 
 ```sh
-gea run --debug --target macos
+npx gea build --target macos
+open "dist/macos/macos-native-showcase/Mac Native Showcase.app"
+```
+
+With `@geastack/cli` later than 0.1.116, `npx gea run --target macos` builds and
+opens the app in one step.
+
+To build, launch and attach Chrome DevTools to the running app:
+
+```sh
+npx gea run --debug --target macos
 ```
 
 Use Elements to inspect `#transition-button`, `#layer-sample` or `#native-progress`. Inline

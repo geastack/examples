@@ -3,8 +3,8 @@
 Example applications and tools for GeaStack.
 
 This repo is the app gallery used by the simulator, embedded targets, GeaOS,
-Apple targets, the VS Code/Cursor extension, and marketing demos. Each example
-is a small package with a `gea` manifest in `package.json`.
+and Apple targets. Each example is a small package with a `gea` manifest in
+`package.json`.
 
 ## What Is Here
 
@@ -13,38 +13,45 @@ is a small package with a `gea` manifest in `package.json`.
 | `apps/*` | Gea apps. Most are TSX apps targeting web, ESP32, and/or GeaOS. |
 | `apps/*/package.json` | App manifest, target compatibility, scripts, and launcher metadata. |
 | `tools/dialer-browser` | Small browser-side helper tool for dialer workflows. |
-| `package.json` | Workspace marker for the examples collection. |
+| `shared` | Components shared by several apps (`Dialer`, `Settings`). |
+| `assets` | Shared fonts. |
+| `scripts` | Repository-level checks (the bouncing-balls FPS gate). |
+| `benchmarks` | Native hello-window memory comparison (AppKit, Qt, Tauri, ...). |
+| `.gea/boards.json` | Project board aliases (empty; aliases are machine-local). |
+| `package.json` | npm workspace root for `apps/*` and `tools/*`, with the GeaStack CLI and compiler as dev dependencies. |
 | `docs` | Catalog and contribution guidance. |
 
 ## Quick Start
 
-Run checks for an individual example:
+Install once at the repository root; the apps are npm workspaces and share
+that installation, including `@geastack/cli`:
+
+```sh
+npm install
+```
+
+Type-check an individual example:
 
 ```sh
 cd apps/watch
-npm install
 npm run check
-npm run build
 ```
 
 Some examples have tests, mostly for a layout or a device setup. Run them with
 `npm test` in the app folder.
 
-The web loop is driven from the simulator, which is a separate repository:
-[geastack/simulator](https://github.com/geastack/simulator). Its scripts read
-apps out of an app project root, which they take from `GEA_APPS_ROOT` -- this
-repo, or your own. There is no default, so set it or pass `--app-dir`. The two
-checkouts do not need to be next to each other.
+Run an app on the web from its folder with the Gea CLI:
 
 ```sh
-cd /path/to/simulator
-GEA_APPS_ROOT=/path/to/examples ./targets/web/dev-web.mjs watch   # development loop
-GEA_APPS_ROOT=/path/to/examples ./targets/web/build-web.sh watch  # build for web
-
-./targets/web/dev-web.mjs --app-dir /path/to/examples/apps/watch   # or name one app
+cd apps/watch
+npx gea dev                      # real DOM + CSS dev server with HMR
+npx gea simulate                 # the same DOM app inside an adjustable device viewport
+npx gea simulate --renderer wasm # embedded C++ renderer in the browser; needs Emscripten
+npx gea build --target web       # static site in .gea/build/web/site
 ```
 
-Flash a compatible board through the Gea CLI:
+Flash a compatible board through the Gea CLI, after registering it once with
+`npx gea setup` (which names its alias):
 
 ```sh
 npx gea flash watch --board <alias>
@@ -78,8 +85,8 @@ Every buildable app should have a `package.json` with a `gea` field:
 }
 ```
 
-The manifest is consumed by the simulator, embedded board scripts, GeaOS,
-Apple targets, and the IDE extension. Keep it accurate.
+The manifest is consumed by the `gea` CLI, the simulator, embedded board
+builds, GeaOS, and Apple targets. Keep it accurate.
 
 ## Maintenance Notes
 

@@ -6,6 +6,9 @@
   "dependencies": {
     "@geastack/core": "^0.1.41"
   },
+  "devDependencies": {
+    "@geastack/apple": "^0.2.26"
+  },
   "gea": {
     "id": "hello-window",
     "name": "Hello Window",
