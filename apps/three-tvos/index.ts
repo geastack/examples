@@ -23,7 +23,17 @@ const context = canvas.getContext('webgl2')
 if (!context) throw new Error('WebGL 2 is unavailable')
 
 const renderer = new WebGLRenderer({
+  // No cast: the native build compiles three's WebGLRenderer from source, whose
+  // `canvas` and `context` parameters impose no type, so the real native classes
+  // flow through it. Asserting them into DOM types would erase that identity
+  // and make the renderer's parameters dynamic. `tsc --noEmit` (the `check`
+  // script) resolves `three` through `@types/three`, whose
+  // `WebGLRendererParameters` names the DOM classes; the two directives record
+  // exactly that known gap (same as three-angle-metal) and fail the check if the
+  // declarations ever start agreeing, so they cannot go stale silently.
+  // @ts-expect-error NativeWebGLCanvas is intentionally not an HTMLCanvasElement
   canvas,
+  // @ts-expect-error NativeWebGL2RenderingContext is intentionally not a WebGLRenderingContext
   context,
   antialias: true,
   powerPreference: 'high-performance',
