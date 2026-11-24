@@ -1,0 +1,29 @@
+{
+  "name": "@geastack/example-progress-bar",
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geastack/core": "^0.1.41",
+    "@geastack/elements": "^0.1.6"
+  },
+  "gea": {
+    "id": "progress-bar",
+    "name": "Progress Bar",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": false
+    },
+    "launcher": {
+      "description": "progress bar states",
+      "order": 999,
+      "hidden": true
+    }
+  },
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}
