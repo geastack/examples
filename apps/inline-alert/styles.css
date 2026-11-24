@@ -1,0 +1,46 @@
+body {
+  background-color: #f6f3ea;
+  color: #171713;
+  font-family: 'Inter';
+}
+
+.demo-app {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 12px;
+}
+
+.demo-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.demo-alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-alert {
+  width: 100%;
+}
+
+.demo-alert--narrow {
+  width: 220px;
+}
+
+.demo-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.demo-button {
+  width: 96px;
+  height: 44px;
+  background-color: #171713;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 8px;
+}
