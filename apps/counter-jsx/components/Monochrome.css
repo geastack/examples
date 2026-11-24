@@ -1,0 +1,53 @@
+/* 1-bit panels (e-paper): pure black-on-white reads crisply with no dither
+   speckle, so flip the dark theme to light. Color boards keep the dark theme
+   (their (monochrome) evaluates false — on web the browser does the same).
+   Imported after every component stylesheet so these rules win the cascade. */
+@media (monochrome) {
+  .counter-app {
+    background-color: #ffffff;
+  }
+
+  .counter-title {
+    color: #000000;
+  }
+
+  .counter-display {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-value {
+    color: #000000;
+  }
+
+  .counter-minus-button {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-minus-symbol {
+    color: #000000;
+  }
+
+  .counter-plus-button {
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  .counter-plus-symbol {
+    color: #ffffff;
+  }
+
+  .counter-reset-button {
+    background-color: #ffffff;
+    border-color: #000000;
+  }
+
+  .counter-reset-label {
+    color: #000000;
+  }
+
+  .counter-status {
+    color: #000000;
+  }
+}

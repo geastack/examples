@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@geajs/core": "^1.4.2",
-    "@geastack/core": "^0.1.41"
+    "@geastack/core": "^0.1.58"
   },
   "devDependencies": {
     "@babel/parser": "latest",

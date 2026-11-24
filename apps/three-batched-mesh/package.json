@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@geastack/apple": "^0.2.15",
-    "@geastack/native-webgl-angle": "^0.1.12",
+    "@geastack/apple": "^0.2.28",
+    "@geastack/native-webgl-angle": "^0.1.26",
     "three": "^0.185.0"
   },
   "devDependencies": {

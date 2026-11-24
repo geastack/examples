@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@geajs/core": "^1.5.1",
-    "@geastack/core": "^0.1.41"
+    "@geastack/core": "^0.1.58"
   },
   "devDependencies": {
     "@babel/parser": "latest",
@@ -66,7 +66,6 @@
     "defines": [
       "GEA_AUDIO_FULL_DUPLEX=1",
       "GEA_EMBEDDED_H264_UNUSED=1",
-      "GEA_EMBEDDED_RTC_UNUSED=1",
       "GEA_AUDIO_DEVICE_SAMPLE_RATE=44100",
       "GEA_AUDIO_RECORD_GAIN_DB=30",
       "GEA_EMBEDDED_FRAME_SCHEDULER_FPS_LOG=0"

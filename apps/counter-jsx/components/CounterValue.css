@@ -2,7 +2,7 @@
    classList without a dynamic class binding. Compact for the small panel. */
 .counter-value {
   font-family: 'Bebas Neue';
-  font-size: 56px;
+  font-size: clamp(56px, 16vh, 220px);
   color: #67e8f9;
   text-align: center;
   line-height: 1;

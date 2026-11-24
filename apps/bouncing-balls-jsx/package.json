@@ -5,14 +5,14 @@
   },
   "dependencies": {
     "@geajs/core": "^1.5.1",
-    "@geastack/core": "^0.1.41"
+    "@geastack/core": "^0.1.58"
   },
   "devDependencies": {
     "@babel/parser": "latest",
     "@babel/traverse": "latest",
     "@babel/types": "latest",
     "@geajs/vite-plugin": "^1.5.0",
-    "@geastack/apple": "^0.2.26",
+    "@geastack/apple": "^0.2.28",
     "opentype.js": "latest",
     "typescript": "^5.9.3",
     "vite": "latest"

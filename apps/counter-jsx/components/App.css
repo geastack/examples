@@ -8,24 +8,26 @@
   src: url('../../../assets/fonts/BebasNeue-Regular.ttf');
 }
 
-/* Sized to fit the smallest target panel (esp32-s3-touch-amoled-1.8 = 368×448
-   physical → ~245×299 logical px) and center on larger panels. Fills the
-   viewport and centers its column so the whole counter is always on screen. */
+/* Fills the viewport and scales with it: each size is a clamp() whose floor
+   fits the smallest round/square panels (~245x299 logical px) and whose
+   viewport term grows the counter on big panels such as the PaperS3's
+   540x960. Panels narrower than 140px take Compact.css instead. */
 .counter-app {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: 100vw;
   height: 100vh;
   background-color: #07111f;
-  padding: 12px;
+  padding: clamp(12px, 3.5vh, 54px);
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: clamp(10px, 3vh, 42px);
   font-family: 'Inter';
 }
 .counter-title {
   font-family: 'Bebas Neue';
-  font-size: 30px;
+  font-size: clamp(30px, 7vh, 92px);
   color: #f8fafc;
   text-align: center;
 }
@@ -33,9 +35,9 @@
 .counter-display {
   display: flex;
   flex-direction: column;
-  width: 150px;
-  height: 84px;
-  border-radius: 8px;
+  width: clamp(150px, 70vw, 560px);
+  height: clamp(84px, 22vh, 320px);
+  border-radius: clamp(8px, 3vh, 36px);
   background-color: #0f172a;
   border-width: 2px;
   border-color: #1e293b;
@@ -45,11 +47,11 @@
 .counter-controls {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: clamp(12px, 4vw, 46px);
 }
 .counter-status {
   font-family: 'Inter';
-  font-size: 12px;
+  font-size: clamp(12px, 2.8vh, 36px);
   color: #94a3b8;
   text-align: center;
 }

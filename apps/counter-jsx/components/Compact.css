@@ -1,0 +1,55 @@
+/* Narrow panels (the StickS3's 135x240 glass at DPR 1.5 is a 90x160 CSS
+   canvas): shrink every block so the whole counter fits with a margin.
+   Imported after the component stylesheets so these rules win the cascade. */
+@media (max-width: 140px) {
+  .counter-app {
+    padding: 6px;
+    gap: 5px;
+  }
+
+  .counter-title {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .counter-display {
+    width: 72px;
+    height: 34px;
+    border-radius: 6px;
+  }
+
+  .counter-value {
+    font-size: 26px;
+  }
+
+  .counter-controls {
+    gap: 6px;
+  }
+
+  .counter-minus-button,
+  .counter-plus-button {
+    width: 33px;
+    height: 24px;
+    border-radius: 6px;
+  }
+
+  .counter-minus-symbol,
+  .counter-plus-symbol {
+    font-size: 18px;
+  }
+
+  .counter-reset-button {
+    width: 72px;
+    height: 20px;
+    border-radius: 6px;
+  }
+
+  .counter-reset-label {
+    font-size: 10px;
+  }
+
+  .counter-status {
+    font-size: 9px;
+    line-height: 1;
+  }
+}

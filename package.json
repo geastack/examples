@@ -13,12 +13,12 @@
     "test:balls:device": "node scripts/check-bouncing-balls-fps.mjs --device"
   },
   "devDependencies": {
-    "@geastack/cli": "^0.1.116",
-    "@geastack/compiler": "^1.0.49",
-    "@geastack/targets": "^0.1.113",
+    "@geastack/cli": "^0.1.122",
+    "@geastack/compiler": "^1.0.63",
+    "@geastack/targets": "^0.1.118",
     "typescript": "~5.9.3"
   },
   "dependencies": {
-    "@geastack/core": "^0.1.53"
+    "@geastack/core": "^0.1.58"
   }
 }

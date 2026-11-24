@@ -4,6 +4,8 @@ import './CounterValue.css'
 import './MinusButton.css'
 import './PlusButton.css'
 import './ResetButton.css'
+import './Compact.css'
+import './Monochrome.css'
 
 // Component-as-store: App holds its own reactive state (no CounterStore). On the
 // embedded target `count`/`status` compile to typed Signals; each tap calls a
@@ -33,9 +35,19 @@ export class App extends ReactiveComponent {
     else this.status = 'Back at zero'
   }
 
+  // Hardware buttons arrive as key events whose `code` is the button's
+  // silkscreen name (see Buttons in @geastack/core): the StickS3's face keys
+  // are Key1 and Key2. Their key aliases (ArrowUp/ArrowDown) let a keyboard
+  // drive the same counter on the web.
+  keydown(code: string, key: string) {
+    if (code == 'Key1' || key == 'ArrowUp') this.increment()
+    else if (code == 'Key2' || key == 'ArrowDown') this.decrement()
+    else if (key == 'Escape' || key == 'Backspace') this.reset()
+  }
+
   template() {
     return (
-      <div class="counter-app">
+      <div class="counter-app" onKeyDown={event => this.keydown(event.code, event.key)}>
         <span class="counter-title">Counter</span>
         <div class="counter-display">
           <span class="counter-value">{this.count}</span>

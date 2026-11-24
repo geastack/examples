@@ -1,9 +1,9 @@
 .counter-reset-button {
   display: flex;
   flex-direction: column;
-  width: 104px;
-  height: 36px;
-  border-radius: 8px;
+  width: clamp(104px, 45vw, 360px);
+  height: clamp(36px, 7vh, 110px);
+  border-radius: clamp(8px, 2vh, 26px);
   background-color: #111827;
   border-width: 2px;
   border-color: #475569;
@@ -12,7 +12,7 @@
 }
 .counter-reset-label {
   font-family: 'Inter';
-  font-size: 15px;
+  font-size: clamp(15px, 3.6vh, 48px);
   color: #cbd5e1;
   text-align: center;
   line-height: 1;

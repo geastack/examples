@@ -9,7 +9,7 @@
     "start": "gea run --target windows"
   },
   "dependencies": {
-    "@geastack/windows": "^0.1.2"
+    "@geastack/windows": "^0.1.11"
   },
   "devDependencies": {
     "@geastack/vite-plugin-windows-native": "^0.1.2",
