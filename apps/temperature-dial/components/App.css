@@ -79,6 +79,8 @@ body,
   top: 20%;
   width: 64%;
   height: 54%;
+  box-sizing: border-box;
+  padding-top: 6.25vmin;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -87,11 +89,12 @@ body,
 }
 
 .temperature-dial-kicker {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   text-align: center;
   font-size: 4.375vmin;
-  margin-bottom: 0.625vmin;
-  transform: translateY(14px);
 }
 
 .temperature-dial-value {
@@ -227,15 +230,13 @@ body,
   font-size: 8.75vmin;
   line-height: 1;
   color: #e2e8f0;
-  transform: translateX(-50%);
+  bottom: 25%;
 }
 
 .temperature-dial-range-left {
-  left: 29.4%;
-  bottom: 26%;
+  left: 27.5%;
 }
 
 .temperature-dial-range-right {
-  left: 70.6%;
-  bottom: 26%;
+  left: 59.5%;
 }
