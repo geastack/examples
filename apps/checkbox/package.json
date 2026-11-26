@@ -24,7 +24,7 @@
     "entry": "index.tsx",
     "runtime": "gea",
     "targets": {
-      "web": true,
+      "web": false,
       "esp32": false,
       "geaos": false
     },
