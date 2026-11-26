@@ -64,6 +64,8 @@ npx gea flash watch --board <alias> --monitor
   target compatibility, and how manifests are used.
 - [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md): how to add, test, and maintain an
   example app.
+- [apps/checkbox/README.md](apps/checkbox/README.md): controlled, indeterminate,
+  and disabled Checkbox component demo.
 
 ## App Manifest Basics
 
