@@ -15,6 +15,7 @@ The app shows three states:
 - **Web:** disabled in the app manifest until the component package is
   published and the build/runtime path is validated.
 - **ESP32 / GeaOS:** disabled in the manifest; not supported or verified here.
+- **Launcher:** hidden until at least one target is validated.
 
 ## Commands
 
