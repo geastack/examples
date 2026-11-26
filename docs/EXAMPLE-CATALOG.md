@@ -15,7 +15,8 @@ tests, and marketing proof.
 | Device features | `camera-showcase`, `camera-studio`, `voice-notes`, `hid-clicker`, `weather`, `maps` | Target capabilities such as camera, audio, HID, network, and map assets. |
 | Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase`, `macos-native-showcase` | Apple target and native renderer experiments. |
 | Windows/native experiments | `notes-jsx`, `notes-windows` | Windows target: the JSX notes app through the Win32 renderer, and the same app written against `@geastack/windows/Controls`. |
-| UI component contributions | \`checkbox\` | Controlled, indeterminate, and disabled Checkbox states. See the [Checkbox example README](../apps/checkbox/README.md) for target status; Web is declared but not yet validated, and embedded targets are disabled. |\n| Reactive experiments | `reactive-counter`, `reactive-child-probe`, `reactive-nested-probe`, `reactive-tic-tac-toe` | Store/reactivity experiments, often hidden from launchers. |
+| UI component contributions | `checkbox` | Controlled, indeterminate, and disabled Checkbox states. See the [Checkbox example README](../apps/checkbox/README.md) for target status; all targets remain disabled until validated. |
+| Reactive experiments | `reactive-counter`, `reactive-child-probe`, `reactive-nested-probe`, `reactive-tic-tac-toe` | Store/reactivity experiments, often hidden from launchers. |
 
 ## Target Compatibility
 
