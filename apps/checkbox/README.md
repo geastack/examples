@@ -12,8 +12,8 @@ The app shows three states:
 
 ## Target status
 
-- **Web:** declared in the app manifest; build and runtime behavior have not
-  yet been validated for this contribution.
+- **Web:** disabled in the app manifest until the component package is
+  published and the build/runtime path is validated.
 - **ESP32 / GeaOS:** disabled in the manifest; not supported or verified here.
 
 ## Commands
