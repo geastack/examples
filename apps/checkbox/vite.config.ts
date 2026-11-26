@@ -1,10 +1,13 @@
-import { defineConfig } from 'vite'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { geaPlugin } from '@geajs/vite-plugin'
 
-const web = process.env.GEA_EMBEDDED_TARGET === 'web'
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const web = process.env.GEA_EMBEDDED_TARGET !== 'web'
 const appId = 'checkbox'
 
-export default defineConfig({
+export default {
+  root: __dirname,
   plugins: [
     geaPlugin({
       ir: process.env.GEA_IR_OUT
@@ -15,12 +18,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'index.tsx',
-      formats: [web ? 'es' : 'iife'],
-      ...(web ? {} : { name: 'gea_embedded' }),
-      fileName: () => (web ? 'app.js' : 'index.js')
+      formats: [web ? 'iife' : 'es'],
+      ...(web ? { name: 'gea_embedded' } : {}),
+      fileName: () => (web ? 'index.js' : 'app.js')
     },
-    outDir: web ? 'dist' : `../../targets/esp32-s3-touch-amoled-2.06/build/apps/${appId}/dist`,
-    emptyOutDir: !web,
-    minify: false
+    outDir: web
+      ? resolve(__dirname, 'dist')
+      : resolve(__dirname, `../../targets/esp32-s3-touch-amoled-2.06/build/apps/${appId}/dist`),
+    emptyOutDir: true,
+    minify: false,
+    modulePreload: { polyfill: false }
   }
-})
+}
