@@ -32,7 +32,7 @@
       "description": "Checkbox component demo",
       "order": 30,
       "accent": "#60a5fa",
-      "hidden": false
+      "hidden": true
     }
   },
   "private": true,
