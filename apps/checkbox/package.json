@@ -1,0 +1,41 @@
+{
+  "name": "@geastack/example-checkbox",
+  "type": "module",
+  "scripts": {
+    "build": "gea build --target web",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@geajs/core": "^1.4.2",
+    "@geastack/core": "^0.1.66",
+    "@geastack/elements": "^0.1.7"
+  },
+  "devDependencies": {
+    "@babel/parser": "latest",
+    "@babel/traverse": "latest",
+    "@babel/types": "latest",
+    "@geajs/vite-plugin": "^1.4.2",
+    "typescript": "^5.9.3",
+    "vite": "latest"
+  },
+  "gea": {
+    "id": "checkbox",
+    "name": "Checkbox",
+    "entry": "index.tsx",
+    "runtime": "gea",
+    "targets": {
+      "web": true,
+      "esp32": false,
+      "geaos": false
+    },
+    "launcher": {
+      "description": "Checkbox component demo",
+      "order": 30,
+      "accent": "#60a5fa",
+      "hidden": false
+    }
+  },
+  "private": true,
+  "license": "MIT",
+  "version": "0.1.0"
+}
