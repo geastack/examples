@@ -10,7 +10,7 @@ tests, and marketing proof.
 | Watch and wearable UI | `watch`, `watch-analog`, `watch-date`, `watch-face` | Compact layouts, clock/date rendering, small-screen app surfaces. |
 | Basic JSX apps | `counter-jsx`, `todo-jsx`, `static-card`, `stopwatch-jsx` | Component rendering, state updates, text/input, timers. |
 | Canvas and animation | `bouncing-balls`, `bouncing-balls-jsx`, `canvas-3d`, `canvas-3d-cube`, `css-3d-cube`, `css-animation-showcase` | Canvas drawing, CSS animation, frame loop, transform behavior. |
-| UI components | `settings`, `dialer`, `virtual-list`, `typography`, `bubble-grid`, `bubble-grid-jsx` | Higher-level controls, scroll behavior, text layout, launchable apps. |
+| UI components | `checkbox`, `settings`, `dialer`, `virtual-list`, `typography`, `bubble-grid`, `bubble-grid-jsx` | Higher-level controls, controlled and indeterminate checkbox states, scroll behavior, text layout, launchable apps. |
 | Games | `sky-hop`, `sky-hop-jsx`, `tic-tac-toe`, `tilt-breakout`, `button-tetris` | Interaction, simple game loops, collision/physics, deterministic logic. |
 | Device features | `camera-showcase`, `camera-studio`, `voice-notes`, `hid-clicker`, `weather`, `maps` | Target capabilities such as camera, audio, HID, network, and map assets. |
 | Apple/native experiments | `notes-jsx`, `notes-native`, `ios-device-showcase`, `ios-metal-*`, `ios-native-showcase`, `macos-native-showcase` | Apple target and native renderer experiments. |
@@ -32,7 +32,7 @@ Common targets:
 - `windows`: can run through the Windows (Win32) target (needs `@geastack/windows`).
 - `raspberry-pi-os`: can build as an SDL Linux executable (needs `@geastack/linux`);
   `counter-jsx` and `todo-jsx` declare it.
-- `pebble`: can build as a Pebble Time 2 app (needs `@geastack/pebble`).
+- `pebble`: can build for a Pebble Time 2 app (needs `@geastack/pebble`).
 
 An app that declares a native target lists that target's package in its own
 `package.json`, so the app still builds when copied out of this repository.
